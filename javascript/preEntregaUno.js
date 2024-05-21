@@ -5,34 +5,40 @@
 let mes = "";
 let ingresos = 0;
 let egresos = 0;
+let respuesta = "";
 
-// condicional para validar el mes ingresado //
+// funciojn para validar el mes ingresado //
 
-mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
-while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
+function mesValido() {
+    mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
+    while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
     mes !== "julio" && mes !== "agosto" && mes !== "septiembre" && mes !== "octubre" && mes !== "noviembre" && mes !== "diciembre") {
-    console.log("El mes ingresado no es válido.");
-    mes = prompt("Ingrese otra vez el mes: ").toLowerCase();
-}
-
-
-// Ingreso por parte del usuario de los ingresos y egresos //
-ingresos = parseInt(prompt("Ingrese el monto de los ingresos en el mes de " + mes + ":"));
-egresos = parseInt(prompt("Ingrese el monto de los egresos en el mes de " + mes + ":"));
-
-
-// condicional para validar los ingresos y egresos //
-while (isNaN(ingresos) || isNaN(egresos) || ingresos < 0 || egresos < 0) {
-    if (isNaN(ingresos) || isNaN(egresos)) {
-        console.log("El monto ingresado no es un número válido.");
-    } else {
-        console.log("El monto ingresado no es válido (debe ser un número positivo).");
+    console.log("El mes ingresado no es válido.");    
     }
-    ingresos = parseInt(prompt("Ingrese el monto de los ingresos en el mes de " + mes + ":"));
-    egresos = parseInt(prompt("Ingrese el monto de los egresos en el mes de " + mes + ":"));
+    return mes;
 }
 
-// funcion para determinar el saldo //
+// Ingreso por parte del usuario de el mes a calcular //
+mesValido();
+
+
+// funcion para validar ingresos y egresos del usuario //
+function validarIngresosEgresos(mes) {
+    let ingresos = parseInt(prompt("Ingrese el monto de los ingresos en el mes de " + mes + ":"));
+    let egresos = parseInt(prompt("Ingrese el monto de los egresos en el mes de " + mes + ":"));
+    while (isNaN(ingresos) || isNaN(egresos) || ingresos < 0 || egresos < 0) {
+        if (isNaN(ingresos) || isNaN(egresos)) {
+            console.log("El monto ingresado no es un número válido.");
+        } else {
+            console.log("El monto ingresado no es válido (debe ser un número positivo).");
+        }
+        ingresos = parseInt(prompt("Ingrese el monto de los ingresos en el mes de " + mes + ":"));
+        egresos = parseInt(prompt("Ingrese el monto de los egresos en el mes de " + mes + ":"));
+    }
+    return { ingresos, egresos };
+}
+
+// funcion para saber el saldo //
 
 function saldo(ingresos, egresos, mes) {
     if (ingresos > egresos) {
@@ -43,10 +49,23 @@ function saldo(ingresos, egresos, mes) {
 }
 
 
-// llamada a la funcion saldo //
-
-saldo(ingresos, egresos);
+// saldo  //
+mes = mesValido();
+let resultado = validarIngresosEgresos(mes);
+ingresos = resultado.ingresos;
+egresos = resultado.egresos;
+saldo(ingresos, egresos, mes);
 
 
 // suma de saldos //
 
+do {
+    respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
+    if (respuesta === "si") {
+        mes = mesValido();
+        resultado = validarIngresosEgresos();
+        ingresos = resultado.ingresos;
+        egresos = resultado.egresos;
+        saldo(ingresos, egresos, mes);
+    }
+} while (respuesta === "si");
