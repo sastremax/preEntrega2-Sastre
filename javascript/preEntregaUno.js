@@ -36,13 +36,18 @@ function ingresarGastos(cantidadGastos) {
 
 // funcion para ingresar gastos de forma individual por servicio de empleado //
 
-function ingresarGastosServicios() {
-    
+function ingresarGastosServicios(cantidadGastos) {
+    let totalGastos = 0;
+    for (let i = 0; i < cantidadGastos; i++) {
+        let gasto = parseFloat(prompt("Ingrese el monto del gasto por servicio de empleado:"));
+        while (isNaN(gasto) || gasto < 0) {
+            console.log("El monto ingresado no es válido.");
+            gasto = parseFloat(prompt("Ingrese el monto del gasto por servicio de empleado:"));
+        }
+        totalGastos += gasto;
+    }
+    return totalGastos;
 }
-
-
-
-
 
 // funcion para validar los ingresos y los egresos de las terapeutas //
 function validarIngresosEgresos(mes) {
