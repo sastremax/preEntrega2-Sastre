@@ -21,24 +21,25 @@ function validarMes() {
 
 // funcion para ingresar gastos de forma individual por cada producto //
 
-function ingresarGastos(cantidadGastos) {
-    let totalGastos = 0;
-    for (let i = 0; i < cantidadGastos; i++) {
-        let gasto = parseFloat(prompt("Ingrese el monto del gasto individual por producto:"));
+function ingresarGastosProductos(cantidadGastosProductos) {
+    let totalGastosProductos = 0;
+    let cantidadProductos = parseInt(prompt(`Ingrese la cantidad de productos comprados en el mes de ${mes}:`));
+    for (let i = 0; i < cantidadProductos; i++) {
+        let gasto = parseInt(prompt("Ingrese el monto del gasto individual del producto: ${i} en el mes de ${mes}:"));
         while (isNaN(gasto) || gasto < 0) {
             console.log("El monto ingresado no es válido.");
-            gasto = parseFloat(prompt("Ingrese el monto del gasto individual por producto:"));
+            gasto = parseInt(prompt("Ingrese el gasto del producto ${i} en el mes de ${mes}:"));
         }
-        totalGastos += gasto;
+        totalGastosProductos += gasto;
     }
-    return totalGastos;
+    return totalGastosProductos;
 }
 
 // funcion para ingresar gastos de forma individual por servicio de empleado //
 
-function ingresarGastosServicios(cantidadGastos) {
+function ingresarGastosServicios(cantidadGastoServicios) {
     let totalGastos = 0;
-    for (let i = 0; i < cantidadGastos; i++) {
+    for (let i = 0; i < cantidadGastoServicios; i++) {
         let gasto = parseFloat(prompt("Ingrese el monto del gasto por servicio de empleado:"));
         while (isNaN(gasto) || gasto < 0) {
             console.log("El monto ingresado no es válido.");
@@ -64,6 +65,13 @@ function validarIngresosEgresos(mes) {
     }
     return { ingresos, egresos };
 }
+// ordenando las funciones //
+
+let mes = validarMes();
+let totalGastosProductos = ingresarGastoProducto(mes);
+let totalGastosServicios = totalGastosServicios(mes);
+let resultado = validarIngresosEgresos(mes, totalGastosProductos, totalGastosServicios);
+
 
 // funcion para saber el saldo //
 
@@ -77,6 +85,7 @@ function calcularSaldo(ingresos, egresos, mes) {
 
 
 // saldo  //
+
 mes = validarMes();
 let resultado = validarIngresosEgresos(mes);
 ingresos = resultado.ingresos;
