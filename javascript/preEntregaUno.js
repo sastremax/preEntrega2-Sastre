@@ -9,7 +9,7 @@ let respuesta = "";
 
 // funciojn para validar el mes ingresado //
 
-function mesValido() {
+function validarMes() {
     mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
     while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
     mes !== "julio" && mes !== "agosto" && mes !== "septiembre" && mes !== "octubre" && mes !== "noviembre" && mes !== "diciembre") {
@@ -18,6 +18,31 @@ function mesValido() {
     }
     return mes;
 }
+
+// funcion para ingresar gastos de forma individual por cada producto //
+
+function ingresarGastos(cantidadGastos) {
+    let totalGastos = 0;
+    for (let i = 0; i < cantidadGastos; i++) {
+        let gasto = parseFloat(prompt("Ingrese el monto del gasto individual por producto:"));
+        while (isNaN(gasto) || gasto < 0) {
+            console.log("El monto ingresado no es válido.");
+            gasto = parseFloat(prompt("Ingrese el monto del gasto individual por producto:"));
+        }
+        totalGastos += gasto;
+    }
+    return totalGastos;
+}
+
+// funcion para ingresar gastos de forma individual por servicio de empleado //
+
+function ingresarGastosServicios() {
+    
+}
+
+
+
+
 
 // funcion para validar los ingresos y los egresos de las terapeutas //
 function validarIngresosEgresos(mes) {
@@ -37,7 +62,7 @@ function validarIngresosEgresos(mes) {
 
 // funcion para saber el saldo //
 
-function saldo(ingresos, egresos, mes) {
+function calcularSaldo(ingresos, egresos, mes) {
     if (ingresos > egresos) {
     console.log("El saldo en el mes de " + mes + " es positivo");
     } else {
@@ -47,11 +72,11 @@ function saldo(ingresos, egresos, mes) {
 
 
 // saldo  //
-mes = mesValido();
+mes = validarMes();
 let resultado = validarIngresosEgresos(mes);
 ingresos = resultado.ingresos;
 egresos = resultado.egresos;
-saldo(ingresos, egresos, mes);
+calcularSaldo(ingresos, egresos, mes);
 
 
 // suma de saldos //
@@ -59,10 +84,10 @@ saldo(ingresos, egresos, mes);
 do {
     respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
     if (respuesta === "si") {
-        mes = mesValido();
+        mes = validarMes();
         resultado = validarIngresosEgresos(mes);
         ingresos = resultado.ingresos;
         egresos = resultado.egresos;
-        saldo(ingresos, egresos, mes);
+        calcularSaldo(ingresos, egresos, mes);
     }
 } while (respuesta == "si" || respuesta == "s" || respuesta == "SI");
