@@ -1,4 +1,4 @@
-// simulador de presupuesto de un consultorio medico //
+// simulador de presupuesto de un consultorio medico y luego fichas medicas para ingreso de datos con ARRAYS para las terapeutas//
 
 // variables declaradas e inicializadas //
 
@@ -13,16 +13,13 @@ function mesValido() {
     mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
     while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
     mes !== "julio" && mes !== "agosto" && mes !== "septiembre" && mes !== "octubre" && mes !== "noviembre" && mes !== "diciembre") {
-    console.log("El mes ingresado no es válido.");    
+    console.log("El mes ingresado no es válido.");
+    mes = prompt("Ingrese el mes a calcular: ").toLowerCase();    
     }
     return mes;
 }
 
-// Ingreso por parte del usuario de el mes a calcular //
-mesValido();
-
-
-// funcion para validar ingresos y egresos del usuario //
+// funcion para validar los ingresos y los egresos de las terapeutas //
 function validarIngresosEgresos(mes) {
     let ingresos = parseInt(prompt("Ingrese el monto de los ingresos en el mes de " + mes + ":"));
     let egresos = parseInt(prompt("Ingrese el monto de los egresos en el mes de " + mes + ":"));
@@ -63,9 +60,9 @@ do {
     respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
     if (respuesta === "si") {
         mes = mesValido();
-        resultado = validarIngresosEgresos();
+        resultado = validarIngresosEgresos(mes);
         ingresos = resultado.ingresos;
         egresos = resultado.egresos;
         saldo(ingresos, egresos, mes);
     }
-} while (respuesta === "si");
+} while (respuesta == "si" || respuesta == "s" || respuesta == "SI");
