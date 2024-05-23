@@ -82,7 +82,7 @@ function ingresarGanancias(mes, año) {
 // Función para calcular el saldo
 function calcularSaldo(ingresos, egresos, mes, año) {
     let saldo = ingresos - egresos;
-    let mensaje = "El saldo en el mes de " + mes + " del año " + año + " es ";
+    let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
     if (saldo >= 0) {
         mensaje += "positivo";
     } else {
