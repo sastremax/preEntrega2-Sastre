@@ -3,9 +3,24 @@
 // variables declaradas e inicializadas //
 
 let mes = "";
+let año = "";
 let ingresos = 0;
 let egresos = 0;
 let respuesta = "";
+let totalGastosProductos;
+let totalGastosServicios;
+
+
+// funcion para validar el año ingresado //
+
+function validarAño() {
+    año = prompt("Ingrese el año a calcular: ");
+    while (año < 2020 || isNaN(año) || año.toString() !== año) {
+    console.log("El año ingresado no es válido.");
+    año = prompt("Ingrese el año a calcular: ");    
+    }
+    return año;
+}
 
 // funciojn para validar el mes ingresado //
 
@@ -23,36 +38,38 @@ function validarMes() {
 
 function ingresarGastosProductos(cantidadGastosProductos) {
     let totalGastosProductos = 0;
-    let cantidadProductos = parseInt(prompt(`Ingrese la cantidad de productos comprados en el mes de ${mes}:`));
-    for (let i = 0; i < cantidadProductos; i++) {
-        let gasto = parseInt(prompt("Ingrese el monto del gasto individual del producto: ${i} en el mes de ${mes}:"));
+    let cantidadProductos = parseInt(prompt("Ingrese la cantidad de productos comprados en el mes de " + mes));
+    for (let i = 1; i < cantidadProductos + 1; i++) {
+        let gasto = parseInt(prompt("Ingrese el monto del gasto individual del producto: " + i + " en el mes de " + mes));
         while (isNaN(gasto) || gasto < 0) {
             console.log("El monto ingresado no es válido.");
-            gasto = parseInt(prompt("Ingrese el gasto del producto ${i} en el mes de ${mes}:"));
+            gasto = parseInt(prompt("Ingrese el gasto del producto " + i + " en el mes de " + mes));
         }
         totalGastosProductos += gasto;
     }
     return totalGastosProductos;
 }
 
-// funcion para ingresar gastos de forma individual por servicio de empleado //
+// funcion para ingresar gastos de forma individual por servicios de empleados //
 
-function ingresarGastosServicios(cantidadGastoServicios) {
+function ingresarGastosServicios() {
     let totalGastos = 0;
-    for (let i = 0; i < cantidadGastoServicios; i++) {
-        let gasto = parseFloat(prompt("Ingrese el monto del gasto por servicio de empleado:"));
+    let cantidadEmpleados = parseInt(prompt("Ingrese la cantidad de empleados:"));
+    for (let i = 0; i < cantidadEmpleados; i++) {
+        let gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
         while (isNaN(gasto) || gasto < 0) {
             console.log("El monto ingresado no es válido.");
-            gasto = parseFloat(prompt("Ingrese el monto del gasto por servicio de empleado:"));
+            gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
         }
         totalGastos += gasto;
     }
     return totalGastos;
 }
 
-// funcion para validar los ingresos y los egresos de las terapeutas //
-function validarIngresosEgresos(mes) {
-    let ingresos = parseInt(prompt("Ingrese el monto de los ingresos en el mes de " + mes + ":"));
+// funcion para validar los egresos de las terapeutas //
+
+function validarIngresosEgresos(mes, año) {
+    let ingresos = parseInt(prompt("El monto de los ingresos en el mes de " + mes + ":"));
     let egresos = parseInt(prompt("Ingrese el monto de los egresos en el mes de " + mes + ":"));
     while (isNaN(ingresos) || isNaN(egresos) || ingresos < 0 || egresos < 0) {
         if (isNaN(ingresos) || isNaN(egresos)) {
@@ -65,12 +82,14 @@ function validarIngresosEgresos(mes) {
     }
     return { ingresos, egresos };
 }
+
 // ordenando las funciones //
 
-let mes = validarMes();
-let totalGastosProductos = ingresarGastoProducto(mes);
-let totalGastosServicios = totalGastosServicios(mes);
-let resultado = validarIngresosEgresos(mes, totalGastosProductos, totalGastosServicios);
+año = validarAño();
+mes = validarMes();
+totalGastosProductos = ingresarGastosProductos();
+totalGastosServicios = ingresarGastosServicios(); 
+resultado = validarIngresosEgresos(mes, año);
 
 
 // funcion para saber el saldo //
@@ -97,11 +116,11 @@ calcularSaldo(ingresos, egresos, mes);
 
 do {
     respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
-    if (respuesta === "si") {
+    if (respuesta === "si" || respuesta === "s") {
         mes = validarMes();
-        resultado = validarIngresosEgresos(mes);
+        resultado = validarIngresosEgresos();
         ingresos = resultado.ingresos;
         egresos = resultado.egresos;
         calcularSaldo(ingresos, egresos, mes);
     }
-} while (respuesta == "si" || respuesta == "s" || respuesta == "SI");
+} while (respuesta === "si" || respuesta === "s");
