@@ -88,8 +88,7 @@ function calcularSaldo(ingresos, egresos, mes, año) {
     } else {
         mensaje += "negativo";
     }
-    mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";
-    console.log(mensaje);
+    mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";    
     historial += mensaje + "\n";
 }
 
