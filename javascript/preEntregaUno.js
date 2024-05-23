@@ -1,6 +1,6 @@
-// simulador de presupuesto de un consultorio medico y luego fichas medicas para ingreso de datos con ARRAYS para las terapeutas//
+// simulador de presupuesto de un consultorio medico y luego fichas medicas para ingreso de datos con ARRAYS para las/los terapeutas//
 
-// variables declaradas e inicializadas //
+// variables declaradas y algunas inicializadas //
 
 let mes = "";
 let año = "";
