@@ -10,6 +10,7 @@ let respuesta = "";
 let totalGastosProductos;
 let totalGastosServicios;
 let resultado;
+let historial = "";
 
 
 // funcion para validar el año ingresado //
@@ -37,7 +38,7 @@ function validarMes() {
 
 // funcion para ingresar gastos de forma individual por cada producto //
 
-function ingresarGastosProductos(GastosProductos) {
+function ingresarGastosProductos() {
     let totalGastosProductos = 0;
     let cantidadProductos = parseInt(prompt("Ingrese la cantidad de productos comprados en el mes de " + mes));
     for (let i = 1; i < cantidadProductos + 1; i++) {
@@ -62,7 +63,7 @@ function ingresarGastosServicios(gastosServicios) {
             console.log("El monto ingresado no es válido.");
             gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
         }
-        totalGastos += gasto;
+        totalGastosServicios += gasto;
     }
     return totalGastosServicios;
 }
@@ -78,46 +79,44 @@ function ingresarGanancias(mes, año) {
     return ganancias;
 }
 
-// saldo  //
-
-mes = validarMes();
-resultado = gastosServicios() + gastosProductos() + ingresos; 
-
-calcularSaldo(ingresos, egresos, mes, año);
-
-
-
-
-// suma de saldos //
-
-do {
-    respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
-    if (respuesta === "si" || respuesta === "s") {
-        mes = validarMes();
-        resultado = validarIngresosEgresos();
-        ingresos = resultado.ingresos;
-        egresos = resultado.egresos;
-        calcularSaldo(ingresos, egresos, mes);
-    }
-} while (respuesta === "si" || respuesta === "s");
-
-
-// ordenando las funciones //
-
-año = validarAño();
-mes = validarMes();
-totalGastosProductos = ingresarGastosProductos(cantidadGastosProductos);
-totalGastosServicios = ingresarGastosServicios(); 
-ingresos = ingresarGanancias(mes, año);
-egresos = totalGastosProductos + totalGastosServicios;
-
-
-// funcion para saber el saldo //
-
+// Función para calcular el saldo
 function calcularSaldo(ingresos, egresos, mes, año) {
-    if (ingresos > egresos) {
-    console.log("El saldo en el mes de " + mes + " es positivo");
+    let saldo = ingresos - egresos;
+    let mensaje = "El saldo en el mes de " + mes + " del año " + año + " es ";
+    if (saldo >= 0) {
+        mensaje += "positivo";
     } else {
-    console.log("El saldo en el mes de " + mes + " es negativo");
+        mensaje += "negativo";
     }
+    mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";
+    console.log(mensaje);
+    historial += mensaje + "\n";
 }
+
+//  funcion para gestionar el presupuesto //
+
+function gestionarPresupuesto() {
+    año = validarAño();
+    mes = validarMes();
+    totalGastosProductos = ingresarGastosProductos();
+    totalGastosServicios = ingresarGastosServicios();
+    ingresos = ingresarGanancias(mes, año);
+    egresos = totalGastosProductos + totalGastosServicios;
+    calcularSaldo(ingresos, egresos, mes, año);    
+    do {
+        respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
+        if (respuesta === "si" || respuesta === "s") {
+            año = validarAño();
+            mes = validarMes();
+            totalGastosProductos = ingresarGastosProductos();
+            totalGastosServicios = ingresarGastosServicios();
+            ingresos = ingresarGanancias(mes, año);
+            egresos = totalGastosProductos + totalGastosServicios;
+            calcularSaldo(ingresos, egresos, mes, año);
+        }
+    } while (respuesta === "si" || respuesta === "s");
+}
+
+gestionarPresupuesto();
+
+console.log("Historial de saldos:\n" + historial);
