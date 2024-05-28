@@ -7,6 +7,23 @@ let idProgresivo = 1;
 function agregarFichas() {    
     let apellido = prompt("Ingrese el apellido del paciente: ");
     let nombre = prompt("Ingrese el nombre del paciente: ");
+    let edad = parseInt(prompt("Ingrese la edad del paciente: "));
+    let diagnostico = prompt("Ingrese el diagnostico del paciente: ");
+    let fechaNacimiento = prompt("Ingrese la fecha de nacimiento del paciente: (DD-MM-YYYY)");
+    let dni = parseInt(prompt("Ingrese el DNI del paciente: "));
+    let cud = (prompt("El paciente tiene CUD? (si/no)").toLowerCase() === "si");
+    let obraSocial = prompt("Ingrese la obra social del paciente: ");
+    let titularObraSocial = prompt("Ingrese el nombre del titular de la obra social del paciente: ");
+    let numeroAfiliado = parseInt(prompt("Ingrese el número de afiliado del paciente: "));
+    let escuela = prompt("Ingrese el nombre de la escuela del paciente: ");
+    let mama = prompt("Ingrese el nombre de la madre del paciente: ");
+    let papa = prompt("Ingrese el nombre del padre del paciente: ");
+    let celularMama = parseInt(prompt("Ingrese el numero de celular de la madre del paciente: "));
+    let celularPapa = parseInt(prompt("Ingrese el numero de celular del padre del paciente: "));
+    let neurologo = prompt("Ingrese el nombre del neurologo del paciente: (si no lo sabe, escriba 'no lo se')");
+    let pediatra = prompt("Ingrese el nombre del pediatra del paciente: (si no lo sabe, escriba 'no lo se')");
+    let domicilio = prompt("Ingrese el domicilio del paciente: ");
+    let recomendacion = prompt("Ingrese Quien les recomendo nuestro consultorio: ");
 
 
 /*
