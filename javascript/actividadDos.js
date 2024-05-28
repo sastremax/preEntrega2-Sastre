@@ -25,6 +25,28 @@ function agregarFichas() {
     let domicilio = prompt("Ingrese el domicilio del paciente: ");
     let recomendacion = prompt("Ingrese Quien les recomendo nuestro consultorio: ");
 
+    let fichaObjeto = {
+        apellido: apellido,
+        nombre: nombre,
+        edad: edad,
+        diagnostico: diagnostico,
+        fechaNacimiento: fechaNacimiento,
+        dni: dni,
+        cud: cud,
+        obraSocial: obraSocial,
+        titularObraSocial: titularObraSocial,
+        numeroAfiliado: numeroAfiliado,
+        escuela: escuela,
+        mama: mama,
+        papa: papa,
+        celularMama: celularMama,
+        celularPapa: celularPapa,
+        neurologo: neurologo,
+        pediatra: pediatra,
+        domicilio: domicilio,
+        recomendacion: recomendacion
+    };
+
 
 /*
 let mes = "";
