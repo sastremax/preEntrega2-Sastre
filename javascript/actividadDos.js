@@ -52,13 +52,14 @@ function agregarFichas() {
 }
 
 let respuestaFicha = prompt("Desea agregar una ficha de paciente nueva? (si/no)").toLowerCase();
-while (true) {
-    if ((respuestaFicha == "si") || (respuestaFicha == "s")) {
-        break;
-    }
+while (respuestaFicha == "si") || (respuestaFicha == "s")) {
     agregarFichas();
-    console.log(ficha);
+    respuestaFicha = prompt("¿Desea agregar otra ficha de paciente nueva? (si/no)").toLowerCase();
 }
+
+console.log(ficha);
+
+
 
 
 
