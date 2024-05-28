@@ -1,7 +1,13 @@
 // simulador de presupuesto de un consultorio medico y luego fichas medicas para ingreso de datos con ARRAYS para las/los terapeutas//
 
-// variables declaradas y algunas inicializadas //
+// Fichas medicas  //
 
+let ficha = [];
+let idProgresivo = 1;
+function agregarFichas() {    
+
+
+/*
 let mes = "";
 let año = "";
 let ingresos = 0;
@@ -120,3 +126,4 @@ gestionarPresupuesto();
 
 console.log("Historial de saldos:\n" + historial);
 
+*/
