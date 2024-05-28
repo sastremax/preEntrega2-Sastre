@@ -51,13 +51,13 @@ function agregarFichas() {
     idProgresivo++;   
 }
 
-let respuestaFicha = prompt("Desea agregar una ficha de paciente nueva? (si)").toLowerCase();
-while (!true) {
+let respuestaFicha = prompt("Desea agregar una ficha de paciente nueva? (si/no)").toLowerCase();
+while (true) {
     if ((respuestaFicha == "si") || (respuestaFicha == "s")) {
         break;
-        }
-        agregarFichas();
-    
+    }
+    agregarFichas();
+    console.log(ficha);
 }
 
 
