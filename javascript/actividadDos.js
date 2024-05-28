@@ -46,7 +46,7 @@ function agregarFichas() {
         domicilio: domicilio,
         recomendacion: recomendacion
     };
-
+    ficha.push(fichaObjeto); 
 
 /*
 let mes = "";
