@@ -26,6 +26,7 @@ function agregarFichas() {
     let recomendacion = prompt("Ingrese Quien les recomendo nuestro consultorio: ");
 
     let fichaObjeto = {
+        id: idProgresivo,
         apellido: apellido,
         nombre: nombre,
         edad: edad,
@@ -47,6 +48,19 @@ function agregarFichas() {
         recomendacion: recomendacion
     };
     ficha.push(fichaObjeto); 
+    idProgresivo++;   
+}
+
+let respuestaFicha = prompt("Desea agregar una ficha de paciente nueva? (si)").toLowerCase();
+while (!true) {
+    if ((respuestaFicha == "si") || (respuestaFicha == "s")) {
+        break;
+        }
+        agregarFichas();
+    
+}
+
+
 
 /*
 let mes = "";
