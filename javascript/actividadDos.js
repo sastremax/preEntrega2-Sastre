@@ -5,6 +5,8 @@
 let ficha = [];
 let idProgresivo = 1;
 function agregarFichas() {    
+    let apellido = prompt("Ingrese el apellido del paciente: ");
+    let nombre = prompt("Ingrese el nombre del paciente: ");
 
 
 /*
