@@ -93,5 +93,15 @@ function multiplicar (a,b){
 
 console.log(operar(5,8,suma));
 
+diferencia entre procedicimiento y funcion:
+    - procedimiento no retorna un valor
+    - funcion retorna un valor
+
+    - la funcion es un objeto que se puede asignar a una variable
+    - el procedimiento no se puede asignar a una variable
+
+    - la funcion se puede pasar como parametro
+    - el procedimiento no se puede pasar como parametro
+
 */
 
