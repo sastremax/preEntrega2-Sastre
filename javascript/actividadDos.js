@@ -103,6 +103,7 @@ diferencia entre procedicimiento y funcion:
     - la funcion se puede pasar como parametro
     - el procedimiento no se puede pasar como parametro
 
+    ejemplo de procedimiento:
     function saludar(mensaje){
         console.log('Mensaje: ${mensaje}');
     }
@@ -110,8 +111,15 @@ diferencia entre procedicimiento y funcion:
     llamar al procedimiento
     saludar('Hola');
 
+    ejemplo de funcion:
+    function sumar(a,b){
+        let resultado = a + b;
+        return 'resultado: ${resultado}';
+    }
 
-
+    llamar a la funcion
+    let argA = 5, argB = 7;
+    let resultado = sumar(argA, argB);
 
 */
 
