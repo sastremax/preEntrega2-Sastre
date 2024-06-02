@@ -1,3 +1,4 @@
+/*
 import prompt from 'prompt';
 
 // simulador de presupuesto de un consultorio medico y luego fichas medicas para ingreso de datos con ARRAYS para las/los terapeutas//
@@ -163,7 +164,7 @@ function mayorDeEdad(edad) {
 }
 
 mayorDeEdad(19);
-/*
+
 Consigna.
 Tomando como base los ejemplos de la estructura for y while, crear un algoritmo que repita un bloque de instrucciones.
 En cada repetición es necesario efectuar una operación o comparación para obtener una salida por alerta o consola.
@@ -407,5 +408,11 @@ diferencia entre procedicimiento y funcion:
     cambiarValor(arreglo);
     console.log(`despues de la funcion: ${arreglo[0]}`);
 
+let array4 = ["jorge", "luis"", "maria", "jose"];
+console.log(lastIndexOf("jose"));
+
 
 */
+let array4 = ["jorge", "luis", "maria", "jose"];
+console.log(array4.lastIndexOf("jose"));
+
