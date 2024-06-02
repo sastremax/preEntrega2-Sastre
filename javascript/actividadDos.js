@@ -103,5 +103,16 @@ diferencia entre procedicimiento y funcion:
     - la funcion se puede pasar como parametro
     - el procedimiento no se puede pasar como parametro
 
+    function saludar(mensaje){
+        console.log('Mensaje: ${mensaje}');
+    }
+
+    llamar al procedimiento
+    saludar('Hola');
+
+
+
+
 */
+
 
