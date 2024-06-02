@@ -416,3 +416,6 @@ console.log(lastIndexOf("jose"));
 let array4 = ["jorge", "luis", "maria", "jose"];
 console.log(array4.lastIndexOf("jose"));
 
+
+let array5 = ["jorge", "luis", "maria", "jose"];
+console.log(array5.includes("jose"));
