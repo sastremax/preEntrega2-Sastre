@@ -126,7 +126,7 @@ console.log("Historial de saldos:\n" + historial);
 
 
 
-/*
+
 function miFuncion() {
     console.log("Ejecutando miFuncion");
 
@@ -163,7 +163,7 @@ function mayorDeEdad(edad) {
 }
 
 mayorDeEdad(19);
-
+/*
 Consigna.
 Tomando como base los ejemplos de la estructura for y while, crear un algoritmo que repita un bloque de instrucciones.
 En cada repetición es necesario efectuar una operación o comparación para obtener una salida por alerta o consola.
@@ -318,4 +318,94 @@ let valor = parseInt(prompt("Ingrese un número entre 10 y 50"));
 if (valor > minimo && valor < maximo) {
     alert("El número ingresado está entre 10 y 50");
 }
+
+/* metodo de iteracion array
+
+const LETRAS = ["A", "B", "C"];
+
+    for (let index = 0; index < LETRAS.length; index++) {
+        const ELEMENTOS = LETRAS[index];
+        console.log(ELEMENTOS);
+    }
+
+    const LETRAS2 = ["A", "B", "C"];
+
+    LETRAS2.forEach(item => console.log(item));
+
+
+function operar (num1, num2, operacion){
+    return operacion(num1, num2);
+}
+
+function suma (a,b){
+    return a + b;                 
+}
+
+function resta (a,b){
+    return a - b;
+}
+
+function multiplicar (a,b){
+    return a * b;
+}
+
+console.log(operar(5,8,suma));
+
+diferencia entre procedicimiento y funcion:
+    - procedimiento no retorna un valor
+    - funcion retorna un valor
+
+    - la funcion es un objeto que se puede asignar a una variable
+    - el procedimiento no se puede asignar a una variable
+
+    - la funcion se puede pasar como parametro
+    - el procedimiento no se puede pasar como parametro
+
+    ejemplo de procedimiento:
+    function saludar(mensaje){
+        console.log('Mensaje: ${mensaje}');
+    }
+
+    llamar al procedimiento
+    saludar('Hola');
+
+    ejemplo de funcion:
+    function sumar(a,b){
+        let resultado = a + b;
+        return 'resultado: ${resultado}';
+    }
+
+    llamar a la funcion
+    let argA = 5, argB = 7;
+    let resultado = sumar(argA, argB);
+
+    paso por valor y paso por referencia
+    - paso por valor: se pasa una copia del valor de la variable
+    - paso por referencia: se pasa la direccion de memoria de la variable
+    
+    paso por valor: pasando informacion de tipo primitivo
+
+    function cambiarValor(parametro){
+        parametro = 20;
+    }
+
+    let argumento = 10;
+    cambiarValor(argumento);
+    console.log(argumento);
+
+    paso por referencia: pasando informacion de tipo objeto
+    objetos(array, funciones, etc) se pasan por referencia
+    
+    
+
+    function cambiarValor(parametro){
+        parametro[0] = 20;
+    }
+
+    let arreglo = [10];
+    console.log(`antes de la funcion: ${arreglo[0]}`);
+    cambiarValor(arreglo);
+    console.log(`despues de la funcion: ${arreglo[0]}`);
+
+
 */
