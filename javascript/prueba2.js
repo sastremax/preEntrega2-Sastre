@@ -397,7 +397,7 @@ diferencia entre procedicimiento y funcion:
     paso por referencia: pasando informacion de tipo objeto
     objetos(array, funciones, etc) se pasan por referencia
     
-    
+    */
 
     function cambiarValor(parametro){
         parametro[0] = 20;
@@ -408,11 +408,8 @@ diferencia entre procedicimiento y funcion:
     cambiarValor(arreglo);
     console.log(`despues de la funcion: ${arreglo[0]}`);
 
-let array4 = ["jorge", "luis"", "maria", "jose"];
-console.log(lastIndexOf("jose"));
+    // metodos de array
 
-
-*/
 let array4 = ["jorge", "luis", "maria", "jose"];
 console.log(array4.lastIndexOf("jose"));
 
