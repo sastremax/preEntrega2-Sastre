@@ -29,9 +29,9 @@ function agregarFichas() {
     let numeroAfiliado = (prompt("Ingrese el número de afiliado del paciente: "));
     let escuela = prompt("Ingrese el nombre de la escuela del paciente: ");
     let mama = prompt("Ingrese el nombre de la madre del paciente: ");
-    let papa = prompt("Ingrese el nombre del padre del paciente: ");
     let celularMama = parseInt(prompt("Ingrese el numero de celular de la madre del paciente (solo números): "));
-    let celularPapa = parseInt(prompt("Ingrese el numero de celular del padre del paciente (solo números): "));
+    let papa = prompt("Ingrese el nombre del padre del paciente: ");    
+    let celularPapa = parseInt(prompt("Ingrese el numero de celular del padre del paciente (solo números - si no lo sabe no escriba nada y acepte): "));
     let neurologo = prompt("Ingrese el nombre del neurologo del paciente: (si no lo sabe, escriba 'no lo se')");
     let pediatra = prompt("Ingrese el nombre del pediatra del paciente: (si no lo sabe, escriba 'no lo se')");
     let domicilio = prompt("Ingrese el domicilio del paciente: ");
@@ -65,10 +65,10 @@ function agregarFichas() {
 
 // busqueda de paciente por apellido
 function mostrarFichaPorApellido() {
-    let apellido = prompt("Ingrese el apellido del paciente:");
-    let paciente = ficha.find(paciente => paciente.apellido === apellido);
+    let apellido = prompt("Ingrese el apellido del paciente:").toLowerCase();
+    let paciente = ficha.find(paciente => paciente.apellido.toLowerCase === apellido);
 
-    if(paciente) {
+    if(paciente>0) {
         console.log(`Ficha del paciente:
             ID: ${paciente.id}
             APELLIDO: ${paciente.apellido}
