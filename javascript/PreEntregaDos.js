@@ -4,6 +4,8 @@
 
 let ficha = [];
 let idProgresivo = 1;
+
+// funcion para agregar fichas de pacientes
 function agregarFichas() {    
     let apellido = prompt("Ingrese el apellido del paciente: ");
     let nombre = prompt("Ingrese el nombre del paciente: ");
@@ -50,6 +52,44 @@ function agregarFichas() {
     ficha.push(FICHAPACIENTE); 
     idProgresivo++;   
 }
+
+// busqueda de paciente por apellido
+function mostrarFichaPorApellido() {
+    let apellido = prompt("Ingrese el apellido del paciente:");
+    let paciente = ficha.find(paciente => paciente.apellido === apellido);
+
+    if(paciente) {
+        console.log("Ficha del paciente:
+            ID: ${paciente.id}
+            APELLIDO: ${paciente.apellido}
+            NOMBRE: ${paciente.nombre}
+            EDAD: ${paciente.edad}
+        diagnostico: diagnostico,
+        fechaNacimiento: fechaNacimiento,
+        dni: dni,
+        cud: cud,
+        obraSocial: obraSocial,
+        titularObraSocial: titularObraSocial,
+        numeroAfiliado: numeroAfiliado,
+        escuela: escuela,
+        mama: mama,
+        papa: papa,
+        celularMama: celularMama,
+        celularPapa: celularPapa,
+        neurologo: neurologo,
+        pediatra: pediatra,
+        domicilio: domicilio,
+        recomendacion: recomendacion
+        
+        
+        
+        
+        
+        ")
+    }
+}
+
+
 
 let respuestaFicha = prompt("Desea agregar una ficha de paciente nueva? (si/no)").toLowerCase();
 while ((respuestaFicha === "si") || (respuestaFicha === "s")) {
