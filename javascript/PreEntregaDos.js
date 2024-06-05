@@ -37,9 +37,6 @@ function agregarFichas() {
     let domicilio = prompt("Ingrese el domicilio del paciente: ");
     let recomendacion = prompt("Ingrese Quien les recomendo nuestro consultorio: ");
 
-    function edadPaciente() {
-        fechaNacimiento
-
     const FICHAPACIENTE = {
         id: idProgresivo,
         apellido: apellido,
@@ -89,8 +86,8 @@ function mostrarFichaPorApellido() {
             NOMBRE DEL PAPA: ${paciente.papa}
             CELULAR DE LA MAMA: ${paciente.celularMama}
             CELULAR DEL PAPA: ${paciente.celularPapa}
-            NOMBRE DEL NEUROLOGO: ${paciemte.neurologo}
-            NOMBRE DEL PEDIATRA: ${paciemte.pediatra}
+            NOMBRE DEL NEUROLOGO: ${paciente.neurologo}
+            NOMBRE DEL PEDIATRA: ${paciente.pediatra}
             DOMICILIO: ${paciente.domicilio}
             PERSONA QUE RECOMIENDA: ${paciente.recomendacion}`);
     } else {
