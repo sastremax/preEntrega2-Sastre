@@ -29,13 +29,13 @@ function agregarFichas() {
     let numeroAfiliado = (prompt("Ingrese el número de afiliado del paciente: "));
     let escuela = prompt("Ingrese el nombre de la escuela del paciente: ");
     let mama = prompt("Ingrese el apellido y nombre de la madre del paciente: ");
-    let celularMama = parseInt(prompt("Ingrese el numero de celular de la madre del paciente (solo números): "));
+    let celularMama = prompt("Ingrese el numero de celular de la madre del paciente: (si no lo sabe, escriba 'no lo se')");
     let papa = prompt("Ingrese el apellido y nombre del padre del paciente: ");    
-    let celularPapa = parseInt(prompt("Ingrese el numero de celular del padre del paciente (solo números - si no lo sabe no escriba nada y acepte): "));
+    let celularPapa = prompt("Ingrese el numero de celular del padre del paciente: (si no lo sabe, escriba 'no lo se')");
     let neurologo = prompt("Ingrese el nombre del neurologo del paciente: (si no lo sabe, escriba 'no lo se')");
     let pediatra = prompt("Ingrese el nombre del pediatra del paciente: (si no lo sabe, escriba 'no lo se')");
-    let domicilio = prompt("Ingrese el domicilio del paciente: ");
-    let recomendacion = prompt("Ingrese Quien les recomendo nuestro consultorio: ");
+    let domicilio = prompt("Ingrese el domicilio del paciente: (si no lo sabe, escriba 'no lo se')");
+    let recomendacion = prompt("Ingrese Quien les recomendo nuestro consultorio: (si no lo sabe, escriba 'no lo se')");
 
     const FICHAPACIENTE = {
         id: idProgresivo,
