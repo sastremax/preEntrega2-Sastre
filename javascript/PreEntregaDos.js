@@ -22,15 +22,15 @@ function agregarFichas() {
         return edad;
     }
     let edad = calculoEdad(fechaNacimiento);
-    let dni = parseInt(prompt("Ingrese el DNI del paciente: "));
+    let dni = parseInt(prompt("Ingrese el DNI del paciente (sin puntos): "));
     let cud = (prompt("El paciente tiene CUD? (si/no)").toLowerCase() === "si");
     let obraSocial = prompt("Ingrese la obra social del paciente: ");
     let titularObraSocial = prompt("Ingrese el nombre del titular de la obra social del paciente: ");
     let numeroAfiliado = (prompt("Ingrese el número de afiliado del paciente: "));
     let escuela = prompt("Ingrese el nombre de la escuela del paciente: ");
-    let mama = prompt("Ingrese el nombre de la madre del paciente: ");
+    let mama = prompt("Ingrese el apellido y nombre de la madre del paciente: ");
     let celularMama = parseInt(prompt("Ingrese el numero de celular de la madre del paciente (solo números): "));
-    let papa = prompt("Ingrese el nombre del padre del paciente: ");    
+    let papa = prompt("Ingrese el apellido y nombre del padre del paciente: ");    
     let celularPapa = parseInt(prompt("Ingrese el numero de celular del padre del paciente (solo números - si no lo sabe no escriba nada y acepte): "));
     let neurologo = prompt("Ingrese el nombre del neurologo del paciente: (si no lo sabe, escriba 'no lo se')");
     let pediatra = prompt("Ingrese el nombre del pediatra del paciente: (si no lo sabe, escriba 'no lo se')");
@@ -66,9 +66,9 @@ function agregarFichas() {
 // busqueda de paciente por apellido
 function mostrarFichaPorApellido() {
     let apellido = prompt("Ingrese el apellido del paciente:").toLowerCase();
-    let paciente = ficha.find(paciente => paciente.apellido.toLowerCase === apellido);
+    let paciente = ficha.find(paciente => paciente.apellido.toLowerCase() === apellido);
 
-    if(paciente>0) {
+    if(paciente) {
         console.log(`Ficha del paciente:
             ID: ${paciente.id}
             APELLIDO: ${paciente.apellido}
