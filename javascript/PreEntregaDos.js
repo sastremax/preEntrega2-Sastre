@@ -59,33 +59,29 @@ function mostrarFichaPorApellido() {
     let paciente = ficha.find(paciente => paciente.apellido === apellido);
 
     if(paciente) {
-        console.log("Ficha del paciente:
+        console.log(`Ficha del paciente:
             ID: ${paciente.id}
             APELLIDO: ${paciente.apellido}
             NOMBRE: ${paciente.nombre}
             EDAD: ${paciente.edad}
-        diagnostico: diagnostico,
-        fechaNacimiento: fechaNacimiento,
-        dni: dni,
-        cud: cud,
-        obraSocial: obraSocial,
-        titularObraSocial: titularObraSocial,
-        numeroAfiliado: numeroAfiliado,
-        escuela: escuela,
-        mama: mama,
-        papa: papa,
-        celularMama: celularMama,
-        celularPapa: celularPapa,
-        neurologo: neurologo,
-        pediatra: pediatra,
-        domicilio: domicilio,
-        recomendacion: recomendacion
-        
-        
-        
-        
-        
-        ")
+            DIAGNOSTICO: ${paciente.diagnostico}
+            FECHA DE NACIMIENTO: ${paciente.fechaNacimiento}
+            DNI: ${paciente.dni}
+            CUD: ${paciente.cud}
+            OBRA SOCIAL: ${paciente.obraSocial}
+            TITULAR DE LA OBRA SOCIAL: ${paciente.titularObraSocial}
+            NUMERO DE AFILIADO: ${paciente.numeroAfiliado}
+            NOMBRE DE LA ESCUELA: ${paciente.escuela}
+            NOMBRE DE LA MAMA: ${paciente.mama}
+            NOMBRE DEL PAPA: ${paciente.papa}
+            CELULAR DE LA MAMA: ${paciente.celularMama}
+            CELULAR DEL PAPA: ${paciente.celularPapa}
+            NOMBRE DEL NEUROLOGO: ${paciemte.neurologo}
+            NOMBRE DEL PEDIATRA: ${paciemte.pediatra}
+            DOMICILIO: ${paciente.domicilio}
+            PERSONA QUE RECOMIENDA: ${paciente.recomendacion}`);
+    } else {
+        console.log("El paciente no existe");
     }
 }
 
