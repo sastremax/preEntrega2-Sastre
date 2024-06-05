@@ -8,10 +8,20 @@ let idProgresivo = 1;
 // funcion para agregar fichas de pacientes
 function agregarFichas() {    
     let apellido = prompt("Ingrese el apellido del paciente: ");
-    let nombre = prompt("Ingrese el nombre del paciente: ");
-    let edad = parseInt(prompt("Ingrese la edad del paciente (solo el número): "));
+    let nombre = prompt("Ingrese el nombre del paciente: ");    
     let diagnostico = prompt("Ingrese el diagnostico del paciente: ");
     let fechaNacimiento = prompt("Ingrese la fecha de nacimiento del paciente: (DD-MM-YYYY): ");
+    function calculoEdad(fechaNacimiento) {
+        const FECHAACTUAL = new Date();
+        const FECHANACIMIENTO = new Date(fechaNacimiento);
+        let edad = FECHAACTUAL.getFullYear() - FECHANACIMIENTO.getFullYear();
+        const MES = FECHAACTUAL.getMonth() - FECHANACIMIENTO.getMonth();
+        if (MES < 0 || (MES === 0 && FECHAACTUAL.getDate() < FECHANACIMIENTO.getDate())) {
+            edad--;
+        }
+        return edad;
+    }
+    let edad = calculoEdad(fechaNacimiento);
     let dni = parseInt(prompt("Ingrese el DNI del paciente: "));
     let cud = (prompt("El paciente tiene CUD? (si/no)").toLowerCase() === "si");
     let obraSocial = prompt("Ingrese la obra social del paciente: ");
@@ -26,6 +36,9 @@ function agregarFichas() {
     let pediatra = prompt("Ingrese el nombre del pediatra del paciente: (si no lo sabe, escriba 'no lo se')");
     let domicilio = prompt("Ingrese el domicilio del paciente: ");
     let recomendacion = prompt("Ingrese Quien les recomendo nuestro consultorio: ");
+
+    function edadPaciente() {
+        fechaNacimiento
 
     const FICHAPACIENTE = {
         id: idProgresivo,
@@ -91,6 +104,12 @@ let respuestaFicha = prompt("Desea agregar una ficha de paciente nueva? (si/no)"
 while ((respuestaFicha === "si") || (respuestaFicha === "s")) {
     agregarFichas();
     respuestaFicha = prompt("¿Desea agregar otra ficha de paciente nueva? (si/no)").toLowerCase();
+}
+
+let respuestaApellido = prompt("Desea buscar una ficha de paciente por apellido? (si/no)").toLowerCase();
+while ((respuestaApellido === "si") || (respuestaApellido === "s")) {
+    mostrarFichaPorApellido();
+    respuestaApellido = prompt("¿Desea buscar otra ficha de paciente por apellido? (si/no)").toLowerCase();
 }
 
 console.log(ficha);
