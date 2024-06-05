@@ -397,7 +397,7 @@ diferencia entre procedicimiento y funcion:
     paso por referencia: pasando informacion de tipo objeto
     objetos(array, funciones, etc) se pasan por referencia
     
-    */
+    
 
     function cambiarValor(parametro){
         parametro[0] = 20;
@@ -416,3 +416,88 @@ console.log(array4.lastIndexOf("jose"));
 
 let array5 = ["jorge", "luis", "maria", "jose"];
 console.log(array5.includes("jose"));
+
+
+// funciones que retornan funciones
+
+function mayorQue(x) {
+    return (num) => num > x;
+}
+
+const mayorQue10 = mayorQue(10);
+
+const mayorQue20 = mayorQue(20);
+
+console.log(mayorQue10(9));
+
+
+function asignarOperacion(operacion) {
+    if (operacion === "suma") {
+        return function(numero1,numero2){
+            return numero1 + numero2;
+        }
+        } else if (operacion === "resta") {
+            return(numero1,numero2) => numero1 - numero2;            
+        }    
+}
+
+let suma = asignarOperacion("suma");
+let resta = asignarOperacion("resta");
+
+console.log(suma(4,8));
+console.log(resta(9,8));
+
+//metodos de redondeo
+
+let numero1 = 4.5;
+let numero2 = 3.2;
+console.log(Math.round(numero1));
+console.log(Math.round(numero2|));
+
+
+function resultadoTrabajoFinal(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function aprobado() {
+    return resultadoTrabajoFinal(9,10);
+}
+
+console.log(aprobado());
+
+*/
+
+function enteroAleatorioEntre(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+
+function generarContraseña(longitud) {
+    let caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let contrasena = "";
+    for (let i = 0; i < longitudContrasena; i++) {
+        contrasena += caracteres.charAt(enteroAleatorioEntre(0,caracteres.length));
+    }
+    return contrasena;
+}
+
+let longitudContrasena = 7;
+let contrasenaAleatoria = generarContraseña(longitudContrasena);
+console.log(contrasenaAleatoria);
+
+
+
+//  Date
+
+let fecha = new Date();
+console.log(fecha);
+
+//fecha especifica
+
+let fechaEspecifica = new Date(2024,5,2,13,45,23);
+console.log(fechaEspecifica);
