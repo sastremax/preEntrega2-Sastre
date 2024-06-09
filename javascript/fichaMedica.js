@@ -69,6 +69,16 @@ function mostrarFichaPorApellido() {
     let paciente = ficha.find(paciente => paciente.apellido.toLowerCase() === apellido);
 
     if(paciente) {
+        let fichasContainer = document.getElementById('fichasContainer');
+        fichasContainer.innerHTML = `
+                <div class="fichaPaciente">
+                    <p>ID: ${paciente.id}</p>
+                    <p>APELLIDIO
+        
+        
+        
+        
+        `
         console.log(`Ficha del paciente:
             ID: ${paciente.id}
             APELLIDO: ${paciente.apellido}
