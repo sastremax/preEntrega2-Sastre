@@ -467,7 +467,7 @@ function aprobado() {
 
 console.log(aprobado());
 
-*/
+
 
 function enteroAleatorioEntre(min, max) {
     min = Math.ceil(min);
@@ -501,3 +501,6 @@ console.log(fecha);
 
 let fechaEspecifica = new Date(2024,5,2,13,45,23);
 console.log(fechaEspecifica);
+
+*/
+
