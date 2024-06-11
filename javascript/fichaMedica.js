@@ -5,13 +5,26 @@
 let ficha = [];
 let idProgresivo = 1;
 
-// evento para agregar fichas de pacientes
+let agregarFichaBoton = document.getElementById("agregarFichaBoton");
 
-document.addEventListener
+let formulario = document.getElementById("formulario");
+let contenedorFormulario = document.getElementById("formularioAgregarFicha");
+
+agregarFichaBoton.addEventListener("click", function() {
+    if (contenedorFormulario.style.display === "none") {
+        contenedorFormulario.style.display = "block";
+      } else {
+        contenedorFormulario.style.display = "none";
+      }
+    });
+
+    formulario.addEventListener("submit", function(event) {
+    agregarFichas();
+    });
 
 // funcion para agregar fichas de pacientes
-function agregarFichas() {    
-    let apellido = prompt("Ingrese el apellido del paciente: ");
+function agregarFichas() {
+    let apellido = prompt("Ingrese el apellido del paciente: "); 
     let nombre = prompt("Ingrese el nombre del paciente: ");    
     let diagnostico = prompt("Ingrese el diagnostico del paciente: ");
     let fechaNacimiento = prompt("Ingrese la fecha de nacimiento del paciente: (DD-MM-YYYY): ");
