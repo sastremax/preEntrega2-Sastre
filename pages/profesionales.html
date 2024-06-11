@@ -79,9 +79,9 @@
     
     <script>
       document.addEventListener("DOMContentLoaded", function() {
-      let accesoListadoPacientes = document.getElementById("accesoListadoPacientes");
-        if(accesoListadoPacientes) {
-          accesoListadoPacientes.addEventListener("click", function(){
+      let agregarFichaBoton = document.getElementById("agregarFichaBoton");
+        if(agregarFichaBoton) {
+          agregarFichaBoton.addEventListener("click", function(){
             let script = document.createElement("script");
             script.src = "../javascript/fichaMedica.js";
             document.body.appendChild(script);
@@ -89,6 +89,7 @@
         }
     });
     </script>
+    
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         let accesoPresupuesto = document.getElementById("presupuesto");
