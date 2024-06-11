@@ -5,6 +5,14 @@ let idProgresivo = 1;
 
 let buscarFichaBoton = document.getElementById("buscarFichaBoton");
 
+buscarFichaBoton.addEventListener("click", function() {
+    let busquedaApellido = prompt("Desea buscar una ficha de paciente por apellido? (si/no)").toLowerCase();
+    if (busquedaApellido === "si" || busquedaApellido === "s") {
+        mostrarFichaPorApellido();
+        respuestaApellido = prompt("¿Desea buscar otra ficha de paciente por apellido? (si/no)").toLowerCase();
+    }
+});
+
 function mostrarFichaPorApellido() {
     let apellido = prompt("Ingrese el apellido del paciente:").toLowerCase();
     let paciente = ficha.find(paciente => paciente.apellido.toLowerCase() === apellido);
@@ -60,11 +68,3 @@ function mostrarFichaPorApellido() {
         console.log("El paciente no existe");
     }
 }
-
-let respuestaApellido = prompt("Desea buscar una ficha de paciente por apellido? (si/no)").toLowerCase();
-while ((respuestaApellido === "si") || (respuestaApellido === "s")) {
-    mostrarFichaPorApellido();
-    respuestaApellido = prompt("¿Desea buscar otra ficha de paciente por apellido? (si/no)").toLowerCase();
-}
-
-console.log(ficha);

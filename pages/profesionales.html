@@ -47,10 +47,9 @@
           <p>Listado de Pacientes</p>  
           <button id="accesoListadoPacientes">Acceso al listado de Pacientes</button>
         </div>
-          <div id="fichasContainer"></div> 
-          <div id="resultadoPresupuesto"></div>
-          <div id="historialFichas"></div>     
-        </div>
+        <div id="fichasContainer"></div> 
+        <div id="resultadoPresupuesto"></div>
+        <div id="historialFichas"></div>        
       </div>
     </header>
     <aside>
@@ -89,7 +88,18 @@
         }
     });
     </script>
-    
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        let buscarFichaBoton = document.getElementById("buscarFichaBoton");
+        if(buscarFichaBoton) {
+          buscarFichaBoton.addEventListener("click", function() {
+            let script = document.createElement("script");
+            script.src = "../javascript/busquedaPaciente.js";
+            document.body.appendChild(script);
+          });
+        }
+      });
+    </script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         let accesoPresupuesto = document.getElementById("presupuesto");
