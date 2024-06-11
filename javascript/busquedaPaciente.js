@@ -1,6 +1,5 @@
 // busqueda de paciente por apellido
 
-let ficha = [];
 let idProgresivo = 1;
 
 let buscarFichaBoton = document.getElementById("buscarFichaBoton");
@@ -9,7 +8,6 @@ buscarFichaBoton.addEventListener("click", function() {
     let busquedaApellido = prompt("Desea buscar una ficha de paciente por apellido? (si/no)").toLowerCase();
     if (busquedaApellido === "si" || busquedaApellido === "s") {
         mostrarFichaPorApellido();
-        respuestaApellido = prompt("¿Desea buscar otra ficha de paciente por apellido? (si/no)").toLowerCase();
     }
 });
 
