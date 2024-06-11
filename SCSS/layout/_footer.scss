@@ -1,0 +1,16 @@
+footer {
+    margin-top: 20px;
+    background-color: $c2; /* Color de fondo */
+    color: $c3; /* Color del texto */
+    text-align: $centro; /* Alineación del texto al centro */ 
+    padding: 10px;  /* Espaciado interno */
+    width: 100%; /* Ancho igual al 100% del contenedor */
+    
+}
+
+.redes a {   
+    color: $c1; /* Color del texto azul */
+    font-size: 35px; /* Tamaño de fuente de 35px */
+    letter-spacing: 20px; /* Espaciado entre letras de 20px */
+}
+

@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Gwendolyn';
+    src: url(/fonts/Gwendolyn-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+    font-family: 'Gwendolyn', Arial, sans-serif;      /* Fuente Gwendolin */
+    text-align: $centro; /* Alineación del texto al centro */
+    padding: 18px; /* Espaciado interno */
+    margin-right: 2px; /* Margen superior para separar del icono */
+}
+
+header nav ul li a {
+    color: $c2; /* Color del texto */
+    text-align: center; /* Alineación del texto al centro */
+    list-style: none; /* Quita los puntos de la lista */
+    margin-right: 30px; /* Margen derecho */
+    margin-top: 15px; /* Margen superior */
+    margin-bottom: 10px; /* Margen inferior */
+    font-size: 20px; /* Tamaño de fuente */
+    text-decoration: none !important; /* Elimina el subrrayado */
+}
+
+header nav ul li a:hover {
+    color: green;
+}
