@@ -16,7 +16,9 @@ buscarFichaBoton.addEventListener("click", function() {
 function mostrarFichaPorApellido() {
     let apellido = prompt("Ingrese el apellido del paciente:").toLowerCase();
     let paciente = ficha.find(paciente => paciente.apellido.toLowerCase() === apellido);
-
+    let mensajeContainer = document.getElementById('mensaje');
+    let fichasContainer = document.getElementById('fichasContainer');
+    
     if(paciente) {
         let fichasContainer = document.getElementById('fichasContainer');
         fichasContainer.innerHTML = `
@@ -43,28 +45,8 @@ function mostrarFichaPorApellido() {
                     <p>RECOMENDACIÓN: ${paciente.recomendacion}</p>
                 </div>
         `;
-        console.log(`Ficha del paciente:
-            ID: ${paciente.id}
-            APELLIDO: ${paciente.apellido}
-            NOMBRE: ${paciente.nombre}
-            EDAD: ${paciente.edad}
-            DIAGNOSTICO: ${paciente.diagnostico}
-            FECHA DE NACIMIENTO: ${paciente.fechaNacimiento}
-            DNI: ${paciente.dni}
-            CUD: ${paciente.cud}
-            OBRA SOCIAL: ${paciente.obraSocial}
-            TITULAR DE LA OBRA SOCIAL: ${paciente.titularObraSocial}
-            NUMERO DE AFILIADO: ${paciente.numeroAfiliado}
-            NOMBRE DE LA ESCUELA: ${paciente.escuela}
-            NOMBRE DE LA MAMA: ${paciente.mama}
-            NOMBRE DEL PAPA: ${paciente.papa}
-            CELULAR DE LA MAMA: ${paciente.celularMama}
-            CELULAR DEL PAPA: ${paciente.celularPapa}
-            NOMBRE DEL NEUROLOGO: ${paciente.neurologo}
-            NOMBRE DEL PEDIATRA: ${paciente.pediatra}
-            DOMICILIO: ${paciente.domicilio}
-            PERSONA QUE RECOMIENDA: ${paciente.recomendacion}`);
+        mensajeContainer.innerHTML = "ficha encontrada";
     } else {
-        console.log("El paciente no existe");
+        mensajeContainer.innerHTML = "ficha no encontrada"; 
     }
 }
