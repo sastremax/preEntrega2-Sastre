@@ -50,8 +50,15 @@
               <label for="email">Email:</label>
               <input type="email" id="email" name="email" required title="Email" placeholder="Ingrese su email">
               <label for="direccion">Dirección:</label>
+        </div>
+        <div class="recuadro">
+          <p>Busqueda de fichas</p>      
           <button id="buscarFichaBoton">Buscar ficha por apellido</button>
+        </div>
+        <div class="recuadro">
+          <p>Listado de Pacientes</p>  
           <button id="accesoListadoPacientes">Acceso al listado de Pacientes</button>
+        </div>
           <div id="fichasContainer"></div> 
           <div id="resultadoPresupuesto"></div>
           <div id="historialFichas"></div>     
@@ -93,6 +100,18 @@
           });
         }
     });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        let accesoPresupuesto = document.getElementById("presupuesto");
+        if(accesoPresupuesto){
+          accesoPresupuesto.addEventListener("click", function(){
+            let script = document.createElement("script");
+            script.src = "../javascript/presupuesto.js";
+            document.body.appendChild(script);
+          });
+        }
+      });    
     </script>
   </body>
 </html>
