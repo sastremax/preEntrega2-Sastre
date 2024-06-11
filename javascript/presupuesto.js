@@ -118,7 +118,7 @@ function gestionarPresupuesto() {
 
 gestionarPresupuesto();
 
-console.log("Historial de saldos:\n" + historial);
+alert("Historial de saldos:\n" + historial);
 
 
 /*
