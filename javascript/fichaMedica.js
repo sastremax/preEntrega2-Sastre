@@ -5,6 +5,10 @@
 let ficha = [];
 let idProgresivo = 1;
 
+// evento para agregar fichas de pacientes
+
+document.addEventListener
+
 // funcion para agregar fichas de pacientes
 function agregarFichas() {    
     let apellido = prompt("Ingrese el apellido del paciente: ");
@@ -73,12 +77,27 @@ function mostrarFichaPorApellido() {
         fichasContainer.innerHTML = `
                 <div class="fichaPaciente">
                     <p>ID: ${paciente.id}</p>
-                    <p>APELLIDIO
-        
-        
-        
-        
-        `
+                    <p>APELLIDO: ${paciente.apellido}</p>
+                    <p>NOMBRE: ${paciente.nombre}</p>
+                    <p>EDAD: ${paciente.edad}</p>
+                    <p>DIAGNÓSTICO: ${paciente.diagnostico}</p>
+                    <p>FECHA DE NACIMIENTO: ${paciente.fechaNacimiento}</p>
+                    <p>DNI: ${paciente.dni}</p>
+                    <p>CUD: ${paciente.cud}</p>
+                    <p>OBRA SOCIAL: ${paciente.obraSocial}</p>
+                    <p>TITULAR DE LA OBRA SOCIAL: ${paciente.titularObraSocial}</p>
+                    <p>NÚMERO DE AFILIADO: ${paciente.numeroAfiliado}</p>
+                    <p>ESCUELA: ${paciente.escuela}</p>
+                    <p>MAMÁ: ${paciente.mama}</p>
+                    <p>PAPÁ: ${paciente.papa}</p>
+                    <p>CELULAR MAMÁ: ${paciente.celularMama}</p>
+                    <p>CELULAR PAPÁ: ${paciente.celularPapa}</p>
+                    <p>NEURÓLOGO: ${paciente.neurologo}</p>
+                    <p>PEDIATRA: ${paciente.pediatra}</p>
+                    <p>DOMICILIO: ${paciente.domicilio}</p>
+                    <p>RECOMENDACIÓN: ${paciente.recomendacion}</p>
+                </div>
+        `;
         console.log(`Ficha del paciente:
             ID: ${paciente.id}
             APELLIDO: ${paciente.apellido}
