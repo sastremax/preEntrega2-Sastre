@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let fechaNacimiento = prompt("Ingrese la fecha de nacimiento del paciente: (DD-MM-YYYY): ");        
         let edad = calcularEdad(fechaNacimiento);
         let dni = parseInt(prompt("Ingrese el DNI del paciente (sin puntos): "));
-        let cud = (prompt("El paciente tiene CUD? (si/no)").toLowerCase() === "si");
+        let cud = prompt("El paciente tiene CUD? (si/no)");
         let obraSocial = prompt("Ingrese la obra social del paciente: ");
         let titularObraSocial = prompt("Ingrese el nombre del titular de la obra social del paciente: ");
         let numeroAfiliado = (prompt("Ingrese el número de afiliado del paciente: "));
@@ -126,35 +126,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function mostrarTodosLosPacientes() {
         fichasContainer.innerHTML = "";
-        let accesoListadoPacientes = document.getElementById("accesoListadoPacientes");
         ficha.forEach(paciente => {
             let fichaPaciente = document.createElement("div");
             fichaPaciente.classList.add("fichaPaciente");
             let pacienteHTML = `
-            <p>ID: ${paciente.id}</p>
-            <p>Nombre: ${paciente.nombre}</p>
-            <p>Apellido: ${paciente.apellido}</p>
-            <p>Edad: ${paciente.edad}</p>
-            <p>Diagnostico: ${paciente.diagnostico}</p>
-            <p>Fecha de nacimiento: ${paciente.fechaNacimiento}</p>
-            <p>DNI: ${paciente.dni}</p>
-            <p>CUD: ${paciente.cud}</p>
-            <p>Obra social: ${paciente.obraSocial}</p>
-            <p>Titular de la obra social: ${paciente.titularObraSocial}</p>
-            <p>Número de afiliado: ${paciente.numeroAfiliado}</p>
-            <p>Escuela: ${paciente.escuela}</p>
-            <p>Mamá: ${paciente.mama}</p>
-            <p>Papá: ${paciente.papa}</p>
-            <p>Celular mamá: ${paciente.celularMama}</p>
-            <p>Celular papá: ${paciente.celularPapa}</p>
-            <p>Neurólogo: ${paciente.neurologo}</p>
-            <p>Pediatra: ${paciente.pediatra}</p>
-            <p>Domicilio: ${paciente.domicilio}</p>
-            <p>Recomendación: ${paciente.recomendacion}</p>
-
-        `;
-        fichaPaciente.innerHTML = pacienteHTML;
-        accesoListadoPacientes.appendChild(fichaPaciente);
+                <div class="fichaPaciente">
+                    <p>ID: ${paciente.id}</p>
+                    <p>Nombre: ${paciente.nombre}</p>
+                    <p>Apellido: ${paciente.apellido}</p>
+                    <p>Edad: ${paciente.edad}</p>
+                    <p>Diagnostico: ${paciente.diagnostico}</p>
+                    <p>Fecha de nacimiento: ${paciente.fechaNacimiento}</p>
+                    <p>DNI: ${paciente.dni}</p>
+                    <p>CUD: ${paciente.cud}</p>
+                    <p>Obra social: ${paciente.obraSocial}</p>
+                    <p>Titular de la obra social: ${paciente.titularObraSocial}</p>
+                    <p>Número de afiliado: ${paciente.numeroAfiliado}</p>
+                    <p>Escuela: ${paciente.escuela}</p>
+                    <p>Mamá: ${paciente.mama}</p>
+                    <p>Papá: ${paciente.papa}</p>
+                    <p>Celular mamá: ${paciente.celularMama}</p>
+                    <p>Celular papá: ${paciente.celularPapa}</p>
+                    <p>Neurólogo: ${paciente.neurologo}</p>
+                    <p>Pediatra: ${paciente.pediatra}</p>
+                    <p>Domicilio: ${paciente.domicilio}</p>
+                    <p>Recomendación: ${paciente.recomendacion}</p>
+                </div>
+            `;
+            fichaPaciente.innerHTML = pacienteHTML;
+            fichasContainer.appendChild(fichaPaciente);
         });
-    }   
+    }
 });
