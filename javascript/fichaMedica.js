@@ -9,9 +9,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let agregarFichaBoton = document.getElementById("agregarFichaBoton");
     let fichasContainer = document.getElementById("fichasContainer");
     let mensajeContainer = document.getElementById("mensaje");
+    let accesoListadoPacientes = document.getElementById("accesoListadoPacientes");
 
     agregarFichaBoton.addEventListener("click", function () {
         agregarFicha();
+    });
+
+    accesoListadoPacientes.addEventListener("click", function() {
+        mostrarTodosLosPacientes();
     });
 
     // funcion para agregar fichas de pacientes
@@ -118,4 +123,38 @@ document.addEventListener("DOMContentLoaded", function () {
             mensajeContainer.innerHTML = "Ficha no encontrada";           
         }
     }
+
+    function mostrarTodosLosPacientes() {
+        fichasContainer.innerHTML = "";
+        let accesoListadoPacientes = document.getElementById("accesoListadoPacientes");
+        ficha.forEach(paciente => {
+            let fichaPaciente = document.createElement("div");
+            fichaPaciente.classList.add("fichaPaciente");
+            let pacienteHTML = `
+            <p>ID: ${paciente.id}</p>
+            <p>Nombre: ${paciente.nombre}</p>
+            <p>Apellido: ${paciente.apellido}</p>
+            <p>Edad: ${paciente.edad}</p>
+            <p>Diagnostico: ${paciente.diagnostico}</p>
+            <p>Fecha de nacimiento: ${paciente.fechaNacimiento}</p>
+            <p>DNI: ${paciente.dni}</p>
+            <p>CUD: ${paciente.cud}</p>
+            <p>Obra social: ${paciente.obraSocial}</p>
+            <p>Titular de la obra social: ${paciente.titularObraSocial}</p>
+            <p>Número de afiliado: ${paciente.numeroAfiliado}</p>
+            <p>Escuela: ${paciente.escuela}</p>
+            <p>Mamá: ${paciente.mama}</p>
+            <p>Papá: ${paciente.papa}</p>
+            <p>Celular mamá: ${paciente.celularMama}</p>
+            <p>Celular papá: ${paciente.celularPapa}</p>
+            <p>Neurólogo: ${paciente.neurologo}</p>
+            <p>Pediatra: ${paciente.pediatra}</p>
+            <p>Domicilio: ${paciente.domicilio}</p>
+            <p>Recomendación: ${paciente.recomendacion}</p>
+
+        `;
+        fichaPaciente.innerHTML = pacienteHTML;
+        accesoListadoPacientes.appendChild(fichaPaciente);
+        });
+    }   
 });
