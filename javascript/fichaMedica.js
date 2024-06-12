@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let apellido = prompt("Ingrese el apellido del paciente: ");
         let nombre = prompt("Ingrese el nombre del paciente: ");
         let diagnostico = prompt("Ingrese el diagnostico del paciente: ");
-        let fechaNacimiento = prompt("Ingrese la fecha de nacimiento del paciente: (DD-MM-YYYY): ");        
+        let fechaNacimiento = prompt("Ingrese la fecha de nacimiento del paciente: (YYYY-MM-DD): ");        
         let edad = calcularEdad(fechaNacimiento);
         let dni = parseInt(prompt("Ingrese el DNI del paciente (sin puntos): "));
         let cud = prompt("El paciente tiene CUD? (si/no)");
