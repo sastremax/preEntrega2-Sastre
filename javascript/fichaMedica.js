@@ -112,11 +112,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p>RECOMENDACIÓN: ${paciente.recomendacion}</p>
 
                 </div>
-            `;
-            mensajeContainer.innerHTML = "Ficha encontrada";
+            `;            
             mensajeContainer.innerHTML = "";
         } else {
-            mensajeContainer.innerHTML = "Ficha no encontrada";
+            mensajeContainer.innerHTML = "Ficha no encontrada";           
         }
     }
 });
