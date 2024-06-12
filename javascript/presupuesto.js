@@ -12,9 +12,6 @@ let totalGastosServicios;
 let resultado;
 let historial = "";
 
-
-// funcion para validar el año ingresado //
-
 function validarAño() {
     año = prompt("Ingrese el año a calcular: ");
     while (año < 2020 || isNaN(año) || año.toString() !== año) {
@@ -23,8 +20,6 @@ function validarAño() {
     }
     return año;
 }
-
-// funciojn para validar el mes ingresado //
 
 function validarMes() {
     mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
@@ -35,8 +30,6 @@ function validarMes() {
     }
     return mes;
 }
-
-// funcion para ingresar gastos de forma individual por cada producto //
 
 function ingresarGastosProductos() {
     let totalGastosProductos = 0;
@@ -52,8 +45,6 @@ function ingresarGastosProductos() {
     return totalGastosProductos;
 }
 
-// funcion para ingresar gastos de forma individual por servicios de empleados //
-
 function ingresarGastosServicios(gastosServicios) {
     let totalGastosServicios = 0;
     let cantidadEmpleados = parseInt(prompt("Ingrese la cantidad de empleados:"));
@@ -68,8 +59,6 @@ function ingresarGastosServicios(gastosServicios) {
     return totalGastosServicios;
 }
 
-// funcion para registrar las ganancias de forma mensual //
-
 function ingresarGanancias(mes, año) {
     let ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
     while (isNaN(ganancias) || ganancias < 0) {
@@ -79,7 +68,6 @@ function ingresarGanancias(mes, año) {
     return ganancias;
 }
 
-// Función para calcular el saldo
 function calcularSaldo(ingresos, egresos, mes, año) {
     let saldo = ingresos - egresos;
     let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
@@ -91,8 +79,6 @@ function calcularSaldo(ingresos, egresos, mes, año) {
     mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";    
     historial += mensaje + "\n";
 }
-
-//  funcion para gestionar el presupuesto //
 
 function gestionarPresupuesto() {
     año = validarAño();
@@ -116,9 +102,12 @@ function gestionarPresupuesto() {
     } while (respuesta === "si" || respuesta === "s");
 }
 
-gestionarPresupuesto();
+let accesoPresupuesto = document.getElementById("presupuesto");
+accesoPresupuesto.addEventListener("click", function(){
+    gestionarPresupuesto();
+    alert("Historial de saldos:\n" + historial);
+});
 
-alert("Historial de saldos:\n" + historial);
 
 
 /*

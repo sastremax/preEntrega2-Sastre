@@ -32,11 +32,11 @@
       <h2>Acceso a profesionales</h2>
       <div class="contenedor-recuadros">
         <div class="recuadro">
-          <p>Acceso al Presup. Anual</p> 
+          <p>Presupuesto</p> 
           <button id="presupuesto">Calcular Presupuesto</button>                  
         </div>
         <div class="recuadro">
-          <p>Acceso al listado de Pácientes</p>
+          <p>Pacientes nuevos</p>
           <button id="agregarFichaBoton">Agregar Ficha</button>                      
         </div>
         <div class="recuadro">
@@ -49,7 +49,8 @@
         </div>
         <div id="fichasContainer"></div> 
         <div id="resultadoPresupuesto"></div>
-        <div id="historialFichas"></div>        
+        <div id="historialFichas"></div>   
+        <div id="mensaje"></div> 
       </div>
     </header>
     <aside>
@@ -73,44 +74,8 @@
       </footer>
       <a class="subir" href="#" title="Subir al inicio de la página">
       <i class="fa-solid fa-chevron-up"></i>
-    </a>
-    <!-- Enlace al archivo JavaScript para esta página -->
-    
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-      let agregarFichaBoton = document.getElementById("agregarFichaBoton");
-        if(agregarFichaBoton) {
-          agregarFichaBoton.addEventListener("click", function(){
-            let script = document.createElement("script");
-            script.src = "../javascript/fichaMedica.js";
-            document.body.appendChild(script);
-          });
-        }
-    });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        let buscarFichaBoton = document.getElementById("buscarFichaBoton");
-        if(buscarFichaBoton) {
-          buscarFichaBoton.addEventListener("click", function() {
-            let script = document.createElement("script");
-            script.src = "../javascript/busquedaPaciente.js";
-            document.body.appendChild(script);
-          });
-        }
-      });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        let accesoPresupuesto = document.getElementById("presupuesto");
-        if(accesoPresupuesto){
-          accesoPresupuesto.addEventListener("click", function(){
-            let script = document.createElement("script");
-            script.src = "../javascript/presupuesto.js";
-            document.body.appendChild(script);
-          });
-        }
-      });    
-    </script>
+    </a>        
+    <script src="../javascript/fichaMedica.js"></script>
+    <script src="../javascript/presupuesto.js"></script>
   </body>
 </html>

@@ -504,3 +504,6 @@ console.log(fechaEspecifica);
 
 */
 
+sessionStorage.setItem("nombre", "Jorge");
+
+
