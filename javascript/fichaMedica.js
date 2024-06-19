@@ -8,8 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función principal para inicializar la página
     function inicializarPagina() {
         crearBotones();
-        cargarEventListeners();
-        mostrarTodosLosPacientes();
+        cargarEventListeners();        
     }
 
     // Función para crear los botones dinámicamente
@@ -49,8 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let presupuestoBoton = document.createElement('button');
         presupuestoBoton.textContent = "Calcular Presupuesto";
         presupuestoBoton.addEventListener('click', function () {
-            console.log("Botón Presupuesto clickeado");
-            // Lógica para calcular presupuesto aquí
+            console.log("Botón Presupuesto clickeado");            
         });
         presupuestoRecuadro.appendChild(presupuestoTitulo);
         presupuestoRecuadro.appendChild(presupuestoBoton);
