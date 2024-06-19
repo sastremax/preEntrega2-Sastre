@@ -38,6 +38,11 @@ document.addEventListener("DOMContentLoaded", function () {
     
         // Agregar la segunda fila al contenedor principal
         contenedorRecuadros.appendChild(segundaFila);
+
+        // Crear contenedor para las fichas de pacientes
+        let contenedorFichas = document.createElement('div');
+        contenedorFichas.classList.add('contenedor-fichas');
+        contenedorRecuadros.appendChild(contenedorFichas);
     }
 
     function crearBotonPresupuesto(contenedor) {
@@ -243,8 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fichaContainer.classList.add("fichaPaciente");
     
         let idPaciente = document.createElement("p");
-        idPaciente.textContent = `FICHA: ${paciente.id}`;
-        idPaciente.style.fontWeight = "bold";
+        idPaciente.textContent = `FICHA: ${paciente.id}`;        
         fichaContainer.appendChild(idPaciente);
     
         let datosPaciente = document.createElement("div");
@@ -269,6 +273,8 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         fichaContainer.appendChild(datosPaciente);
     
+        // Agregar la ficha al contenedor de fichas
+        let contenedorFichas = document.querySelector('.contenedor-fichas');
         fichasContainer.appendChild(fichaContainer);
     }
     
@@ -295,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para modificar una ficha de paciente
     function modificarFicha() {
         // Solicitar al usuario el ID del paciente a modificar
-        let idModificar = parseInt(prompt("Ingrese el número fde FICHA del paciente a modificar: "));
+        let idModificar = parseInt(prompt("Ingrese el número de FICHA del paciente a modificar: "));
         
         // Validar si el ID ingresado es válido
         if (!idModificar || isNaN(idModificar)) {
@@ -305,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // Buscar al paciente por su ID en el array 'fichas'
         let pacienteEncontrado = fichas.find(function (paciente) {
-            return paciente.id === idModificar;
+            return paciente.idPaciente === idModificar;
         });
         
         // Si se encontró al paciente
@@ -313,15 +319,9 @@ document.addEventListener("DOMContentLoaded", function () {
             // Mostrar mensaje de confirmación
             mensajeContainer.textContent = `Modificando ficha del paciente: ${idModificar}`;
             
-            // Lógica para modificar los campos de la ficha encontrada
-            // Puedes usar prompts para solicitar y actualizar los campos
-            
-            // Ejemplo de cómo modificar un campo (apellido):
-            let nuevoApellido = prompt(`Modificar apellido (actual: ${pacienteEncontrado.apellido}):`);
-            if (nuevoApellido !== null && nuevoApellido !== "") {
-                pacienteEncontrado.apellido = nuevoApellido;
-            }
-            
+            // Solicitar al usuario los nuevos datos
+        
+           
             // Actualizar el array 'fichas' en la posición correspondiente
             // (no es necesario en este caso porque 'pacienteEncontrado' ya es una referencia al objeto en 'fichas')
             
