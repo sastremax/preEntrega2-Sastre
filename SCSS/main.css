@@ -52,6 +52,25 @@ footer {
   letter-spacing: 20px; /* Espaciado entre letras de 20px */
 }
 
+/*
+$c1: rgb(13, 110, 253); azul
+$c2: #000000; negro
+$c3: rgb(255, 255, 255); blanco
+$c4: rgb(0, 128, 0);
+$c5: rgb(255, 255, 0);
+$c6: rgb(255, 0, 0);
+$c7: #800080;
+$c8: rgb(255, 215, 0);
+$c9: rgb(216, 122, 147);
+$c10: rgb(255, 235, 205); 
+$c11: rgb(34, 204, 12);
+$c12: #333;
+$c13: #3000b3;
+$centro: center;
+$izq: left;
+$alto: height;
+$ancho: width;
+$radio: 10px;*/
 @font-face {
   font-family: "Gwendolyn";
   src: url(/fonts/Gwendolyn-Regular.ttf);
@@ -65,8 +84,20 @@ h1 {
   margin-right: 2px; /* Margen superior para separar del icono */
 }
 
+.navbar {
+  background-color: black;
+}
+
+.navbar a {
+  color: white;
+}
+
+header {
+  background-color: black;
+}
+
 header nav ul li a {
-  color: #000000; /* Color del texto */
+  color: blanco; /* Color del texto */
   text-align: center; /* Alineación del texto al centro */
   list-style: none; /* Quita los puntos de la lista */
   margin-right: 30px; /* Margen derecho */
@@ -749,7 +780,6 @@ sec .row-about {
     margin-right: auto;
   }
   .navbar-nav {
-    background-color: #000000;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -849,7 +879,6 @@ sec .row-about {
     font-size: 16px;
   }
   .navbar-nav {
-    background-color: #000000;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -932,7 +961,6 @@ sec .row-about {
 }
 @media screen and (min-width: 580px) and (max-width: 800px) {
   .navbar-nav {
-    background-color: #000000;
     min-width: 445px;
     max-width: 700px;
     display: flex;
@@ -1338,4 +1366,47 @@ sec .row-about {
     padding: 20px;
     border-radius: 10px;
   }
+}
+.ficha {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.ficha h3 {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+
+.fichaPaciente {
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  background-color: rgb(255, 255, 255); /* Fondo blanco */
+  border: 1.5px solid #e53935; /* Borde de color rojo */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 12px 20px; /* Aumento del padding para mejor apariencia */
+  margin-bottom: 15px; /* Aumento del margen inferior para separación */
+  transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+  text-align: left;
+}
+
+.fichaPaciente:hover {
+  background-color: #f5f5f5; /* Cambio de color al pasar el cursor */
+  transform: translateY(-2px); /* Ligero efecto de elevación */
+}
+
+.fichaPaciente .apellido {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#recuadroLimpiar {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  margin-bottom: 10px;
 }/*# sourceMappingURL=main.css.map */

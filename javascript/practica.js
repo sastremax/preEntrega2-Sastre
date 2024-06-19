@@ -502,8 +502,151 @@ console.log(fecha);
 let fechaEspecifica = new Date(2024,5,2,13,45,23);
 console.log(fechaEspecifica);
 
-*/
+
 
 sessionStorage.setItem("nombre", "Jorge");
 
+sugar sintax
 
+una carcteristica que se encuentra en cualquier lenguaje de programacion. no añade funcionalidades. lo que hace es crear un codigo mas facil de leer y escribir
+presenta forma compacta de expresar construcciones de codigo.
+
+
+
+template literals => el reemplazo de la concatenacion, llevando el codigo a una manera sencilla de AudioListener
+
+
+
+let name = "julian";
+
+console.log("hola soy " + name + " tengo 26 años");
+
+console.log(`hola soy ${name} tengo 26 años`);
+
+//operador ternaria
+
+toma 3 OPERADOR
+condicion ? valor si es verdadero expresion1 : valor si es falso expresion2
+
+
+let nombreUsuario= null;
+
+let nombre = nombreUsuario ? nombreUsuario : "invitado";
+console.log(nombre);
+
+function obtenerDescuento(edad) {
+    return edad > 10 ? 0.1 : 0.2;
+}
+console.log(obtenerDescuento(15));
+console.log(obtenerDescuento(25));
+
+const estaLogueado = true;
+
+const usuario = estaLogueado && {nombre:"jorge", edad: 25};
+console.log(usuario);
+
+const usuario ={
+    siEstaLogueado: true,
+    siEsAdmin:true,
+    nombre: "jorge"
+}
+
+usuario.siEstaLogueado && console.log(`Bienvenido ${usuario.nombre}`);
+usuario.siEstaLogueado && usuario.siEsAdmin && console.log(`tiene acceso`);
+/*
+//operador logico or: si el primer valor es verdadero, devuelve el primer valor, si no, devuelve el segundo valor
+// si el primer operador es falso, devuelve el segundo valor
+/*let usuario2 ={
+    nombre: null;
+}
+let usuarioActivo;
+
+if(usuario.nombre){
+    usuarioActivo = usuario.nombre;
+}else{
+    usuarioActivo = "invitado";
+}
+console.log(usuarioActivo);
+
+const configuracionUsuario ={
+    tema: null,
+    lenguaje: "ingles"
+    }
+
+    const configuracionPorDefecto ={
+    tema: "oscuro",
+    lenguaje: "español"
+    }
+
+const configuracionFinal ={
+    tema: configuracionUsuario.tema || configuracionPorDefecto.tema,
+    lenguaje: configuracionUsuario.lenguaje || configuracionPorDefecto.lenguaje
+}
+
+console.log(configuracionFinal);
+
+
+//operador or = retorna el primer operando si este es verdadero, de lo contrario, retorna el segundo operando
+//operador Nullish = retorna el primer operando si este no es null o undefined, de lo contrario, retorna el segundo operando
+
+const preferenciasUsurio ={
+    colorFondo: null,
+    tamañoLetras: 14,
+    tema: "claro"
+}
+
+const colorFondo = preferenciasUsurio.colorFondo ?? "blanco";
+const tamañoLetras = preferenciasUsurio.tamañoLetras ?? 16;
+const tema = preferenciasUsurio.tema ?? "oscuro";
+
+console.log(`el color de fondo es ${colorFondo}`);
+console.log(`el tamaño de letra es ${tamañoLetras}`);
+console.log(`el tema es ${tema}`);
+
+
+//Destructuracion o destructuring
+
+//es una expresion que permite desempaquetar valores de arreglos u objetos en distintas variables
+
+//destructuracion de arreglos
+
+const PERSONA = {
+    nombre: "Walter",
+    edad: 27,
+    ciudad: "Santa Rosa"
+}
+
+let {nombre, edad} = PERSONA; // son las variables que se van a crear
+console.log(nombre, edad);
+
+
+const PERRO ={
+    duenio: "marcelo",
+    nombre: "Toby",
+    raza: "Labrador Retriever",
+    color: "blanco",
+    edad: 4,
+    direccion: {
+        calle: "Av. Mitre",
+        numero: 750,
+        ciudad: "Mar de Ajo",
+    }    
+}
+
+let {duenio, raza, edad:pedro, direccion:{calle, numero, ciudad}} = PERRO;
+
+console.log(duenio);
+console.log(raza);
+console.log(calle);
+console.log(pedro);
+*/
+
+const PRODUCTOS = [
+    {id: 1, nombre: "camisa", precio: 2000},
+    {id: 2, nombre: "pantalon", precio: 2500},
+    {id: 3, nombre: "buzo", precio: 3000},
+]
+
+PRODUCTOS.forEach(({nombre, precio}) => {
+    console.log(`${nombre}: ${precio}`);
+})

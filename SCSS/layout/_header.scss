@@ -1,3 +1,23 @@
+/*
+$c1: rgb(13, 110, 253); azul
+$c2: #000000; negro
+$c3: rgb(255, 255, 255); blanco
+$c4: rgb(0, 128, 0);
+$c5: rgb(255, 255, 0);
+$c6: rgb(255, 0, 0);
+$c7: #800080;
+$c8: rgb(255, 215, 0);
+$c9: rgb(216, 122, 147);
+$c10: rgb(255, 235, 205); 
+$c11: rgb(34, 204, 12);
+$c12: #333;
+$c13: #3000b3;
+$centro: center;
+$izq: left;
+$alto: height;
+$ancho: width;
+$radio: 10px;*/
+
 @font-face {
     font-family: 'Gwendolyn';
     src: url(/fonts/Gwendolyn-Regular.ttf);
@@ -12,8 +32,20 @@ h1 {
     margin-right: 2px; /* Margen superior para separar del icono */
 }
 
+.navbar {
+    background-color: black;
+}
+
+.navbar a {
+    color: white;    
+}
+
+header{
+    background-color: black;
+}
+
 header nav ul li a {
-    color: $c2; /* Color del texto */
+    color: blanco; /* Color del texto */
     text-align: center; /* Alineación del texto al centro */
     list-style: none; /* Quita los puntos de la lista */
     margin-right: 30px; /* Margen derecho */
