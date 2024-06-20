@@ -317,7 +317,7 @@ function modificarFicha() {
 
     // Buscar al paciente por su ID en el array 'fichas'
     let pacienteEncontrado = fichas.find(function (paciente) {
-        return paciente.idPaciente === idModificar;
+        return paciente.id === idModificar;
     });
 
     // Si se encontró al paciente
@@ -398,7 +398,7 @@ function modificarFicha() {
         mostrarTodosLosPacientes(); // Esta función debería reflejar los cambios realizados
     } else {
         // Si no se encontró al paciente, mostrar mensaje de error
-        mensajeContainer.textContent = `No se encontró ningún paciente con el ID ${idModificar}`;
+        mensajeContainer.textContent = `No se encontró ningún paciente con la ficha # ${idModificar}`;
     }
 }
 
