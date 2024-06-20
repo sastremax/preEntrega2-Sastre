@@ -4,26 +4,63 @@
 document.addEventListener('DOMContentLoaded', function () {
     let historial = "";
 
-    let contenedorRecuadros =document.querySelector('.contenedor-recuadros');
-    if (contenedorRecuadros) {
-        let botonAccesoPresupuesto = document.createElement('button');
-        botonAccesoPresupuesto.id = 'accesoPresupuesto';
-        botonAccesoPresupuesto.textContent = 'Acceder al presupuesto';
-        contenedorRecuadros.appendChild(botonAccesoPresupuesto);
+    function gestionarPresupuesto() {
+        let año = validarAño();
+        let mes = validarMes();
 
-        botonAccesoPresupuesto.addEventListener('click', function () {
-            gestionarPresupuesto();
-            alert("Historial de saldos:\n" + historial);   
-        });
-    } else {
-        console.error('No se encontró el  "accesoPresupuesto"');
+        let totalGastosProductos = ingresarGastosProductos(mes);
+        let totalGastosServicios = ingresarGastosServicios();
+        let ingresos = ingresarGanancias(mes, año);
+        let egresos = totalGastosProductos + totalGastosServicios;        
+
+        calcularSaldo(ingresos, egresos, mes, año);
+
+        let resultadoPresupuesto = document.getElementById('resultadoPresupuesto');
+        if(resultadoPresupuesto) {
+            resultadoPresupuesto.textContent = `Resultado del presupuesto para ${mes} ${año}: 
+                Ingresos: ${ingresos}, Egresos: ${egresos}, Saldo: ${ingresos - egresos}`;
+        } else {
+            console.error('No se encontró el elemento con id "resultadoPresupuesto"');
+        }
+    
+        do {
+            let respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
+            if (respuesta === "si" || respuesta === "s") {
+                año = validarAño();
+                mes = validarMes();
+                totalGastosProductos = ingresarGastosProductos(mes);
+                totalGastosServicios = ingresarGastosServicios();
+                ingresos = ingresarGanancias(mes, año);
+                egresos = totalGastosProductos + totalGastosServicios;
+                calcularSaldo(ingresos, egresos, mes, año);
+            }
+        } while (respuesta === "si" || respuesta === "s");
     }
 
-    let resultadoPresupuesto = document.getElementById('resultadoPresupuesto');
-    if (resultadoPresupuesto) {
-        resultadoPresupuesto.textContent = 'Resultado del presupuesto';
+    // Función para crear el botón de acceso al presupuesto
+    function crearBotonPresupuesto(contenedor) {
+        let presupuestoRecuadro = document.createElement('div');
+        presupuestoRecuadro.classList.add('recuadro', 'presupuesto');
+        let presupuestoTitulo = document.createElement('p');
+        presupuestoTitulo.textContent = "Presupuesto";
+        let presupuestoBoton = document.createElement('button');
+        presupuestoBoton.textContent = "Calcular Presupuesto";
+        presupuestoBoton.addEventListener('click', function () {
+            gestionarPresupuesto();
+            alert("Historial de saldos:\n" + historial)
+        });
+
+        presupuestoRecuadro.appendChild(presupuestoTitulo);
+        presupuestoRecuadro.appendChild(presupuestoBoton);
+        contenedor.appendChild(presupuestoRecuadro);
+    }
+
+// Obtener el contenedor de recuadros
+    let contenedorRecuadros =document.querySelector('.contenedor-recuadros');
+    if (contenedorRecuadros) {
+        crearBotonPresupuesto(contenedorRecuadros);
     } else {
-        console.error('No se encontró el elemento con id "resultadoPresupuesto"');
+        console.error('No se encontró el contenedor ".contenedor-recuadros"');
     }
 
 
@@ -95,28 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
         historial += mensaje + "\n";      
     }
 
-    function gestionarPresupuesto() {
-        let año = validarAño();
-        let mes = validarMes();
-        let totalGastosProductos = ingresarGastosProductos(mes);
-        let totalGastosServicios = ingresarGastosServicios();
-        let ingresos = ingresarGanancias(mes, año);
-        let egresos = totalGastosProductos + totalGastosServicios;
-        let respuesta;
-        calcularSaldo(ingresos, egresos, mes, año);
-        do {
-            respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
-            if (respuesta === "si" || respuesta === "s") {
-                año = validarAño();
-                mes = validarMes();
-                totalGastosProductos = ingresarGastosProductos(mes);
-                totalGastosServicios = ingresarGastosServicios();
-                ingresos = ingresarGanancias(mes, año);
-                egresos = totalGastosProductos + totalGastosServicios;
-                calcularSaldo(ingresos, egresos, mes, año);
-            }
-        } while (respuesta === "si" || respuesta === "s");
-    }
+    
 
     // Obtener el botón de acceso al presupuesto y asignarle el evento click
     let accesoPresupuesto = document.getElementById("accesoPresupuesto");

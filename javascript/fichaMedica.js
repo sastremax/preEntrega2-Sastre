@@ -19,8 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let primeraFila = document.createElement('div');
         primeraFila.classList.add('fila-botones');
 
-        // Crear botones para la primera fila
-        crearBotonPresupuesto(primeraFila);
+        // Crear botones para la primera fila        
         crearBotonPacientesNuevos(primeraFila);
         crearBotonBuscarFicha(primeraFila);
 
@@ -45,21 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         contenedorRecuadros.appendChild(contenedorFichas);
     }
 
-    function crearBotonPresupuesto(contenedor) {
-        let presupuestoRecuadro = document.createElement('div');
-        presupuestoRecuadro.classList.add('recuadro', 'presupuesto');
-        let presupuestoTitulo = document.createElement('p');
-        presupuestoTitulo.textContent = "Presupuesto";
-        let presupuestoBoton = document.createElement('button');
-        presupuestoBoton.textContent = "Calcular Presupuesto";
-        presupuestoBoton.addEventListener('click', function () {
-            console.log("Botón Presupuesto clickeado");
-        });
-        presupuestoRecuadro.appendChild(presupuestoTitulo);
-        presupuestoRecuadro.appendChild(presupuestoBoton);
-        contenedor.appendChild(presupuestoRecuadro);
-    }
-
+    
     // Función para crear botón de Pacientes nuevos
     function crearBotonPacientesNuevos(contenedor) {
         let pacientesRecuadro = document.createElement('div');
