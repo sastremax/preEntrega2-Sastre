@@ -214,6 +214,10 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("idProgresivo", idProgresivo);
         return ficha;
     }
+
+    function cargarEventListeners() {
+        const botonPresupuesto = document.getElementById("botonPresupuesto");
+    }
     
     // Función para calcular la edad a partir de la fecha de nacimiento
     function calcularEdad(fechaNacimiento) {
