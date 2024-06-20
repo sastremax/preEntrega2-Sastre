@@ -690,9 +690,9 @@ document.addEventListener("DOMContentLoaded", function() {
 //  Formulario con "submit"
 
     // Espera a que el DOM esté completamente cargado antes de ejecutar el código
-    document.addEventListener("DOMcontentLoaded", function() { 
+    document.addEventListener("DOMContentLoaded", function() { 
         // Obtiene el elemento formulario del DOM con el id 'miFormulario'
-        let formulario = document.getElementBiId("formularioFicha"); 
+        let formulario = document.getElementById("formularioFicha"); 
 
         // Agrega un event listener para el evento 'submit' del formulario
         formulario.addEventListener("submit", function(event) {
