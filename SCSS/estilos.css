@@ -24,12 +24,6 @@ html {
   font-style: normal;
   font-display: swap;
 }
-.Jumbotromp {
-  background-color: rgb(13, 110, 253); /* color de fondo: negro */
-  text-shadow: #000000 -2px; /* Sombra de texto */
-  font-size: 16px; /* Tamaño de fuente */
-  text-align: left; /* Alinea el texto a la izquierda */
-}
 
 img {
   float: left;

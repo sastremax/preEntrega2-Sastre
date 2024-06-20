@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Variables globales
     let fichas = JSON.parse(localStorage.getItem("fichas")) || [];
-    let idProgresivo = localStorage.getItem("idProgresivo") || 1;
+    let idProgresivo = parseInt(localStorage.getItem("idProgresivo")) || 1;
     let fichasContainer = document.getElementById("fichasContainer");
     let mensajeContainer = document.getElementById("mensaje");
 
@@ -150,12 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
         modificarEliminarRecuadro.appendChild(eliminarFichaBoton);
         contenedor.appendChild(modificarEliminarRecuadro);
     }
-    
-    // Función para cargar event listeners adicionales si es necesario
-    function cargarEventListeners() {
-        // Cargar event listeners globales si es necesario
-    }
-    
+            
     // Función para limpiar las fichas mostradas
     function limpiarFichasMostradas() {
         fichasContainer.innerHTML = ""; // Limpiar el contenido del contenedor
@@ -168,8 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (nuevaFicha) {
             fichas.push(nuevaFicha);
             guardarFichasEnStorage();
-            mensajeContainer.textContent = "Ficha agregada correctamente";
-            mostrarTodosLosPacientes(); // Actualizar listado de pacientes
+            mensajeContainer.textContent = "Ficha agregada correctamente";            
         }
     }
     
@@ -196,7 +190,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let neurologo = prompt("Ingrese el nombre del neurologo del paciente (si no lo sabe, escriba 'no lo se'): ");
         let pediatra = prompt("Ingrese el nombre del pediatra del paciente (si no lo sabe, escriba 'no lo se'): ");
     
-        return {            
+        localStorage.setItem("idProgresivo", idProgresivo);
+        return {  
+            id: idProgresivo++,          
             apellido,
             nombre,
             diagnostico,
@@ -213,9 +209,10 @@ document.addEventListener("DOMContentLoaded", function () {
             papa,
             celularPapa,
             neurologo,
-            pediatra,
-            ficha: idProgresivo++,
+            pediatra,            
         };
+        localStorage.setItem("idProgresivo", idProgresivo);
+        return ficha;
     }
     
     // Función para calcular la edad a partir de la fecha de nacimiento
@@ -319,11 +316,71 @@ document.addEventListener("DOMContentLoaded", function () {
             // Mostrar mensaje de confirmación
             mensajeContainer.textContent = `Modificando ficha del paciente: ${idModificar}`;
             
-            // Solicitar al usuario los nuevos datos
-        
-           
-            // Actualizar el array 'fichas' en la posición correspondiente
-            // (no es necesario en este caso porque 'pacienteEncontrado' ya es una referencia al objeto en 'fichas')
+            // Solicitar al usuario qué campo desea modificar
+            let campoModificar = prompt(`Qué campo desea modificar para el paciente: ${pacienteEncontrado.apellido}? (apellido/nombre/diagnostico/fechaNacimiento/edad/dni/cud/obraSocial/titularObraSocial/numeroAfiliado/escuela/mama/celularMama/papa/celularPapa/neurologo/pediatra)`);
+            
+            // Validar la respuesta del usuario
+            if (!campoModificar) {
+                mensajeContainer.textContent = "Debe ingresar un campo válido para modificar";
+                return;
+            }
+
+            switch (campoModificar) {
+                case "apellido":
+                    pacienteEncontrado.apellido = prompt(`Modificar apellido (actual: ${pacienteEncontrado.apellido}):`);
+                    break;
+                case "nombre":
+                    pacienteEncontrado.nombre = prompt(`Modificar nombre (actual: ${pacienteEncontrado.nombre}):`);
+                    break;
+                case "diagnostico":
+                    pacienteEncontrado.diagnostico = prompt(`Modificar diagnóstico (actual: ${pacienteEncontrado.diagnostico}):`);
+                    break;
+                case "fechaNacimiento":
+                    pacienteEncontrado.fechaNacimiento = prompt(`Modificar fecha de nacimiento (actual: ${pacienteEncontrado.fechaNacimiento}):`);
+                    break;
+                case "edad":
+                    pacienteEncontrado.edad = parseInt(prompt(`Modificar edad (actual: ${pacienteEncontrado.edad}):`));
+                    break;
+                case "dni":
+                    pacienteEncontrado.dni = prompt(`Modificar DNI (actual: ${pacienteEncontrado.dni}):`);
+                    break;
+                case "cud":
+                    pacienteEncontrado.cud = prompt(`Modificar CUD (actual: ${pacienteEncontrado.cud}):`);
+                    break;
+                case "obraSocial":
+                    pacienteEncontrado.obraSocial = prompt(`Modificar obra social (actual: ${pacienteEncontrado.obraSocial}):`);
+                    break;
+                case "titularObraSocial":
+                    pacienteEncontrado.titularObraSocial = prompt(`Modificar titular de obra social (actual: ${pacienteEncontrado.titularObraSocial}):`);
+                    break;
+                case "numeroAfiliado":
+                    pacienteEncontrado.numeroAfiliado = prompt(`Modificar número de afiliado (actual: ${pacienteEncontrado.numeroAfiliado}):`);
+                    break;
+                case "escuela":
+                    pacienteEncontrado.escuela = prompt(`Modificar escuela (actual: ${pacienteEncontrado.escuela}):`);
+                    break;
+                case "mama":
+                    pacienteEncontrado.mama = prompt(`Modificar nombre de la madre (actual: ${pacienteEncontrado.mama}):`);
+                    break;
+                case "celularMama":
+                    pacienteEncontrado.celularMama = prompt(`Modificar celular de la madre (actual: ${pacienteEncontrado.celularMama}):`);
+                    break;
+                case "papa":
+                    pacienteEncontrado.papa = prompt(`Modificar nombre del padre (actual: ${pacienteEncontrado.papa}):`);
+                    break;
+                case "celularPapa":
+                    pacienteEncontrado.celularPapa = prompt(`Modificar celular del padre (actual: ${pacienteEncontrado.celularPapa}):`);
+                    break;
+                case "neurologo":
+                    pacienteEncontrado.neurologo = prompt(`Modificar neurólogo (actual: ${pacienteEncontrado.neurologo}):`);
+                    break;
+                case "pediatra":
+                    pacienteEncontrado.pediatra = prompt(`Modificar pediatra (actual: ${pacienteEncontrado.pediatra}):`);
+                    break;
+                default:
+                    mensajeContainer.textContent = "Campo inválido";
+                    return;
+            }
             
             // Guardar las fichas actualizadas en el localStorage
             guardarFichasEnStorage();
