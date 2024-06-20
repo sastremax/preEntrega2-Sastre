@@ -163,6 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let nuevaFicha = crearFichaDesdePrompt();
         if (nuevaFicha) {
             fichas.push(nuevaFicha);
+            idProgresivo++;
             guardarFichasEnStorage();
             mensajeContainer.textContent = "Ficha agregada correctamente";
         }
