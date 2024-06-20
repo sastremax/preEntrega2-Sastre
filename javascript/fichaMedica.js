@@ -167,6 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let dni = parseInt(prompt("Ingrese el DNI del paciente (sin puntos): "));
         let cud = prompt("El paciente tiene CUD? (si/no)");
         let obraSocial = prompt("Ingrese la obra social del paciente: ");
+        let domicilio = prompt("Ingrese el domicilio del paciente: ")
         let titularObraSocial = prompt("Ingrese el nombre del titular de la obra social del paciente: ");
         let numeroAfiliado = prompt("Ingrese el número de afiliado del paciente: ");
         let escuela = prompt("Ingrese el nombre de la escuela del paciente: ");
@@ -187,6 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
             dni,
             cud,
             obraSocial,
+            domicilio,
             titularObraSocial,
             numeroAfiliado,
             escuela,
@@ -271,6 +273,7 @@ function mostrarFicha(paciente) {
             <p>DNI: <strong>${paciente.dni}</strong></p>
             <p>CUD: <strong>${paciente.cud}</strong></p>
             <p>Obra Social: <strong>${paciente.obraSocial}</strong></p>
+            <p>Domicilio: <strong>${paciente.domicilio}</strong></p>
             <p>Titular Obra Social: <strong>${paciente.titularObraSocial}</strong></p>
             <p>Número de Afiliado: <strong>${paciente.numeroAfiliado}</strong></p>
             <p>Escuela: <strong>${paciente.escuela}</strong></p>
@@ -344,6 +347,9 @@ function modificarFicha() {
             case "obraSocial":
                 pacienteEncontrado.obraSocial = prompt(`Modificar obra social (actual: ${pacienteEncontrado.obraSocial}):`);
                 break;
+            case "domicilio":
+                pacienteEncontrado.domicilio = prompt(`Modificar domicilio (actual: ${pacienteEncontrado.domicilio}):`);
+                    break;    
             case "titularObraSocial":
                 pacienteEncontrado.titularObraSocial = prompt(`Modificar titular de obra social (actual: ${pacienteEncontrado.titularObraSocial}):`);
                 break;
