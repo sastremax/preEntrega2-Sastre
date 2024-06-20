@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let idProgresivo = parseInt(localStorage.getItem("idProgresivo")) || 1;
     let fichasContainer = document.getElementById("fichasContainer");
     let mensajeContainer = document.getElementById("mensaje");
+    let formulario = document.getElementById("formulario");
 
     // Función principal para inicializar la página
     function inicializarPagina() {
