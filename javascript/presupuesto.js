@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return mes;
     }
 
-    function ingresarGastosProductos() {
+    function ingresarGastosProductos(mes) {
         let totalGastosProductos = 0;
         let cantidadProductos = parseInt(prompt("Ingrese la cantidad de productos comprados en el mes de " + mes));
         for (let i = 1; i < cantidadProductos + 1; i++) {
@@ -91,7 +91,8 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             mensaje += "negativo";
         }
-        mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";        
+        mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";  
+        historial += mensaje + "\n";      
     }
 
     function gestionarPresupuesto() {
@@ -108,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (respuesta === "si" || respuesta === "s") {
                 año = validarAño();
                 mes = validarMes();
-                totalGastosProductos = ingresarGastosProductos();
+                totalGastosProductos = ingresarGastosProductos(mes);
                 totalGastosServicios = ingresarGastosServicios();
                 ingresos = ingresarGanancias(mes, año);
                 egresos = totalGastosProductos + totalGastosServicios;
@@ -118,12 +119,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Obtener el botón de acceso al presupuesto y asignarle el evento click
-    let accesoPresupuesto = document.getElementById("presupuesto");
-    accesoPresupuesto.addEventListener("click", function () {
+    let accesoPresupuesto = document.getElementById("accesoPresupuesto");
+    if(accesoPresupuesto) {
+        accesoPresupuesto.addEventListener("click", function () {
         gestionarPresupuesto();
         alert("Historial de saldos:\n" + historial);
-    });
-
+        });
+    }else {
+        console.error('No se encontró el elemento con id "accesoPresupuesto"');
+    }
 });
 
 
