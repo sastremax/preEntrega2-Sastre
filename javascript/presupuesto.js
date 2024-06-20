@@ -1,138 +1,138 @@
 // simulador de presupuesto de un consultorio medico y luego fichas medicas para ingreso de datos con ARRAYS para las/los terapeutas//
 
-// variables declaradas y algunas inicializadas //
 
-let mes = "";
-let año = "";
-let ingresos = 0;
-let egresos = 0;
-let respuesta = "";
-let totalGastosProductos;
-let totalGastosServicios;
-let resultado;
-let historial = "";
+document.addEventListener('DOMContentLoaded', function () {
+    let historial = "";
 
-document.addEventListener('DOMContentLoaded', function() {
-    let accesoPresupuesto = document.getElementById('accesoPresupuesto');
-    if (accesoPresupuesto) {
-        accesoPresupuesto.addEventListener('click', function() {
-            gestionarPresupuesto();            
-            alert("Historial de saldos:\n" + historial);
+    let contenedorRecuadros =document.querySelector('.contenedor-recuadros');
+    if (contenedorRecuadros) {
+        let botonAccesoPresupuesto = document.createElement('button');
+        botonAccesoPresupuesto.id = 'accesoPresupuesto';
+        botonAccesoPresupuesto.textContent = 'Acceder al presupuesto';
+        contenedorRecuadros.appendChild(botonAccesoPresupuesto);
+
+        botonAccesoPresupuesto.addEventListener('click', function () {
+            gestionarPresupuesto();
+            alert("Historial de saldos:\n" + historial);   
         });
     } else {
-        console.error('No se encontró el elemento con id "accesoPresupuesto"');
+        console.error('No se encontró el  "accesoPresupuesto"');
     }
 
-let accesoFichasMedicas = document.getElementById('accesoFichasMedicas');
-    if (accesoFichasMedicas) {
-        accesoFichasMedicas.addEventListener('click', function() {
-            console.log('Botón de acceso a fichas médicas clickeado');
-            // Aquí iría la lógica para acceder al sistema de fichas médicas
-        });
+    let resultadoPresupuesto = document.getElementById('resultadoPresupuesto');
+    if (resultadoPresupuesto) {
+        resultadoPresupuesto.textContent = 'Resultado del presupuesto';
     } else {
-        console.error('No se encontró el elemento con id "accesoFichasMedicas"');
+        console.error('No se encontró el elemento con id "resultadoPresupuesto"');
     }
+
+
+    function validarAño() {
+        let año = prompt("Ingrese el año a calcular: ");
+        while (año < 2020 || isNaN(año) || año.toString() !== año) {
+            console.log("El año ingresado no es válido.");
+            año = prompt("Ingrese el año a calcular: ");
+        }
+        return año;
+    }
+
+    function validarMes() {
+        let mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
+        while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
+            mes !== "julio" && mes !== "agosto" && mes !== "septiembre" && mes !== "octubre" && mes !== "noviembre" && mes !== "diciembre") {
+            console.log("El mes ingresado no es válido.");
+            mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
+        }
+        return mes;
+    }
+
+    function ingresarGastosProductos() {
+        let totalGastosProductos = 0;
+        let cantidadProductos = parseInt(prompt("Ingrese la cantidad de productos comprados en el mes de " + mes));
+        for (let i = 1; i < cantidadProductos + 1; i++) {
+            let gasto = parseInt(prompt("Ingrese el monto del gasto individual del producto: " + i + " en el mes de " + mes));
+            while (isNaN(gasto) || gasto < 0) {
+                console.log("El monto ingresado no es válido.");
+                gasto = parseInt(prompt("Ingrese el gasto del producto " + i + " en el mes de " + mes));
+            }
+            totalGastosProductos += gasto;
+        }
+        return totalGastosProductos;
+    }
+
+    function ingresarGastosServicios(gastosServicios) {
+        let totalGastosServicios = 0;
+        let cantidadEmpleados = parseInt(prompt("Ingrese la cantidad de empleados:"));
+        for (let i = 0; i < cantidadEmpleados; i++) {
+            let gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
+            while (isNaN(gasto) || gasto < 0) {
+                console.log("El monto ingresado no es válido.");
+                gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
+            }
+            totalGastosServicios += gasto;
+        }
+        return totalGastosServicios;
+    }
+
+    function ingresarGanancias(mes, año) {
+        let ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
+        while (isNaN(ganancias) || ganancias < 0) {
+            console.log("El monto ingresado no es válido.");
+            ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
+        }
+        return ganancias;
+    }
+
+    function calcularSaldo(ingresos, egresos, mes, año) {
+        let saldo = ingresos - egresos;
+        let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
+        if (saldo >= 0) {
+            mensaje += "positivo";
+        } else {
+            mensaje += "negativo";
+        }
+        mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";        
+    }
+
+    function gestionarPresupuesto() {
+        let año = validarAño();
+        let mes = validarMes();
+        let totalGastosProductos = ingresarGastosProductos(mes);
+        let totalGastosServicios = ingresarGastosServicios();
+        let ingresos = ingresarGanancias(mes, año);
+        let egresos = totalGastosProductos + totalGastosServicios;
+        let respuesta;
+        calcularSaldo(ingresos, egresos, mes, año);
+        do {
+            respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
+            if (respuesta === "si" || respuesta === "s") {
+                año = validarAño();
+                mes = validarMes();
+                totalGastosProductos = ingresarGastosProductos();
+                totalGastosServicios = ingresarGastosServicios();
+                ingresos = ingresarGanancias(mes, año);
+                egresos = totalGastosProductos + totalGastosServicios;
+                calcularSaldo(ingresos, egresos, mes, año);
+            }
+        } while (respuesta === "si" || respuesta === "s");
+    }
+
+    // Obtener el botón de acceso al presupuesto y asignarle el evento click
+    let accesoPresupuesto = document.getElementById("presupuesto");
+    accesoPresupuesto.addEventListener("click", function () {
+        gestionarPresupuesto();
+        alert("Historial de saldos:\n" + historial);
+    });
+
 });
 
-function validarAño() {
-    año = prompt("Ingrese el año a calcular: ");
-    while (año < 2020 || isNaN(año) || año.toString() !== año) {
-    console.log("El año ingresado no es válido.");
-    año = prompt("Ingrese el año a calcular: ");    
-    }
-    return año;
-}
 
-function validarMes() {
-    mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
-    while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
-    mes !== "julio" && mes !== "agosto" && mes !== "septiembre" && mes !== "octubre" && mes !== "noviembre" && mes !== "diciembre") {
-    console.log("El mes ingresado no es válido.");
-    mes = prompt("Ingrese el mes a calcular: ").toLowerCase();    
-    }
-    return mes;
-}
 
-function ingresarGastosProductos() {
-    let totalGastosProductos = 0;
-    let cantidadProductos = parseInt(prompt("Ingrese la cantidad de productos comprados en el mes de " + mes));
-    for (let i = 1; i < cantidadProductos + 1; i++) {
-        let gasto = parseInt(prompt("Ingrese el monto del gasto individual del producto: " + i + " en el mes de " + mes));
-        while (isNaN(gasto) || gasto < 0) {
-            console.log("El monto ingresado no es válido.");
-            gasto = parseInt(prompt("Ingrese el gasto del producto " + i + " en el mes de " + mes));
-        }
-        totalGastosProductos += gasto;
-    }
-    return totalGastosProductos;
-}
-
-function ingresarGastosServicios(gastosServicios) {
-    let totalGastosServicios = 0;
-    let cantidadEmpleados = parseInt(prompt("Ingrese la cantidad de empleados:"));
-    for (let i = 0; i < cantidadEmpleados; i++) {
-        let gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
-        while (isNaN(gasto) || gasto < 0) {
-            console.log("El monto ingresado no es válido.");
-            gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
-        }
-        totalGastosServicios += gasto;
-    }
-    return totalGastosServicios;
-}
-
-function ingresarGanancias(mes, año) {
-    let ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
-    while (isNaN(ganancias) || ganancias < 0) {
-        console.log("El monto ingresado no es válido.");
-        ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
-    }
-    return ganancias;
-}
-
-function calcularSaldo(ingresos, egresos, mes, año) {
-    let saldo = ingresos - egresos;
-    let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
-    if (saldo >= 0) {
-        mensaje += "positivo";
-    } else {
-        mensaje += "negativo";
-    }
-    mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";    
-    historial += mensaje + "\n";
-}
-
-function gestionarPresupuesto() {
-    año = validarAño();
-    mes = validarMes();
-    totalGastosProductos = ingresarGastosProductos();
-    totalGastosServicios = ingresarGastosServicios();
-    ingresos = ingresarGanancias(mes, año);
-    egresos = totalGastosProductos + totalGastosServicios;
-    calcularSaldo(ingresos, egresos, mes, año);    
-    do {
-        respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
-        if (respuesta === "si" || respuesta === "s") {
-            año = validarAño();
-            mes = validarMes();
-            totalGastosProductos = ingresarGastosProductos();
-            totalGastosServicios = ingresarGastosServicios();
-            ingresos = ingresarGanancias(mes, año);
-            egresos = totalGastosProductos + totalGastosServicios;
-            calcularSaldo(ingresos, egresos, mes, año);
-        }
-    } while (respuesta === "si" || respuesta === "s");
-}
-
-let accesoPresupuesto = document.getElementById("presupuesto");
-accesoPresupuesto.addEventListener("click", function(){
-    gestionarPresupuesto();
-    alert("Historial de saldos:\n" + historial);
-});
 
 
 
 /*
+
 function miFuncion() {
     console.log("Ejecutando miFuncion");
 
@@ -206,7 +206,7 @@ function esPar() {
 esPar();
 
 Pedir un texto mediante prompt, concatenar un valor en cada repetición,
- realizando una salida por cada resultado, hasta que se ingresa “ESC”. 
+realizando una salida por cada resultado, hasta que se ingresa “ESC”. 
 
 let texto = prompt("Ingrese un texto");
 let textoFinal = texto;
@@ -321,7 +321,8 @@ if ((num2 >10) && (num2 <50)) {
 let minimo = 10;
 let maximo = 50;
 let valor = parseInt(prompt("Ingrese un número entre 10 y 50"));
-if (valor > minimo && valor < maximo) {
+    if (valor > minimo && valor < maximo) {
     alert("El número ingresado está entre 10 y 50");
-}
+    }
+
 */
