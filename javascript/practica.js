@@ -650,7 +650,7 @@ const PRODUCTOS = [
 PRODUCTOS.forEach(({nombre, precio}) => {
     console.log(`${nombre}: ${precio}`);
 })
-    
+   */ 
 
 //Agregar mas de un evento a un elemento
 
@@ -680,6 +680,34 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 });
-*/
+
 
 // Capturar la Tecla ENTER para Confirmar una Acción
+
+
+
+
+//  Formulario con "submit"
+
+    // Espera a que el DOM esté completamente cargado antes de ejecutar el código
+    document.addEventListener("DOMcontentLoaded", function() { 
+        // Obtiene el elemento formulario del DOM con el id 'miFormulario'
+        let formulario = document.getElementBiId("formularioFicha"); 
+
+        // Agrega un event listener para el evento 'submit' del formulario
+        formulario.addEventListener("submit", function(event) {
+             // Evita el envío del formulario y refresco de la pagina
+        event.preventDefault();      
+
+        // ebtener el valor del campo de entrada con id 'nombre' del formulario
+        let nombre = document.getElementById("nombre").value;
+        // ebtener el valor del campo de entrada con id 'apellido' del formulario    
+        let apellido = document.getElementById("apellido").value;
+
+        // imprimir los valores obtenidos en la console
+        console.log(`Nombre: ${nombre} Apellido: ${apellido}`);
+
+
+        alert(`Nombre: ${nombre} Apellido: ${apellido}`);
+        });
+    });
