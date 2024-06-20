@@ -639,7 +639,7 @@ console.log(duenio);
 console.log(raza);
 console.log(calle);
 console.log(pedro);
-*/
+
 
 const PRODUCTOS = [
     {id: 1, nombre: "camisa", precio: 2000},
@@ -650,3 +650,36 @@ const PRODUCTOS = [
 PRODUCTOS.forEach(({nombre, precio}) => {
     console.log(`${nombre}: ${precio}`);
 })
+    
+
+//Agregar mas de un evento a un elemento
+
+document.addEventListener("DOMContentLoaded", function() {
+    let miBoton = document.getElementById("miBoton");
+
+    // ahora el evento "click"
+    miBoton.addEventListener("click", function() {
+        alert("has echo click en el boton");
+    });
+
+    // Evento mouseover
+    miBoton.addEventListener("mouseover", function() {
+        miBoton.style.backgroundColor = "lightblue";
+    });
+
+
+    // Evento mouseout
+    miBoton.addEventListener("mouseout", function() {
+        miBoton.style.backgroundcolor = "";
+    });
+
+
+    // Evento dblclick (doble clic)
+    miBoton.addEventListener("dblclick", function() {
+        miBoton.textContent = "haz hecho doble clic";
+    });
+
+});
+*/
+
+// Capturar la Tecla ENTER para Confirmar una Acción
