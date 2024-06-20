@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función principal para inicializar la página
     function inicializarPagina() {
         crearBotones();
-        cargarEventListeners();
+        
     }
 
     // Función para crear los botones dinámicamente
@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
         pacientesRecuadro.appendChild(pacientesTitulo);
         pacientesRecuadro.appendChild(agregarFichaBoton);
         contenedor.appendChild(pacientesRecuadro);
+        return agregarFichaBoton;
     }
 
     // Función para crear botón de Búsqueda de fichas
@@ -209,55 +210,11 @@ document.addEventListener("DOMContentLoaded", function () {
             celularPapa,
             neurologo,
             pediatra,
-        };
-        idProgresivo++;
-        localStorage.setItem("idProgresivo", idProgresivo);
+        };        
         return nuevaFicha;
-    }
+    }    
 
-    
-
-
-botonPacientesNuevos.addEventListener('click', function () {
-    agregarFicha();
-});
-
-botonBuscarFicha.addEventListener('click', function () {
-    mostrarFichaPorApellido();
-});
-
-botonListadoPacientes.addEventListener('click', function () {
-    mostrarTodosLosPacientes();
-});
-
-botonLimpiar.addEventListener('click', function () {
-    limpiarFichasMostradas();
-});
-
-botonModificarFicha.addEventListener('click', function () {
-    modificarFicha();
-});
-
-botonEliminarFicha.addEventListener('click', function () {
-    eliminarFicha();
-});
-
-// Función para calcular la edad a partir de la fecha de nacimiento
-function calcularEdad(fechaNacimiento) {
-    if (!fechaNacimiento) {
-        return 0;
-    }
-    let hoy = new Date();
-    let fechaNac = new Date(fechaNacimiento);
-    let edad = hoy.getFullYear() - fechaNac.getFullYear();
-    let mes = hoy.getMonth() - fechaNac.getMonth();
-    if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
-        edad--;
-    }
-    return edad;
-}
-
-// Función para guardar las fichas en el almacenamiento local
+    // Función para guardar las fichas en el almacenamiento local
 function guardarFichasEnStorage() {
     localStorage.setItem("fichas", JSON.stringify(fichas));
     localStorage.setItem("idProgresivo", idProgresivo);
@@ -266,19 +223,53 @@ function guardarFichasEnStorage() {
 // Función para mostrar todas las fichas de pacientes
 function mostrarTodosLosPacientes() {
     limpiarFichasMostradas();
-    if (fichas.length > 0) {
-        fichas.forEach(function (paciente) {
-            mostrarFicha(paciente);
+    if (fichas.length === 0) {
+        mensajeContainer.textContent = "No hay fichas médicas para mostrar";
+    } else {    
+        fichas.forEach(function(ficha) {
+            mostrarFicha(ficha);
         });
-    } else {
-        mensajeContainer.textContent = "No hay pacientes registrados";
     }
+}
+
+// Función para buscar y mostrar una ficha por apellido
+function mostrarFichaPorApellido() {
+    let apellidoBuscar = prompt("Ingrese el apellido del paciente a buscar: ");
+    limpiarFichasMostradas();
+    if (apellidoBuscar) {
+        let pacientesEncontrados = fichas.filter(function (paciente) {
+            return paciente.apellido.toLowerCase() === apellidoBuscar.toLowerCase();
+        });
+        if (pacientesEncontrados.length > 0) {
+            pacientesEncontrados.forEach(function (paciente) {
+                mostrarFicha(paciente);
+            });
+        } else {
+            mensajeContainer.textContent = "No se encontraron pacientes con ese apellido";
+        }
+    } else {
+        mensajeContainer.textContent = "Debe ingresar un apellido para buscar";
+    }
+}
+
+
+// Función para calcular la edad a partir de la fecha de nacimiento
+function calcularEdad(fechaNacimiento) {
+    const HOY = new Date();
+    const cumpleanios = new Date(fechaNacimiento);
+    let edad = HOY.getFullYear() - cumpleanios.getFullYear();
+    const MES = HOY.getMonth() - cumpleanios.getMonth();
+
+    if (MES < 0 || (MES === 0 && hoy.getDate() < fechaNac.getDate())) {
+        edad--;
+    }
+    return edad;
 }
 
 // Función para mostrar una ficha de paciente específica
 function mostrarFicha(paciente) {
     let fichaContainer = document.createElement("div");
-    fichaContainer.classList.add("fichaPaciente");
+    fichaContainer.classList.add("ficha");
 
     let idPaciente = document.createElement("p");
     idPaciente.textContent = `FICHA: ${paciente.id}`;
@@ -310,25 +301,7 @@ function mostrarFicha(paciente) {
     fichasContainer.appendChild(fichaContainer);
 }
 
-// Función para buscar y mostrar una ficha por apellido
-function mostrarFichaPorApellido() {
-    let apellidoBuscar = prompt("Ingrese el apellido del paciente a buscar: ");
-    limpiarFichasMostradas();
-    if (apellidoBuscar) {
-        let pacientesEncontrados = fichas.filter(function (paciente) {
-            return paciente.apellido.toLowerCase() === apellidoBuscar.toLowerCase();
-        });
-        if (pacientesEncontrados.length > 0) {
-            pacientesEncontrados.forEach(function (paciente) {
-                mostrarFicha(paciente);
-            });
-        } else {
-            mensajeContainer.textContent = "No se encontraron pacientes con ese apellido";
-        }
-    } else {
-        mensajeContainer.textContent = "Debe ingresar un apellido para buscar";
-    }
-}
+
 
 // Función para modificar una ficha de paciente
 function modificarFicha() {

@@ -12,6 +12,28 @@ let totalGastosServicios;
 let resultado;
 let historial = "";
 
+document.addEventListener('DOMContentLoaded', function() {
+    let accesoPresupuesto = document.getElementById('accesoPresupuesto');
+    if (accesoPresupuesto) {
+        accesoPresupuesto.addEventListener('click', function() {
+            gestionarPresupuesto();            
+            alert("Historial de saldos:\n" + historial);
+        });
+    } else {
+        console.error('No se encontró el elemento con id "accesoPresupuesto"');
+    }
+
+let accesoFichasMedicas = document.getElementById('accesoFichasMedicas');
+    if (accesoFichasMedicas) {
+        accesoFichasMedicas.addEventListener('click', function() {
+            console.log('Botón de acceso a fichas médicas clickeado');
+            // Aquí iría la lógica para acceder al sistema de fichas médicas
+        });
+    } else {
+        console.error('No se encontró el elemento con id "accesoFichasMedicas"');
+    }
+});
+
 function validarAño() {
     año = prompt("Ingrese el año a calcular: ");
     while (año < 2020 || isNaN(año) || año.toString() !== año) {
