@@ -163,39 +163,39 @@ document.addEventListener("DOMContentLoaded", function () {
         const FORMULARIO = document.createElement("form");
 
         const FIELDS = [
-            <label: for="apellidoPaciente">Apellido del paciente:</label>
+            <label: "apellido del Paciente">Apellido del paciente:</label>
             
-            <label for="nombrePaciente">Nombre del paciente:</label>
+            <label "nombre del Paciente">Nombre del paciente:</label>
             
-            <label for="diagnosticoPaciente">Diagnostico del paciente:</label>
+            <label "diagnostico del Paciente">Diagnostico del paciente:</label>
             
-            <label for="fechaNacimientoPaciente">Fecha de nacimiento del paciente(aaaa-mm-dd):</label>
+            <label "fecha de Nacimiento del Paciente">Fecha de nacimiento del paciente(aaaa-mm-dd):</label>
             
-            <label for="dniPaciente">DNI del paciente (sin puntos):</label>
+            <label "dni del Paciente">DNI del paciente (sin puntos):</label>
             
-            <label for="cudPaciente">Tiene CUD? (si/no):</label>
+            <label "cud del Paciente">Tiene CUD? (si/no):</label>
             
-            <label for="obraSocialPaciente">Obra Social del paciente:</label>
+            <label "Obra Social del Paciente">Obra Social del paciente:</label>
             
-            <label for="domicilioPaciente">Domicilio del paciente:</label>
+            <label "Domicilio del Paciente">Domicilio del paciente:</label>
             
-            <label for="titularObraSocialPaciente">Titular de la Obra Social:</label>
+            <label "Titular de la Obra Social del Paciente">Titular de la Obra Social:</label>
            
-            <label for="numAfiliadoPaciente">Número de afiliado del paciente:</label>
+            <label "Numero de Afiliado del Paciente">Número de afiliado del paciente:</label>
            
-            <label for="escuelaPaciente">Escuela del paciente:</label>
+            <label "Escuela del Paciente">Escuela del paciente:</label>
            
-            <label for="nombreMadrePaciente">Nombre de la madre del paciente:</label>
+            <label "Nombre de la Madre del Paciente">Nombre de la madre del paciente:</label>
            
-            <label for="celularMadrePaciente">Celular de la madre del paciente:</label>
+            <label "Celular de la MadrePaciente">Celular de la madre del paciente:</label>
            
-            <label for="nombrePadrePaciente">Nombre del padre del paciente:</label>
+            <label "Nombre dePadre del Paciente">Nombre del padre del paciente:</label>
            
-            <label for="celularlPadrePaciente">Celular del padre del paciente:</label>
+            <label "Celular del Padre del Paciente">Celular del padre del paciente:</label>
            
-            <label for="neurologoPaciente">Neurólogo del paciente:</label>
+            <label "Nneurologo del Paciente">Neurólogo del paciente:</label>
            
-            <label for="pediatraPaciente">Pediatra del paciente:</label>         
+            <label "Pediatra del Paciente">Pediatra del paciente:</label>         
           
 
 
