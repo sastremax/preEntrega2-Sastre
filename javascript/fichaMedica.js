@@ -164,23 +164,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const FIELDS = [
             { <label: "apellido del Paciente", id: "apellidoPaciente", type: "text" },            
-            { <label: "nombre del Paciente"> id: "nombrePaciente", type: "text" },            
-            { <label: "diagnostico del Paciente"> id: "diagnosticoPaciente", type: "text" },            
-            { <label: "fecha de Nacimiento del Paciente"> id: "fechaNacimientoPaciente", type: "text" },            
-            { <label: "dni del Paciente"> id: "apellidoPaciente", type: "text" },
-            { <label: "cud del Paciente"> id: "apellidoPaciente", type: "text" },            
-            { <label: "Obra Social del Paciente"> id: "apellidoPaciente", type: "text" },            
-            { <label: "Domicilio del Paciente"> id: "apellidoPaciente", type: "text" },            
-            { <label: "Titular de la Obra Social del Paciente"> id: "apellidoPaciente", type: "text" },           
-            { <label: "Numero de Afiliado del Paciente">Número de afiliado del paciente:</label>   },          
-            { <label: "Escuela del Paciente">Escuela del paciente:</label>            }, 
-            { <label: "Nombre de la Madre del Paciente">Nombre de la madre del paciente:</label>  },           
-            { <label: "Celular de la MadrePaciente">Celular de la madre del paciente:</label>   },          
-            { <label: "Nombre dePadre del Paciente">Nombre del padre del paciente:</label>     },        
-            { <label: "Celular del Padre del Paciente">Celular del padre del paciente:</label>  },           
-            { <label: "Nneurologo del Paciente">Neurólogo del paciente:</label>        },     
-            { <label: "Pediatra del Paciente">Pediatra del paciente:</label>        },   
-          
+            { <label: "nombre del Paciente", id: "nombrePaciente", type: "text" },            
+            { <label: "diagnostico del Paciente", id: "diagnosticoPaciente", type: "text" },            
+            { <label: "fecha de Nacimiento del Paciente", id: "fechaNacimientoPaciente", type: "text" },            
+            { <label: "dni del Paciente", id: "dniPaciente", type: "text" },
+            { <label: "cud del Paciente", id: "cudPaciente", type: "text" },            
+            { <label: "Obra Social del Paciente", id: "obraSocialPaciente", type: "text" },            
+            { <label: "Domicilio del Paciente", id: "domicilioPaciente", type: "text" },            
+            { <label: "Titular de la Obra Social del Paciente", id: "titularObraSocialPaciente", type: "text" },           
+            { <label: "Numero de Afiliado del Paciente", id: "numAfiliadoPaciente", type: "text" },          
+            { <label: "Escuela del Paciente", id: "escuelaPaciente", type: "text" }, 
+            { <label: "Nombre de la Madre del Paciente", id:"nombreMadrePaciente", type: "text" },           
+            { <label: "Celular de la MadrePaciente", id:"celularMadrePaciente", type: "number" },          
+            { <label: "Nombre dePadre del Paciente", id:"nombrePadrePaciente"  , type: "text" },        
+            { <label: "Celular del Padre del Paciente", id:"celularPadrePaciente", type: "number" },           
+            { <label: "Nneurologo del Paciente", id:"neurologoPaciente", type: "text" },     
+            { <label: "Pediatra del Paciente", id:"pediatraPaciente", type: "text" }
+        ];  
+
 
 
 
