@@ -163,39 +163,23 @@ document.addEventListener("DOMContentLoaded", function () {
         const FORMULARIO = document.createElement("form");
 
         const FIELDS = [
-            <label: "apellido del Paciente">Apellido del paciente:</label>
-            
-            <label "nombre del Paciente">Nombre del paciente:</label>
-            
-            <label "diagnostico del Paciente">Diagnostico del paciente:</label>
-            
-            <label "fecha de Nacimiento del Paciente">Fecha de nacimiento del paciente(aaaa-mm-dd):</label>
-            
-            <label "dni del Paciente">DNI del paciente (sin puntos):</label>
-            
-            <label "cud del Paciente">Tiene CUD? (si/no):</label>
-            
-            <label "Obra Social del Paciente">Obra Social del paciente:</label>
-            
-            <label "Domicilio del Paciente">Domicilio del paciente:</label>
-            
-            <label "Titular de la Obra Social del Paciente">Titular de la Obra Social:</label>
-           
-            <label "Numero de Afiliado del Paciente">Número de afiliado del paciente:</label>
-           
-            <label "Escuela del Paciente">Escuela del paciente:</label>
-           
-            <label "Nombre de la Madre del Paciente">Nombre de la madre del paciente:</label>
-           
-            <label "Celular de la MadrePaciente">Celular de la madre del paciente:</label>
-           
-            <label "Nombre dePadre del Paciente">Nombre del padre del paciente:</label>
-           
-            <label "Celular del Padre del Paciente">Celular del padre del paciente:</label>
-           
-            <label "Nneurologo del Paciente">Neurólogo del paciente:</label>
-           
-            <label "Pediatra del Paciente">Pediatra del paciente:</label>         
+            { <label: "apellido del Paciente", id: "apellidoPaciente", type: "text" },            
+            { <label: "nombre del Paciente"> id: "nombrePaciente", type: "text" },            
+            { <label: "diagnostico del Paciente"> id: "diagnosticoPaciente", type: "text" },            
+            { <label: "fecha de Nacimiento del Paciente"> id: "fechaNacimientoPaciente", type: "text" },            
+            { <label: "dni del Paciente"> id: "apellidoPaciente", type: "text" },
+            { <label: "cud del Paciente"> id: "apellidoPaciente", type: "text" },            
+            { <label: "Obra Social del Paciente"> id: "apellidoPaciente", type: "text" },            
+            { <label: "Domicilio del Paciente"> id: "apellidoPaciente", type: "text" },            
+            { <label: "Titular de la Obra Social del Paciente"> id: "apellidoPaciente", type: "text" },           
+            { <label: "Numero de Afiliado del Paciente">Número de afiliado del paciente:</label>   },          
+            { <label: "Escuela del Paciente">Escuela del paciente:</label>            }, 
+            { <label: "Nombre de la Madre del Paciente">Nombre de la madre del paciente:</label>  },           
+            { <label: "Celular de la MadrePaciente">Celular de la madre del paciente:</label>   },          
+            { <label: "Nombre dePadre del Paciente">Nombre del padre del paciente:</label>     },        
+            { <label: "Celular del Padre del Paciente">Celular del padre del paciente:</label>  },           
+            { <label: "Nneurologo del Paciente">Neurólogo del paciente:</label>        },     
+            { <label: "Pediatra del Paciente">Pediatra del paciente:</label>        },   
           
 
 
