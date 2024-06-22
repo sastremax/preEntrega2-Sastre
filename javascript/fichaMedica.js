@@ -156,7 +156,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Función para crear una ficha médica a partir de los datos ingresados por el usuario
-    function crearFichaDesdePrompt() {
+    function crearFichaFormulario() {
+        const FICHASCONTAINER = document.getElementById("fichasContaine");
+        fichasContainer.innerHTML = "";
+
+        const FORMULARIO = document.createElement("form");
+
+        const FIELDS = [
+
+
+
+
+
+
+
+            
+        ]
         let apellido = prompt("Ingrese el apellido del paciente: ");
         if (!apellido) {  // Si se cancela el ingreso, retornar null
             return null;
