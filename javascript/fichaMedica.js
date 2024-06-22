@@ -163,14 +163,47 @@ document.addEventListener("DOMContentLoaded", function () {
         const FORMULARIO = document.createElement("form");
 
         const FIELDS = [
-
-
-
-
-
-
-
+            <label: for="apellidoPaciente">Apellido del paciente:</label>
             
+            <label for="nombrePaciente">Nombre del paciente:</label>
+            
+            <label for="diagnosticoPaciente">Diagnostico del paciente:</label>
+            
+            <label for="fechaNacimientoPaciente">Fecha de nacimiento del paciente(aaaa-mm-dd):</label>
+            
+            <label for="dniPaciente">DNI del paciente (sin puntos):</label>
+            
+            <label for="cudPaciente">Tiene CUD? (si/no):</label>
+            
+            <label for="obraSocialPaciente">Obra Social del paciente:</label>
+            
+            <label for="domicilioPaciente">Domicilio del paciente:</label>
+            
+            <label for="titularObraSocialPaciente">Titular de la Obra Social:</label>
+           
+            <label for="numAfiliadoPaciente">Número de afiliado del paciente:</label>
+           
+            <label for="escuelaPaciente">Escuela del paciente:</label>
+           
+            <label for="nombreMadrePaciente">Nombre de la madre del paciente:</label>
+           
+            <label for="celularMadrePaciente">Celular de la madre del paciente:</label>
+           
+            <label for="nombrePadrePaciente">Nombre del padre del paciente:</label>
+           
+            <label for="celularlPadrePaciente">Celular del padre del paciente:</label>
+           
+            <label for="neurologoPaciente">Neurólogo del paciente:</label>
+           
+            <label for="pediatraPaciente">Pediatra del paciente:</label>         
+          
+
+
+
+
+
+
+
         ]
         let apellido = prompt("Ingrese el apellido del paciente: ");
         if (!apellido) {  // Si se cancela el ingreso, retornar null
@@ -450,39 +483,5 @@ function eliminarFicha() {
 
 <form id="fichaMedicaFormulario">
             <h2>Crear una Ficha Medica</h2>
-            <label for="apellidoPaciente">Apellido del paciente:</label>
-            <input type="text" id="apellidoPaciente" name="apellidoPaciente" required>
-            <label for="nombrePaciente">Nombre del paciente:</label>
-            <input type="text" id="nombrePaciente" name="nombrePaciente" required>
-            <label for="diagnosticoPaciente">Diagnostico del paciente:</label>
-            <input type="text" id="diagnosticoPaciente" name="diagnosticoPaciente" required>
-            <label for="fechaNacimientoPaciente">Fecha de nacimiento del paciente(aaaa-mm-dd):</label>
-            <input type="date" id="fechaNacimientoPaciente" name="fechaNacimientoPaciente" required>            
-            <label for="dniPaciente">DNI del paciente (sin puntos):</label>
-            <input type="number" id="dniPaciente" name="dniPaciente" required>
-            <label for="cudPaciente">Tiene CUD? (si/no):</label>
-            <input type="text" id="cudPaciente" name="cudPaciente" required>
-            <label for="obraSocialPaciente">Obra Social del paciente:</label>
-            <input type="text" id="obraSocialPaciente" name="obraSocialPaciente" required>
-            <label for="domicilioPaciente">Domicilio del paciente:</label>
-            <input type="text" id="domicilioPaciente" name="domicilioPaciente" required>
-            <label for="titularObraSocialPaciente">Titular de la Obra Social:</label>
-            <input type="text" id="titularObraSocialPaciente" name="titularObraSocialPaciente" required>
-            <label for="numAfiliadoPaciente">Número de afiliado del paciente:</label>
-            <input type="text" id="numAfiliadoPaciente" name="numAfiliadoPaciente" required>
-            <label for="escuelaPaciente">Escuela del paciente:</label>
-            <input type="text" id="escuelaPaciente" name="escuelaPaciente" required>
-            <label for="nombreMadrePaciente">Nombre de la madre del paciente:</label>
-            <input type="text" id="nombreMadrePaciente" name="nombreMadrePaciente" required>
-            <label for="celularMadrePaciente">Celular de la madre del paciente:</label>
-            <input type="number" id="celularMadrePaciente" name="celularMadrePaciente" required>
-            <label for="nombrePadrePaciente">Nombre del padre del paciente:</label>
-            <input type="text" id="nombrePadrePaciente" name="nombrePadrePaciente" required>
-            <label for="celularlPadrePaciente">Celular del padre del paciente:</label>
-            <input type="number" id="celularlPadrePaciente" name="celularlPadrePaciente" required>
-            <label for="neurologoPaciente">Neurólogo del paciente:</label>
-            <input type="text" id="neurologoPaciente" name="neurologoPaciente" required>
-            <label for="pediatraPaciente">Pediatra del paciente:</label>
-            <input type="text" id="pediatraPaciente" name="pediatraPaciente" required>
-            <button type="submit">Crear Ficha</button>
+            
           </form>
