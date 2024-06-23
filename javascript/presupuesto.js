@@ -37,24 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
         } while (respuesta === "si" || respuesta === "s");
     }
 
-    // Función para crear el botón de acceso al presupuesto
-    function crearBotonPresupuesto(contenedor) {
-        let presupuestoRecuadro = document.createElement('div');
-        presupuestoRecuadro.classList.add('recuadro', 'presupuesto');
-        let presupuestoTitulo = document.createElement('p');
-        presupuestoTitulo.textContent = "Presupuesto";
-        let presupuestoBoton = document.createElement('button');
-        presupuestoBoton.textContent = "Calcular Presupuesto";
-        presupuestoBoton.addEventListener('click', function () {
-            gestionarPresupuesto();
-            alert("Historial de saldos:\n" + historial)
-        });
 
-        presupuestoRecuadro.appendChild(presupuestoTitulo);
-        presupuestoRecuadro.appendChild(presupuestoBoton);
-        contenedor.appendChild(presupuestoRecuadro);
-    }
-
+    
 // Obtener el contenedor de recuadros
     let contenedorRecuadros =document.querySelector('.contenedor-recuadros');
     if (contenedorRecuadros) {

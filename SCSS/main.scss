@@ -288,8 +288,13 @@ video {
     }
 }
 
+.recuadro.presupuesto {
+
+
+}
+
 .recuadro.presupuesto p {
-    font-size: 14px; 
+    font-size: 14px;     
 }
 
 .fichaPaciente > :first-child {
@@ -1461,7 +1466,7 @@ sec .row-about {
 
 /* Estilos para los contenedores de fichas */
 .fichas-container {
-    margin: 20px 0;
+    margin: 40px 0;
 }
 
 .ficha {
@@ -1469,7 +1474,7 @@ sec .row-about {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
 }
 
 .ficha h3 {

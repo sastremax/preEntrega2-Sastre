@@ -40,6 +40,18 @@ document.addEventListener("DOMContentLoaded", function () {
         // Agregar la segunda fila al contenedor principal
         contenedorRecuadros.appendChild(segundaFila);
 
+        // Crear contenedor para la tercera fila de botones
+        let terceraFila = document.createElement('div');
+        terceraFila.classList.add('fila-botones');
+
+        // Crear botones para la tercera fila
+
+        crearBotonPresupuesto(terceraFila);
+
+        // Agregar la tercera fila al contenedor principal
+        contenedorRecuadros.appendChild(terceraFila);
+
+
         // Crear contenedor para las fichas de pacientes
         let contenedorFichas = document.createElement('div');
         contenedorFichas.classList.add('contenedor-fichas');
@@ -139,6 +151,23 @@ document.addEventListener("DOMContentLoaded", function () {
         modificarEliminarRecuadro.appendChild(separador);
         modificarEliminarRecuadro.appendChild(eliminarFichaBoton);
         contenedor.appendChild(modificarEliminarRecuadro);
+    }
+
+    function crearBotonPresupuesto(contenedor) {
+        let presupuestoRecuadro = document.createElement('div');
+        presupuestoRecuadro.classList.add('recuadro', 'presupuesto');
+        let presupuestoTitulo = document.createElement('p');
+        presupuestoTitulo.textContent = "Presupuesto";
+        let presupuestoBoton = document.createElement('button');
+        presupuestoBoton.textContent = "Calcular Presupuesto";
+        presupuestoBoton.addEventListener('click', function () {
+            gestionarPresupuesto();
+            alert("Historial de saldos:\n" + historial)
+        });
+
+        presupuestoRecuadro.appendChild(presupuestoTitulo);
+        presupuestoRecuadro.appendChild(presupuestoBoton);
+        contenedor.appendChild(presupuestoRecuadro);
     }
 
 
@@ -253,7 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
         idProgresivo++;
         localStorage.setItem("fichas", JSON.stringify(fichas));
         localStorage.setItem("idProgresivo", idProgresivo.toString());
-        mensajeContainer.textContent = "Ficha guardada con exito";
+        alert = "Ficha guardada con exito";
         formulario.reset();
     }
 
