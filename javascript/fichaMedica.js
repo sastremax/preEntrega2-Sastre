@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función principal para inicializar la página
     function inicializarPagina() {
         crearBotones();
-        
     }
+
 
     // Función para crear los botones dinámicamente
     function crearBotones() {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         contenedorRecuadros.appendChild(contenedorFichas);
     }
 
-    
+
     // Función para crear botón de Pacientes nuevos
     function crearBotonPacientesNuevos(contenedor) {
         let pacientesRecuadro = document.createElement('div');
@@ -55,13 +55,14 @@ document.addEventListener("DOMContentLoaded", function () {
         let agregarFichaBoton = document.createElement('button');
         agregarFichaBoton.textContent = "Agregar Ficha";
         agregarFichaBoton.addEventListener('click', function () {
-            agregarFicha();
+            mostrarFormulario();
         });
         pacientesRecuadro.appendChild(pacientesTitulo);
         pacientesRecuadro.appendChild(agregarFichaBoton);
         contenedor.appendChild(pacientesRecuadro);
         return agregarFichaBoton;
     }
+
 
     // Función para crear botón de Búsqueda de fichas
     function crearBotonBuscarFicha(contenedor) {
@@ -79,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         contenedor.appendChild(buscarRecuadro);
     }
 
+
     // Función para crear botón de Listado de Pacientes
     function crearBotonListadoPacientes(contenedor) {
         let listadoRecuadro = document.createElement('div');
@@ -94,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
         listadoRecuadro.appendChild(accesoListadoPacientesBoton);
         contenedor.appendChild(listadoRecuadro);
     }
+
 
     // Función para crear botón de Limpiar
     function crearBotonLimpiar(contenedor) {
@@ -111,11 +114,11 @@ document.addEventListener("DOMContentLoaded", function () {
         contenedor.appendChild(limpiarBoton);
     }
 
+
     // Función para crear botones de Modificar y Eliminar
     function crearBotonesModificarEliminar(contenedor) {
         let modificarEliminarRecuadro = document.createElement('div');
         modificarEliminarRecuadro.classList.add('recuadro', 'modificar-eliminar');
-
         let modificarFichaBoton = document.createElement('button');
         modificarFichaBoton.textContent = "Modificar Ficha";
         modificarFichaBoton.addEventListener('click', function () {
@@ -131,12 +134,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // Separación visual entre los botones
         let separador = document.createElement('span');
         separador.textContent = "|";
-
         modificarEliminarRecuadro.appendChild(modificarFichaBoton);
         modificarEliminarRecuadro.appendChild(separador);
         modificarEliminarRecuadro.appendChild(eliminarFichaBoton);
         contenedor.appendChild(modificarEliminarRecuadro);
     }
+
 
     // Función para limpiar las fichas mostradas
     function limpiarFichasMostradas() {
@@ -144,6 +147,8 @@ document.addEventListener("DOMContentLoaded", function () {
         mensajeContainer.textContent = "";
     }
 
+
+    // Función para mostrar el formulario dinamicamente
     function mostrarFormulario() {
         formulario.innerHTML = `
         <h2>Crear una Ficha Médica</h2>
@@ -185,215 +190,123 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasEnStorage)
 
-    // Función para agregar una nueva ficha médica desde el formulario
-    function guardarFichadesdeFormulario() {
-        let apellido = document.getElementById("apellidoPaciente").value;
-        let nombre = document.getElementById("nombrePaciente").value;
-        let diagnostico = document.getElementById("diagnosticoPaciente").value;
-        let fechaNacimiento = document.getElementById("fechaNacimientoPaciente").value;
-        let dni = document.getElementById("dniPaciente").value;
-        let cud = document.getElementById("cudPaciente").value;
-        let obraSocial = document.getElementById("obraSocialPaciente").value;
-        let domicilio = document.getElementById("domicilioPaciente").value;
-        let titularObraSocial = document.getElementById("titularObraSocialPaciente").value;
-        let numAfiliado = document.getElementById("numAfiliadoPaciente").value;
-        let escuela = document.getElementById("escuelaPaciente").value;
-        let nombreMadre = document.getElementById("nombreMadrePaciente").value;
-        let celularMadre = document.getElementById("celularMadrePaciente").value;
-        let nombrePadre = document.getElementById("nombrePadrePaciente").value;
-        let celularPadre = document.getElementById("celularPadrePaciente").value;
-        let neurologo = document.getElementById("neurologoPaciente").value;
-        let pediatra = document.getElementById("pediatraPaciente").value;
 
-        let ficha = {
-            id: idProgresivo,
-            apellido: apellido,
-            nombre: nombre,
-            diagnostico: diagnostico,
-            fechaNacimiento: fechaNacimiento,
-            dni: dni,
-            cud: cud,
-            obraSocial: obraSocial,
-            domicilio: domicilio,
-            titularObraSocial: titularObraSocial,
-            numAfiliado: numAfiliado,
-            escuela: escuela,
-            nombreMadre: nombreMadre,
-            celularMadre: celularMadre,
-            nombrePadre: nombrePadre,
-            celularPadre: celularPadre,
-            neurologo: neurologo,
-            pediatra: pediatra
-        };
-        fichas.push(ficha);
-        idProgresivo++;
-        localStorage.setItem("fichas", JSON.stringify(fichas));
-        localStorage.setItem("idProgresivo", idProgresivo.toString());
-        mensajeContainer.textContent = "Ficha guardada con exito";
-        formulario.innerHTML = "";        
-    }
+        // Función para agregar una nueva ficha médica desde el formulario
+        function guardarFichadesdeFormulario() {
+            let apellido = document.getElementById("apellidoPaciente").value;
+            let nombre = document.getElementById("nombrePaciente").value;
+            let diagnostico = document.getElementById("diagnosticoPaciente").value;
+            let fechaNacimiento = document.getElementById("fechaNacimientoPaciente").value;
+            let dni = document.getElementById("dniPaciente").value;
+            let cud = document.getElementById("cudPaciente").value;
+            let obraSocial = document.getElementById("obraSocialPaciente").value;
+            let domicilio = document.getElementById("domicilioPaciente").value;
+            let titularObraSocial = document.getElementById("titularObraSocialPaciente").value;
+            let numAfiliado = document.getElementById("numAfiliadoPaciente").value;
+            let escuela = document.getElementById("escuelaPaciente").value;
+            let nombreMadre = document.getElementById("nombreMadrePaciente").value;
+            let celularMadre = document.getElementById("celularMadrePaciente").value;
+            let nombrePadre = document.getElementById("nombrePadrePaciente").value;
+            let celularPadre = document.getElementById("celularPadrePaciente").value;
+            let neurologo = document.getElementById("neurologoPaciente").value;
+            let pediatra = document.getElementById("pediatraPaciente").value;
 
-
-
-
-
-
-
-
-    // Función para crear una ficha médica a partir de los datos ingresados por el usuario
-    function crearFichaFormulario() {
-        const FICHASCONTAINER = document.getElementById("fichasContaine");
-        fichasContainer.innerHTML = "";
-
-        const FORMULARIO = document.createElement("form");
-
-        const FIELDS = [
-            { <label: "apellido del Paciente", id: "apellidoPaciente", type: "text" },            
-            { <label: "nombre del Paciente", id: "nombrePaciente", type: "text" },            
-            { <label: "diagnostico del Paciente", id: "diagnosticoPaciente", type: "text" },            
-            { <label: "fecha de Nacimiento del Paciente", id: "fechaNacimientoPaciente", type: "text" },            
-            { <label: "dni del Paciente", id: "dniPaciente", type: "text" },
-            { <label: "cud del Paciente", id: "cudPaciente", type: "text" },            
-            { <label: "Obra Social del Paciente", id: "obraSocialPaciente", type: "text" },            
-            { <label: "Domicilio del Paciente", id: "domicilioPaciente", type: "text" },            
-            { <label: "Titular de la Obra Social del Paciente", id: "titularObraSocialPaciente", type: "text" },           
-            { <label: "Numero de Afiliado del Paciente", id: "numAfiliadoPaciente", type: "text" },          
-            { <label: "Escuela del Paciente", id: "escuelaPaciente", type: "text" }, 
-            { <label: "Nombre de la Madre del Paciente", id:"nombreMadrePaciente", type: "text" },           
-            { <label: "Celular de la MadrePaciente", id:"celularMadrePaciente", type: "number" },          
-            { <label: "Nombre dePadre del Paciente", id:"nombrePadrePaciente"  , type: "text" },        
-            { <label: "Celular del Padre del Paciente", id:"celularPadrePaciente", type: "number" },           
-            { <label: "Nneurologo del Paciente", id:"neurologoPaciente", type: "text" },     
-            { <label: "Pediatra del Paciente", id:"pediatraPaciente", type: "text" }
-        ];  
-        FIELDS.forEach(field => {
-            const LABEL = document.createElement("label");
-            label.htmlFor = field.id;
-            input.type = field.type;
-            input.id = field.id;
-
-
+            let ficha = {
+                id: idProgresivo,
+                apellido: apellido,
+                nombre: nombre,
+                diagnostico: diagnostico,
+                fechaNacimiento: fechaNacimiento,
+                dni: dni,
+                cud: cud,
+                obraSocial: obraSocial,
+                domicilio: domicilio,
+                titularObraSocial: titularObraSocial,
+                numAfiliado: numAfiliado,
+                escuela: escuela,
+                nombreMadre: nombreMadre,
+                celularMadre: celularMadre,
+                nombrePadre: nombrePadre,
+                celularPadre: celularPadre,
+                neurologo: neurologo,
+                pediatra: pediatra
+            };
+            fichas.push(ficha);
+            idProgresivo++;
+            localStorage.setItem("fichas", JSON.stringify(fichas));
+            localStorage.setItem("idProgresivo", idProgresivo.toString());
+            mensajeContainer.textContent = "Ficha guardada con exito";
+            formulario.innerHTML = "";
         }
 
-        )
 
-
-
-
-
-
-
-
-        ]
-        let apellido = prompt("Ingrese el apellido del paciente: ");
-        if (!apellido) {  // Si se cancela el ingreso, retornar null
-            return null;
+        // Función para guardar las fichas en el almacenamiento local
+        function guardarFichasEnStorage() {
+            localStorage.setItem("fichas", JSON.stringify(fichas));
+            localStorage.setItem("idProgresivo", idProgresivo);
         }
-        let nombre = prompt("Ingrese el nombre del paciente: ");
-        let diagnostico = prompt("Ingrese el diagnóstico del paciente: ");
-        let fechaNacimiento = prompt("Ingrese la fecha de nacimiento del paciente (YYYY-MM-DD): ");
-        let edad = calcularEdad(fechaNacimiento);
-        let dni = parseInt(prompt("Ingrese el DNI del paciente (sin puntos): "));
-        let cud = prompt("El paciente tiene CUD? (si/no)");
-        let obraSocial = prompt("Ingrese la obra social del paciente: ");
-        let domicilio = prompt("Ingrese el domicilio del paciente: ")
-        let titularObraSocial = prompt("Ingrese el nombre del titular de la obra social del paciente: ");
-        let numeroAfiliado = prompt("Ingrese el número de afiliado del paciente: ");
-        let escuela = prompt("Ingrese el nombre de la escuela del paciente: ");
-        let mama = prompt("Ingrese el apellido y nombre de la madre del paciente: ");
-        let celularMama = prompt("Ingrese el número de celular de la madre del paciente (si no lo sabe, escriba 'no lo se'): ");
-        let papa = prompt("Ingrese el apellido y nombre del padre del paciente: ");
-        let celularPapa = prompt("Ingrese el número de celular del padre del paciente (si no lo sabe, escriba 'no lo se'): ");
-        let neurologo = prompt("Ingrese el nombre del neurologo del paciente (si no lo sabe, escriba 'no lo se'): ");
-        let pediatra = prompt("Ingrese el nombre del pediatra del paciente (si no lo sabe, escriba 'no lo se'): ");
 
-        let nuevaFicha = {
-            id: idProgresivo++,
-            apellido,
-            nombre,
-            diagnostico,
-            fechaNacimiento,
-            edad,
-            dni,
-            cud,
-            obraSocial,
-            domicilio,
-            titularObraSocial,
-            numeroAfiliado,
-            escuela,
-            mama,
-            celularMama,
-            papa,
-            celularPapa,
-            neurologo,
-            pediatra,
-        };        
-        return nuevaFicha;
-    }    
 
-    // Función para guardar las fichas en el almacenamiento local
-function guardarFichasEnStorage() {
-    localStorage.setItem("fichas", JSON.stringify(fichas));
-    localStorage.setItem("idProgresivo", idProgresivo);
-}
-
-// Función para mostrar todas las fichas de pacientes
-function mostrarTodosLosPacientes() {
-    limpiarFichasMostradas();
-    if (fichas.length === 0) {
-        mensajeContainer.textContent = "No hay fichas médicas para mostrar";
-    } else {    
-        fichas.forEach(function(ficha) {
-            mostrarFicha(ficha);
-        });
-    }
-}
-
-// Función para buscar y mostrar una ficha por apellido
-function mostrarFichaPorApellido() {
-    let apellidoBuscar = prompt("Ingrese el apellido del paciente a buscar: ");
-    limpiarFichasMostradas();
-    if (apellidoBuscar) {
-        let pacientesEncontrados = fichas.filter(function (paciente) {
-            return paciente.apellido.toLowerCase() === apellidoBuscar.toLowerCase();
-        });
-        if (pacientesEncontrados.length > 0) {
-            pacientesEncontrados.forEach(function (paciente) {
-                mostrarFicha(paciente);
-            });
-        } else {
-            mensajeContainer.textContent = "No se encontraron pacientes con ese apellido";
+        // Función para mostrar todas las fichas de pacientes
+        function mostrarTodosLosPacientes() {
+            limpiarFichasMostradas();
+            if (fichas.length === 0) {
+                mensajeContainer.textContent = "No hay fichas médicas para mostrar";
+            } else {
+                fichas.forEach(function (ficha) {
+                    mostrarFicha(ficha);
+                });
+            }
         }
-    } else {
-        mensajeContainer.textContent = "Debe ingresar un apellido para buscar";
-    }
-}
 
 
-// Función para calcular la edad a partir de la fecha de nacimiento
-function calcularEdad(fechaNacimiento) {
-    const HOY = new Date();
-    const cumpleanios = new Date(fechaNacimiento);
-    let edad = HOY.getFullYear() - cumpleanios.getFullYear();
-    const MES = HOY.getMonth() - cumpleanios.getMonth();
+        // Función para buscar y mostrar una ficha por apellido
+        function mostrarFichaPorApellido() {
+            limpiarFichasMostradas();
+            let apellidoBuscar = prompt("Ingrese el apellido del paciente a buscar: ");
+            limpiarFichasMostradas();
+            if (apellidoBuscar) {
+                let pacientesEncontrados = fichas.filter(function (paciente) {
+                    return paciente.apellido.toLowerCase() === apellidoBuscar.toLowerCase();
+                });
+                if (pacientesEncontrados.length > 0) {
+                    pacientesEncontrados.forEach(function (paciente) {
+                        mostrarFicha(paciente);
+                    });
+                } else {
+                    mensajeContainer.textContent = "No se encontraron pacientes con ese apellido";
+                }
+            } else {
+                mensajeContainer.textContent = "Debe ingresar un apellido para buscar";
+            }
+        }
 
-    if (MES < 0 || (MES === 0 && hoy.getDate() < fechaNac.getDate())) {
-        edad--;
-    }
-    return edad;
-}
 
-// Función para mostrar una ficha de paciente específica
-function mostrarFicha(paciente) {
-    let fichaContainer = document.createElement("div");
-    fichaContainer.classList.add("ficha");
+        // Función para calcular la edad a partir de la fecha de nacimiento
+        function calcularEdad(fechaNacimiento) {
+            const HOY = new Date();
+            const cumpleanios = new Date(fechaNacimiento);
+            let edad = HOY.getFullYear() - cumpleanios.getFullYear();
+            const MES = HOY.getMonth() - cumpleanios.getMonth();
 
-    let idPaciente = document.createElement("p");
-    idPaciente.textContent = `FICHA: ${paciente.id}`;
-    fichaContainer.appendChild(idPaciente);
+            if (MES < 0 || (MES === 0 && hoy.getDate() < fechaNac.getDate())) {
+                edad--;
+            }
+            return edad;
+        }
 
-    let datosPaciente = document.createElement("div");
-    datosPaciente.innerHTML = `
+        // Función para mostrar una ficha de paciente específica
+        function mostrarFicha(paciente) {
+            let fichaContainer = document.createElement("div");
+            fichaContainer.classList.add("ficha");
+
+            let idPaciente = document.createElement("p");
+            idPaciente.textContent = `FICHA: ${paciente.id}`;
+            fichaContainer.appendChild(idPaciente);
+
+            let datosPaciente = document.createElement("div");
+            datosPaciente.innerHTML = `
+            <p>FICHA: <strong>${paciente.id.toUpperCase()}</strong></p>
             <p>Apellido: <strong>${paciente.apellido.toUpperCase()}</strong></p>            
             <p>Nombre: <strong>${paciente.nombre}</strong></p>
             <p>Diagnóstico: <strong>${paciente.diagnostico}</strong></p>
@@ -413,150 +326,153 @@ function mostrarFicha(paciente) {
             <p>Neurólogo: <strong>${paciente.neurologo}</strong></p>
             <p>Pediatra: <strong>${paciente.pediatra}</strong></p>            
         `;
-    fichaContainer.appendChild(datosPaciente);
+            fichaContainer.appendChild(datosPaciente);
 
-    // Agregar la ficha al contenedor de fichas
-    fichasContainer.appendChild(fichaContainer);
-}
-
-
-
-// Función para modificar una ficha de paciente
-function modificarFicha() {
-    // Solicitar al usuario el ID del paciente a modificar
-    let idModificar = parseInt(prompt("Ingrese el número de FICHA del paciente a modificar: "));
-
-    // Validar si el ID ingresado es válido
-    if (!idModificar || isNaN(idModificar)) {
-        mensajeContainer.textContent = "Debe ingresar un número de FICHA válido";
-        return;
-    }
-
-    // Buscar al paciente por su ID en el array 'fichas'
-    let pacienteEncontrado = fichas.find(function (paciente) {
-        return paciente.id === idModificar;
-    });
-
-    // Si se encontró al paciente
-    if (pacienteEncontrado) {
-        // Mostrar mensaje de confirmación
-        mensajeContainer.textContent = `Modificando ficha del paciente: ${idModificar}`;
-
-        // Solicitar al usuario qué campo desea modificar
-        let campoModificar = prompt(`Qué campo desea modificar para el paciente: ${pacienteEncontrado.apellido}? (apellido/nombre/diagnostico/fechaNacimiento/edad/dni/cud/obraSocial/titularObraSocial/numeroAfiliado/escuela/mama/celularMama/papa/celularPapa/neurologo/pediatra)`);
-
-        // Validar la respuesta del usuario
-        if (!campoModificar) {
-            mensajeContainer.textContent = "Debe ingresar un campo válido para modificar";
-            return;
+            // Agregar la ficha al contenedor de fichas
+            fichasContainer.appendChild(fichaContainer);
         }
 
-        switch (campoModificar) {
-            case "apellido":
-                pacienteEncontrado.apellido = prompt(`Modificar apellido (actual: ${pacienteEncontrado.apellido}):`);
-                break;
-            case "nombre":
-                pacienteEncontrado.nombre = prompt(`Modificar nombre (actual: ${pacienteEncontrado.nombre}):`);
-                break;
-            case "diagnostico":
-                pacienteEncontrado.diagnostico = prompt(`Modificar diagnóstico (actual: ${pacienteEncontrado.diagnostico}):`);
-                break;
-            case "fechaNacimiento":
-                pacienteEncontrado.fechaNacimiento = prompt(`Modificar fecha de nacimiento (actual: ${pacienteEncontrado.fechaNacimiento}):`);
-                break;
-            case "edad":
-                pacienteEncontrado.edad = parseInt(prompt(`Modificar edad (actual: ${pacienteEncontrado.edad}):`));
-                break;
-            case "dni":
-                pacienteEncontrado.dni = prompt(`Modificar DNI (actual: ${pacienteEncontrado.dni}):`);
-                break;
-            case "cud":
-                pacienteEncontrado.cud = prompt(`Modificar CUD (actual: ${pacienteEncontrado.cud}):`);
-                break;
-            case "obraSocial":
-                pacienteEncontrado.obraSocial = prompt(`Modificar obra social (actual: ${pacienteEncontrado.obraSocial}):`);
-                break;
-            case "domicilio":
-                pacienteEncontrado.domicilio = prompt(`Modificar domicilio (actual: ${pacienteEncontrado.domicilio}):`);
-                    break;    
-            case "titularObraSocial":
-                pacienteEncontrado.titularObraSocial = prompt(`Modificar titular de obra social (actual: ${pacienteEncontrado.titularObraSocial}):`);
-                break;
-            case "numeroAfiliado":
-                pacienteEncontrado.numeroAfiliado = prompt(`Modificar número de afiliado (actual: ${pacienteEncontrado.numeroAfiliado}):`);
-                break;
-            case "escuela":
-                pacienteEncontrado.escuela = prompt(`Modificar escuela (actual: ${pacienteEncontrado.escuela}):`);
-                break;
-            case "mama":
-                pacienteEncontrado.mama = prompt(`Modificar nombre de la madre (actual: ${pacienteEncontrado.mama}):`);
-                break;
-            case "celularMama":
-                pacienteEncontrado.celularMama = prompt(`Modificar celular de la madre (actual: ${pacienteEncontrado.celularMama}):`);
-                break;
-            case "papa":
-                pacienteEncontrado.papa = prompt(`Modificar nombre del padre (actual: ${pacienteEncontrado.papa}):`);
-                break;
-            case "celularPapa":
-                pacienteEncontrado.celularPapa = prompt(`Modificar celular del padre (actual: ${pacienteEncontrado.celularPapa}):`);
-                break;
-            case "neurologo":
-                pacienteEncontrado.neurologo = prompt(`Modificar neurólogo (actual: ${pacienteEncontrado.neurologo}):`);
-                break;
-            case "pediatra":
-                pacienteEncontrado.pediatra = prompt(`Modificar pediatra (actual: ${pacienteEncontrado.pediatra}):`);
-                break;
-            default:
-                mensajeContainer.textContent = "Campo inválido";
+
+        // Función para modificar una ficha de paciente
+        function modificarFicha() {
+            // Solicitar al usuario el ID del paciente a modificar
+            let idModificar = parseInt(prompt("Ingrese el número de FICHA del paciente a modificar: "));
+
+            // Validar si el ID ingresado es válido
+            if (!idModificar || isNaN(idModificar)) {
+                mensajeContainer.textContent = "Debe ingresar un número de FICHA válido";
                 return;
+            }
+
+            // Buscar al paciente por su ID en el array 'fichas'
+            let pacienteEncontrado = fichas.find(function (paciente) {
+                return paciente.id === idModificar;
+            });
+
+            // Si se encontró al paciente
+            if (pacienteEncontrado) {
+                // Mostrar mensaje de confirmación
+                mensajeContainer.textContent = `Modificando ficha del paciente: ${idModificar}`;
+
+                // Solicitar al usuario qué campo desea modificar
+                let campoModificar = prompt(`Qué campo desea modificar para el paciente: ${pacienteEncontrado.apellido}? (apellido/nombre/diagnostico/fechaNacimiento/edad/dni/cud/obraSocial/titularObraSocial/numeroAfiliado/escuela/mama/celularMama/papa/celularPapa/neurologo/pediatra)`);
+
+                // Validar la respuesta del usuario
+                if (!campoModificar) {
+                    mensajeContainer.textContent = "Debe ingresar un campo válido para modificar";
+                    return;
+                }
+
+                switch (campoModificar) {
+                    case "apellido":
+                        pacienteEncontrado.apellido = prompt(`Modificar apellido (actual: ${pacienteEncontrado.apellido}):`);
+                        break;
+                    case "nombre":
+                        pacienteEncontrado.nombre = prompt(`Modificar nombre (actual: ${pacienteEncontrado.nombre}):`);
+                        break;
+                    case "diagnostico":
+                        pacienteEncontrado.diagnostico = prompt(`Modificar diagnóstico (actual: ${pacienteEncontrado.diagnostico}):`);
+                        break;
+                    case "fechaNacimiento":
+                        pacienteEncontrado.fechaNacimiento = prompt(`Modificar fecha de nacimiento (actual: ${pacienteEncontrado.fechaNacimiento}):`);
+                        break;
+                    case "edad":
+                        pacienteEncontrado.edad = parseInt(prompt(`Modificar edad (actual: ${pacienteEncontrado.edad}):`));
+                        break;
+                    case "dni":
+                        pacienteEncontrado.dni = prompt(`Modificar DNI (actual: ${pacienteEncontrado.dni}):`);
+                        break;
+                    case "cud":
+                        pacienteEncontrado.cud = prompt(`Modificar CUD (actual: ${pacienteEncontrado.cud}):`);
+                        break;
+                    case "obraSocial":
+                        pacienteEncontrado.obraSocial = prompt(`Modificar obra social (actual: ${pacienteEncontrado.obraSocial}):`);
+                        break;
+                    case "domicilio":
+                        pacienteEncontrado.domicilio = prompt(`Modificar domicilio (actual: ${pacienteEncontrado.domicilio}):`);
+                        break;
+                    case "titularObraSocial":
+                        pacienteEncontrado.titularObraSocial = prompt(`Modificar titular de obra social (actual: ${pacienteEncontrado.titularObraSocial}):`);
+                        break;
+                    case "numeroAfiliado":
+                        pacienteEncontrado.numeroAfiliado = prompt(`Modificar número de afiliado (actual: ${pacienteEncontrado.numeroAfiliado}):`);
+                        break;
+                    case "escuela":
+                        pacienteEncontrado.escuela = prompt(`Modificar escuela (actual: ${pacienteEncontrado.escuela}):`);
+                        break;
+                    case "mama":
+                        pacienteEncontrado.mama = prompt(`Modificar nombre de la madre (actual: ${pacienteEncontrado.mama}):`);
+                        break;
+                    case "celularMama":
+                        pacienteEncontrado.celularMama = prompt(`Modificar celular de la madre (actual: ${pacienteEncontrado.celularMama}):`);
+                        break;
+                    case "papa":
+                        pacienteEncontrado.papa = prompt(`Modificar nombre del padre (actual: ${pacienteEncontrado.papa}):`);
+                        break;
+                    case "celularPapa":
+                        pacienteEncontrado.celularPapa = prompt(`Modificar celular del padre (actual: ${pacienteEncontrado.celularPapa}):`);
+                        break;
+                    case "neurologo":
+                        pacienteEncontrado.neurologo = prompt(`Modificar neurólogo (actual: ${pacienteEncontrado.neurologo}):`);
+                        break;
+                    case "pediatra":
+                        pacienteEncontrado.pediatra = prompt(`Modificar pediatra (actual: ${pacienteEncontrado.pediatra}):`);
+                        break;
+                    default:
+                        mensajeContainer.textContent = "Campo inválido";
+                        return;
+                }
+
+                // Guardar las fichas actualizadas en el localStorage
+                guardarFichasEnStorage();
+
+                // Actualizar la interfaz llamando a mostrarTodosLosPacientes()
+                mostrarTodosLosPacientes(); // Esta función debería reflejar los cambios realizados
+            } else {
+                // Si no se encontró al paciente, mostrar mensaje de error
+                mensajeContainer.textContent = `No se encontró ningún paciente con la ficha # ${idModificar}`;
+            }
         }
 
-        // Guardar las fichas actualizadas en el localStorage
-        guardarFichasEnStorage();
 
-        // Actualizar la interfaz llamando a mostrarTodosLosPacientes()
-        mostrarTodosLosPacientes(); // Esta función debería reflejar los cambios realizados
-    } else {
-        // Si no se encontró al paciente, mostrar mensaje de error
-        mensajeContainer.textContent = `No se encontró ningún paciente con la ficha # ${idModificar}`;
-    }
-}
+        // Función para eliminar una ficha de paciente
+        function eliminarFicha() {
+            // Solicitar al usuario el ID del paciente a eliminar
+            let idEliminar = parseInt(prompt("Ingrese el número de la ficha del paciente a eliminar: "));
 
-// Función para eliminar una ficha de paciente
-function eliminarFicha() {
-    // Solicitar al usuario el ID del paciente a eliminar
-    let idEliminar = parseInt(prompt("Ingrese el número de la ficha del paciente a eliminar: "));
+            // Validar si el ID ingresado es válido
+            if (!idEliminar || isNaN(idEliminar)) {
+                mensajeContainer.textContent = "Debe ingresar un número de FICHA válido";
+                return;
+            }
 
-    // Validar si el ID ingresado es válido
-    if (!idEliminar || isNaN(idEliminar)) {
-        mensajeContainer.textContent = "Debe ingresar un número de FICHA válido";
-        return;
-    }
+            // Buscar al paciente por su ID en el array 'fichas'
+            let indiceEliminar = fichas.findIndex(function (paciente) {
+                return paciente.id === idEliminar;
+            });
 
-    // Buscar al paciente por su ID en el array 'fichas'
-    let indiceEliminar = fichas.findIndex(function (paciente) {
-        return paciente.id === idEliminar;
-    });
+            // Si se encontró al paciente
+            if (indiceEliminar !== -1) {
 
-    // Si se encontró al paciente
-    if (indiceEliminar !== -1) {
+                fichas.splice(indiceEliminar, 1);
 
-        fichas.splice(indiceEliminar, 1);
+                // Guardar las fichas actualizadas en el localStorage
+                guardarFichasEnStorage();
 
-        // Guardar las fichas actualizadas en el localStorage
-        guardarFichasEnStorage();
+                // Mostrar mensaje de confirmación
+                mensajeContainer.textContent = `Se eliminó la ficha del paciente número: ${idEliminar}`;
 
-        // Mostrar mensaje de confirmación
-        mensajeContainer.textContent = `Se eliminó la ficha del paciente número: ${idEliminar}`;
-
-        // Actualizar la interfaz llamando a mostrarTodosLosPacientes()
-        mostrarTodosLosPacientes(); // Esta función debería reflejar la eliminación realizada
-    } else {
-        // Si no se encontró al paciente, mostrar mensaje de error
-        mensajeContainer.textContent = `No se encontró ningún paciente con la ficha: ${idEliminar}`;
+                // Actualizar la interfaz llamando a mostrarTodosLosPacientes()
+                mostrarTodosLosPacientes(); // Esta función debería reflejar la eliminación realizada
+            } else {
+                // Si no se encontró al paciente, mostrar mensaje de error
+                mensajeContainer.textContent = `No se encontró ningún paciente con la ficha: ${idEliminar}`;
+            }
         }
-    }
 
-    // Inicializar la página
-    inicializarPagina();
+        // Inicializar la página
+        inicializarPagina();
+        mensajeContainer = document.getElementById("mensaje");
+        formulario = document.getElementById("formulario");
+        fichasContainer = document.getElementById("fichasContainer");
 });
