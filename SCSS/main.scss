@@ -236,12 +236,6 @@ video {
     /* Margen inferior de 20px */
 }
 
-.Jumbotromp {
-    background-image: url('../assets/images/parque.avif');
-    background-size: cover;
-    height: 650px;
-    background-position: center;
-}
 
 .contenedor-recuadros {
     height: auto;
@@ -733,6 +727,16 @@ sec .row-about {
     border-radius: 10px;
 }
 
+.navbar a {
+    color:rgba(0, 0, 0, 0.1)
+}
+
+.Jumbotromp {
+    background-image: url("../assets/images/parque.avif");
+    background-size: cover;
+    height: 650px;
+    background-position: center;
+}
 
 /* Estilos específicos para dispositivos móviles */
 /* dispositivos con un ancho máximo de 320px (modo vertical) */
