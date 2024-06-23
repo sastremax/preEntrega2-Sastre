@@ -150,48 +150,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para mostrar el formulario dinamicamente
     function mostrarFormulario() {
+        let formulario = document.getElementById("formulario");
+        if (formulario) {        
         formulario.innerHTML = "";
         formulario.style.display = "block";
-
+        
         formulario.innerHTML = `
-        <h2>Crear una Ficha Médica</h2>
-        <label for="apellidoPaciente">Apellido del paciente:</label>
-        <input type="text" id="apellidoPaciente" required>
-        <label for="nombrePaciente">Nombre del paciente:</label>
-        <input type="text" id="nombrePaciente" required>
-        <label for="diagnosticoPaciente">Diagnóstico del paciente:</label>
-        <input type="text" id="diagnosticoPaciente" required>
-        <label for="fechaNacimientoPaciente">Fecha de Nacimiento del paciente:</label>
-        <input type="date" id="fechaNacimientoPaciente" required>
-        <label for="dniPaciente">DNI:</label>
-        <input type="text" id="dniPaciente" required>
-        <label for="cudPaciente">CUD (si/no?):</label> 
-        <input type="text" id="cudPaciente">
-        <label for="obraSocialPaciente">Obra Social del paciente:</label> 
-        <input type="text" id="obraSocialPaciente"> 
-        <label for="domicilioPaciente">Domicilio:</label> 
-        <input type="text" id="domicilioPaciente"> 
-        <label for="titularObraSocialPaciente">Titular de la Obra Social:</label> 
-        <input type="text" id="titularObraSocialPaciente"> 
-        <label for="numAfiliadoPaciente">Número del Afiliado:</label> 
-        <input type="text" id="numAfiliadoPaciente"> 
-        <label for="escuelaPaciente">Escuela:</label> 
-        <input type="text" id="escuelaPaciente"> 
-        <label for="nombreMadrePaciente">Nombre de la Madre:</label> 
-        <input type="text" id="nombreMadrePaciente"> 
-        <label for="celularMadrePaciente">Celular de la Madre:</label> 
-        <input type="text" id="celularMadrePaciente"> 
-        <label for="nombrePadrePaciente">Nombre del Padre:</label> 
-        <input type="text" id="nombrePadrePaciente"> 
-        <label for="celularPadrePaciente">Celular del Padre:</label> 
-        <input type="text" id="celularPadrePaciente"> 
-        <label for="neurologoPaciente">Neurólogo:</label> 
-        <input type="text" id="neurologoPaciente"> 
-        <label for="pediatraPaciente">Pediatra:</label> 
-        <input type="text" id="pediatraPaciente"> 
-        <button type="button" id="guardarFichaBoton">Guardar Ficha</button> 
+            <form id="miFormulario">
+                <h2>Crear una Ficha Médica</h2>
+                <label for="apellidoPaciente">Apellido del paciente:</label>
+                <input type="text" id="apellidoPaciente" required>
+                <label for="nombrePaciente">Nombre del paciente:</label>
+                <input type="text" id="nombrePaciente" required>
+                <label for="diagnosticoPaciente">Diagnóstico del paciente:</label>
+                <input type="text" id="diagnosticoPaciente" required>
+                <label for="fechaNacimientoPaciente">Fecha de Nacimiento del paciente:</label>
+                <input type="date" id="fechaNacimientoPaciente" required>
+                <label for="dniPaciente">DNI:</label>
+                <input type="text" id="dniPaciente" required>
+                <label for="cudPaciente">CUD (si/no?):</label> 
+                <input type="text" id="cudPaciente">
+                <label for="obraSocialPaciente">Obra Social del paciente:</label> 
+                <input type="text" id="obraSocialPaciente"> 
+                <label for="domicilioPaciente">Domicilio:</label> 
+                <input type="text" id="domicilioPaciente"> 
+                <label for="titularObraSocialPaciente">Titular de la Obra Social:</label> 
+                <input type="text" id="titularObraSocialPaciente"> 
+                <label for="numAfiliadoPaciente">Número del Afiliado:</label> 
+                <input type="text" id="numAfiliadoPaciente"> 
+                <label for="escuelaPaciente">Escuela:</label> 
+                <input type="text" id="escuelaPaciente"> 
+                <label for="nombreMadrePaciente">Nombre de la Madre:</label> 
+                <input type="text" id="nombreMadrePaciente"> 
+                <label for="celularMadrePaciente">Celular de la Madre:</label> 
+                <input type="text" id="celularMadrePaciente"> 
+                <label for="nombrePadrePaciente">Nombre del Padre:</label> 
+                <input type="text" id="nombrePadrePaciente"> 
+                <label for="celularPadrePaciente">Celular del Padre:</label> 
+                <input type="text" id="celularPadrePaciente"> 
+                <label for="neurologoPaciente">Neurólogo:</label> 
+                <input type="text" id="neurologoPaciente"> 
+                <label for="pediatraPaciente">Pediatra:</label> 
+                <input type="text" id="pediatraPaciente"> 
+                <button type="button" id="guardarFichaBoton">Guardar Ficha</button>
+            </form> 
         `;
-        document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
+
+        let guardarFichaBoton = document.getElementById("guardarFichaBoton");
+
+        if(guardarFichaBoton) {
+            guardarFichaBoton.addEventListener("click", guardarFichasDeFormulario);
+                } else {
+                    console.log("No se encontró el botón de guardar dentro del formulario.");
+                }
+        }
+        
     }
 
     // Función para agregar una nueva ficha médica desde el formulario
@@ -474,8 +487,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Inicializar la página
-    inicializarPagina();   
-    document.getElementById("btnAgregarFicha").addEventListener("click", guardarFichasDeFormulario);
+    inicializarPagina();
+
+    document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
     document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
     document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
     document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
