@@ -187,7 +187,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para agregar una nueva ficha médica desde el formulario
     function guardarFichadesdeFormulario() {
-        
+        let apellido = document.getElementById("apellidoPaciente").value;
+        let nombre = document.getElementById("nombrePaciente").value;
+        let diagnostico = document.getElementById("diagnosticoPaciente").value;
+        let fechaNacimiento = document.getElementById("fechaNacimientoPaciente").value;
+        let dni = document.getElementById("dniPaciente").value;
+        let cud = document.getElementById("cudPaciente").value;
+        let obraSocial = document.getElementById("obraSocialPaciente").value;
+        let domicilio = document.getElementById("domicilioPaciente").value;
+        let titularObraSocial = document.getElementById("titularObraSocialPaciente").value;
+        let numAfiliado = document.getElementById("numAfiliadoPaciente").value;
+        let escuela = document.getElementById("escuelaPaciente").value;
+        let nombreMadre = document.getElementById("nombreMadrePaciente").value;
+        let celularMadre = document.getElementById("celularMadrePaciente").value;
+        let nombrePadre = document.getElementById("nombrePadrePaciente").value;
+        let celularPadre = document.getElementById("celularPadrePaciente").value;
+        let neurologo = document.getElementById("neurologoPaciente").value;
+        let pediatra = document.getElementById("pediatraPaciente").value;
+
+        let ficha = {
+            id: idProgresivo,
+            apellido: apellido,
+            nombre: nombre,
+            diagnostico: diagnostico,
+            fechaNacimiento: fechaNacimiento,
+            dni: dni,
+            cud: cud,
+            obraSocial: obraSocial,
+            domicilio: domicilio,
+            titularObraSocial: titularObraSocial,
+            numAfiliado: numAfiliado,
+            escuela: escuela,
+            nombreMadre: nombreMadre,
+            celularMadre: celularMadre,
+            nombrePadre: nombrePadre,
+            celularPadre: celularPadre,
+            neurologo: neurologo,
+            pediatra: pediatra
+        };
+        fichas.push(ficha);
+        idProgresivo++;
+        localStorage.setItem("fichas", JSON.stringify(fichas));
+        localStorage.setItem("idProgresivo", idProgresivo.toString());
+        mensajeContainer.textContent = "Ficha guardada con exito";
+        formulario.innerHTML = "";        
     }
 
 
