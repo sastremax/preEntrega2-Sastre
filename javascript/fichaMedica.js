@@ -301,17 +301,16 @@ document.addEventListener("DOMContentLoaded", function () {
         fichaContainer.classList.add("ficha");
 
         let idPaciente = document.createElement("p");
-        idPaciente.textContent = `FICHA: ${paciente.id}`;
+        idPaciente.innerHTML = `<strong style="display: block; text-align: center;">FICHA: ${paciente.id}</strong>`;
         fichaContainer.appendChild(idPaciente);
 
         let datosPaciente = document.createElement("div");
-        datosPaciente.innerHTML = `
-            <p>FICHA: <strong>${paciente.id.toUpperCase()}</strong></p>
+        datosPaciente.innerHTML = `            
             <p>Apellido: <strong>${paciente.apellido.toUpperCase()}</strong></p>            
             <p>Nombre: <strong>${paciente.nombre}</strong></p>
             <p>Diagnóstico: <strong>${paciente.diagnostico}</strong></p>
             <p>Fecha de Nacimiento: <strong>${paciente.fechaNacimiento}</strong></p>
-            <p>Edad: <strong>${paciente.edad}</strong></p>
+            <p>Edad: <strong>${calcularEdad(paciente.fechaNacimiento)}</strong></p>
             <p>DNI: <strong>${paciente.dni}</strong></p>
             <p>CUD: <strong>${paciente.cud}</strong></p>
             <p>Obra Social: <strong>${paciente.obraSocial}</strong></p>
