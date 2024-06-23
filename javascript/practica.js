@@ -1,4 +1,3 @@
-/*
 import prompt from 'prompt';
 
 // simulador de presupuesto de un consultorio medico y luego fichas medicas para ingreso de datos con ARRAYS para las/los terapeutas//
@@ -164,7 +163,7 @@ function mayorDeEdad(edad) {
 }
 
 mayorDeEdad(19);
-
+/*
 Consigna.
 Tomando como base los ejemplos de la estructura for y while, crear un algoritmo que repita un bloque de instrucciones.
 En cada repetición es necesario efectuar una operación o comparación para obtener una salida por alerta o consola.
@@ -174,7 +173,7 @@ que incluya la definición de un algoritmo en JavaScript que emplee bucles e ins
 Podrás encontrar un ejemplo en la carpeta “Ejemplos de actividades”
 
 Pedir número mediante prompt y sumarle otro número en cada repetición,realizando una salida por cada resultado 
-
+*/
 let suma = 0;
 const CANTIDAD = 10;
 
@@ -200,11 +199,11 @@ function esPar() {
 }
 esPar();
 
-Pedir un texto mediante prompt, concatenar un valor en cada repetición,
- realizando una salida por cada resultado, hasta que se ingresa “ESC”. 
+//Pedir un texto mediante prompt, concatenar un valor en cada repetición,
+// realizando una salida por cada resultado, hasta que se ingresa “ESC”. 
 
-let texto = prompt("Ingrese un texto");
-let textoFinal = texto;
+let texto3 = prompt("Ingrese un texto");
+let textoFinal = texto3;
 let textoJunto = " ";
 
 while (textoJunto.toUpperCase() != "ESC") {
@@ -222,7 +221,7 @@ while (suma2 <= 100) {
     suma2 += num2;
     console.log(`${num2} + ${sumaAnterior2} = ${suma2}`);   
 }
-
+/*
 Consigna. 
 Tomando como base los ejemplos de la estructura for y while, crear un algoritmo que repita un bloque de instrucciones.
 En cada repetición es necesario efectuar una operación o comparación para obtener una salida por alerta o consola.
@@ -314,13 +313,13 @@ if ((num2 >10) && (num2 <50)) {
 }
 
 let minimo = 10;
-let maximo = 50;
+let maximo2 = 50;
 let valor = parseInt(prompt("Ingrese un número entre 10 y 50"));
-if (valor > minimo && valor < maximo) {
+if (valor > minimo && valor < maximo2) {
     alert("El número ingresado está entre 10 y 50");
 }
 
-/* metodo de iteracion array
+//metodo de iteracion array
 
 const LETRAS = ["A", "B", "C"];
 
@@ -352,6 +351,7 @@ function multiplicar (a,b){
 
 console.log(operar(5,8,suma));
 
+/*
 diferencia entre procedicimiento y funcion:
     - procedimiento no retorna un valor
     - funcion retorna un valor
@@ -553,10 +553,10 @@ const usuario ={
 
 usuario.siEstaLogueado && console.log(`Bienvenido ${usuario.nombre}`);
 usuario.siEstaLogueado && usuario.siEsAdmin && console.log(`tiene acceso`);
-/*
+
 //operador logico or: si el primer valor es verdadero, devuelve el primer valor, si no, devuelve el segundo valor
 // si el primer operador es falso, devuelve el segundo valor
-/*let usuario2 ={
+let usuario2 ={
     nombre: null;
 }
 let usuarioActivo;
@@ -650,7 +650,7 @@ const PRODUCTOS = [
 PRODUCTOS.forEach(({nombre, precio}) => {
     console.log(`${nombre}: ${precio}`);
 })
-   */ 
+   
 
 //Agregar mas de un evento a un elemento
 
@@ -711,3 +711,4 @@ document.addEventListener("DOMContentLoaded", function() {
         alert(`Nombre: ${nombre} Apellido: ${apellido}`);
         });
     });
+    */

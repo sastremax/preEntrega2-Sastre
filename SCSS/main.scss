@@ -1510,6 +1510,14 @@ sec .row-about {
     cursor: pointer;
 }
 
+.fila-botones {
+    display: flex;
+    justify-content: $centro;
+    align-items: $centro;
+    
+}
+
+
 #recuadroLimpiar {
     cursor: pointer;
     padding: 10px;

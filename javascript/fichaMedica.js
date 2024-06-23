@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Crear botones para la primera fila        
         crearBotonPacientesNuevos(primeraFila);
         crearBotonBuscarFicha(primeraFila);
+        crearBotonListadoPacientes(primeraFila);
 
         // Agregar la primera fila al contenedor principal
         contenedorRecuadros.appendChild(primeraFila);
@@ -32,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         segundaFila.classList.add('fila-botones');
 
         // Crear botones para la segunda fila
-        crearBotonListadoPacientes(segundaFila);
+        
         crearBotonLimpiar(segundaFila);
         crearBotonesModificarEliminar(segundaFila);
 
