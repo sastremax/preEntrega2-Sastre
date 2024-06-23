@@ -1,3 +1,153 @@
+// simulador de presupuesto de un consultorio medico y luego fichas medicas para ingreso de datos con ARRAYS para las/los terapeutas;
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    let historial = "";
+
+    function gestionarPresupuesto() {
+        let año = validarAño();
+        let mes = validarMes();
+
+        let totalGastosProductos = ingresarGastosProductos(mes);
+        let totalGastosServicios = ingresarGastosServicios();
+        let ingresos = ingresarGanancias(mes, año);
+        let egresos = totalGastosProductos + totalGastosServicios;        
+
+        calcularSaldo(ingresos, egresos, mes, año);
+
+        let resultadoPresupuesto = document.getElementById('resultadoPresupuesto');
+        if(resultadoPresupuesto) {
+            resultadoPresupuesto.textContent = `Resultado del presupuesto para ${mes} ${año}: 
+                Ingresos: ${ingresos}, Egresos: ${egresos}, Saldo: ${ingresos - egresos}`;
+        } else {
+            console.error('No se encontró el elemento con id "resultadoPresupuesto"');
+        }
+    
+        do {
+            let respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
+            if (respuesta === "si" || respuesta === "s") {
+                año = validarAño();
+                mes = validarMes();
+                totalGastosProductos = ingresarGastosProductos(mes);
+                totalGastosServicios = ingresarGastosServicios();
+                ingresos = ingresarGanancias(mes, año);
+                egresos = totalGastosProductos + totalGastosServicios;
+                calcularSaldo(ingresos, egresos, mes, año);
+            }
+        } while (respuesta === "si" || respuesta === "s");
+    }
+
+    // Función para crear el botón de acceso al presupuesto
+    function crearBotonPresupuesto(contenedor) {
+        let presupuestoRecuadro = document.createElement('div');
+        presupuestoRecuadro.classList.add('recuadro', 'presupuesto');
+        let presupuestoTitulo = document.createElement('p');
+        presupuestoTitulo.textContent = "Presupuesto";
+        let presupuestoBoton = document.createElement('button');
+        presupuestoBoton.textContent = "Calcular Presupuesto";
+        presupuestoBoton.addEventListener('click', function () {
+            gestionarPresupuesto();
+            alert("Historial de saldos:\n" + historial)
+        });
+
+        presupuestoRecuadro.appendChild(presupuestoTitulo);
+        presupuestoRecuadro.appendChild(presupuestoBoton);
+        contenedor.appendChild(presupuestoRecuadro);
+    }
+
+// Obtener el contenedor de recuadros
+    let contenedorRecuadros =document.querySelector('.contenedor-recuadros');
+    if (contenedorRecuadros) {
+        crearBotonPresupuesto(contenedorRecuadros);
+    } else {
+        console.error('No se encontró el contenedor ".contenedor-recuadros"');
+    }
+
+
+    function validarAño() {
+        let año = prompt("Ingrese el año a calcular: ");
+        while (año < 2020 || isNaN(año) || año.toString() !== año) {
+            console.log("El año ingresado no es válido.");
+            año = prompt("Ingrese el año a calcular: ");
+        }
+        return año;
+    }
+
+    function validarMes() {
+        let mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
+        while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
+            mes !== "julio" && mes !== "agosto" && mes !== "septiembre" && mes !== "octubre" && mes !== "noviembre" && mes !== "diciembre") {
+            console.log("El mes ingresado no es válido.");
+            mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
+        }
+        return mes;
+    }
+
+    function ingresarGastosProductos(mes) {
+        let totalGastosProductos = 0;
+        let cantidadProductos = parseInt(prompt("Ingrese la cantidad de productos comprados en el mes de " + mes));
+        for (let i = 1; i < cantidadProductos + 1; i++) {
+            let gasto = parseInt(prompt("Ingrese el monto del gasto individual del producto: " + i + " en el mes de " + mes));
+            while (isNaN(gasto) || gasto < 0) {
+                console.log("El monto ingresado no es válido.");
+                gasto = parseInt(prompt("Ingrese el gasto del producto " + i + " en el mes de " + mes));
+            }
+            totalGastosProductos += gasto;
+        }
+        return totalGastosProductos;
+    }
+
+    function ingresarGastosServicios(gastosServicios) {
+        let totalGastosServicios = 0;
+        let cantidadEmpleados = parseInt(prompt("Ingrese la cantidad de empleados:"));
+        for (let i = 0; i < cantidadEmpleados; i++) {
+            let gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
+            while (isNaN(gasto) || gasto < 0) {
+                console.log("El monto ingresado no es válido.");
+                gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
+            }
+            totalGastosServicios += gasto;
+        }
+        return totalGastosServicios;
+    }
+
+    function ingresarGanancias(mes, año) {
+        let ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
+        while (isNaN(ganancias) || ganancias < 0) {
+            console.log("El monto ingresado no es válido.");
+            ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
+        }
+        return ganancias;
+    }
+
+    function calcularSaldo(ingresos, egresos, mes, año) {
+        let saldo = ingresos - egresos;
+        let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
+        if (saldo >= 0) {
+            mensaje += "positivo";
+        } else {
+            mensaje += "negativo";
+        }
+        mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";  
+        historial += mensaje + "\n";      
+    }
+
+    
+
+    // Obtener el botón de acceso al presupuesto y asignarle el evento click
+    let accesoPresupuesto = document.getElementById("accesoPresupuesto");
+    if(accesoPresupuesto) {
+        accesoPresupuesto.addEventListener("click", function () {
+        gestionarPresupuesto();
+        alert("Historial de saldos:\n" + historial);
+        });
+    }else {
+        console.error('No se encontró el elemento con id "accesoPresupuesto"');
+    }
+});
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     // Variables globales
     let fichas = JSON.parse(localStorage.getItem("fichas")) || [];
@@ -8,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función principal para inicializar la página
     function inicializarPagina() {
+        console.log("Inicializando página...");
         crearBotones();
     }
 
@@ -67,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
         pacientesTitulo.textContent = "Pacientes nuevos";
         let agregarFichaBoton = document.createElement('button');
         agregarFichaBoton.textContent = "Agregar Ficha";
-        agregarFichaBoton.addEventListener('click', function (){
+        agregarFichaBoton.addEventListener('click', function () {
             mostrarFormulario();
         });
         pacientesRecuadro.appendChild(pacientesTitulo);
@@ -281,7 +432,7 @@ document.addEventListener("DOMContentLoaded", function () {
         idProgresivo++;
         localStorage.setItem("fichas", JSON.stringify(fichas));
         localStorage.setItem("idProgresivo", idProgresivo.toString());
-        alert = "Ficha guardada con exito";
+        alert("Ficha guardada con exito");
         formulario.reset();
     }
 
@@ -289,7 +440,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para guardar las fichas en el almacenamiento local
     function guardarFichasEnStorage() {
         localStorage.setItem("fichas", JSON.stringify(fichas));
-        localStorage.setItem("idProgresivo", idProgresivo);
+        localStorage.setItem("idProgresivo", idProgresivo.toString);
     }
 
 
@@ -335,7 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let edad = hoy.getFullYear() - cumpleanios.getFullYear();
         let mes = hoy.getMonth() - cumpleanios.getMonth();
 
-        if (mes < 0 || (mes === 0 && hoy.getDate() < cumleanios.getDate())) {
+        if (mes < 0 || (mes === 0 && hoy.getDate() < cumpleanios.getDate())) {
             edad--;
         }
         return edad;
@@ -362,11 +513,11 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>Obra Social: <strong>${paciente.obraSocial}</strong></p>
             <p>Domicilio: <strong>${paciente.domicilio}</strong></p>
             <p>Titular Obra Social: <strong>${paciente.titularObraSocial}</strong></p>
-            <p>Número de Afiliado: <strong>${paciente.numeroAfiliado}</strong></p>
+            <p>Número de Afiliado: <strong>${paciente.numAfiliado}</strong></p>
             <p>Escuela: <strong>${paciente.escuela}</strong></p>
-            <p>Madre: <strong>${paciente.mama}</strong></p>
+            <p>Madre: <strong>${paciente.madre}</strong></p>
             <p>Celular Madre: <strong>${paciente.celularMama}</strong></p>
-            <p>Padre: <strong>${paciente.papa}</strong></p>
+            <p>Padre: <strong>${paciente.padre}</strong></p>
             <p>Celular Padre: <strong>${paciente.celularPapa}</strong></p>
             <p>Neurólogo: <strong>${paciente.neurologo}</strong></p>
             <p>Pediatra: <strong>${paciente.pediatra}</strong></p>            
@@ -445,14 +596,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 case "escuela":
                     pacienteEncontrado.escuela = prompt(`Modificar escuela (actual: ${pacienteEncontrado.escuela}):`);
                     break;
-                case "mama":
-                    pacienteEncontrado.mama = prompt(`Modificar nombre de la madre (actual: ${pacienteEncontrado.mama}):`);
+                case "madre":
+                    pacienteEncontrado.madre = prompt(`Modificar nombre de la madre (actual: ${pacienteEncontrado.madre}):`);
                     break;
                 case "celularMama":
                     pacienteEncontrado.celularMama = prompt(`Modificar celular de la madre (actual: ${pacienteEncontrado.celularMama}):`);
                     break;
-                case "papa":
-                    pacienteEncontrado.papa = prompt(`Modificar nombre del padre (actual: ${pacienteEncontrado.papa}):`);
+                case "padre":
+                    pacienteEncontrado.papa = prompt(`Modificar nombre del padre (actual: ${pacienteEncontrado.padre}):`);
                     break;
                 case "celularPapa":
                     pacienteEncontrado.celularPapa = prompt(`Modificar celular del padre (actual: ${pacienteEncontrado.celularPapa}):`);
@@ -517,128 +668,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // simulador de presupuesto de un consultorio medico y luego fichas medicas para ingreso de datos con ARRAYS para las/los terapeutas//
-    let historial = "";
-
-    function gestionarPresupuesto() {
-        let año = validarAño();
-        let mes = validarMes();
-
-        let totalGastosProductos = ingresarGastosProductos(mes);
-        let totalGastosServicios = ingresarGastosServicios();
-        let ingresos = ingresarGanancias(mes, año);
-        let egresos = totalGastosProductos + totalGastosServicios;
-
-        calcularSaldo(ingresos, egresos, mes, año);
-
-        let resultadoPresupuesto = document.getElementById('resultadoPresupuesto');
-        if (resultadoPresupuesto) {
-            resultadoPresupuesto.textContent = `Resultado del presupuesto para ${mes} ${año}: 
-                Ingresos: ${ingresos}, Egresos: ${egresos}, Saldo: ${ingresos - egresos}`;
-        } else {
-            console.error('No se encontró el elemento con id "resultadoPresupuesto"');
-        }
-
-        do {
-            let respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
-            if (respuesta === "si" || respuesta === "s") {
-                año = validarAño();
-                mes = validarMes();
-                totalGastosProductos = ingresarGastosProductos(mes);
-                totalGastosServicios = ingresarGastosServicios();
-                ingresos = ingresarGanancias(mes, año);
-                egresos = totalGastosProductos + totalGastosServicios;
-                calcularSaldo(ingresos, egresos, mes, año);
-            }
-        } while (respuesta === "si" || respuesta === "s");
-    }
-
-    function validarAño() {
-        let año = prompt("Ingrese el año a calcular: ");
-        while (año < 2020 || isNaN(año) || año.toString() !== año) {
-            console.log("El año ingresado no es válido.");
-            año = prompt("Ingrese el año a calcular: ");
-        }
-        return año;
-    }
-
-    function validarMes() {
-        let mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
-        while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
-            mes !== "julio" && mes !== "agosto" && mes !== "septiembre" && mes !== "octubre" && mes !== "noviembre" && mes !== "diciembre") {
-            console.log("El mes ingresado no es válido.");
-            mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
-        }
-        return mes;
-    }
-
-    function ingresarGastosProductos(mes) {
-        let totalGastosProductos = 0;
-        let cantidadProductos = parseInt(prompt("Ingrese la cantidad de productos comprados en el mes de " + mes));
-        for (let i = 1; i < cantidadProductos + 1; i++) {
-            let gasto = parseInt(prompt("Ingrese el monto del gasto individual del producto: " + i + " en el mes de " + mes));
-            while (isNaN(gasto) || gasto < 0) {
-                console.log("El monto ingresado no es válido.");
-                gasto = parseInt(prompt("Ingrese el gasto del producto " + i + " en el mes de " + mes));
-            }
-            totalGastosProductos += gasto;
-        }
-        return totalGastosProductos;
-    }
-
-    function ingresarGastosServicios(gastosServicios) {
-        let totalGastosServicios = 0;
-        let cantidadEmpleados = parseInt(prompt("Ingrese la cantidad de empleados:"));
-        for (let i = 0; i < cantidadEmpleados; i++) {
-            let gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
-            while (isNaN(gasto) || gasto < 0) {
-                console.log("El monto ingresado no es válido.");
-                gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
-            }
-            totalGastosServicios += gasto;
-        }
-        return totalGastosServicios;
-    }
-
-    function ingresarGanancias(mes, año) {
-        let ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
-        while (isNaN(ganancias) || ganancias < 0) {
-            console.log("El monto ingresado no es válido.");
-            ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
-        }
-        return ganancias;
-    }
-
-    function calcularSaldo(ingresos, egresos, mes, año) {
-        let saldo = ingresos - egresos;
-        let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
-        if (saldo >= 0) {
-            mensaje += "positivo";
-        } else {
-            mensaje += "negativo";
-        }
-        mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";
-        historial += mensaje + "\n";
-
-        // Obtener el botón de acceso al presupuesto y asignarle el evento click
-        let accesoPresupuesto = document.getElementById("accesoPresupuesto");
-        if (accesoPresupuesto) {
-            accesoPresupuesto.addEventListener("click", function () {
-                gestionarPresupuesto();
-                alert("Historial de saldos:\n" + historial);
-            });
-        } else {
-            console.error('No se encontró el elemento con id "accesoPresupuesto"');
-        }
 
 
 
-        // Inicializar la página
-        inicializarPagina();
 
-        document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
-        document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
-        document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
-        document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
-        document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);
-    }
+    // Inicializar la página
+    inicializarPagina();
+
+    document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
+    document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
+    document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
+    document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
+    document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);
+
 });
+
