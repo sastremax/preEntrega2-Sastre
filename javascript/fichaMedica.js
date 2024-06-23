@@ -191,11 +191,11 @@ document.addEventListener("DOMContentLoaded", function () {
         <input type="text" id="pediatraPaciente"> 
         <button type="button" id="guardarFichaBoton">Guardar Ficha</button> 
         `;
-        document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasEnStorage)
+        document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario)
     }
 
     // Función para agregar una nueva ficha médica desde el formulario
-    function guardarFichadesdeFormulario() {
+    function guardarFichasDeFormulario() {
         let apellido = document.getElementById("apellidoPaciente").value;
         let nombre = document.getElementById("nombrePaciente").value;
         let diagnostico = document.getElementById("diagnosticoPaciente").value;
