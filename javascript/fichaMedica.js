@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <input type="text" id="pediatraPaciente"> 
         <button type="button" id="guardarFichaBoton">Guardar Ficha</button> 
         `;
-        document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario)
+        document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
     }
 
     // Función para agregar una nueva ficha médica desde el formulario
@@ -213,9 +213,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let celularPadre = document.getElementById("celularPadrePaciente").value;
         let neurologo = document.getElementById("neurologoPaciente").value;
         let pediatra = document.getElementById("pediatraPaciente").value;
+        let nuevoId = idProgresivo;
 
         let ficha = {
-            id: idProgresivo,
+            id: nuevoId,
             apellido: apellido,
             nombre: nombre,
             diagnostico: diagnostico,
@@ -239,7 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("fichas", JSON.stringify(fichas));
         localStorage.setItem("idProgresivo", idProgresivo.toString());
         mensajeContainer.textContent = "Ficha guardada con exito";
-        formulario.innerHTML = "";
+        formulario.reset();
     }
 
 
@@ -473,11 +474,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Inicializar la página
-    inicializarPagina();
-    mensajeContainer = document.getElementById("mensaje");
-    formulario = document.getElementById("formulario");
-    fichasContainer = document.getElementById("fichasContainer");
-    document.getElementById("btnAgregarFicha").addEventListener("click", guardarFichadesdeFormulario);
+    inicializarPagina();   
+    document.getElementById("btnAgregarFicha").addEventListener("click", guardarFichasDeFormulario);
     document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
     document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
     document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
