@@ -150,6 +150,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para mostrar el formulario dinamicamente
     function mostrarFormulario() {
+        formulario.innerHTML = "";
+        formulario.style.display = "block";
+
         formulario.innerHTML = `
         <h2>Crear una Ficha Médica</h2>
         <label for="apellidoPaciente">Apellido del paciente:</label>
