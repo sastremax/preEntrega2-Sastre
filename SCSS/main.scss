@@ -295,6 +295,7 @@ video {
 .fichaPaciente > :first-child {
     text-align: center;
     margin-bottom: 8px;
+    padding: 20px;
 }
 
 .contenedor-imagenes-cuadradas {
@@ -649,6 +650,22 @@ input {
     /* Tamaño del texto */
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    flex: 1 1 45%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 12px; 
+}
+
 .formulario-turnos {
     display: flex;
     /* Establece el contenedor como un contenedor flexible */
@@ -670,12 +687,22 @@ input {
 
 .formulario-turnos label {
     margin-left: 5px;
-    /* Ajusta el espacio entre el input y la etiqueta */
+    margin-bottom: 20px;
+    display: block;
+    
 }
 
 .formulario-turnos input {
     margin-bottom: 15px;
     /* Espacio entre los input */
+}
+
+.message {
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #dff0d8;
+    color: #3c763d;
 }
 
 .centralizado {
@@ -909,6 +936,7 @@ sec .row-about {
 
     .formulario-turnos label {
         margin-left: 0;
+        margin-bottom: 10px;
     }
 
     ::-webkit-scrollbar-thumb {
@@ -1431,6 +1459,11 @@ sec .row-about {
     }   
 }
 
+/* Estilos para los contenedores de fichas */
+.fichas-container {
+    margin: 20px 0;
+}
+
 .ficha {
     background-color: #f9f9f9;
     border: 1px solid #ccc;
@@ -1468,6 +1501,15 @@ sec .row-about {
     text-align: center;
 }
 
+#guardarFichaBoton {
+    margin-top: 12px;
+    background-color: #3c763d;
+    color: $c3;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
 #recuadroLimpiar {
     cursor: pointer;
     padding: 10px;
@@ -1476,3 +1518,11 @@ sec .row-about {
     margin-bottom: 10px;
 } 
 
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
