@@ -155,6 +155,8 @@ document.addEventListener("DOMContentLoaded", function () {
         contenedor.appendChild(modificarEliminarRecuadro);
     }
 
+
+    // Funcion para crear botón de Presupuesto
     function crearBotonPresupuesto(contenedor) {
         let presupuestoRecuadro = document.createElement('div');
         presupuestoRecuadro.classList.add('recuadro', 'presupuesto');
@@ -237,6 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+
 
     // Función para agregar una nueva ficha médica desde el formulario
     function guardarFichasDeFormulario() {
@@ -343,6 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return edad;
     }
 
+
     // Función para mostrar una ficha de paciente específica
     function mostrarFicha(paciente) {
         let fichaContainer = document.createElement("div");
@@ -374,8 +378,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>Pediatra: <strong>${paciente.pediatra}</strong></p>            
         `;
         fichaContainer.appendChild(datosPaciente);
-
-        // Agregar la ficha al contenedor de fichas
+        
         fichasContainer.appendChild(fichaContainer);
     }
 
@@ -518,8 +521,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // simulador de presupuesto de un consultorio medico y luego fichas medicas para ingreso de datos con ARRAYS para las/los terapeutas//
-
+    // simulador de presupuesto de Arcoiris
     function gestionarPresupuesto() {
         let año = validarAño();
         let mes = validarMes();
@@ -554,6 +556,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    // Funcion para validar el año
     function validarAño() {
         let año = prompt("Ingrese el año a calcular: ");
         while (año < 2020 || isNaN(año) || año.toString() !== año) {
@@ -563,6 +566,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return año;
     }
 
+    //Funcion pra validar el mes
     function validarMes() {
         let mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
         while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
@@ -573,6 +577,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return mes;
     }
 
+    //Funcion para ingresar los gastos de los productos
     function ingresarGastosProductos(mes) {
         let totalGastosProductos = 0;
         let cantidadProductos = parseInt(prompt("Ingrese la cantidad de productos comprados en el mes de " + mes));
@@ -587,6 +592,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return totalGastosProductos;
     }
 
+    //Funcion para ingresar los gastos de los servicios
     function ingresarGastosServicios(gastosServicios) {
         let totalGastosServicios = 0;
         let cantidadEmpleados = parseInt(prompt("Ingrese la cantidad de empleados:"));
@@ -601,6 +607,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return totalGastosServicios;
     }
 
+    //Funcion para ingresar las ganancias
     function ingresarGanancias(mes, año) {
         let ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
         while (isNaN(ganancias) || ganancias < 0) {
@@ -610,6 +617,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return ganancias;
     }
 
+    //Funcion para calcular el saldo
     function calcularSaldo(ingresos, egresos, mes, año) {
         let saldo = ingresos - egresos;
         let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
@@ -624,7 +632,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Inicializar la página
     inicializarPagina();
-
+    // Eventos de los botones
     document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
     document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
     document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
@@ -632,4 +640,3 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);
     document.getElementById("btnMostrarPresupuesto").addEventListener("click", gestionarPresupuesto);
 });
-
