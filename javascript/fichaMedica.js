@@ -243,6 +243,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para agregar una nueva ficha médica desde el formulario
     function guardarFichasDeFormulario() {
+
         //Desestructuración para obtener los valores de los campos del formulario
         let {
             value: apellido
@@ -274,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let {
             value: numAfiliado
         } = document.getElementById("numAfiliadoPaciente");
-        let {   
+        let {
             value: escuela
         } = document.getElementById("escuelaPaciente");
         let {
@@ -295,48 +296,23 @@ document.addEventListener("DOMContentLoaded", function () {
         let {
             value: pediatra
         } = document.getElementById("pediatraPaciente");
-        let {
-            value: nuevoId
-        } = idProgresivo;
         
-    
-    let ficha = {
-        id: nuevoId,
-        apellido: apellido,
-        nombre: nombre,
-        diagnostico: diagnostico,
-        fechaNacimiento: fechaNacimiento,
-        dni: dni,
-        cud: cud,
-        obraSocial: obraSocial,
-        domicilio: domicilio,
-        titularObraSocial: titularObraSocial,
-        numAfiliado: numAfiliado,
-        escuela: escuela,
-        nombreMadre: nombreMadre,
-        celularMadre: celularMadre,
-        nombrePadre: nombrePadre,
-        celularPadre: celularPadre,
-        neurologo: neurologo,
-        pediatra: pediatra
-    };
-
-    // Uso de operadores lógicos para combinar condiciones y el operador ternario para asignar valores
-    let esValido = apellido && nombre && diagnostico && fechaNacimiento && dni && obraSocial && domicilio && titularObraSocial && numAfiliado && escuela && nombreMadre && celularMadre && nombrePadre && celularPadre && neurologo && pediatra;
-    let mensaje = esValido ? "Ficha guardada con éxito" : "Debe completar todos los campos del formulario";
-    if (esValido) {
-        // Procesamiento de la ficha médica si los campos son válidos
-        let nuevoId = idProgresivo;
-        let ficha = { id: nuevoId, apellido: apellido, nombre: nombre, diagnostico: diagnostico, fechaNacimiento: fechaNacimiento, dni: dni, cud: cud, obraSocial: obraSocial, domicilio: domicilio, titularObraSocial: titularObraSocial, numAfiliado: numAfiliado, escuela: escuela, madre: nombreMadre, celularMama: celularMadre, padre: nombrePadre, celularPapa: celularPadre, neurologo: neurologo, pediatra: pediatra };
-        fichas.push(ficha);
-        idProgresivo++;
-        localStorage.setItem("fichas", JSON.stringify(fichas));
-        localStorage.setItem("idProgresivo", idProgresivo.toString());
-    } else {
-        alert(mensaje);
+        // Uso de operadores lógicos para combinar condiciones y el operador ternario para asignar valores
+        let esValido = apellido && nombre && diagnostico && fechaNacimiento && dni && obraSocial && domicilio && titularObraSocial && numAfiliado && escuela && nombreMadre && celularMadre && nombrePadre && celularPadre && neurologo && pediatra;
+        let mensaje = esValido ? "Ficha guardada con éxito" : "Debe completar todos los campos del formulario";
+        if (esValido) {
+            // Procesamiento de la ficha médica si los campos son válidos
+            let nuevoId = idProgresivo;
+            let ficha = { id: nuevoId, apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra };
+            fichas.push(ficha);
+            idProgresivo++;
+            localStorage.setItem("fichas", JSON.stringify(fichas));
+            localStorage.setItem("idProgresivo", idProgresivo.toString());
+        } else {
+            alert(mensaje);
+        }
+        formulario.reset();
     }
-    formulario.reset();
-}
 
 
     // Función para guardar las fichas en el almacenamiento local
@@ -680,11 +656,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Inicializar la página
     inicializarPagina();
-// Eventos de los botones
-document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
-document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
-document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
-document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
-document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);
-document.getElementById("btnMostrarPresupuesto").addEventListener("click", gestionarPresupuesto);
+    // Eventos de los botones
+    document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
+    document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
+    document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
+    document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
+    document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);
+    document.getElementById("btnMostrarPresupuesto").addEventListener("click", gestionarPresupuesto);
 });
