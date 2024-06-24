@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let historial = "";
 
     // Función principal para inicializar la página
-    function inicializarPagina() {        
+    function inicializarPagina() {
         crearBotones();
     }
 
@@ -243,62 +243,100 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para agregar una nueva ficha médica desde el formulario
     function guardarFichasDeFormulario() {
-        let apellido = document.getElementById("apellidoPaciente").value;
-        let nombre = document.getElementById("nombrePaciente").value;
-        let diagnostico = document.getElementById("diagnosticoPaciente").value;
-        let fechaNacimiento = document.getElementById("fechaNacimientoPaciente").value;
-        let dni = document.getElementById("dniPaciente").value;
-        let cud = document.getElementById("cudPaciente").value;
-        let obraSocial = document.getElementById("obraSocialPaciente").value;
-        let domicilio = document.getElementById("domicilioPaciente").value;
-        let titularObraSocial = document.getElementById("titularObraSocialPaciente").value;
-        let numAfiliado = document.getElementById("numAfiliadoPaciente").value;
-        let escuela = document.getElementById("escuelaPaciente").value;
-        let nombreMadre = document.getElementById("nombreMadrePaciente").value;
-        let celularMadre = document.getElementById("celularMadrePaciente").value;
-        let nombrePadre = document.getElementById("nombrePadrePaciente").value;
-        let celularPadre = document.getElementById("celularPadrePaciente").value;
-        let neurologo = document.getElementById("neurologoPaciente").value;
-        let pediatra = document.getElementById("pediatraPaciente").value;
+        //Desestructuración para obtener los valores de los campos del formulario
+        let {
+            value: apellido
+        } = document.getElementById("apellidoPaciente");
+        let {
+            value: nombre
+        } = document.getElementById("nombrePaciente");
+        let {
+            value: diagnostico
+        } = document.getElementById("diagnosticoPaciente");
+        let {
+            value: fechaNacimiento
+        } = document.getElementById("fechaNacimientoPaciente");
+        let {
+            value: dni
+        } = document.getElementById("dniPaciente");
+        let {
+            value: cud
+        } = document.getElementById("cudPaciente");
+        let {
+            value: obraSocial
+        } = document.getElementById("obraSocialPaciente");
+        let {
+            value: domicilio
+        } = document.getElementById("domicilioPaciente");
+        let {
+            value: titularObraSocial
+        } = document.getElementById("titularObraSocialPaciente");
+        let {
+            value: numAfiliado
+        } = document.getElementById("numAfiliadoPaciente");
+        let {   
+            value: escuela
+        } = document.getElementById("escuelaPaciente");
+        let {
+            value: nombreMadre
+        } = document.getElementById("nombreMadrePaciente");
+        let {
+            value: celularMadre
+        } = document.getElementById("celularMadrePaciente");
+        let {
+            value: nombrePadre
+        } = document.getElementById("nombrePadrePaciente");
+        let {
+            value: celularPadre
+        } = document.getElementById("celularPadrePaciente");
+        let {
+            value: neurologo
+        } = document.getElementById("neurologoPaciente");
+        let {
+            value: pediatra
+        } = document.getElementById("pediatraPaciente");
+        let {
+            value: nuevoId
+        } = idProgresivo;
+        
+    
+    let ficha = {
+        id: nuevoId,
+        apellido: apellido,
+        nombre: nombre,
+        diagnostico: diagnostico,
+        fechaNacimiento: fechaNacimiento,
+        dni: dni,
+        cud: cud,
+        obraSocial: obraSocial,
+        domicilio: domicilio,
+        titularObraSocial: titularObraSocial,
+        numAfiliado: numAfiliado,
+        escuela: escuela,
+        nombreMadre: nombreMadre,
+        celularMadre: celularMadre,
+        nombrePadre: nombrePadre,
+        celularPadre: celularPadre,
+        neurologo: neurologo,
+        pediatra: pediatra
+    };
+
+    // Uso de operadores lógicos para combinar condiciones y el operador ternario para asignar valores
+    let esValido = apellido && nombre && diagnostico && fechaNacimiento && dni && obraSocial && domicilio && titularObraSocial && numAfiliado && escuela && nombreMadre && celularMadre && nombrePadre && celularPadre && neurologo && pediatra;
+    let mensaje = esValido ? "Ficha guardada con éxito" : "Debe completar todos los campos del formulario";
+    if (esValido) {
+        // Procesamiento de la ficha médica si los campos son válidos
         let nuevoId = idProgresivo;
-
-        let ficha = {
-            id: nuevoId,
-            apellido: apellido,
-            nombre: nombre,
-            diagnostico: diagnostico,
-            fechaNacimiento: fechaNacimiento,
-            dni: dni,
-            cud: cud,
-            obraSocial: obraSocial,
-            domicilio: domicilio,
-            titularObraSocial: titularObraSocial,
-            numAfiliado: numAfiliado,
-            escuela: escuela,
-            nombreMadre: nombreMadre,
-            celularMadre: celularMadre,
-            nombrePadre: nombrePadre,
-            celularPadre: celularPadre,
-            neurologo: neurologo,
-            pediatra: pediatra
-        };
-
-        // Uso de operadores lógicos para combinar condiciones y el operador ternario para asignar valores
-        let isValido = apellido && nombre && diagnostico && fechaNacimiento && dni && obraSocial && domicilio && titularObraSocial && numAfiliado && escuela && nombreMadre && celularMadre && nombrePadre && celularPadre && neurologo && pediatra;
-        let mensaje = isValido ? "Ficha guardada con éxito" : "Debe completar todos los campos del formulario";
-        if (isValido) {
-             // Procesamiento de la ficha médica si los campos son válidos
-            let nuevoId = idProgresivo;
-            let ficha = {id:nuevoId, apellido:apellido, nombre:nombre, diagnostico:diagnostico, fechaNacimiento:fechaNacimiento, dni:dni, cud:cud, obraSocial:obraSocial, domicilio:domicilio, titularObraSocial:titularObraSocial, numAfiliado:numAfiliado, escuela:escuela, madre:nombreMadre, celularMama:celularMadre, padre:nombrePadre, celularPapa:celularPadre, neurologo:neurologo, pediatra:pediatra};
-            fichas.push(ficha);
-            idProgresivo++;
-            localStorage.setItem("fichas", JSON.stringify(fichas));
-            localStorage.setItem("idProgresivo", idProgresivo.toString());
-        } else {
-            alert(mensaje);
-        }
-        formulario.reset();
+        let ficha = { id: nuevoId, apellido: apellido, nombre: nombre, diagnostico: diagnostico, fechaNacimiento: fechaNacimiento, dni: dni, cud: cud, obraSocial: obraSocial, domicilio: domicilio, titularObraSocial: titularObraSocial, numAfiliado: numAfiliado, escuela: escuela, madre: nombreMadre, celularMama: celularMadre, padre: nombrePadre, celularPapa: celularPadre, neurologo: neurologo, pediatra: pediatra };
+        fichas.push(ficha);
+        idProgresivo++;
+        localStorage.setItem("fichas", JSON.stringify(fichas));
+        localStorage.setItem("idProgresivo", idProgresivo.toString());
+    } else {
+        alert(mensaje);
     }
+    formulario.reset();
+}
 
 
     // Función para guardar las fichas en el almacenamiento local
@@ -388,7 +426,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>Pediatra: <strong>${paciente.pediatra}</strong></p>            
         `;
         fichaContainer.appendChild(datosPaciente);
-        
+
         fichasContainer.appendChild(fichaContainer);
     }
 
@@ -539,18 +577,18 @@ document.addEventListener("DOMContentLoaded", function () {
         let totalGastosProductos = ingresarGastosProductos(mes);
         let totalGastosServicios = ingresarGastosServicios();
         let ingresos = ingresarGanancias(mes, año);
-        let egresos = totalGastosProductos + totalGastosServicios;        
+        let egresos = totalGastosProductos + totalGastosServicios;
 
         calcularSaldo(ingresos, egresos, mes, año);
 
         let resultadoPresupuesto = document.getElementById('resultadoPresupuesto');
-        if(resultadoPresupuesto) {
+        if (resultadoPresupuesto) {
             resultadoPresupuesto.textContent = `Resultado del presupuesto para ${mes} ${año}: 
                 Ingresos: ${ingresos}, Egresos: ${egresos}, Saldo: ${ingresos - egresos}`;
         } else {
             console.error('No se encontró el elemento con id "resultadoPresupuesto"');
         }
-    
+
         do {
             let respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
             if (respuesta === "si" || respuesta === "s") {
@@ -636,17 +674,17 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             mensaje += "negativo";
         }
-        mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";  
-        historial += mensaje + "\n";      
+        mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";
+        historial += mensaje + "\n";
     }
 
     // Inicializar la página
     inicializarPagina();
-    // Eventos de los botones
-    document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
-    document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
-    document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
-    document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
-    document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);
-    document.getElementById("btnMostrarPresupuesto").addEventListener("click", gestionarPresupuesto);
+// Eventos de los botones
+document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
+document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
+document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
+document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
+document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);
+document.getElementById("btnMostrarPresupuesto").addEventListener("click", gestionarPresupuesto);
 });
