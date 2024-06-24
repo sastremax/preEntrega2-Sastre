@@ -282,11 +282,21 @@ document.addEventListener("DOMContentLoaded", function () {
             neurologo: neurologo,
             pediatra: pediatra
         };
-        fichas.push(ficha);
-        idProgresivo++;
-        localStorage.setItem("fichas", JSON.stringify(fichas));
-        localStorage.setItem("idProgresivo", idProgresivo.toString());
-        alert("Ficha guardada con exito");
+
+        // Uso de operadores lógicos para combinar condiciones y el operador ternario para asignar valores
+        let isValido = apellido && nombre && diagnostico && fechaNacimiento && dni && obraSocial && domicilio && titularObraSocial && numAfiliado && escuela && nombreMadre && celularMadre && nombrePadre && celularPadre && neurologo && pediatra;
+        let mensaje = isValido ? "Ficha guardada con éxito" : "Debe completar todos los campos del formulario";
+        if (isValido) {
+             // Procesamiento de la ficha médica si los campos son válidos
+            let nuevoId = idProgresivo;
+            let ficha = {id:nuevoId, apellido:apellido, nombre:nombre, diagnostico:diagnostico, fechaNacimiento:fechaNacimiento, dni:dni, cud:cud, obraSocial:obraSocial, domicilio:domicilio, titularObraSocial:titularObraSocial, numAfiliado:numAfiliado, escuela:escuela, madre:nombreMadre, celularMama:celularMadre, padre:nombrePadre, celularPapa:celularPadre, neurologo:neurologo, pediatra:pediatra};
+            fichas.push(ficha);
+            idProgresivo++;
+            localStorage.setItem("fichas", JSON.stringify(fichas));
+            localStorage.setItem("idProgresivo", idProgresivo.toString());
+        } else {
+            alert(mensaje);
+        }
         formulario.reset();
     }
 
