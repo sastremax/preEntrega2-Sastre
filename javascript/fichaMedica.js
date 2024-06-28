@@ -185,13 +185,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para mostrar el formulario dinamicamente
     function mostrarFormulario() {
-        let formulario = document.getElementById("formulario");
-        if (formulario) {
-            formulario.innerHTML = "";
-            formulario.style.display = "block";
-
-            formulario.innerHTML = `
-            <form id="miFormulario">
+        let formularioHTML = `
+            <form id="formulario">
                 <h2>Crear una Ficha Médica</h2>
                 <label for="apellidoPaciente">Apellido del paciente:</label>
                 <input type="text" id="apellidoPaciente" required>
@@ -231,21 +226,26 @@ document.addEventListener("DOMContentLoaded", function () {
             </form> 
         `;
 
-            let guardarFichaBoton = document.getElementById("guardarFichaBoton");
+            let contenedor = document.getElementById("formularioContenedor");
+            if (contenedor) {
+                contenedor.innerHTML = formularioHTML;
+                let guardarFichaBoton = document.getElementById("guardarFichaBoton");
 
-            if (guardarFichaBoton) {
-                guardarFichaBoton.addEventListener("click", guardarFichasDeFormulario);
+                if (guardarFichaBoton) {
+                    guardarFichaBoton.addEventListener("click", guardarFichasDeFormulario);
+                } else {
+                    console.log("No se encontró el botón de guardar dentro del formulario.");
+                }
             } else {
-                console.log("No se encontró el botón de guardar dentro del formulario.");
+                console.log("No se encontró el contenedor del formulario.");
             }
-        }
     }
 
 
     // Función para agregar una nueva ficha médica desde el formulario
     function guardarFichasDeFormulario() {
 
-        formulario = document.getElementById("formularioFichaMedica");
+        formulario = document.getElementById("formulario");
 
         let apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra;
 
