@@ -402,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
             mensajeContainer.textContent = `Modificando ficha del paciente: ${idModificar}`;
 
             // Solicitar al usuario qué campo desea modificar
-            let campoModificar = prompt(`Qué campo desea modificar para el paciente: ${pacienteEncontrado.apellido}? (apellido/nombre/diagnostico/fechaNacimiento/edad/dni/cud/obraSocial/titularObraSocial/numeroAfiliado/escuela/mama/celularMama/papa/celularPapa/neurologo/pediatra)`);
+            let campoModificar = prompt(`Qué campo desea modificar para el paciente: ${pacienteEncontrado.apellido}? (apellido/nombre/diagnostico/fechaNacimiento/edad/dni/cud/obraSocial/titularObraSocial/numeroAfiliado/escuela/madre/celularMama/papa/celularPapa/neurologo/pediatra)`);
 
             // Validar la respuesta del usuario
             if (!campoModificar) {
