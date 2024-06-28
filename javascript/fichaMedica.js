@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para agregar una nueva ficha médica desde el formulario
     function guardarFichasDeFormulario() {
 
-        let formulario = document.getElementById("formularioFichaMedica");
+        formulario = document.getElementById("formularioFichaMedica");
 
         let apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra;
 
@@ -494,14 +494,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Buscar al paciente por su ID en el array 'fichas'
-        let indiceEliminar = fichas.findIndex(function (paciente) {
+        let indicePaciente = fichas.findIndex(function (paciente) {
             return paciente.id === idEliminar;
         });
 
         // Si se encontró al paciente
-        if (indiceEliminar !== -1) {
+        if (indicePaciente !== -1) {
 
-            fichas.splice(indiceEliminar, 1);
+            fichas.splice(indiceEPaciente, 1);
 
             // Guardar las fichas actualizadas en el localStorage
             guardarFichasEnStorage();
