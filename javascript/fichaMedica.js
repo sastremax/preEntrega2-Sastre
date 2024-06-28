@@ -247,61 +247,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let formulario = document.getElementById("formularioFichaMedica");
 
+        let apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra;
+
         if (formulario) {
             //Desestructuración para obtener los valores de los campos del formulario
-            let {
-                value: apellido
-            } = document.getElementById("apellidoPaciente");
-            let {
-                value: nombre
-            } = document.getElementById("nombrePaciente");
-            let {
-                value: diagnostico
-            } = document.getElementById("diagnosticoPaciente");
-            let {
-                value: fechaNacimiento
-            } = document.getElementById("fechaNacimientoPaciente");
-            let {
-                value: dni
-            } = document.getElementById("dniPaciente");
-            let {
-                value: cud
-            } = document.getElementById("cudPaciente");
-            let {
-                value: obraSocial
-            } = document.getElementById("obraSocialPaciente");
-            let {
-                value: domicilio
-            } = document.getElementById("domicilioPaciente");
-            let {
-                value: titularObraSocial
-            } = document.getElementById("titularObraSocialPaciente");
-            let {
-                value: numAfiliado
-            } = document.getElementById("numAfiliadoPaciente");
-            let {
-                value: escuela
-            } = document.getElementById("escuelaPaciente");
-            let {
-                value: nombreMadre
-            } = document.getElementById("nombreMadrePaciente");
-            let {
-                value: celularMadre
-            } = document.getElementById("celularMadrePaciente");
-            let {
-                value: nombrePadre
-            } = document.getElementById("nombrePadrePaciente");
-            let {
-                value: celularPadre
-            } = document.getElementById("celularPadrePaciente");
-            let {
-                value: neurologo
-            } = document.getElementById("neurologoPaciente");
-            let {
-                value: pediatra
-            } = document.getElementById("pediatraPaciente");
+            apellido = document.getElementById("apellidoPaciente").value;
+            nombre = document.getElementById("nombrePaciente").value;
+            diagnostico = document.getElementById("diagnosticoPaciente").value;
+            fechaNacimiento = document.getElementById("fechaNacimientoPaciente").value;
+            dni = document.getElementById("dniPaciente").value;
+            cud = document.getElementById("cudPaciente").value;
+            obraSocial = document.getElementById("obraSocialPaciente").value;
+            domicilio = document.getElementById("domicilioPaciente").value;
+            titularObraSocial = document.getElementById("titularObraSocialPaciente").value;
+            numAfiliado = document.getElementById("numAfiliadoPaciente").value;
+            escuela = document.getElementById("escuelaPaciente").value;
+            nombreMadre = document.getElementById("nombreMadrePaciente").value;
+            celularMadre = document.getElementById("celularMadrePaciente").value;
+            nombrePadre = document.getElementById("nombrePadrePaciente").value;
+            celularPadre = document.getElementById("celularPadrePaciente").value;
+            neurologo = document.getElementById("neurologoPaciente").value;
+            pediatra = document.getElementById("pediatraPaciente").value;
         }
-        // Uso de operadores lógicos para combinar condiciones y el operador ternario para asignar valores
+        // perador ternario para asignar valores
         let esValido = apellido && nombre && diagnostico && fechaNacimiento && dni && obraSocial && domicilio && titularObraSocial && numAfiliado && escuela && nombreMadre && celularMadre && nombrePadre && celularPadre && neurologo && pediatra;
         let mensaje = esValido ? "Ficha guardada con éxito" : "Debe completar todos los campos del formulario";
 
