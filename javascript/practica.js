@@ -1,4 +1,4 @@
-import prompt from 'prompt';
+
 
 // simulador de presupuesto de un consultorio medico y luego fichas medicas para ingreso de datos con ARRAYS para las/los terapeutas//
 
@@ -211,7 +211,7 @@ let valor = parseInt(prompt("Ingrese un número entre 10 y 50"));
     alert("El número ingresado está entre 10 y 50");
     }
 
-*/
+
 
 function validarAño() {
     año = prompt("Ingrese el año a calcular: ");
@@ -369,7 +369,7 @@ que incluya la definición de un algoritmo en JavaScript que emplee bucles e ins
 Podrás encontrar un ejemplo en la carpeta “Ejemplos de actividades”
 
 Pedir número mediante prompt y sumarle otro número en cada repetición,realizando una salida por cada resultado 
-*/
+
 let suma = 0;
 const CANTIDAD = 10;
 
@@ -846,7 +846,6 @@ const PRODUCTOS = [
 PRODUCTOS.forEach(({nombre, precio}) => {
     console.log(`${nombre}: ${precio}`);
 })
-   
 
 //Agregar mas de un evento a un elemento
 
@@ -908,3 +907,35 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
     */
+
+    // operador SPREAD: permite expandir elementos en un lugar donde se esperan argumentos
+    // llamese array o string
+    // se representa con tres puntos suspensivos ...
+
+    // SPREAD en arreglos
+
+    let array1 = [1,2,3,4];
+    let array2 = [5,6,7,8];
+    
+    console.log(array2);
+
+    let array3 = [...array1, ...array2];
+
+    let persona = {
+        nombre: "jorge",
+        edad: 25,
+        direccion:{
+            ciudad: "Santa Rosa",
+            cp: 6300
+        }
+    };
+
+    // copio y modifico
+
+    let modifoPersona = {...persona, direccion:{...persona.direccion, ciudad: "Balcarse"}};
+    console.log(modifoPersona);
+
+    //parametros rest: permite representar un numero indefinido de argumentos como un array
+    // se representa con tres puntos suspensivos ...
+    // es util cuando una funcion necesita recibir un numero indefinido de argumentos
+    // ejemplo: una funcion que suma todos los valores que recibe
