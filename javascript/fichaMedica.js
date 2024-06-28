@@ -628,12 +628,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Inicializar la página
-    inicializarPagina();
-    document.addEventListener("keydown", function(event) {
-        if (event.key === "enter") {
-            guardarFichasDeFormulario();
-        }
-    })
+    inicializarPagina();    
     document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
     document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
     document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);

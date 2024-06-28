@@ -1,4 +1,4 @@
-
+/*
 
 // simulador de presupuesto de un consultorio medico y luego fichas medicas para ingreso de datos con ARRAYS para las/los terapeutas//
 
@@ -913,7 +913,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // se representa con tres puntos suspensivos ...
 
     // SPREAD en arreglos
-
+/*
     let array1 = [1,2,3,4];
     let array2 = [5,6,7,8];
     
@@ -939,3 +939,5 @@ document.addEventListener("DOMContentLoaded", function() {
     // se representa con tres puntos suspensivos ...
     // es util cuando una funcion necesita recibir un numero indefinido de argumentos
     // ejemplo: una funcion que suma todos los valores que recibe
+
+*/
