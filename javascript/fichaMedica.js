@@ -90,12 +90,13 @@ document.addEventListener("DOMContentLoaded", function () {
         let inputApellido = document.createElement('input');
         inputApellido.setAttribute('type', 'text');
         inputApellido.setAttribute('id', 'inputApellido');
-        inputApellido.setAttribute('placeholder', 'Ingrese el apellido del paciente');
+        inputApellido.setAttribute('placeholder', 'apellido');
 
         let buscarFichaBoton = document.createElement('button');
-        buscarFichaBoton.textContent = "Buscar ficha por apellido";
+        buscarFichaBoton.textContent = "OK";
         buscarFichaBoton.addEventListener('click', function () {
             mostrarFichaPorApellido();
+            inputApellido.value = "";
         });
 
         buscarRecuadro.appendChild(buscarTitulo);
@@ -330,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function mostrarFichaPorApellido() {
         limpiarFichasMostradas();
 
-        let inputApellido = document.getElementById("inputApelldio");
+        let inputApellido = document.getElementById("inputApellido");
         let apellidoBuscar = inputApellido.value;
 
         if (apellidoBuscar) {
@@ -504,6 +505,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para eliminar una ficha de paciente
     function eliminarFicha() {
+        let indicePaciente;
+
         // Solicitar al usuario el ID del paciente a eliminar
         let idEliminar = parseInt(prompt("Ingrese el número de la ficha del paciente a eliminar: "));
 
@@ -514,14 +517,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Buscar al paciente por su ID en el array 'fichas'
-        let indicePaciente = fichas.findIndex(function (paciente) {
+        indicePaciente = fichas.findIndex(function (paciente) {
             return paciente.id === idEliminar;
         });
 
         // Si se encontró al paciente
         if (indicePaciente !== -1) {
 
-            fichas.splice(indiceEPaciente, 1);
+            fichas.splice(indicePaciente, 1);
 
             // Guardar las fichas actualizadas en el localStorage
             guardarFichasEnStorage();
