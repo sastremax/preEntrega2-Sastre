@@ -320,8 +320,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para buscar y mostrar una ficha por apellido
     function mostrarFichaPorApellido() {
         limpiarFichasMostradas();
-        let apellidoBuscar = prompt("Ingrese el apellido del paciente a buscar: ");
-        limpiarFichasMostradas();
+
+        let inputApellido = document.getElementById("inputApelldio");
+        let apellidoBuscar = inputApellido.value;
+
         if (apellidoBuscar) {
             let pacientesEncontrados = fichas.filter(function (paciente) {
                 return paciente.apellido.toLowerCase() === apellidoBuscar.toLowerCase();
