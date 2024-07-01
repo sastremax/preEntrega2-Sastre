@@ -940,4 +940,26 @@ document.addEventListener("DOMContentLoaded", function() {
     // es util cuando una funcion necesita recibir un numero indefinido de argumentos
     // ejemplo: una funcion que suma todos los valores que recibe
 
+
+
+// operacion sincoronica 
+
+console.log("incion de operacion")
+function operacionAsincronica(){
+    for(let i= 0; i< 3; i++){
+        console.log(i + 1));
+    }
+}
 */
+// practica de promesa
+
+let promesa = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        let exitoso= true;
+        if(exitoso){
+            resolve("operacion exitosa");
+    }, 2000);
+} else {
+    reject("hubo un error");
+}
+console.log("inicio de la promesa");

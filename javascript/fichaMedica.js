@@ -229,6 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let contenedor = document.getElementById("formularioContenedor");
             if (contenedor) {
                 contenedor.innerHTML = formularioHTML;
+                
                 let guardarFichaBoton = document.getElementById("guardarFichaBoton");
 
                 if (guardarFichaBoton) {
@@ -236,6 +237,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     console.log("No se encontró el botón de guardar dentro del formulario.");
                 }
+            
+                document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
+                document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
+                document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
+                document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
+                document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);
+                document.getElementById("btnMostrarPresupuesto").addEventListener("click", gestionarPresupuesto);
+
             } else {
                 console.log("No se encontró el contenedor del formulario.");
             }
@@ -629,10 +638,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Inicializar la página
     inicializarPagina();    
-    document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
-    document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
-    document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
-    document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
-    document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);
-    document.getElementById("btnMostrarPresupuesto").addEventListener("click", gestionarPresupuesto);
+    
 });
