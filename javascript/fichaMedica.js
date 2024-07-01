@@ -83,14 +83,23 @@ document.addEventListener("DOMContentLoaded", function () {
     function crearBotonBuscarFicha(contenedor) {
         let buscarRecuadro = document.createElement('div');
         buscarRecuadro.classList.add('recuadro');
+
         let buscarTitulo = document.createElement('p');
         buscarTitulo.textContent = "Búsqueda de fichas";
+
+        let inputApellido = document.createElement('input');
+        inputApellido.setAttribute('type', 'text');
+        inputApellido.setAttribute('id', 'inputApellido');
+        inputApellido.setAttribute('placeholder', 'Ingrese el apellido del paciente');
+
         let buscarFichaBoton = document.createElement('button');
         buscarFichaBoton.textContent = "Buscar ficha por apellido";
         buscarFichaBoton.addEventListener('click', function () {
             mostrarFichaPorApellido();
         });
+
         buscarRecuadro.appendChild(buscarTitulo);
+        buscarRecuadro.appendChild(inputApellido);
         buscarRecuadro.appendChild(buscarFichaBoton);
         contenedor.appendChild(buscarRecuadro);
     }
