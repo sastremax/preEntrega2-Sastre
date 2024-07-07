@@ -482,23 +482,35 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function eliminarFicha() {
-        let indicePaciente;
-        let idEliminar = parseInt(prompt("Ingrese el número de la ficha del paciente a eliminar: "));
-        if (!idEliminar || isNaN(idEliminar)) {
-            mensajeContainer.textContent = "Debe ingresar un número de FICHA válido";
-            return;
-        }
-        indicePaciente = fichas.findIndex(function (paciente) {
-            return paciente.id === idEliminar;
+        Swal.fire({
+            title: "Eliminar Ficha",
+            input: "numero",
+            inputLabel: "Ingrese el número de FICHA del paciente a eliminar",
+            inputPlaceholder: "Número de FICHA",
+            showCancelButton: true,
+            confirmButtonText: "Eliminar",
+            cancelButtonText: "Cancelar",
+            inputValidator: (value) => {
+                if (!value || isNaN(value)) {
+                    return 'Debe ingresar un número de FICHA válido';
+                }
+            }
+        }).then((resultado) => {
+            if (resultado.isConfirmed) {          
+                let idEliminar = parseInt(resultado.value);
+                let indicePaciente = fichas.findIndex(function (paciente) {
+                    return paciente.id === idEliminar;
+                });        
+                if (indicePaciente !== -1) {
+                    fichas.splice(indicePaciente, 1);
+                    guardarFichasEnStorage();
+                    Swal.fire('Eliminado', `Se eliminó la ficha del paciente número: ${idEliminar}`, 'success');
+                    mostrarTodosLosPacientes();
+                } else {
+                    Swal.fire('Error', `No se encontró ningún paciente con la ficha: ${idEliminar}`, 'error');
+                }
+            }
         });
-        if (indicePaciente !== -1) {
-            fichas.splice(indicePaciente, 1);
-            guardarFichasEnStorage();
-            mensajeContainer.textContent = `Se eliminó la ficha del paciente número: ${idEliminar}`;
-            mostrarTodosLosPacientes();
-        } else {
-            mensajeContainer.textContent = `No se encontró ningún paciente con la ficha: ${idEliminar}`;
-        }
     }
 
     function gestionarPresupuesto() {
