@@ -256,7 +256,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function mostrarTodosLosPacientes() {
         limpiarFichasMostradas();
         if (fichas.length === 0) {
-            mensajeContainer.textContent = "No hay fichas médicas para mostrar";
+            Swal.fire({
+                icon: "info",
+                    title: "Ficha",
+                    text: "No hay fichas médicas para mostrar",
+            });
         } else {
             fichas.forEach(function (ficha) {
                 mostrarFicha(ficha);
@@ -286,8 +290,9 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             Swal.fire({
                 icon: "info",
-                tit
-            })"Debe ingresar un apellido para buscar";
+                title: "Ficha",
+                text: "Debe ingresar un apellido para buscar",
+            });
         }
     }
 
@@ -336,14 +341,22 @@ document.addEventListener("DOMContentLoaded", function () {
     function modificarFicha() {        
         let idModificar = parseInt(prompt("Ingrese el número de FICHA del paciente a modificar: "));        
         if (!idModificar || isNaN(idModificar)) {
-            mensajeContainer.textContent = "Debe ingresar un número de FICHA válido";
+            Swal.fire({
+                icon: "error",
+                title: "Ficha",
+                text: "Debe ingresar un número de FICHA",
+            });
             return;
         }
         let pacienteEncontrado = fichas.find(function (paciente) {
             return paciente.id === idModificar;
         });
         if (pacienteEncontrado) {           
-            mensajeContainer.textContent = `Modificando ficha del paciente: ${idModificar}`;            
+            Swal.fire({
+                icon: "info",
+                title: "Ficha",
+                text: `Modificando ficha del paciente: ${idModificar}`,
+            });
             let campoModificar = prompt(`Qué campo desea modificar para el paciente: ${pacienteEncontrado.apellido}? (apellido/nombre/diagnostico/fechaNacimiento/edad/dni/cud/obraSocial/titularObraSocial/numeroAfiliado/escuela/madre/celularMama/padre/celularPapa/neurologo/pediatra)`);
             if (!campoModificar) {
                 mensajeContainer.textContent = "Debe ingresar un campo válido para modificar";
