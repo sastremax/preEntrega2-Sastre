@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let mensajeContainer = document.getElementById("mensaje");
     let formulario = document.getElementById("fichaMedicaFormulario");
     let historial = "";
-    
+
     function inicializarPagina() {
         crearBotones();
     }
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function crearBotones() {
         let contenedorRecuadros = document.querySelector('.contenedor-recuadros');
         let primeraFila = document.createElement('div');
-        primeraFila.classList.add('fila-botones');        
+        primeraFila.classList.add('fila-botones');
         crearBotonPacientesNuevos(primeraFila);
         crearBotonBuscarFicha(primeraFila);
         crearBotonListadoPacientes(primeraFila);
@@ -137,8 +137,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function limpiarFichasMostradas() {
-        fichasContainer.innerHTML = ""; 
-        mensajeContainer.textContent = "";        
+        fichasContainer.innerHTML = "";
+        mensajeContainer.textContent = "";
     }
 
     function mostrarFormulario() {
@@ -182,31 +182,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 <button type="button" id="guardarFichaBoton">Guardar Ficha</button>
             </form> 
         `;
-            let contenedor = document.getElementById("formularioContenedor");
-            if (contenedor) {
-                contenedor.innerHTML = formularioHTML;
-                
-                let guardarFichaBoton = document.getElementById("guardarFichaBoton");
-                if (guardarFichaBoton) {
-                    guardarFichaBoton.addEventListener("click", guardarFichasDeFormulario);
-                } else {
-                    console.log("No se encontró el botón de guardar dentro del formulario.");
-                }            
-                document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
-                document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
-                document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
-                document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
-                document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);
-                document.getElementById("btnMostrarPresupuesto").addEventListener("click", gestionarPresupuesto);
+        let contenedor = document.getElementById("formularioContenedor");
+        if (contenedor) {
+            contenedor.innerHTML = formularioHTML;
+
+            let guardarFichaBoton = document.getElementById("guardarFichaBoton");
+            if (guardarFichaBoton) {
+                guardarFichaBoton.addEventListener("click", guardarFichasDeFormulario);
             } else {
-                console.log("No se encontró el contenedor del formulario.");
+                console.log("No se encontró el botón de guardar dentro del formulario.");
             }
+            document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
+            document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
+            document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
+            document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
+            document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);
+            document.getElementById("btnMostrarPresupuesto").addEventListener("click", gestionarPresupuesto);
+        } else {
+            console.log("No se encontró el contenedor del formulario.");
+        }
     }
 
     function guardarFichasDeFormulario() {
         formulario = document.getElementById("formulario");
         let apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra;
-        if (formulario) {            
+        if (formulario) {
             apellido = document.getElementById("apellidoPaciente").value;
             nombre = document.getElementById("nombrePaciente").value;
             diagnostico = document.getElementById("diagnosticoPaciente").value;
@@ -224,9 +224,9 @@ document.addEventListener("DOMContentLoaded", function () {
             celularPadre = document.getElementById("celularPadrePaciente").value;
             neurologo = document.getElementById("neurologoPaciente").value;
             pediatra = document.getElementById("pediatraPaciente").value;
-        }        
+        }
         let esValido = apellido && nombre && diagnostico && fechaNacimiento && dni && obraSocial && domicilio && titularObraSocial && numAfiliado && escuela && nombreMadre && celularMadre && nombrePadre && celularPadre && neurologo && pediatra;
-        if (esValido) {            
+        if (esValido) {
             let nuevoId = idProgresivo;
             let ficha = { id: nuevoId, apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra };
             fichas.push(ficha);
@@ -258,8 +258,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (fichas.length === 0) {
             Swal.fire({
                 icon: "info",
-                    title: "Ficha",
-                    text: "No hay fichas médicas para mostrar",
+                title: "Ficha",
+                text: "No hay fichas médicas para mostrar",
             });
         } else {
             fichas.forEach(function (ficha) {
@@ -338,8 +338,8 @@ document.addEventListener("DOMContentLoaded", function () {
         fichasContainer.appendChild(fichaContainer);
     }
 
-    function modificarFicha() {        
-        let idModificar = parseInt(prompt("Ingrese el número de FICHA del paciente a modificar: "));        
+    function modificarFicha() {
+        let idModificar = parseInt(prompt("Ingrese el número de FICHA del paciente a modificar: "));
         if (!idModificar || isNaN(idModificar)) {
             Swal.fire({
                 icon: "error",
@@ -351,80 +351,133 @@ document.addEventListener("DOMContentLoaded", function () {
         let pacienteEncontrado = fichas.find(function (paciente) {
             return paciente.id === idModificar;
         });
-        if (pacienteEncontrado) {           
+        if (pacienteEncontrado) {
+            Swal.fire({
+                title: `Modificando ficha del paciente: ${idModificar}`,
+                input: "select",
+                inputOptions: {
+                    apellido: "Apellido",
+                    nombre: "Nombre",
+                    diagnostico: "Diagnóstico",
+                    fechaNacimiento: "Fecha de Nacimiento",
+                    edad: "Edad",
+                    dni: "DNI",
+                    cud: "CUD",
+                    obraSocial: "Obra Social",
+                    domicilio: "Domicilio",
+                    titularObraSocial: "Titular de Obra Social",
+                    numeroAfiliado: "Número de Afiliado",
+                    escuela: "Escuela",
+                    madre: "Nombre de la Madre",
+                    celularMama: "Celular de la Madre",
+                    padre: "Nombre del Padre",
+                    celularPapa: "Celular del Padre",
+                    neurologo: "Neurólogo",
+                    pediatra: "Pediatra",
+                },
+                inputPlaceholder: "Seleccione el campo a modificar",
+                showCancelButton: true,
+                inputValidator: (value) => {
+                    if (!value) {
+                        return 'Debe seleccionar un campo para modificar';
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let campoModificar = result.value;
+                    switch (campoModificar) {
+                        case "apellido":
+                            pacienteEncontrado.apellido = prompt(`Modificar apellido (actual: ${pacienteEncontrado.apellido}):`);
+                            break;
+                        case "nombre":
+                            pacienteEncontrado.nombre = prompt(`Modificar nombre (actual: ${pacienteEncontrado.nombre}):`);
+                            break;
+                        case "diagnostico":
+                            pacienteEncontrado.diagnostico = prompt(`Modificar diagnóstico (actual: ${pacienteEncontrado.diagnostico}):`);
+                            break;
+                        case "fechaNacimiento":
+                            pacienteEncontrado.fechaNacimiento = prompt(`Modificar fecha de nacimiento (actual: ${pacienteEncontrado.fechaNacimiento}):`);
+                            break;
+                        case "edad":
+                            pacienteEncontrado.edad = parseInt(prompt(`Modificar edad (actual: ${pacienteEncontrado.edad}):`));
+                            break;
+                        case "dni":
+                            pacienteEncontrado.dni = prompt(`Modificar DNI (actual: ${pacienteEncontrado.dni}):`);
+                            break;
+                        case "cud":
+                            pacienteEncontrado.cud = prompt(`Modificar CUD (actual: ${pacienteEncontrado.cud}):`);
+                            break;
+                        case "obraSocial":
+                            pacienteEncontrado.obraSocial = prompt(`Modificar obra social (actual: ${pacienteEncontrado.obraSocial}):`);
+                            break;
+                        case "domicilio":
+                            pacienteEncontrado.domicilio = prompt(`Modificar domicilio (actual: ${pacienteEncontrado.domicilio}):`);
+                            break;
+                        case "titularObraSocial":
+                            pacienteEncontrado.titularObraSocial = prompt(`Modificar titular de obra social (actual: ${pacienteEncontrado.titularObraSocial}):`);
+                            break;
+                        case "numeroAfiliado":
+                            pacienteEncontrado.numeroAfiliado = prompt(`Modificar número de afiliado (actual: ${pacienteEncontrado.numeroAfiliado}):`);
+                            break;
+                        case "escuela":
+                            pacienteEncontrado.escuela = prompt(`Modificar escuela (actual: ${pacienteEncontrado.escuela}):`);
+                            break;
+                        case "madre":
+                            pacienteEncontrado.madre = prompt(`Modificar nombre de la madre (actual: ${pacienteEncontrado.madre}):`);
+                            break;
+                        case "celularMama":
+                            pacienteEncontrado.celularMama = prompt(`Modificar celular de la madre (actual: ${pacienteEncontrado.celularMama}):`);
+                            break;
+                        case "padre":
+                            pacienteEncontrado.papa = prompt(`Modificar nombre del padre (actual: ${pacienteEncontrado.padre}):`);
+                            break;
+                        case "celularPapa":
+                            pacienteEncontrado.celularPapa = prompt(`Modificar celular del padre (actual: ${pacienteEncontrado.celularPapa}):`);
+                            break;
+                        case "neurologo":
+                            pacienteEncontrado.neurologo = prompt(`Modificar neurólogo (actual: ${pacienteEncontrado.neurologo}):`);
+                            break;
+                        case "pediatra":
+                            pacienteEncontrado.pediatra = prompt(`Modificar pediatra (actual: ${pacienteEncontrado.pediatra}):`);
+                            break;
+                        default:
+                            Swal.fire({
+                                icon: "error",
+                                title: "Ficha",
+                                text: "No se pudo modificar la ficha",
+                            });
+                            return;
+                    }
+                    Swal.fire({
+                        title: 'Guardar cambios',
+                        text: "¿Desea guardar los cambios realizados?",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Guardar',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            guardarFichasEnStorage();
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Ficha modificada',
+                                text: `Se guardaron los cambios en la ficha del paciente #${idModificar}`
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'info',
+                                title: 'Cambios cancelados',
+                                text: 'No se guardaron los cambios en la ficha del paciente'
+                            });
+                        }
+                    });
+                }
+            });
+        } else {
             Swal.fire({
                 icon: "info",
-                title: "Ficha",
-                text: `Modificando ficha del paciente: ${idModificar}`,
+                title: `No se encontró ningún paciente con la ficha # ${idModificar}`,
             });
-            let campoModificar = prompt(`Qué campo desea modificar para el paciente: ${pacienteEncontrado.apellido}? (apellido/nombre/diagnostico/fechaNacimiento/edad/dni/cud/obraSocial/titularObraSocial/numeroAfiliado/escuela/madre/celularMama/padre/celularPapa/neurologo/pediatra)`);
-            if (!campoModificar) {
-                mensajeContainer.textContent = "Debe ingresar un campo válido para modificar";
-                return;
-            }
-            switch (campoModificar) {
-                case "apellido":
-                    pacienteEncontrado.apellido = prompt(`Modificar apellido (actual: ${pacienteEncontrado.apellido}):`);
-                    break;
-                case "nombre":
-                    pacienteEncontrado.nombre = prompt(`Modificar nombre (actual: ${pacienteEncontrado.nombre}):`);
-                    break;
-                case "diagnostico":
-                    pacienteEncontrado.diagnostico = prompt(`Modificar diagnóstico (actual: ${pacienteEncontrado.diagnostico}):`);
-                    break;
-                case "fechaNacimiento":
-                    pacienteEncontrado.fechaNacimiento = prompt(`Modificar fecha de nacimiento (actual: ${pacienteEncontrado.fechaNacimiento}):`);
-                    break;
-                case "edad":
-                    pacienteEncontrado.edad = parseInt(prompt(`Modificar edad (actual: ${pacienteEncontrado.edad}):`));
-                    break;
-                case "dni":
-                    pacienteEncontrado.dni = prompt(`Modificar DNI (actual: ${pacienteEncontrado.dni}):`);
-                    break;
-                case "cud":
-                    pacienteEncontrado.cud = prompt(`Modificar CUD (actual: ${pacienteEncontrado.cud}):`);
-                    break;
-                case "obraSocial":
-                    pacienteEncontrado.obraSocial = prompt(`Modificar obra social (actual: ${pacienteEncontrado.obraSocial}):`);
-                    break;
-                case "domicilio":
-                    pacienteEncontrado.domicilio = prompt(`Modificar domicilio (actual: ${pacienteEncontrado.domicilio}):`);
-                    break;
-                case "titularObraSocial":
-                    pacienteEncontrado.titularObraSocial = prompt(`Modificar titular de obra social (actual: ${pacienteEncontrado.titularObraSocial}):`);
-                    break;
-                case "numeroAfiliado":
-                    pacienteEncontrado.numeroAfiliado = prompt(`Modificar número de afiliado (actual: ${pacienteEncontrado.numeroAfiliado}):`);
-                    break;
-                case "escuela":
-                    pacienteEncontrado.escuela = prompt(`Modificar escuela (actual: ${pacienteEncontrado.escuela}):`);
-                    break;
-                case "madre":
-                    pacienteEncontrado.madre = prompt(`Modificar nombre de la madre (actual: ${pacienteEncontrado.madre}):`);
-                    break;
-                case "celularMama":
-                    pacienteEncontrado.celularMama = prompt(`Modificar celular de la madre (actual: ${pacienteEncontrado.celularMama}):`);
-                    break;
-                case "padre":
-                    pacienteEncontrado.papa = prompt(`Modificar nombre del padre (actual: ${pacienteEncontrado.padre}):`);
-                    break;
-                case "celularPapa":
-                    pacienteEncontrado.celularPapa = prompt(`Modificar celular del padre (actual: ${pacienteEncontrado.celularPapa}):`);
-                    break;
-                case "neurologo":
-                    pacienteEncontrado.neurologo = prompt(`Modificar neurólogo (actual: ${pacienteEncontrado.neurologo}):`);
-                    break;
-                case "pediatra":
-                    pacienteEncontrado.pediatra = prompt(`Modificar pediatra (actual: ${pacienteEncontrado.pediatra}):`);
-                    break;
-                default:
-                    mensajeContainer.textContent = "Campo inválido";
-                    return;
-            }
-            guardarFichasEnStorage();           
-            mostrarTodosLosPacientes();
-        } else {            
-            mensajeContainer.textContent = `No se encontró ningún paciente con la ficha # ${idModificar}`;
         }
     }
 
@@ -437,13 +490,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         indicePaciente = fichas.findIndex(function (paciente) {
             return paciente.id === idEliminar;
-        });        
+        });
         if (indicePaciente !== -1) {
-            fichas.splice(indicePaciente, 1);            
+            fichas.splice(indicePaciente, 1);
             guardarFichasEnStorage();
-            mensajeContainer.textContent = `Se eliminó la ficha del paciente número: ${idEliminar}`;            
-            mostrarTodosLosPacientes(); 
-        } else {            
+            mensajeContainer.textContent = `Se eliminó la ficha del paciente número: ${idEliminar}`;
+            mostrarTodosLosPacientes();
+        } else {
             mensajeContainer.textContent = `No se encontró ningún paciente con la ficha: ${idEliminar}`;
         }
     }
@@ -524,7 +577,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return totalGastosServicios;
     }
 
-    //Funcion para ingresar las ganancias
     function ingresarGanancias(mes, año) {
         let ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
         while (isNaN(ganancias) || ganancias < 0) {
@@ -534,7 +586,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return ganancias;
     }
 
-    //Funcion para calcular el saldo
     function calcularSaldo(ingresos, egresos, mes, año) {
         let saldo = ingresos - egresos;
         let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
@@ -547,7 +598,6 @@ document.addEventListener("DOMContentLoaded", function () {
         historial += mensaje + "\n";
     }
 
-    // Inicializar la página
-    inicializarPagina();    
-    
+    inicializarPagina();
+
 });
