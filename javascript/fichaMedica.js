@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
         eliminarFichaBoton.addEventListener('click', function () {
             eliminarFicha();
         });
-
         let separador = document.createElement('span');
         separador.textContent = "|";
         modificarEliminarRecuadro.appendChild(modificarFichaBoton);
@@ -227,7 +226,6 @@ document.addEventListener("DOMContentLoaded", function () {
             pediatra = document.getElementById("pediatraPaciente").value;
         }        
         let esValido = apellido && nombre && diagnostico && fechaNacimiento && dni && obraSocial && domicilio && titularObraSocial && numAfiliado && escuela && nombreMadre && celularMadre && nombrePadre && celularPadre && neurologo && pediatra;
-        let mensaje = esValido ? "Ficha guardada con éxito" : "Debe completar todos los campos del formulario";
         if (esValido) {            
             let nuevoId = idProgresivo;
             let ficha = { id: nuevoId, apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra };
@@ -235,8 +233,17 @@ document.addEventListener("DOMContentLoaded", function () {
             idProgresivo++;
             localStorage.setItem("fichas", JSON.stringify(fichas));
             localStorage.setItem("idProgresivo", idProgresivo.toString());
+            Swal.fire({
+                icon: "success",
+                title: "Ficha",
+                text: "Ficha guardada con éxito",
+            });
         } else {
-            alert(mensaje);
+            Swal.fire({
+                icon: "error",
+                title: "Ficha",
+                text: "La ficha no pudo ser guardada",
+            });
         }
         formulario.reset();
     }
@@ -270,10 +277,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     mostrarFicha(paciente);
                 });
             } else {
-                mensajeContainer.textContent = "No se encontraron pacientes con ese apellido";
+                Swal.fire({
+                    icon: "info",
+                    title: "Ficha",
+                    text: "No se encontraron fichas con ese apellido",
+                });
             }
         } else {
-            mensajeContainer.textContent = "Debe ingresar un apellido para buscar";
+            Swal.fire({
+                icon: "info",
+                tit
+            })"Debe ingresar un apellido para buscar";
         }
     }
 
