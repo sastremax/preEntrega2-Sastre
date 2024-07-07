@@ -185,12 +185,15 @@ document.addEventListener("DOMContentLoaded", function () {
         let contenedor = document.getElementById("formularioContenedor");
         if (contenedor) {
             contenedor.innerHTML = formularioHTML;
-
             let guardarFichaBoton = document.getElementById("guardarFichaBoton");
             if (guardarFichaBoton) {
                 guardarFichaBoton.addEventListener("click", guardarFichasDeFormulario);
             } else {
-                console.log("No se encontró el botón de guardar dentro del formulario.");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se encontró el botón de guardar dentro del formulario.'
+                });
             }
             document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
             document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
@@ -199,7 +202,11 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);
             document.getElementById("btnMostrarPresupuesto").addEventListener("click", gestionarPresupuesto);
         } else {
-            console.log("No se encontró el contenedor del formulario.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se encontró el contenedor del formulario.'
+            });
         }
     }
 
@@ -345,8 +352,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function mostrarFicha(paciente) {
         let fichaContainer = document.createElement("div");
-        fichaContainer.classList.add("ficha");
-        let idPaciente = document.createElement("p");
+        fichaContainer.classList.add("ficha");        
         idPaciente.innerHTML = `<strong style="display: block; text-align: center;">FICHA: ${paciente.id}</strong>`;
         fichaContainer.appendChild(idPaciente);
         let datosPaciente = document.createElement("div");
@@ -364,9 +370,9 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>Número de Afiliado: <strong>${paciente.numAfiliado}</strong></p>
             <p>Escuela: <strong>${paciente.escuela}</strong></p>
             <p>Madre: <strong>${paciente.madre}</strong></p>
-            <p>Celular Madre: <strong>${paciente.celularMama}</strong></p>
+            <p>Celular Madre: <strong>${paciente.celularMadre}</strong></p>
             <p>Padre: <strong>${paciente.padre}</strong></p>
-            <p>Celular Padre: <strong>${paciente.celularPapa}</strong></p>
+            <p>Celular Padre: <strong>${paciente.celularPadre}</strong></p>
             <p>Neurólogo: <strong>${paciente.neurologo}</strong></p>
             <p>Pediatra: <strong>${paciente.pediatra}</strong></p>            
         `;
@@ -569,7 +575,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function validarAño() {
         let año = prompt("Ingrese el año a calcular: ");
         while (año < 2020 || isNaN(año) || año.toString() !== año) {
-            console.log("El año ingresado no es válido.");
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "El año ingresado no es válido",
+            });
             año = prompt("Ingrese el año a calcular: ");
         }
         return año;
@@ -579,7 +589,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
         while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
             mes !== "julio" && mes !== "agosto" && mes !== "septiembre" && mes !== "octubre" && mes !== "noviembre" && mes !== "diciembre") {
-            console.log("El mes ingresado no es válido.");
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "El mes ingresado no es válido",
+            });
             mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
         }
         return mes;
@@ -591,7 +605,11 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = 1; i < cantidadProductos + 1; i++) {
             let gasto = parseInt(prompt("Ingrese el monto del gasto individual del producto: " + i + " en el mes de " + mes));
             while (isNaN(gasto) || gasto < 0) {
-                console.log("El monto ingresado no es válido.");
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "El monto ingresado no es válido",
+                });
                 gasto = parseInt(prompt("Ingrese el gasto del producto " + i + " en el mes de " + mes));
             }
             totalGastosProductos += gasto;
@@ -605,7 +623,11 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = 0; i < cantidadEmpleados; i++) {
             let gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
             while (isNaN(gasto) || gasto < 0) {
-                console.log("El monto ingresado no es válido.");
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "El monto ingresado no es válido",
+                });
                 gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
             }
             totalGastosServicios += gasto;
@@ -616,7 +638,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function ingresarGanancias(mes, año) {
         let ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
         while (isNaN(ganancias) || ganancias < 0) {
-            console.log("El monto ingresado no es válido.");
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "El monto ingresado no es válido",
+            });
             ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
         }
         return ganancias;
