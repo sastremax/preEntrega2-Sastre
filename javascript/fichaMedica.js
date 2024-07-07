@@ -227,6 +227,40 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         let esValido = apellido && nombre && diagnostico && fechaNacimiento && dni && obraSocial && domicilio && titularObraSocial && numAfiliado && escuela && nombreMadre && celularMadre && nombrePadre && celularPadre && neurologo && pediatra;
         if (esValido) {
+            if (isNaN(dni) || dni.length <8) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "El campo DNI debe ser un número válido y tener al menos 8 caracteres",
+                });
+                return;
+            }
+            if (isNaN(celularMadre)) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "El campo Celular de la madre debe ser un número válido",
+                });
+                return;
+            }
+            if (isNaN(celularPadre)) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "El Celular del padre debe ser un número válido sin guiones",
+                });
+                return;
+            }
+            let fechaActual = new Date();
+            let fechaIngresada = new Date(fechaNacimiento);
+            if (fechaIngresada >= fechaActual) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "La fecha de nacimiento debe ser anterior al día de hoy",
+                });
+                return;
+            }    
             let nuevoId = idProgresivo;
             let ficha = { id: nuevoId, apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra };
             fichas.push(ficha);
@@ -236,16 +270,18 @@ document.addEventListener("DOMContentLoaded", function () {
             Swal.fire({
                 icon: "success",
                 title: "Ficha",
-                text: "Ficha guardada con éxito",
+                text: "Ficha del paciente guardada con éxito",
+            }).then(() => {
+                formulario.reset();
+                formulario.style.display = "none";
             });
         } else {
             Swal.fire({
                 icon: "error",
                 title: "Ficha",
-                text: "La ficha no pudo ser guardada",
+                text: "La ficha no pudo ser guardada, complete todos los campos",
             });
-        }
-        formulario.reset();
+        }                
     }
 
     function guardarFichasEnStorage() {
