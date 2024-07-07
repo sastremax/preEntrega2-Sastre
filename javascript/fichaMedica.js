@@ -353,6 +353,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function mostrarFicha(paciente) {
         let fichaContainer = document.createElement("div");
         fichaContainer.classList.add("ficha");
+        let idPaciente = document.createElement("div");
         idPaciente.innerHTML = `<strong style="display: block; text-align: center;">FICHA: ${paciente.id}</strong>`;
         fichaContainer.appendChild(idPaciente);
         let datosPaciente = document.createElement("div");
@@ -452,7 +453,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 modificarElCampo(pacienteEncontrado, idModificar, campoModificar);
             }
         });
-    }                
+    }
 
     function modificarElCampo(pacienteEncontrado, idModificar, campoModificar) {
         Swal.fire({
@@ -480,143 +481,143 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-function eliminarFicha() {
-    let indicePaciente;
-    let idEliminar = parseInt(prompt("Ingrese el número de la ficha del paciente a eliminar: "));
-    if (!idEliminar || isNaN(idEliminar)) {
-        mensajeContainer.textContent = "Debe ingresar un número de FICHA válido";
-        return;
+    function eliminarFicha() {
+        let indicePaciente;
+        let idEliminar = parseInt(prompt("Ingrese el número de la ficha del paciente a eliminar: "));
+        if (!idEliminar || isNaN(idEliminar)) {
+            mensajeContainer.textContent = "Debe ingresar un número de FICHA válido";
+            return;
+        }
+        indicePaciente = fichas.findIndex(function (paciente) {
+            return paciente.id === idEliminar;
+        });
+        if (indicePaciente !== -1) {
+            fichas.splice(indicePaciente, 1);
+            guardarFichasEnStorage();
+            mensajeContainer.textContent = `Se eliminó la ficha del paciente número: ${idEliminar}`;
+            mostrarTodosLosPacientes();
+        } else {
+            mensajeContainer.textContent = `No se encontró ningún paciente con la ficha: ${idEliminar}`;
+        }
     }
-    indicePaciente = fichas.findIndex(function (paciente) {
-        return paciente.id === idEliminar;
-    });
-    if (indicePaciente !== -1) {
-        fichas.splice(indicePaciente, 1);
-        guardarFichasEnStorage();
-        mensajeContainer.textContent = `Se eliminó la ficha del paciente número: ${idEliminar}`;
-        mostrarTodosLosPacientes();
-    } else {
-        mensajeContainer.textContent = `No se encontró ningún paciente con la ficha: ${idEliminar}`;
-    }
-}
 
-function gestionarPresupuesto() {
-    let año = validarAño();
-    let mes = validarMes();
-    let totalGastosProductos = ingresarGastosProductos(mes);
-    let totalGastosServicios = ingresarGastosServicios();
-    let ingresos = ingresarGanancias(mes, año);
-    let egresos = totalGastosProductos + totalGastosServicios;
-    calcularSaldo(ingresos, egresos, mes, año);
-    let resultadoPresupuesto = document.getElementById('resultadoPresupuesto');
-    if (resultadoPresupuesto) {
-        resultadoPresupuesto.textContent = `Resultado del presupuesto para ${mes} ${año}: 
+    function gestionarPresupuesto() {
+        let año = validarAño();
+        let mes = validarMes();
+        let totalGastosProductos = ingresarGastosProductos(mes);
+        let totalGastosServicios = ingresarGastosServicios();
+        let ingresos = ingresarGanancias(mes, año);
+        let egresos = totalGastosProductos + totalGastosServicios;
+        calcularSaldo(ingresos, egresos, mes, año);
+        let resultadoPresupuesto = document.getElementById('resultadoPresupuesto');
+        if (resultadoPresupuesto) {
+            resultadoPresupuesto.textContent = `Resultado del presupuesto para ${mes} ${año}: 
                 Ingresos: ${ingresos}, Egresos: ${egresos}, Saldo: ${ingresos - egresos}`;
-    } else {
-        console.error('No se encontró el elemento con id "resultadoPresupuesto"');
-    }
-    do {
-        let respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
-        if (respuesta === "si" || respuesta === "s") {
-            año = validarAño();
-            mes = validarMes();
-            totalGastosProductos = ingresarGastosProductos(mes);
-            totalGastosServicios = ingresarGastosServicios();
-            ingresos = ingresarGanancias(mes, año);
-            egresos = totalGastosProductos + totalGastosServicios;
-            calcularSaldo(ingresos, egresos, mes, año);
+        } else {
+            console.error('No se encontró el elemento con id "resultadoPresupuesto"');
         }
-    } while (respuesta === "si" || respuesta === "s");
-}
-
-function validarAño() {
-    let año = prompt("Ingrese el año a calcular: ");
-    while (año < 2020 || isNaN(año) || año.toString() !== año) {
-        Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "El año ingresado no es válido",
-        });
-        año = prompt("Ingrese el año a calcular: ");
+        do {
+            let respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
+            if (respuesta === "si" || respuesta === "s") {
+                año = validarAño();
+                mes = validarMes();
+                totalGastosProductos = ingresarGastosProductos(mes);
+                totalGastosServicios = ingresarGastosServicios();
+                ingresos = ingresarGanancias(mes, año);
+                egresos = totalGastosProductos + totalGastosServicios;
+                calcularSaldo(ingresos, egresos, mes, año);
+            }
+        } while (respuesta === "si" || respuesta === "s");
     }
-    return año;
-}
 
-function validarMes() {
-    let mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
-    while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
-        mes !== "julio" && mes !== "agosto" && mes !== "septiembre" && mes !== "octubre" && mes !== "noviembre" && mes !== "diciembre") {
-        Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "El mes ingresado no es válido",
-        });
-        mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
+    function validarAño() {
+        let año = prompt("Ingrese el año a calcular: ");
+        while (año < 2020 || isNaN(año) || año.toString() !== año) {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "El año ingresado no es válido",
+            });
+            año = prompt("Ingrese el año a calcular: ");
+        }
+        return año;
     }
-    return mes;
-}
 
-function ingresarGastosProductos(mes) {
-    let totalGastosProductos = 0;
-    let cantidadProductos = parseInt(prompt("Ingrese la cantidad de productos comprados en el mes de " + mes));
-    for (let i = 1; i < cantidadProductos + 1; i++) {
-        let gasto = parseInt(prompt("Ingrese el monto del gasto individual del producto: " + i + " en el mes de " + mes));
-        while (isNaN(gasto) || gasto < 0) {
+    function validarMes() {
+        let mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
+        while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
+            mes !== "julio" && mes !== "agosto" && mes !== "septiembre" && mes !== "octubre" && mes !== "noviembre" && mes !== "diciembre") {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "El mes ingresado no es válido",
+            });
+            mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
+        }
+        return mes;
+    }
+
+    function ingresarGastosProductos(mes) {
+        let totalGastosProductos = 0;
+        let cantidadProductos = parseInt(prompt("Ingrese la cantidad de productos comprados en el mes de " + mes));
+        for (let i = 1; i < cantidadProductos + 1; i++) {
+            let gasto = parseInt(prompt("Ingrese el monto del gasto individual del producto: " + i + " en el mes de " + mes));
+            while (isNaN(gasto) || gasto < 0) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "El monto ingresado no es válido",
+                });
+                gasto = parseInt(prompt("Ingrese el gasto del producto " + i + " en el mes de " + mes));
+            }
+            totalGastosProductos += gasto;
+        }
+        return totalGastosProductos;
+    }
+
+    function ingresarGastosServicios(gastosServicios) {
+        let totalGastosServicios = 0;
+        let cantidadEmpleados = parseInt(prompt("Ingrese la cantidad de empleados:"));
+        for (let i = 0; i < cantidadEmpleados; i++) {
+            let gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
+            while (isNaN(gasto) || gasto < 0) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "El monto ingresado no es válido",
+                });
+                gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
+            }
+            totalGastosServicios += gasto;
+        }
+        return totalGastosServicios;
+    }
+
+    function ingresarGanancias(mes, año) {
+        let ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
+        while (isNaN(ganancias) || ganancias < 0) {
             Swal.fire({
                 icon: "error",
                 title: "Error",
                 text: "El monto ingresado no es válido",
             });
-            gasto = parseInt(prompt("Ingrese el gasto del producto " + i + " en el mes de " + mes));
+            ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
         }
-        totalGastosProductos += gasto;
+        return ganancias;
     }
-    return totalGastosProductos;
-}
 
-function ingresarGastosServicios(gastosServicios) {
-    let totalGastosServicios = 0;
-    let cantidadEmpleados = parseInt(prompt("Ingrese la cantidad de empleados:"));
-    for (let i = 0; i < cantidadEmpleados; i++) {
-        let gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
-        while (isNaN(gasto) || gasto < 0) {
-            Swal.fire({
-                icon: "error",
-                title: "Error",
-                text: "El monto ingresado no es válido",
-            });
-            gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
+    function calcularSaldo(ingresos, egresos, mes, año) {
+        let saldo = ingresos - egresos;
+        let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
+        if (saldo >= 0) {
+            mensaje += "positivo";
+        } else {
+            mensaje += "negativo";
         }
-        totalGastosServicios += gasto;
+        mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";
+        historial += mensaje + "\n";
     }
-    return totalGastosServicios;
-}
 
-function ingresarGanancias(mes, año) {
-    let ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
-    while (isNaN(ganancias) || ganancias < 0) {
-        Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "El monto ingresado no es válido",
-        });
-        ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
-    }
-    return ganancias;
-}
-
-function calcularSaldo(ingresos, egresos, mes, año) {
-    let saldo = ingresos - egresos;
-    let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
-    if (saldo >= 0) {
-        mensaje += "positivo";
-    } else {
-        mensaje += "negativo";
-    }
-    mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";
-    historial += mensaje + "\n";
-}
-
-inicializarPagina();
+    inicializarPagina();
 
 });
