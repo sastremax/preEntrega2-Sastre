@@ -950,7 +950,7 @@ function operacionAsincronica(){
         console.log(i + 1));
     }
 }
-*/
+
 // practica de promesa
 
 let promesa = new Promise((resolve, reject) => {
@@ -963,3 +963,116 @@ let promesa = new Promise((resolve, reject) => {
     reject("hubo un error");
 }
 console.log("inicio de la promesa");
+
+
+// AJAX = Asynchronous JavaScript And XML, JAVASCRIPT ASINCRONICO
+ACTUALIZA DE FORMA ASINCRONICA EL SITIO //
+JASON(ES COMO UN ARRAY DE OBJETOS)
+
+SE COMPONE DE 4 COMPONENTES PRINCIPALES: //
+
+1. javascript como lenguaje
+2. xmlhttprequest objeto para solicitar datos de un servidor web
+3. datos de formato jason => formato de intercambio de datos
+
+const url = "https://jsonplaceholder.typicode.com/posts";
+
+const xhr = new XMLHttpRequest();
+
+//o tambien se puede hacer:
+
+document.getElementById("cargarDatos").addEventListener("click", function(){
+
+    donst xhr = new XMLHttpRequest();
+
+    // configurar la solicitud de la API
+
+    xhr.open("GET","https://jsonplaceholder.typicode.com/posts", true);
+/* la conexion con la API se hace cuando se genera el metodo OPEN, esto lo 
+ que hace es inciar una nueva solicitud de conexion con el servidor http
+
+METODOS: GET, POST, PUT, DELETE
+ GET: solicita datos de un recurso especificado, informacion al servidor
+ POST: envia datos a un servidor para crear un recurso
+ PUT: actualiza un recurso especificado
+ DELETE: elimina un recurso especificado
+
+ cuando hacemos una peticion, se nos devuelve un codigo de respuesta, este
+ codigo de respuesta nos indica si la peticion fue exitosa o no
+
+ existen dos objetos:
+this.readyState // devuelve el estado de la solicitud
+0 (unsent) => no se ha invocado el metodo open
+1 (opened) => se ha invocado el metodo open
+2 (headers_received) => se ha recibido la respuesta
+3 (loading) => se esta descargando la respuesta
+4 (done) => la operacion esta completa
+
+this.status // devuelve el estado de la solicitud
+200 (ok) => la solicitud fue exitosa
+403 (forbidden) => el servidor rechaza la solicitud
+404 (not found) => no se encontro el recurso solicitado
+500 (internal server error) => error interno del servidor
+ 
+== 4 significa que paso por todos los estados 
+onreadystateechange significa que cambio el estado de la solicitud
+es un objeto que se ejecuta cuando cambia el estado de la solicitud
+
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            let posts = JSON.parse(this.responseText);
+            
+            let contenedorPost = document.getElementById("posteo"); 
+            contenedorPost.innerHTML = "";
+            posts.array.forEach(function(post){
+                let div = document.createElement("div");
+                div.innerHTML = `
+                <h3>${post.title}</h3>
+                <p>${post.body}</p>
+                <p>${post.id}</p>
+                `;
+                contenedorPost.appendChild(elementoPost);
+            });   
+        }
+    }
+    xhr.send();
+}
+
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const apiFotos = "https://jsonplaceholder.typicode.com/photos";
+    const contenedorFotos = document.getElementById("fotos");
+
+    fetch(apiFotos)
+      .then(respuesta => respuesta.json())
+      .then(datos => {
+        console.log(datos); 
+        mostrarFotos(datos);
+      })
+      .catch(error => console.log(error))
+      .finally(() => console.log("Proceso finalizado"));
+
+    function mostrarFotos(datos) {
+      datos.forEach(foto => {
+        const img = document.createElement("img");
+        img.src = foto.url;
+        img.alt = foto.title;
+        contenedorFotos.appendChild(img);
+      });
+    }
+});
+
+async await significa que la funcion es asincronica 2017
+
+async es una palabra clave que se utiliza para declarar una funcion asincronica
+
+await es una palabra clave que se puede utilizar dentro de una funcion asincronica
+
+
+*/
+
+async function fetchPoke1(){
+    const PokeApi= fetch("https://pokeapi.co/api/v2/pokemon/1");
+}
+
