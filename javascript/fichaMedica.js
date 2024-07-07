@@ -293,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function guardarFichasEnStorage() {
         localStorage.setItem("fichas", JSON.stringify(fichas));
-        localStorage.setItem("idProgresivo", idProgresivo.toString);
+        localStorage.setItem("idProgresivo", idProgresivo.toString());
     }
 
     function mostrarTodosLosPacientes() {
@@ -404,149 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let idModificar = parseInt(resultado.value);
                 let pacienteEncontrado = fichas.find(paciente => paciente.id === idModificar);
                 if (pacienteEncontrado) {
-                    Swal.fire({
-                        title: `Modificando ficha del paciente: ${idModificar}`,
-                        input: "select",
-                        inputOptions: {
-                            apellido: "Apellido",
-                            nombre: "Nombre",
-                            diagnostico: "Diagnóstico",
-                            fechaNacimiento: "Fecha de Nacimiento",
-                            edad: "Edad",
-                            dni: "DNI",
-                            cud: "CUD",
-                            obraSocial: "Obra Social",
-                            domicilio: "Domicilio",
-                            titularObraSocial: "Titular de Obra Social",
-                            numeroAfiliado: "Número de Afiliado",
-                            escuela: "Escuela",
-                            madre: "Nombre de la Madre",
-                            celularMama: "Celular de la Madre",
-                            padre: "Nombre del Padre",
-                            celularPapa: "Celular del Padre",
-                            neurologo: "Neurólogo",
-                            pediatra: "Pediatra",
-                        },
-                        inputPlaceholder: "Seleccione el campo a modificar",
-                        showCancelButton: true,
-                        inputValidator: (value) => {
-                            if (!value) {
-                                return 'Debe seleccionar un campo para modificar';
-                            }
-                        }
-                    }).then((resultado) => {
-                        if (resultado.isConfirmed) {
-                            let campoModificar = resultado.value;
-                            switch (campoModificar) {
-                                case "apellido":
-                                    Swal.fire({
-                                        title: `Modificar apellido (actual: ${pacienteEncontrado.apellido}):`,
-                                        input: "text",
-                                        inputValue: pacienteEncontrado.apellido,
-                                        showCancelButton: true,
-                                        confirmButtonText: 'Guardar',
-                                        cancelButtonText: 'Cancelar',
-                                        inputValidator: (value) => {
-                                            if (!value) {
-                                                return 'Debe ingresar un apellido válido';
-                                            }
-                                        }
-                                    }).then((resultado) => {
-                                        if (resultado.isConfirmed) {
-                                            pacienteEncontrado.apellido = resultado.value;
-                                            guardarFichasEnStorage();
-                                            Swal.fire({
-                                                icon: 'success',
-                                                title: 'Ficha modificada',
-                                                text: `Se guardaron los cambios en la ficha del paciente #${idModificar}`
-                                            });
-                                        }
-                                    });
-                                    break;
-                                case "nombre":
-                                    pacienteEncontrado.nombre = prompt(`Modificar nombre (actual: ${pacienteEncontrado.nombre}):`);
-                                    break;
-                                case "diagnostico":
-                                    pacienteEncontrado.diagnostico = prompt(`Modificar diagnóstico (actual: ${pacienteEncontrado.diagnostico}):`);
-                                    break;
-                                case "fechaNacimiento":
-                                    pacienteEncontrado.fechaNacimiento = prompt(`Modificar fecha de nacimiento (actual: ${pacienteEncontrado.fechaNacimiento}):`);
-                                    break;
-                                case "edad":
-                                    pacienteEncontrado.edad = parseInt(prompt(`Modificar edad (actual: ${pacienteEncontrado.edad}):`));
-                                    break;
-                                case "dni":
-                                    pacienteEncontrado.dni = prompt(`Modificar DNI (actual: ${pacienteEncontrado.dni}):`);
-                                    break;
-                                case "cud":
-                                    pacienteEncontrado.cud = prompt(`Modificar CUD (actual: ${pacienteEncontrado.cud}):`);
-                                    break;
-                                case "obraSocial":
-                                    pacienteEncontrado.obraSocial = prompt(`Modificar obra social (actual: ${pacienteEncontrado.obraSocial}):`);
-                                    break;
-                                case "domicilio":
-                                    pacienteEncontrado.domicilio = prompt(`Modificar domicilio (actual: ${pacienteEncontrado.domicilio}):`);
-                                    break;
-                                case "titularObraSocial":
-                                    pacienteEncontrado.titularObraSocial = prompt(`Modificar titular de obra social (actual: ${pacienteEncontrado.titularObraSocial}):`);
-                                    break;
-                                case "numeroAfiliado":
-                                    pacienteEncontrado.numeroAfiliado = prompt(`Modificar número de afiliado (actual: ${pacienteEncontrado.numeroAfiliado}):`);
-                                    break;
-                                case "escuela":
-                                    pacienteEncontrado.escuela = prompt(`Modificar escuela (actual: ${pacienteEncontrado.escuela}):`);
-                                    break;
-                                case "madre":
-                                    pacienteEncontrado.madre = prompt(`Modificar nombre de la madre (actual: ${pacienteEncontrado.madre}):`);
-                                    break;
-                                case "celularMama":
-                                    pacienteEncontrado.celularMama = prompt(`Modificar celular de la madre (actual: ${pacienteEncontrado.celularMama}):`);
-                                    break;
-                                case "padre":
-                                    pacienteEncontrado.papa = prompt(`Modificar nombre del padre (actual: ${pacienteEncontrado.padre}):`);
-                                    break;
-                                case "celularPapa":
-                                    pacienteEncontrado.celularPapa = prompt(`Modificar celular del padre (actual: ${pacienteEncontrado.celularPapa}):`);
-                                    break;
-                                case "neurologo":
-                                    pacienteEncontrado.neurologo = prompt(`Modificar neurólogo (actual: ${pacienteEncontrado.neurologo}):`);
-                                    break;
-                                case "pediatra":
-                                    pacienteEncontrado.pediatra = prompt(`Modificar pediatra (actual: ${pacienteEncontrado.pediatra}):`);
-                                    break;
-                                default:
-                                    Swal.fire({
-                                        icon: "error",
-                                        title: "Ficha",
-                                        text: "No se pudo modificar la ficha",
-                                    });
-                                    return;
-                            }
-                            Swal.fire({
-                                title: 'Guardar cambios',
-                                text: "¿Desea guardar los cambios realizados?",
-                                icon: 'question',
-                                showCancelButton: true,
-                                confirmButtonText: 'Guardar',
-                                cancelButtonText: 'Cancelar'
-                            }).then((resultado) => {
-                                if (resultado.isConfirmed) {
-                                    guardarFichasEnStorage();
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Ficha modificada',
-                                        text: `Se guardaron los cambios en la ficha del paciente #${idModificar}`
-                                    });
-                                } else {
-                                    Swal.fire({
-                                        icon: 'info',
-                                        title: 'Cambios cancelados',
-                                        text: 'No se guardaron los cambios en la ficha del paciente'
-                                    });
-                                }
-                            });
-                        }
-                    });
+                    mostrarElCampo(pacienteEncontrado, idModificar);
                 } else {
                     Swal.fire({
                         icon: "info",
@@ -557,143 +415,208 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function eliminarFicha() {
-        let indicePaciente;
-        let idEliminar = parseInt(prompt("Ingrese el número de la ficha del paciente a eliminar: "));
-        if (!idEliminar || isNaN(idEliminar)) {
-            mensajeContainer.textContent = "Debe ingresar un número de FICHA válido";
-            return;
-        }
-        indicePaciente = fichas.findIndex(function (paciente) {
-            return paciente.id === idEliminar;
+    function mostrarElCampo(pacienteEncontrado, idModificar) {
+        Swal.fire({
+            title: `Modificando ficha del paciente: ${idModificar}`,
+            input: "select",
+            inputOptions: {
+                apellido: "Apellido",
+                nombre: "Nombre",
+                diagnostico: "Diagnóstico",
+                fechaNacimiento: "Fecha de Nacimiento",
+                edad: "Edad",
+                dni: "DNI",
+                cud: "CUD",
+                obraSocial: "Obra Social",
+                domicilio: "Domicilio",
+                titularObraSocial: "Titular de Obra Social",
+                numeroAfiliado: "Número de Afiliado",
+                escuela: "Escuela",
+                madre: "Nombre de la Madre",
+                celularMama: "Celular de la Madre",
+                padre: "Nombre del Padre",
+                celularPapa: "Celular del Padre",
+                neurologo: "Neurólogo",
+                pediatra: "Pediatra",
+            },
+            inputPlaceholder: "Seleccione el campo a modificar",
+            showCancelButton: true,
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Debe seleccionar un campo para modificar';
+                }
+            }
+        }).then((resultado) => {
+            if (resultado.isConfirmed) {
+                let campoModificar = resultado.value;
+                modificarElCampo(pacienteEncontrado, idModificar, campoModificar);
+            }
         });
-        if (indicePaciente !== -1) {
-            fichas.splice(indicePaciente, 1);
-            guardarFichasEnStorage();
-            mensajeContainer.textContent = `Se eliminó la ficha del paciente número: ${idEliminar}`;
-            mostrarTodosLosPacientes();
-        } else {
-            mensajeContainer.textContent = `No se encontró ningún paciente con la ficha: ${idEliminar}`;
-        }
+    }                
+
+    function modificarElCampo(pacienteEncontrado, idModificar, campoModificar) {
+        Swal.fire({
+            title: `Modificar ${campoModificar} (actual: ${pacienteEncontrado[campoModificar]}):`,
+            input: "text",
+            inputValue: pacienteEncontrado[campoModificar],
+            showCancelButton: true,
+            confirmButtonText: 'Guardar',
+            cancelButtonText: 'Cancelar',
+            inputValidator: (value) => {
+                if (!value) {
+                    return `Debe ingresar un ${campoModificar} válido`;
+                }
+            }
+        }).then((resultado) => {
+            if (resultado.isConfirmed) {
+                pacienteEncontrado[campoModificar] = resultado.value;
+                guardarFichasEnStorage();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Ficha modificada',
+                    text: `Se guardaron los cambios en la ficha del paciente #${idModificar}`
+                });
+            }
+        });
     }
 
-    function gestionarPresupuesto() {
-        let año = validarAño();
-        let mes = validarMes();
-        let totalGastosProductos = ingresarGastosProductos(mes);
-        let totalGastosServicios = ingresarGastosServicios();
-        let ingresos = ingresarGanancias(mes, año);
-        let egresos = totalGastosProductos + totalGastosServicios;
-        calcularSaldo(ingresos, egresos, mes, año);
-        let resultadoPresupuesto = document.getElementById('resultadoPresupuesto');
-        if (resultadoPresupuesto) {
-            resultadoPresupuesto.textContent = `Resultado del presupuesto para ${mes} ${año}: 
+function eliminarFicha() {
+    let indicePaciente;
+    let idEliminar = parseInt(prompt("Ingrese el número de la ficha del paciente a eliminar: "));
+    if (!idEliminar || isNaN(idEliminar)) {
+        mensajeContainer.textContent = "Debe ingresar un número de FICHA válido";
+        return;
+    }
+    indicePaciente = fichas.findIndex(function (paciente) {
+        return paciente.id === idEliminar;
+    });
+    if (indicePaciente !== -1) {
+        fichas.splice(indicePaciente, 1);
+        guardarFichasEnStorage();
+        mensajeContainer.textContent = `Se eliminó la ficha del paciente número: ${idEliminar}`;
+        mostrarTodosLosPacientes();
+    } else {
+        mensajeContainer.textContent = `No se encontró ningún paciente con la ficha: ${idEliminar}`;
+    }
+}
+
+function gestionarPresupuesto() {
+    let año = validarAño();
+    let mes = validarMes();
+    let totalGastosProductos = ingresarGastosProductos(mes);
+    let totalGastosServicios = ingresarGastosServicios();
+    let ingresos = ingresarGanancias(mes, año);
+    let egresos = totalGastosProductos + totalGastosServicios;
+    calcularSaldo(ingresos, egresos, mes, año);
+    let resultadoPresupuesto = document.getElementById('resultadoPresupuesto');
+    if (resultadoPresupuesto) {
+        resultadoPresupuesto.textContent = `Resultado del presupuesto para ${mes} ${año}: 
                 Ingresos: ${ingresos}, Egresos: ${egresos}, Saldo: ${ingresos - egresos}`;
-        } else {
-            console.error('No se encontró el elemento con id "resultadoPresupuesto"');
-        }
-        do {
-            let respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
-            if (respuesta === "si" || respuesta === "s") {
-                año = validarAño();
-                mes = validarMes();
-                totalGastosProductos = ingresarGastosProductos(mes);
-                totalGastosServicios = ingresarGastosServicios();
-                ingresos = ingresarGanancias(mes, año);
-                egresos = totalGastosProductos + totalGastosServicios;
-                calcularSaldo(ingresos, egresos, mes, año);
-            }
-        } while (respuesta === "si" || respuesta === "s");
+    } else {
+        console.error('No se encontró el elemento con id "resultadoPresupuesto"');
     }
-
-    function validarAño() {
-        let año = prompt("Ingrese el año a calcular: ");
-        while (año < 2020 || isNaN(año) || año.toString() !== año) {
-            Swal.fire({
-                icon: "error",
-                title: "Error",
-                text: "El año ingresado no es válido",
-            });
-            año = prompt("Ingrese el año a calcular: ");
+    do {
+        let respuesta = prompt("¿Desea seguir ingresando saldos? (si/no)").toLowerCase();
+        if (respuesta === "si" || respuesta === "s") {
+            año = validarAño();
+            mes = validarMes();
+            totalGastosProductos = ingresarGastosProductos(mes);
+            totalGastosServicios = ingresarGastosServicios();
+            ingresos = ingresarGanancias(mes, año);
+            egresos = totalGastosProductos + totalGastosServicios;
+            calcularSaldo(ingresos, egresos, mes, año);
         }
-        return año;
-    }
+    } while (respuesta === "si" || respuesta === "s");
+}
 
-    function validarMes() {
-        let mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
-        while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
-            mes !== "julio" && mes !== "agosto" && mes !== "septiembre" && mes !== "octubre" && mes !== "noviembre" && mes !== "diciembre") {
-            Swal.fire({
-                icon: "error",
-                title: "Error",
-                text: "El mes ingresado no es válido",
-            });
-            mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
-        }
-        return mes;
+function validarAño() {
+    let año = prompt("Ingrese el año a calcular: ");
+    while (año < 2020 || isNaN(año) || año.toString() !== año) {
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "El año ingresado no es válido",
+        });
+        año = prompt("Ingrese el año a calcular: ");
     }
+    return año;
+}
 
-    function ingresarGastosProductos(mes) {
-        let totalGastosProductos = 0;
-        let cantidadProductos = parseInt(prompt("Ingrese la cantidad de productos comprados en el mes de " + mes));
-        for (let i = 1; i < cantidadProductos + 1; i++) {
-            let gasto = parseInt(prompt("Ingrese el monto del gasto individual del producto: " + i + " en el mes de " + mes));
-            while (isNaN(gasto) || gasto < 0) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "El monto ingresado no es válido",
-                });
-                gasto = parseInt(prompt("Ingrese el gasto del producto " + i + " en el mes de " + mes));
-            }
-            totalGastosProductos += gasto;
-        }
-        return totalGastosProductos;
+function validarMes() {
+    let mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
+    while (mes !== "enero" && mes !== "febrero" && mes !== "marzo" && mes !== "abril" && mes !== "mayo" && mes !== "junio" &&
+        mes !== "julio" && mes !== "agosto" && mes !== "septiembre" && mes !== "octubre" && mes !== "noviembre" && mes !== "diciembre") {
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "El mes ingresado no es válido",
+        });
+        mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
     }
+    return mes;
+}
 
-    function ingresarGastosServicios(gastosServicios) {
-        let totalGastosServicios = 0;
-        let cantidadEmpleados = parseInt(prompt("Ingrese la cantidad de empleados:"));
-        for (let i = 0; i < cantidadEmpleados; i++) {
-            let gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
-            while (isNaN(gasto) || gasto < 0) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "El monto ingresado no es válido",
-                });
-                gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
-            }
-            totalGastosServicios += gasto;
-        }
-        return totalGastosServicios;
-    }
-
-    function ingresarGanancias(mes, año) {
-        let ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
-        while (isNaN(ganancias) || ganancias < 0) {
+function ingresarGastosProductos(mes) {
+    let totalGastosProductos = 0;
+    let cantidadProductos = parseInt(prompt("Ingrese la cantidad de productos comprados en el mes de " + mes));
+    for (let i = 1; i < cantidadProductos + 1; i++) {
+        let gasto = parseInt(prompt("Ingrese el monto del gasto individual del producto: " + i + " en el mes de " + mes));
+        while (isNaN(gasto) || gasto < 0) {
             Swal.fire({
                 icon: "error",
                 title: "Error",
                 text: "El monto ingresado no es válido",
             });
-            ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
+            gasto = parseInt(prompt("Ingrese el gasto del producto " + i + " en el mes de " + mes));
         }
-        return ganancias;
+        totalGastosProductos += gasto;
     }
+    return totalGastosProductos;
+}
 
-    function calcularSaldo(ingresos, egresos, mes, año) {
-        let saldo = ingresos - egresos;
-        let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
-        if (saldo >= 0) {
-            mensaje += "positivo";
-        } else {
-            mensaje += "negativo";
+function ingresarGastosServicios(gastosServicios) {
+    let totalGastosServicios = 0;
+    let cantidadEmpleados = parseInt(prompt("Ingrese la cantidad de empleados:"));
+    for (let i = 0; i < cantidadEmpleados; i++) {
+        let gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
+        while (isNaN(gasto) || gasto < 0) {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "El monto ingresado no es válido",
+            });
+            gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
         }
-        mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";
-        historial += mensaje + "\n";
+        totalGastosServicios += gasto;
     }
+    return totalGastosServicios;
+}
 
-    inicializarPagina();
+function ingresarGanancias(mes, año) {
+    let ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
+    while (isNaN(ganancias) || ganancias < 0) {
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "El monto ingresado no es válido",
+        });
+        ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
+    }
+    return ganancias;
+}
+
+function calcularSaldo(ingresos, egresos, mes, año) {
+    let saldo = ingresos - egresos;
+    let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
+    if (saldo >= 0) {
+        mensaje += "positivo";
+    } else {
+        mensaje += "negativo";
+    }
+    mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";
+    historial += mensaje + "\n";
+}
+
+inicializarPagina();
 
 });
