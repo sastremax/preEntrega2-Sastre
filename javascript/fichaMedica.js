@@ -281,6 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }).then(() => {
                 formulario.reset();
                 formulario.style.display = "none";
+                limpiarFichasMostradas();
             });
         } else {
             Swal.fire({
@@ -498,12 +499,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }).then((resultado) => {
             if (resultado.isConfirmed) {          
                 let idEliminar = parseInt(resultado.value);
-                console.log('ID a eliminar:', idEliminar);
-                console.log('Fichas:', fichas);
                 let indicePaciente = fichas.findIndex(function (paciente) {
                     return parseInt(paciente.id) === idEliminar;
-                });
-                console.log('Índice del paciente a eliminar:', indicePaciente);      
+                });                
                 if (indicePaciente !== -1) {
                     fichas.splice(indicePaciente, 1);
                     guardarFichasEnStorage();
