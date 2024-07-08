@@ -484,7 +484,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function eliminarFicha() {
         Swal.fire({
             title: "Eliminar Ficha",
-            input: "numero",
+            input: "number",
             inputLabel: "Ingrese el número de FICHA del paciente a eliminar",
             inputPlaceholder: "Número de FICHA",
             showCancelButton: true,
@@ -498,9 +498,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }).then((resultado) => {
             if (resultado.isConfirmed) {          
                 let idEliminar = parseInt(resultado.value);
+                console.log('ID a eliminar:', idEliminar);
+                console.log('Fichas:', fichas);
                 let indicePaciente = fichas.findIndex(function (paciente) {
-                    return paciente.id === idEliminar;
-                });        
+                    return parseInt(paciente.id) === idEliminar;
+                });
+                console.log('Índice del paciente a eliminar:', indicePaciente);      
                 if (indicePaciente !== -1) {
                     fichas.splice(indicePaciente, 1);
                     guardarFichasEnStorage();
