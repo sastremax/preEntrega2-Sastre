@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         });
-        buscarRecuadro.appendChild(buscarTitulo);        
+        buscarRecuadro.appendChild(buscarTitulo);
         buscarRecuadro.appendChild(buscarFichaBoton);
         contenedor.appendChild(buscarRecuadro);
     }
@@ -326,22 +326,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 text: "No hay fichas médicas para mostrar",
             });
         } else {
-            fichas.forEach(function (ficha) {
-                mostrarFicha(ficha);
-            });
+            let htmlMensaje = construirMensajeFichas(fichas);
+            mostrarCartel(htmlMensaje);
         }
     }
 
     function mostrarFichaPorApellido(apellidoBuscar) {
-        limpiarFichasMostradas();        
+        limpiarFichasMostradas();
         if (apellidoBuscar) {
             let pacientesEncontrados = fichas.filter(function (paciente) {
                 return paciente.apellido.toLowerCase() === apellidoBuscar.toLowerCase();
             });
             if (pacientesEncontrados.length > 0) {
-                pacientesEncontrados.forEach(function (paciente) {
-                    mostrarFicha(paciente);
-                });
+                let htmlMensaje = construirMensajeFichas(pacientesEncontrados);
+                mostrarCartel(htmlMensaje);
             } else {
                 Swal.fire({
                     icon: "info",
@@ -358,6 +356,56 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function construirMensajeFichas(pacientes) {
+        let htmlMensaje = "";
+        pacientes.forEach(function (paciente) {
+            htmlMensaje += `
+                <div class="ficha">
+                    <strong style="display: block; text-align: center;">FICHA: ${paciente.id}</strong>
+                    <p>Apellido: <strong>${paciente.apellido.toUpperCase()}</strong></p>
+                    <p>Nombre: <strong>${paciente.nombre}</strong></p>
+                    <p>Diagnóstico: <strong>${paciente.diagnostico}</strong></p>
+                    <p>Fecha de Nacimiento: <strong>${paciente.fechaNacimiento}</strong></p>
+                    <p>Edad: <strong>${calcularEdad(paciente.fechaNacimiento)}</strong></p>
+                    <p>DNI: <strong>${paciente.dni}</strong></p>
+                    <p>CUD: <strong>${paciente.cud}</strong></p>
+                    <p>Obra Social: <strong>${paciente.obraSocial}</strong></p>
+                    <p>Domicilio: <strong>${paciente.domicilio}</strong></p>
+                    <p>Titular Obra Social: <strong>${paciente.titularObraSocial}</strong></p>
+                    <p>Número de Afiliado: <strong>${paciente.numAfiliado}</strong></p>
+                    <p>Escuela: <strong>${paciente.escuela}</strong></p>
+                    <p>Madre: <strong>${paciente.madre}</strong></p>
+                    <p>Celular Madre: <strong>${paciente.celularMadre}</strong></p>
+                    <p>Padre: <strong>${paciente.padre}</strong></p>
+                    <p>Celular Padre: <strong>${paciente.celularPadre}</strong></p>
+                    <p>Neurólogo: <strong>${paciente.neurologo}</strong></p>
+                    <p>Pediatra: <strong>${paciente.pediatra}</strong></p>
+                </div>
+            `;
+        });
+        return htmlMensaje;
+    }
+
+    function mostrarCartel(htmlMensaje) {
+        Swal.fire({
+            title: "Ficha de Paciente",
+            html: htmlMensaje,
+            icon: "info",
+            confirmButtonText: "Cerrar",
+            backdrop: "#FFFF00",
+            customClass: {
+                content: 'text-align: left;',
+                closeButton: 'button-class'
+            },
+            showClass: {
+                popup: 'animate__animated animate__backInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__backOutUp'
+            }
+        });
+    }
+
     function calcularEdad(fechaNacimiento) {
         let hoy = new Date();
         let cumpleanios = new Date(fechaNacimiento);
@@ -368,38 +416,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         return edad;
     }
-
-    function mostrarFicha(paciente) {
-        let fichaContainer = document.createElement("div");
-        fichaContainer.classList.add("ficha");
-        let idPaciente = document.createElement("div");
-        idPaciente.innerHTML = `<strong style="display: block; text-align: center;">FICHA: ${paciente.id}</strong>`;
-        fichaContainer.appendChild(idPaciente);
-        let datosPaciente = document.createElement("div");
-        datosPaciente.innerHTML = `            
-            <p>Apellido: <strong>${paciente.apellido.toUpperCase()}</strong></p>            
-            <p>Nombre: <strong>${paciente.nombre}</strong></p>
-            <p>Diagnóstico: <strong>${paciente.diagnostico}</strong></p>
-            <p>Fecha de Nacimiento: <strong>${paciente.fechaNacimiento}</strong></p>
-            <p>Edad: <strong>${calcularEdad(paciente.fechaNacimiento)}</strong></p>
-            <p>DNI: <strong>${paciente.dni}</strong></p>
-            <p>CUD: <strong>${paciente.cud}</strong></p>
-            <p>Obra Social: <strong>${paciente.obraSocial}</strong></p>
-            <p>Domicilio: <strong>${paciente.domicilio}</strong></p>
-            <p>Titular Obra Social: <strong>${paciente.titularObraSocial}</strong></p>
-            <p>Número de Afiliado: <strong>${paciente.numAfiliado}</strong></p>
-            <p>Escuela: <strong>${paciente.escuela}</strong></p>
-            <p>Madre: <strong>${paciente.madre}</strong></p>
-            <p>Celular Madre: <strong>${paciente.celularMadre}</strong></p>
-            <p>Padre: <strong>${paciente.padre}</strong></p>
-            <p>Celular Padre: <strong>${paciente.celularPadre}</strong></p>
-            <p>Neurólogo: <strong>${paciente.neurologo}</strong></p>
-            <p>Pediatra: <strong>${paciente.pediatra}</strong></p>            
-        `;
-        fichaContainer.appendChild(datosPaciente);
-        fichasContainer.appendChild(fichaContainer);
-    }
-
+    
     function modificarFicha() {
         Swal.fire({
             title: "Modificar Ficha",
@@ -428,7 +445,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     Swal.fire({
                         icon: "info",
-                        title: `No se encontró ningún paciente con la ficha # ${idModificar}`,
+                        title: `No se encontró ningún paciente con la ficha # ${idModificar} `,
                     });
                 }
             }
@@ -437,7 +454,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function mostrarElCampo(pacienteEncontrado, idModificar) {
         Swal.fire({
-            title: `Modificando ficha del paciente: ${idModificar}`,
+            title: `Modificando ficha del paciente: ${idModificar} `,
             input: "select",
             inputOptions: {
                 apellido: "Apellido",
@@ -476,7 +493,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function modificarElCampo(pacienteEncontrado, idModificar, campoModificar) {
         Swal.fire({
-            title: `Modificar ${campoModificar} (actual: ${pacienteEncontrado[campoModificar]}):`,
+            title: `Modificar ${campoModificar} (actual: ${pacienteEncontrado[campoModificar]}): `,
             input: "text",
             inputValue: pacienteEncontrado[campoModificar],
             showCancelButton: true,
@@ -494,7 +511,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 Swal.fire({
                     icon: 'success',
                     title: 'Ficha modificada',
-                    text: `Se guardaron los cambios en la ficha del paciente #${idModificar}`,
+                    text: `Se guardaron los cambios en la ficha del paciente #${idModificar} `,
                     backdrop: "#008000"
                 });
             }
@@ -516,18 +533,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         }).then((resultado) => {
-            if (resultado.isConfirmed) {          
+            if (resultado.isConfirmed) {
                 let idEliminar = parseInt(resultado.value);
                 let indicePaciente = fichas.findIndex(function (paciente) {
                     return parseInt(paciente.id) === idEliminar;
-                });                
+                });
                 if (indicePaciente !== -1) {
                     fichas.splice(indicePaciente, 1);
                     guardarFichasEnStorage();
-                    Swal.fire('Eliminado', `Se eliminó la ficha del paciente número: ${idEliminar}`, 'success');
+                    Swal.fire('Eliminado', `Se eliminó la ficha del paciente número: ${idEliminar} `, 'success');
                     mostrarTodosLosPacientes();
                 } else {
-                    Swal.fire('Error', `No se encontró ningún paciente con la ficha: ${idEliminar}`, 'error');
+                    Swal.fire('Error', `No se encontró ningún paciente con la ficha: ${idEliminar} `, 'error');
                 }
             }
         });
@@ -543,8 +560,8 @@ document.addEventListener("DOMContentLoaded", function () {
         calcularSaldo(ingresos, egresos, mes, año);
         let resultadoPresupuesto = document.getElementById('resultadoPresupuesto');
         if (resultadoPresupuesto) {
-            resultadoPresupuesto.textContent = `Resultado del presupuesto para ${mes} ${año}: 
-                Ingresos: ${ingresos}, Egresos: ${egresos}, Saldo: ${ingresos - egresos}`;
+            resultadoPresupuesto.textContent = `Resultado del presupuesto para ${mes} ${año}:
+            Ingresos: ${ingresos}, Egresos: ${egresos}, Saldo: ${ingresos - egresos} `;
         } else {
             console.error('No se encontró el elemento con id "resultadoPresupuesto"');
         }
