@@ -204,7 +204,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: 'No se encontró el botón de guardar dentro del formulario.'
+                    text: 'No se encontró el botón de guardar dentro del formulario.',
+                    backdrop: "#FF0000"
                 });
             }
             document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
@@ -217,7 +218,8 @@ document.addEventListener("DOMContentLoaded", function () {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'No se encontró el contenedor del formulario.'
+                text: 'No se encontró el contenedor del formulario.',
+                backdrop: "#FF0000"
             });
         }
     }
@@ -251,6 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     icon: "error",
                     title: "Error",
                     text: "El campo DNI debe ser un número válido y tener al menos 8 caracteres",
+                    backdrop: "#FF0000"
                 });
                 return;
             }
@@ -259,6 +262,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     icon: "error",
                     title: "Error",
                     text: "El campo Celular de la madre debe ser un número válido",
+                    backdrop: "#FF0000"
                 });
                 return;
             }
@@ -267,6 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     icon: "error",
                     title: "Error",
                     text: "El Celular del padre debe ser un número válido sin guiones",
+                    backdrop: "#FF0000"
                 });
                 return;
             }
@@ -277,6 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     icon: "error",
                     title: "Error",
                     text: "La fecha de nacimiento debe ser anterior al día de hoy",
+                    backdrop: "#FF0000"
                 });
                 return;
             }
@@ -290,6 +296,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 icon: "success",
                 title: "Ficha",
                 text: "Ficha del paciente guardada con éxito",
+                backdrop: "#008000"
             }).then(() => {
                 formulario.reset();
                 formulario.style.display = "none";
@@ -300,6 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 icon: "error",
                 title: "Ficha",
                 text: "La ficha no pudo ser guardada, complete todos los campos",
+                backdrop: "#FF0000"
             });
         }
     }
@@ -486,7 +494,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 Swal.fire({
                     icon: 'success',
                     title: 'Ficha modificada',
-                    text: `Se guardaron los cambios en la ficha del paciente #${idModificar}`
+                    text: `Se guardaron los cambios en la ficha del paciente #${idModificar}`,
+                    backdrop: "#008000"
                 });
             }
         });
@@ -560,6 +569,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 icon: "error",
                 title: "Error",
                 text: "El año ingresado no es válido",
+                backdrop: "#FF0000"
             });
             año = prompt("Ingrese el año a calcular: ");
         }
@@ -574,6 +584,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 icon: "error",
                 title: "Error",
                 text: "El mes ingresado no es válido",
+                backdrop: "#FF0000"
             });
             mes = prompt("Ingrese el mes a calcular: ").toLowerCase();
         }
@@ -590,6 +601,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     icon: "error",
                     title: "Error",
                     text: "El monto ingresado no es válido",
+                    backdrop: "#FF0000"
                 });
                 gasto = parseInt(prompt("Ingrese el gasto del producto " + i + " en el mes de " + mes));
             }
@@ -608,6 +620,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     icon: "error",
                     title: "Error",
                     text: "El monto ingresado no es válido",
+                    backdrop: "#FF0000"
                 });
                 gasto = parseInt(prompt("Ingrese el sueldo para el empleado " + (i + 1) + ":"));
             }
@@ -623,6 +636,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 icon: "error",
                 title: "Error",
                 text: "El monto ingresado no es válido",
+                backdrop: "#FF0000"
             });
             ganancias = parseInt(prompt("Ingrese las ganancias del mes de " + mes + " del año " + año));
         }
