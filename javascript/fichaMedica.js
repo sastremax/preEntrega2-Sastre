@@ -53,18 +53,30 @@ document.addEventListener("DOMContentLoaded", function () {
         buscarRecuadro.classList.add('recuadro');
         let buscarTitulo = document.createElement('p');
         buscarTitulo.textContent = "Búsqueda de fichas";
-        let inputApellido = document.createElement('input');
-        inputApellido.setAttribute('type', 'text');
-        inputApellido.setAttribute('id', 'inputApellido');
-        inputApellido.setAttribute('placeholder', 'apellido');
         let buscarFichaBoton = document.createElement('button');
         buscarFichaBoton.textContent = "OK";
         buscarFichaBoton.addEventListener('click', function () {
-            mostrarFichaPorApellido();
-            inputApellido.value = "";
+            Swal.fire({
+                title: "Buscar por apellido",
+                input: "text",
+                inputPlaceholder: "Ingrese el apellido del paciente",
+                showCancelButton: true,
+                confirmButtonText: "Ok",
+                cancelButtonText: "Cancelar",
+                preConfirm: (apellido) => {
+                    if (!apellido) {
+                        Swal.showValidationMessage('Debe ingresar un apellido');
+                    }
+                    return apellido;
+                }
+            }).then((resultado) => {
+                if (resultado.isConfirmed) {
+                    let apellido = resultado.value;
+                    mostrarFichaPorApellido(apellido);
+                }
+            });
         });
-        buscarRecuadro.appendChild(buscarTitulo);
-        buscarRecuadro.appendChild(inputApellido);
+        buscarRecuadro.appendChild(buscarTitulo);        
         buscarRecuadro.appendChild(buscarFichaBoton);
         contenedor.appendChild(buscarRecuadro);
     }
@@ -312,10 +324,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function mostrarFichaPorApellido() {
-        limpiarFichasMostradas();
-        let inputApellido = document.getElementById("inputApellido");
-        let apellidoBuscar = inputApellido.value;
+    function mostrarFichaPorApellido(apellidoBuscar) {
+        limpiarFichasMostradas();        
         if (apellidoBuscar) {
             let pacientesEncontrados = fichas.filter(function (paciente) {
                 return paciente.apellido.toLowerCase() === apellidoBuscar.toLowerCase();
