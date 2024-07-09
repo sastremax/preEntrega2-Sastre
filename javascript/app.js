@@ -1,5 +1,5 @@
 const INGRESOS = [
-    new Ingreso("Sueldo", 3000000.00),
+    new Ingreso("Sueldo", 3005500.00),
     new Ingreso("Alquileres", 1000000.00)
 ];
 const EGRESOS = [
@@ -16,7 +16,6 @@ let totalIngresos = () => {
     }
     return totalIngreso;
 }
-
 let totalEgresos = () => {
     let totalEgreso = 0;
     for(let egreso of EGRESOS){
@@ -24,9 +23,15 @@ let totalEgresos = () => {
     }
     return totalEgreso;
 }
-
-let cargarCabeceero = () =>{
+let cargarCabecero = () =>{
     let presupuesto = totalIngresos() - totalEgresos();
-    let porcentajeEgreso = totalEgresos()/totalIngresos();
+    let porcentajeEgreso = totalEgresos()/totalIngresos() * 100;
     document.getElementById("presupuesto").innerHTML = presupuesto;
+    document.getElementById("porcentaje").innerHTML = porcentajeEgreso;
+    document.getElementById("ingresos").innerHTML = totalIngresos();
+    document.getElementById("egresos").innerHTML = totalEgresos();
+}
+
+let formatoMoneda = (valor)=>{
+    return valor.toLocaleString('es-AR',{style: 'currency', currency: '$', minimumFractionDigits: 2});
 }
