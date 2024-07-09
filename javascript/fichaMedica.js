@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
         presupuestoBoton.textContent = "Calcular Presupuesto";
         presupuestoBoton.addEventListener('click', function () {
             gestionarPresupuesto();
-            
+
         });
         presupuestoRecuadro.appendChild(presupuestoTitulo);
         presupuestoRecuadro.appendChild(presupuestoBoton);
@@ -428,7 +428,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         return edad;
     }
-    
+
     function modificarFicha() {
         Swal.fire({
             title: "Modificar Ficha",
@@ -562,187 +562,201 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    async function gestionarPresupuesto() {
-        try {
-        let año = await validarAño();
-        let mes = await validarMes();
-        let totalGastosProductos = await ingresarGastosProductos(mes);
-        let totalGastosServicios = await ingresarGastosServicios();
-        let ingresos = await ingresarGanancias(mes, año);
-        let egresos = totalGastosProductos + totalGastosServicios;
-        calcularSaldo(ingresos, egresos, mes, año);
-        let resultadoPresupuesto = document.getElementById('resultadoPresupuesto');
-        if (resultadoPresupuesto) {
-            resultadoPresupuesto.textContent = `Resultado del presupuesto para ${mes} ${año}:
-            Ingresos: ${ingresos}, Egresos: ${egresos}, Saldo: ${ingresos - egresos} `;
+    function presupuesto() {
+        let mostrarPresupuestoHTML = `
+            <div class="cabecero">
+                <div class="presupuesto">
+                    <div class="presupuesto_titulo">
+                        Presupuesto Disponible
+                    </div>
+                </div>
+            </div>   
+        `;
+
+    }
+
+    /*
+        async function gestionarPresupuesto() {
+            try {
+            let año = await validarAño();
+            let mes = await validarMes();
+            let totalGastosProductos = await ingresarGastosProductos(mes);
+            let totalGastosServicios = await ingresarGastosServicios();
+            let ingresos = await ingresarGanancias(mes, año);
+            let egresos = totalGastosProductos + totalGastosServicios;
+            calcularSaldo(ingresos, egresos, mes, año);
+            let resultadoPresupuesto = document.getElementById('resultadoPresupuesto');
+            if (resultadoPresupuesto) {
+                resultadoPresupuesto.textContent = `Resultado del presupuesto para ${mes} ${año}:
+                Ingresos: ${ingresos}, Egresos: ${egresos}, Saldo: ${ingresos - egresos} `;
+                await Swal.fire({
+                    icon: "info",
+                    title: "Presupuesto",
+                    text: `Resultado del presupuesto para ${mes} ${año}: Ingresos: ${ingresos}, Egresos: ${egresos}, Saldo: ${ingresos - egresos}`
+                });
+            } else {
+                await Swal.fire ({
+                    icon: "error",
+                    title: "Error",
+                    text: "No se encontró el elemento con id 'resultadoPresupuesto'"
+                });
+            }          
+            do {
+                let { value: respuesta} = Swal.fire({
+                    title: "¿Desea seguir ingresando saldos?",
+                    input: "text",
+                    inputLabel: `Ingrese "si" o "no"`,
+                    inputPlaceholder: "si/no",
+                    showCancelButton: true,
+                    inputValidator: (value) => {
+                        if (!value || (value.toLowerCase() !== 'si' && value.toLowerCase() !== 'no' && value.toLowerCase() !== 's')) {
+                            return 'Debe ingresar "si" o "no"';
+                        }
+                    }
+                });        
+                respuesta = value ? value.toLowerCase() : '';
+                if (respuesta === "si" || respuesta === "s") {
+                    año = await validarAño();
+                    mes = await validarMes();
+                    totalGastosProductos = await ingresarGastosProductos(mes);
+                    totalGastosServicios = await ingresarGastosServicios();
+                    ingresos = await ingresarGanancias(mes, año);
+                    egresos = totalGastosProductos + totalGastosServicios;
+                    calcularSaldo(ingresos, egresos, mes, año);
+                    respuesta = await respuesta.toLowerCase();
+                }
+                } while (respuesta === "si" || respuesta === "s");
+            } catch (error) {            
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrió un error durante la gestión del presupuesto'
+                });
+            }
+        }
+    
+        async function validarAño() {
+            let año;
+            do {
+                let { value } = await Swal.fire({
+                    title: "Ingrese el año a calcular: ",
+                    input: "text",
+                    inputPlaceholder: "Año",
+                    showCancelButton: true,
+                    inputValidator: (value) => {
+                        if (!value || isNaN(value) || value < 2020) {
+                            return "El año ingresado no es válido";
+                        }
+                    }
+                });
+                año = value;
+            } while (isNaN(año) || año < 2020);
+            return año;
+        }    
+    
+        async function validarMes() {
+            const MESVALIDO = [
+                "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+            ];
+            let mes;
+            do {
+                let { value } = await Swal.fire({
+                    title: 'Ingrese el mes a calcular',
+                    input: 'text',
+                    inputPlaceholder: 'Mes',
+                    inputValidator: (value) => {
+                        if (!MESVALIDO.includes(value.toLowerCase())) {
+                            return 'El mes ingresado no es válido';
+                        }
+                    }
+                });
+                mes = value.toLowerCase();
+            } while (!MESVALIDO.includes(mes));
+            return mes;
+        }
+    
+        async function ingresarGastosProductos(mes) {
+            let totalGastosProductos = 0;
+            let { value: cantidadProductos } = await Swal.fire({
+                title: `Ingrese la cantidad de productos comprados en el mes de ${mes}`,
+                input: 'number',
+                inputValidator: (value) => {
+                    if (!value || isNaN(value) || value < 0) {
+                        return 'La cantidad ingresada no es válida';
+                    }
+                }
+            });
+            for (let i = 1; i <= cantidadProductos; i++) {
+                let { value: gasto } = await Swal.fire({
+                    title: `Ingrese el monto del gasto individual del producto ${i} en el mes de ${mes}`,
+                    input: 'number',
+                    inputValidator: (value) => {
+                        if (!value || isNaN(value) || value < 0) {
+                            return 'El monto ingresado no es válido';
+                        }
+                    }
+                });
+                totalGastosProductos += parseInt(gasto);
+            }
+            return totalGastosProductos;
+        }
+    
+        async function ingresarGastosServicios(gastosServicios) {
+            let totalGastosServicios = 0;
+            let { value: cantidadEmpleados } = await Swal.fire({
+                title: 'Ingrese la cantidad de empleados',
+                input: 'number',
+                inputValidator: (value) => {
+                    if (!value || isNaN(value) || value < 0) {
+                        return 'La cantidad ingresada no es válida';
+                    }
+                }
+            });
+            for (let i = 0; i < cantidadEmpleados; i++) {
+                let { value: gasto } = await Swal.fire({
+                    title: `Ingrese el sueldo para el empleado ${i + 1}`,
+                    input: 'number',
+                    inputValidator: (value) => {
+                        if (!value || isNaN(value) || value < 0) {
+                            return 'El monto ingresado no es válido';
+                        }
+                    }
+                });
+                totalGastosServicios += parseInt(gasto);
+            }
+            return totalGastosServicios;
+        }
+    
+        async function ingresarGanancias(mes, año) {
+            let { value: ganancias } = await Swal.fire({
+                title: `Ingrese las ganancias del mes de ${mes} del año ${año}`,
+                input: 'number',
+                inputValidator: (value) => {
+                    if (!value || isNaN(value) || value < 0) {
+                        return 'El monto ingresado no es válido';
+                    }
+                }
+            });
+            return parseInt(ganancias);
+        }
+    
+        async function calcularSaldo(ingresos, egresos, mes, año) {
+            let saldo = ingresos - egresos;
+            let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
+            if (saldo >= 0) {
+                mensaje += "positivo";
+            } else {
+                mensaje += "negativo";
+            }
+            mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";
             await Swal.fire({
-                icon: "info",
-                title: "Presupuesto",
-                text: `Resultado del presupuesto para ${mes} ${año}: Ingresos: ${ingresos}, Egresos: ${egresos}, Saldo: ${ingresos - egresos}`
+                icon: saldo >= 0 ? 'success' : 'warning',
+                title: 'Resultado del Saldo',
+                text: mensaje
             });
-        } else {
-            await Swal.fire ({
-                icon: "error",
-                title: "Error",
-                text: "No se encontró el elemento con id 'resultadoPresupuesto'"
-            });
-        }          
-        do {
-            let { value: respuesta} = Swal.fire({
-                title: "¿Desea seguir ingresando saldos?",
-                input: "text",
-                inputLabel: `Ingrese "si" o "no"`,
-                inputPlaceholder: "si/no",
-                showCancelButton: true,
-                inputValidator: (value) => {
-                    if (!value || (value.toLowerCase() !== 'si' && value.toLowerCase() !== 'no' && value.toLowerCase() !== 's')) {
-                        return 'Debe ingresar "si" o "no"';
-                    }
-                }
-            });        
-            respuesta = value ? value.toLowerCase() : '';
-            if (respuesta === "si" || respuesta === "s") {
-                año = await validarAño();
-                mes = await validarMes();
-                totalGastosProductos = await ingresarGastosProductos(mes);
-                totalGastosServicios = await ingresarGastosServicios();
-                ingresos = await ingresarGanancias(mes, año);
-                egresos = totalGastosProductos + totalGastosServicios;
-                calcularSaldo(ingresos, egresos, mes, año);
-                respuesta = await respuesta.toLowerCase();
-            }
-            } while (respuesta === "si" || respuesta === "s");
-        } catch (error) {            
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Ocurrió un error durante la gestión del presupuesto'
-            });
+            historial += mensaje + "\n";
         }
-    }
-
-    async function validarAño() {
-        let año;
-        do {
-            let { value } = await Swal.fire({
-                title: "Ingrese el año a calcular: ",
-                input: "text",
-                inputPlaceholder: "Año",
-                showCancelButton: true,
-                inputValidator: (value) => {
-                    if (!value || isNaN(value) || value < 2020) {
-                        return "El año ingresado no es válido";
-                    }
-                }
-            });
-            año = value;
-        } while (isNaN(año) || año < 2020);
-        return año;
-    }    
-
-    async function validarMes() {
-        const MESVALIDO = [
-            "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
-        ];
-        let mes;
-        do {
-            let { value } = await Swal.fire({
-                title: 'Ingrese el mes a calcular',
-                input: 'text',
-                inputPlaceholder: 'Mes',
-                inputValidator: (value) => {
-                    if (!MESVALIDO.includes(value.toLowerCase())) {
-                        return 'El mes ingresado no es válido';
-                    }
-                }
-            });
-            mes = value.toLowerCase();
-        } while (!MESVALIDO.includes(mes));
-        return mes;
-    }
-
-    async function ingresarGastosProductos(mes) {
-        let totalGastosProductos = 0;
-        let { value: cantidadProductos } = await Swal.fire({
-            title: `Ingrese la cantidad de productos comprados en el mes de ${mes}`,
-            input: 'number',
-            inputValidator: (value) => {
-                if (!value || isNaN(value) || value < 0) {
-                    return 'La cantidad ingresada no es válida';
-                }
-            }
-        });
-        for (let i = 1; i <= cantidadProductos; i++) {
-            let { value: gasto } = await Swal.fire({
-                title: `Ingrese el monto del gasto individual del producto ${i} en el mes de ${mes}`,
-                input: 'number',
-                inputValidator: (value) => {
-                    if (!value || isNaN(value) || value < 0) {
-                        return 'El monto ingresado no es válido';
-                    }
-                }
-            });
-            totalGastosProductos += parseInt(gasto);
-        }
-        return totalGastosProductos;
-    }
-
-    async function ingresarGastosServicios(gastosServicios) {
-        let totalGastosServicios = 0;
-        let { value: cantidadEmpleados } = await Swal.fire({
-            title: 'Ingrese la cantidad de empleados',
-            input: 'number',
-            inputValidator: (value) => {
-                if (!value || isNaN(value) || value < 0) {
-                    return 'La cantidad ingresada no es válida';
-                }
-            }
-        });
-        for (let i = 0; i < cantidadEmpleados; i++) {
-            let { value: gasto } = await Swal.fire({
-                title: `Ingrese el sueldo para el empleado ${i + 1}`,
-                input: 'number',
-                inputValidator: (value) => {
-                    if (!value || isNaN(value) || value < 0) {
-                        return 'El monto ingresado no es válido';
-                    }
-                }
-            });
-            totalGastosServicios += parseInt(gasto);
-        }
-        return totalGastosServicios;
-    }
-
-    async function ingresarGanancias(mes, año) {
-        let { value: ganancias } = await Swal.fire({
-            title: `Ingrese las ganancias del mes de ${mes} del año ${año}`,
-            input: 'number',
-            inputValidator: (value) => {
-                if (!value || isNaN(value) || value < 0) {
-                    return 'El monto ingresado no es válido';
-                }
-            }
-        });
-        return parseInt(ganancias);
-    }
-
-    async function calcularSaldo(ingresos, egresos, mes, año) {
-        let saldo = ingresos - egresos;
-        let mensaje = `El saldo en el mes de ${mes} del año ${año} es ${saldo} `;
-        if (saldo >= 0) {
-            mensaje += "positivo";
-        } else {
-            mensaje += "negativo";
-        }
-        mensaje += ". Ingresos: " + ingresos + ", Egresos: " + egresos + ", Saldo: " + saldo + ".";
-        await Swal.fire({
-            icon: saldo >= 0 ? 'success' : 'warning',
-            title: 'Resultado del Saldo',
-            text: mensaje
-        });
-        historial += mensaje + "\n";
-    }
-
+    */
     inicializarPagina();
 
 });
