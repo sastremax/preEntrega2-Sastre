@@ -3,8 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let idProgresivo = parseInt(localStorage.getItem("idProgresivo")) || 1;
     let fichasContainer = document.getElementById("fichasContainer");
     let mensajeContainer = document.getElementById("mensaje");
-    let formulario = document.getElementById("fichaMedicaFormulario");
-    let historial = "";
+    let formulario = document.getElementById("fichaMedicaFormulario");    
 
     function inicializarPagina() {
         crearBotones();
@@ -140,8 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let presupuestoBoton = document.createElement('button');
         presupuestoBoton.textContent = "Calcular Presupuesto";
         presupuestoBoton.addEventListener('click', function () {
-            gestionarPresupuesto();
-
+            presupuesto();
         });
         presupuestoRecuadro.appendChild(presupuestoTitulo);
         presupuestoRecuadro.appendChild(presupuestoBoton);
@@ -569,10 +567,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="presupuesto_titulo">
                         Presupuesto Disponible
                     </div>
+                    <div class="presupuesto_valor">+ 2.000.000</div>
+                    <div class="presupuesto_ingreso limpiarEstilos"></div>
                 </div>
             </div>   
         `;
-
+        let contenedor = document.getElementById("formularioContenedor");
+        contenedor.innerHTML = mostrarPresupuestoHTML;
+    }    
 
     inicializarPagina();
 
