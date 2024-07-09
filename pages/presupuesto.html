@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
       content="Acceso a profesionales del Consultorio Arcoiris en Bella Vista"
-    />   
+    />
     <meta
       name="keywords"
       content="niños, tea, TGD, cursos, padres, terapias, habilidades sociales"
@@ -24,30 +24,36 @@
       href="../assets/icons/favicon.ico"
       type="image/x-icon"
     />
-    <title>Consultorio Arco iris - Ingreso a Profesionales</title>
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.2/dist/sweetalert2.min.css" rel="stylesheet">
+    <title>Consultorio Arco iris - Ingreso a Presupuesto</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.2/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <header class="pacientes">
-    <h1>Consultorio Médico - Profesionales</h1>
-    </header>
-    <div class="contenedor-recuadros">                      
-        <div id="mensaje"></div>
-        <div id="modificar"></div>
-        <div id="eliminar"></div>
-        <div id="limpiar"></div>
-        <div id="historialFichas"></div>
-        <div id="fichasContainer"></div>
-        <div id="btnMostrarTodos"></div>
-        <div id="btnBuscarPorApellido"></div>
-        <div id="btnModificarFicha"></div>
-        <div id="btnEliminarFicha"></div>        
-        <div id="formularioContenedor"></div>
-        <div id="presupuestoRecuadro"></div>
+    <div class="presupuestoContenedor">
+      <div class="cabecero">
+        <div class="presupuesto">
+            <div class="presupuesto_titulo">
+                Presupuesto Disponible
+            </div>
+            <div class="presupuesto_valor">+ 2.000.000</div>
+            <div class="presupuesto_ingreso limpiarEstilos">
+                <div class="presupuesto_ingreso--texto">Ingresos</div>
+                <div class="derecha">
+                    <div class="presupuesto_ingreso--valor">+ 4.000</div>
+                    <div class="presupuesto_ingreso--porcentaje">&nbsp;</div>
+                </div>
+            </div>
+            <div class="presupuesto_egreso limpiarEstilos">
+                <div class="presupuesto_egreso--texto">Egresos</div>
+                <div class="derecha limpiarEstilos">
+                    <div class="presupuesto_egreso--valor">- 1.900</div>
+                    <div class="presupuesto_egreso--porcentaje">45%</div>
+                </div>
+            </div>
+        </div>
     </div>
-    <aside>
-      <p><a href="../">Volver a la página de inicio</a></p>
-    </aside>
     <footer>
       <p>2024 Consultorio Arco iris. todos los derechos reservados.</p>
       <div class="redes">
@@ -67,11 +73,17 @@
           ><i class="fa-brands fa-linkedin fa-beat"></i
         ></a>
       </div>
+      <aside>
+        <p><a href="../pages/profesionales.html">Volver hacia atras</a></p>
+        <p><a href="../">Volver al Incio</a></p>
+      </aside>
     </footer>
     <a class="subir" href="#" title="Subir al inicio de la página">
       <i class="fa-solid fa-chevron-up"></i>
-    </a>    
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.2/dist/sweetalert2.all.min.js"></script>
-    <script src="../javascript/index.js"></script>    
+    </a>
+    <script src="../javascript/dato.js"></script>
+    <script src="../javascript/egreso.js"></script>
+    <script src="../javascript/app.js"></script>
+    <script src="../javascript/app.js"></script>
   </body>
 </html>

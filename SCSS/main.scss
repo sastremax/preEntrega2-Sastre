@@ -731,6 +731,10 @@ sec .row-about {
     border-radius: 10px;
 }
 
+.profesionales .navbar a {
+    color:rgb(0, 0, 0)
+}
+
 .navbar a {
     color:rgb(0, 0, 0)
 }
@@ -1554,7 +1558,7 @@ input[type="date"] {
 
 // PRESUPUESTO
 
-body.cabecero {
+.presupuestoContenedor{
     color: #555;
     font-family: Open Sans, sans-serif;
     font-size: 16px;
@@ -1569,14 +1573,25 @@ body.cabecero {
 
 .cabecero {
     height: 40vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
     width: 100%;
     padding-top: 150px;
     padding-bottom: 100px;
-    position: relative;
     color: #fff;
-    background: url(../assets/images/fondoPresupuesto.png), #7b4397;
-    background: url(../assets/images/fondoPresupuesto.png), -webkit-gradient(linear, right top, left top, from(#7b4397), to(#dc2430));
-    background: url(../assets/images/fondoPresupuesto.png), linear-gradient(to left, #7b4397, #dc2430);
+    background: url("../assets/images/fondoPresupuesto.png"), #7b4397;
+    background: url("../assets/images/fondoPresupuesto.png"), -webkit-gradient(linear, right top, left top, from(#7b4397), to(#dc2430));
+    background: url("../assets/images/fondoPresupuesto.png"), linear-gradient(to left, #7b4397, #dc2430)
+}
+
+.presupuesto {
+    position: absolute;
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
 }
 
 .presupuesto_titulo{
@@ -1596,12 +1611,12 @@ body.cabecero {
 
 .presupuesto_ingreso,
 .presupuesto_egreso {
-    padding: 12px;
+    padding: 20px;
     text-transform: uppercase;
 }
 
 .presupuesto_ingreso {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     background-color: #28B9B5;
 }
 
@@ -1614,7 +1629,10 @@ body.cabecero {
     float: left;
     font-size: 13px;
     color: #fff;
+    text-align: center;
     margin-top: 2px;
+    margin-bottom: 4px;
+    clear: both;
 }
 
 .presupuesto_ingreso--valor,
@@ -1637,6 +1655,7 @@ body.cabecero {
     text-align: center;
     border-radius: 3px;
 }
+
 
 .agregar {
     padding: 14px;
@@ -1700,7 +1719,7 @@ body.cabecero {
 
 .agregar_btn:focus { outline: none; }
 
-.contenedorPresupuesto {
+.contenedor {
     width: 860px;
     margin: 60px auto;
 }
@@ -1716,7 +1735,7 @@ body.cabecero {
     width: 370px;
 }
 
-h2.presupuesto {
+.prespuesto h2 {
     text-transform: uppercase;
     font-size: 18px;
     font-weight: 400;
@@ -1766,6 +1785,7 @@ h2.presupuesto {
     color: #FF5049;
 }
 
+
 .elemento_eliminar {
     float: left;
 }
@@ -1777,7 +1797,7 @@ h2.presupuesto {
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
-    line-height: 1;    
+    line-height: 1;
 }
 
 .elemento_eliminar--btn:focus { outline: none; }
@@ -1786,3 +1806,4 @@ h2.presupuesto {
 .elemento:hover .elemento_eliminar--btn { display: block; }
 .elemento:hover .elemento_valor { transform: translateX(-20px); }
 .elemento:hover .elemento_porcentaje { transform: translateX(-20px); }
+

@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let idProgresivo = parseInt(localStorage.getItem("idProgresivo")) || 1;
     let fichasContainer = document.getElementById("fichasContainer");
     let mensajeContainer = document.getElementById("mensaje");
-    let formulario = document.getElementById("fichaMedicaFormulario");    
+    let formulario = document.getElementById("fichaMedicaFormulario");                
+
+    inicializarPagina();
 
     function inicializarPagina() {
         crearBotones();
@@ -137,9 +139,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let presupuestoTitulo = document.createElement('p');
         presupuestoTitulo.textContent = "Presupuesto";
         let presupuestoBoton = document.createElement('button');
-        presupuestoBoton.textContent = "Calcular Presupuesto";
+        presupuestoBoton.textContent = "Ir al Presupuesto";
         presupuestoBoton.addEventListener('click', function () {
-            presupuesto();
+            window.location.href = "presupuesto.html";            
         });
         presupuestoRecuadro.appendChild(presupuestoTitulo);
         presupuestoRecuadro.appendChild(presupuestoBoton);
@@ -222,8 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
             document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
             document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
-            document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);
-            document.getElementById("btnMostrarPresupuesto").addEventListener("click", gestionarPresupuesto);
+            document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);            
         } else {
             Swal.fire({
                 icon: 'error',
@@ -559,23 +560,4 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-    
-    function presupuesto() {
-        let mostrarPresupuestoHTML = `
-            <div class="cabecero">
-                <div class="presupuesto">
-                    <div class="presupuesto_titulo">
-                        Presupuesto Disponible
-                    </div>
-                    <div class="presupuesto_valor">+ 2.000.000</div>
-                    <div class="presupuesto_ingreso limpiarEstilos"></div>
-                </div>
-            </div>   
-        `;
-        let contenedor = document.getElementById("formularioContenedor");
-        contenedor.innerHTML = mostrarPresupuestoHTML;
-    }    
-
-    inicializarPagina();
-
 });
