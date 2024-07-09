@@ -4,7 +4,7 @@ const INGRESOS = [
 ];
 const EGRESOS = [
     new Egreso("Alquiler", 320000.00),
-    new Egreso("Comida", 250000.00)
+    new Egreso("Comida", 150000.00)
 ];
 let cargarApp = () => {
     cargarCabecero();
@@ -25,13 +25,15 @@ let totalEgresos = () => {
 }
 let cargarCabecero = () =>{
     let presupuesto = totalIngresos() - totalEgresos();
-    let porcentajeEgreso = totalEgresos()/totalIngresos() * 100;
-    document.getElementById("presupuesto").innerHTML = presupuesto;
-    document.getElementById("porcentaje").innerHTML = porcentajeEgreso;
-    document.getElementById("ingresos").innerHTML = totalIngresos();
-    document.getElementById("egresos").innerHTML = totalEgresos();
+    let porcentajeEgreso = (totalEgresos()/totalIngresos() * 100);
+    document.getElementById("presupuesto").innerHTML = formatoMoneda(presupuesto);
+    document.getElementById("porcentaje").innerHTML = formatoPorcentaje(porcentajeEgreso);
+    document.getElementById("ingresos").innerHTML = formatoMoneda(totalIngresos());
+    document.getElementById("egresos").innerHTML = formatoMoneda(totalEgresos());
 }
-
 let formatoMoneda = (valor)=>{
-    return valor.toLocaleString('es-AR',{style: 'currency', currency: '$', minimumFractionDigits: 2});
+    return valor.toLocaleString('es-US',{style:'currency', currency: 'USD', minimumFractionDigits: 2});
+}
+const formatoPorcentaje = (valor) => {
+    return valor.toLocaleString('es-US',{style:'percent', minimumFractionDigits: 2})
 }
