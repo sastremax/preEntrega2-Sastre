@@ -34,9 +34,6 @@
 	}
 
 // Pass this if window is not defined yet
-function init(window, noGlobal) {
-	// Function logic here
-}
 
 })(typeof window !== "undefined" ? window : this, init);
 
@@ -751,7 +748,7 @@ var i,
 			return nonHex;
 		}
 
-		// Replace a hexadecimal escape sequence with the encoded Unicode code point
+		// Replace a h// Remove the extra closing parenthesisRemove the extra closing parenthesisdecimal escape sequence with the encoded Unicode code point
 		// Support: IE <=11+
 		// For values outside the Basic Multilingual Plane (BMP), manually construct a
 		// surrogate pair
@@ -10717,4 +10714,4 @@ if ( typeof noGlobal === "undefined" ) {
 
 
 return jQuery;
-} );
+

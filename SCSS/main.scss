@@ -732,7 +732,7 @@ sec .row-about {
 }
 
 .navbar a {
-    color:rgba(0, 0, 0, 0.1)
+    color:rgb(0, 0, 0)
 }
 
 .Jumbotromp {
@@ -1512,6 +1512,15 @@ sec .row-about {
 #guardarFichaBoton {
     margin-top: 12px;
     background-color: #3c763d;
+    color: $c3;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#limpiarFichaBoton {
+    margin-top: 12px;
+    background-color: #f1ee2d;
     color: $c3;
     font-size: 16px;
     padding: 10px 20px;
