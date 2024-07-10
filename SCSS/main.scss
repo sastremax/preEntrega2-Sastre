@@ -827,8 +827,7 @@ sec .row-about {
     }
 
     footer {
-        font-size: 14px;
-        padding: 10px;
+        font-size: 14px;        
         text-align: center;
         margin: 0 auto;
         max-height: 480px;
@@ -1508,32 +1507,51 @@ input[type="date"] {
 
 // PRESUPUESTO
 
-.presupuestoContenedor{
+.presupuestoContenedor {
     color: #555;
-    font-family: Open Sans, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     position: relative;
-    height: 100vh;
     font-weight: 400;
     background-color: #fff;
+    flex-grow: 1;
+    padding: 5px;
+    box-sizing: border-box;
+    overflow: auto;
 }
 
-.derecha { float: right; }
-.rojo { color: #FF5049 !important; }
-.rojofocus:focus { border: 1px solid #FF5049 !important; }
+#presupuesto-aside {
+    display: block;
+    background-color: $c3;    
+    border: 1px solid #ccc;    
+    box-sizing: border-box;   
+    text-align: center;
+    width: 100%;
+}
 
-.derecha .limpiarEstilos {      
+/* Resto de estilos */
+.derecha {
+    float: right;
+}
+
+.rojo {
+    color: #FF5049 !important;
+}
+
+.rojofocus:focus {
+    border: 1px solid #FF5049 !important;
+}
+
+.derecha .limpiarEstilos {
     display: flex;
     justify-content: space-between;
     align-items: center;
- }
+}
 
- .cabecero {
+.cabecero {
     height: 45vh;
-    background: 
-        url("../assets/images/fondoPresupuesto.png") repeat, 
-        linear-gradient(to left, #7b4397, #dc2430);
-    background-blend-mode: screen; /* Modo de mezcla para resaltar los rombos */
+    background: url("../assets/images/fondoPresupuesto.png") repeat, linear-gradient(to left, #7b4397, #dc2430);
+    background-blend-mode: screen;
     background-position: center;
     position: relative;
     width: 100%;
@@ -1551,7 +1569,7 @@ input[type="date"] {
     color: #fff;
 }
 
-.presupuesto_titulo{
+.presupuesto_titulo {
     font-size: 20px;
     text-align: center;
     margin-bottom: 10px;
@@ -1620,21 +1638,12 @@ input[type="date"] {
     border-radius: 3px;
 }
 
-#presupuesto-aside {   
-    display: block;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    background-color: #f4f4f4;
-    padding: 10px;    
-    border: 1px solid #ccc;
-}
-
-#presupuesto-aside a {
+#presupuesto-aside a {    
     display: block;    
+    background-color: $c3;
     text-decoration: none;
     color: #000;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
 .agregar {
@@ -1646,6 +1655,9 @@ input[type="date"] {
 .agregar_contenedor {
     margin: 0 auto;
     text-align: center;
+    display: flex; /* Establecer el contenedor como flexbox */
+    justify-content: center; /* Centrar los elementos horizontalmente */
+    align-items: center; /* Centrar los elementos verticalmente */
 }
 
 .agregar_tipo {
@@ -1671,10 +1683,12 @@ input[type="date"] {
     margin-right: 10px;
     border-radius: 5px;
     transition: border 0.3s;
+    flex: 1;
 }
 
-.agregar_descripcion { width: 400px;}
-.agregar_valor { width: 100px;}
+.agregar_descripcion {
+    margin-right: 10px;
+}
 
 .agregar_btn {
     font-size: 35px;
@@ -1682,13 +1696,14 @@ input[type="date"] {
     border: none;
     color: #28B9B5;
     cursor: pointer;
-    display: inline-block;
     vertical-align: middle;
     line-height: 1.1;
     margin-left: 10px;
 }
 
-.agregar_btn:active { transform: translateY(2px); }
+.agregar_btn:active {
+    transform: translateY(2px);
+}
 
 .agregar_tipo:focus,
 .agregar_descripcion:focus,
@@ -1697,22 +1712,23 @@ input[type="date"] {
     border: 1px solid #28B9B5;
 }
 
-.agregar_btn:focus { outline: none; }
+.agregar_btn:focus {
+    outline: none;
+}
 
 .contenedor {
     width: 860px;
     margin: 60px auto;
+    overflow: auto;
 }
 
 .ingreso {
     float: left;
-    width: 370px;
     margin-right: 70px;
 }
 
 .egreso {
     float: left;
-    width: 370px;
 }
 
 .prespuesto h2 {
@@ -1722,8 +1738,13 @@ input[type="date"] {
     margin-bottom: 15px;
 }
 
-.ingreso_titulo { color: #28B9B5; }
-.egreso_titulo { color: #FF5049; }
+.ingreso_titulo {
+    color: #28B9B5;
+}
+
+.egreso_titulo {
+    color: #FF5049;
+}
 
 .elemento {
     display: flex;
@@ -1733,11 +1754,17 @@ input[type="date"] {
     border-bottom: 1px solid #e7e7e7;
 }
 
-.elemento:first-child { border-top: 1px solid #e7e7e7; }
-.elemento:nth-child(even) { background-color: #f7f7f7; }
+.elemento:first-child {
+    border-top: 1px solid #e7e7e7;
+}
+
+.elemento:nth-child(even) {
+    background-color: #f7f7f7;
+}
 
 .elemento_descripcion {
-    float: left;    
+    float: left;
+    margin-right: 20px;
 }
 
 .elemento_valor {
@@ -1757,34 +1784,30 @@ input[type="date"] {
     text-align: center;
 }
 
-ion-icon {
-    color: rgb(13, 13, 15);
-}
-
 .ingreso .elemento_valor,
-.ingreso {
+.ingreso .elemento_eliminar--btn1 {
     color: #28B9B5;
 }
 
 .egreso .elemento_valor,
 .egreso .elemento_porcentaje,
-.egreso {
+.egreso .elemento_eliminar--btn2 {
     color: #FF5049;
 }
 
-
 .elemento_eliminar {
     float: left;
+    display: inline-block;    
 }
 
 .elemento_eliminar--btn {
     font-size: 22px;
     background: none;
     border: none;
-    cursor: pointer;
-    display: inline-block;
+    cursor: pointer;    
     vertical-align: middle;
     line-height: 1;
+    display: none;
 }
 
 .elemento_eliminar--btn:focus { outline: none; }
@@ -1793,4 +1816,3 @@ ion-icon {
 .elemento:hover .elemento_eliminar--btn { display: block; }
 .elemento:hover .elemento_valor { transform: translateX(-20px); }
 .elemento:hover .elemento_porcentaje { transform: translateX(-20px); }
-

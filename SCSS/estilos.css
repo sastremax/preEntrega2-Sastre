@@ -870,7 +870,6 @@ sec .row-about {
   }
   footer {
     font-size: 14px;
-    padding: 10px;
     text-align: center;
     margin: 0 auto;
     max-height: 480px;
@@ -1440,14 +1439,27 @@ input[type=date] {
 
 .presupuestoContenedor {
   color: #555;
-  font-family: Open Sans, sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   position: relative;
-  height: 100vh;
   font-weight: 400;
   background-color: #fff;
+  flex-grow: 1;
+  padding: 5px;
+  box-sizing: border-box;
+  overflow: auto;
 }
 
+#presupuesto-aside {
+  display: block;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+}
+
+/* Resto de estilos */
 .derecha {
   float: right;
 }
@@ -1469,7 +1481,7 @@ input[type=date] {
 .cabecero {
   height: 45vh;
   background: url("../assets/images/fondoPresupuesto.png") repeat, linear-gradient(to left, #7b4397, #dc2430);
-  background-blend-mode: screen; /* Modo de mezcla para resaltar los rombos */
+  background-blend-mode: screen;
   background-position: center;
   position: relative;
   width: 100%;
@@ -1556,21 +1568,12 @@ input[type=date] {
   border-radius: 3px;
 }
 
-#presupuesto-aside {
-  display: block;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  background-color: #f4f4f4;
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-
 #presupuesto-aside a {
   display: block;
+  background-color: rgb(255, 255, 255);
   text-decoration: none;
   color: #000;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .agregar {
@@ -1582,6 +1585,9 @@ input[type=date] {
 .agregar_contenedor {
   margin: 0 auto;
   text-align: center;
+  display: flex; /* Establecer el contenedor como flexbox */
+  justify-content: center; /* Centrar los elementos horizontalmente */
+  align-items: center; /* Centrar los elementos verticalmente */
 }
 
 .agregar_tipo {
@@ -1607,14 +1613,11 @@ input[type=date] {
   margin-right: 10px;
   border-radius: 5px;
   transition: border 0.3s;
+  flex: 1;
 }
 
 .agregar_descripcion {
-  width: 400px;
-}
-
-.agregar_valor {
-  width: 100px;
+  margin-right: 10px;
 }
 
 .agregar_btn {
@@ -1623,7 +1626,6 @@ input[type=date] {
   border: none;
   color: #28B9B5;
   cursor: pointer;
-  display: inline-block;
   vertical-align: middle;
   line-height: 1.1;
   margin-left: 10px;
@@ -1647,17 +1649,16 @@ input[type=date] {
 .contenedor {
   width: 860px;
   margin: 60px auto;
+  overflow: auto;
 }
 
 .ingreso {
   float: left;
-  width: 370px;
   margin-right: 70px;
 }
 
 .egreso {
   float: left;
-  width: 370px;
 }
 
 .prespuesto h2 {
@@ -1693,6 +1694,7 @@ input[type=date] {
 
 .elemento_descripcion {
   float: left;
+  margin-right: 20px;
 }
 
 .elemento_valor {
@@ -1712,23 +1714,20 @@ input[type=date] {
   text-align: center;
 }
 
-ion-icon {
-  color: rgb(13, 13, 15);
-}
-
 .ingreso .elemento_valor,
-.ingreso {
+.ingreso .elemento_eliminar--btn1 {
   color: #28B9B5;
 }
 
 .egreso .elemento_valor,
 .egreso .elemento_porcentaje,
-.egreso {
+.egreso .elemento_eliminar--btn2 {
   color: #FF5049;
 }
 
 .elemento_eliminar {
   float: left;
+  display: inline-block;
 }
 
 .elemento_eliminar--btn {
@@ -1736,9 +1735,9 @@ ion-icon {
   background: none;
   border: none;
   cursor: pointer;
-  display: inline-block;
   vertical-align: middle;
   line-height: 1;
+  display: none;
 }
 
 .elemento_eliminar--btn:focus {
