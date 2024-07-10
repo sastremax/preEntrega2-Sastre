@@ -23,10 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
         segundaFila.classList.add('fila-botones');
         crearBotonLimpiar(segundaFila);
         crearBotonesModificarEliminar(segundaFila);
+        crearBotonPresupuesto(segundaFila);
         contenedorRecuadros.appendChild(segundaFila);
         let terceraFila = document.createElement('div');
-        terceraFila.classList.add('fila-botones');
-        crearBotonPresupuesto(terceraFila);
+        terceraFila.classList.add('fila-botones');        
         contenedorRecuadros.appendChild(terceraFila);
         let contenedorFichas = document.createElement('div');
         contenedorFichas.classList.add('contenedor-fichas');
@@ -134,18 +134,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function crearBotonPresupuesto(contenedor) {
-        let presupuestoRecuadro = document.createElement('div');
-        presupuestoRecuadro.classList.add('recuadro', 'presupuesto');
-        let presupuestoTitulo = document.createElement('p');
-        presupuestoTitulo.textContent = "Presupuesto";
+        let btnPresupuesto = document.createElement('div');
+        btnPresupuesto.classList.add('recuadro', 'presupuesto');
+        let listadoTitulo = document.createElement('p');
+        listadoTitulo.textContent = "Presupuesto";
         let presupuestoBoton = document.createElement('button');
         presupuestoBoton.textContent = "Ir al Presupuesto";
         presupuestoBoton.addEventListener('click', function () {
             window.location.href = "presupuesto.html";            
         });
-        presupuestoRecuadro.appendChild(presupuestoTitulo);
-        presupuestoRecuadro.appendChild(presupuestoBoton);
-        contenedor.appendChild(presupuestoRecuadro);
+        btnPresupuesto.appendChild(listadoTitulo);
+        btnPresupuesto.appendChild(presupuestoBoton);
+        contenedor.appendChild(btnPresupuesto);
     }
 
     function limpiarFichasMostradas() {
@@ -224,7 +224,10 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
             document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
             document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
-            document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);            
+            document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);   
+            document.getElementById("btnPresupuesto").addEventListener("click", function () {
+                window.location.href = "presupuesto.html";
+            });         
         } else {
             Swal.fire({
                 icon: 'error',
