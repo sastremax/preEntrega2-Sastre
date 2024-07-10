@@ -265,14 +265,10 @@ video {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        transition: 1.7s;
-
-        /* Transición con duración de 0.7 segundos */
+        transition: 1.7s;        
         a {
-            text-decoration: none;
-            /* Elimina el subrayado */
+            text-decoration: none;           
         }
-
         &:hover {
             transform: scale(0.7);
             /* Reduce el tamaño del elemento al 70% */
@@ -282,6 +278,12 @@ video {
             /* Establece un radio de borde de 20px */
             color: $c3;
             /* Color del texto */
+        }
+        p {
+            font-size: 14px;
+        }
+        button {
+            font-size: 12px;
         }
     }
 }

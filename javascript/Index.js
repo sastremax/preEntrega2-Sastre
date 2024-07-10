@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let listadoTitulo = document.createElement('p');
         listadoTitulo.textContent = "Listado de Pacientes";
         let accesoListadoPacientesBoton = document.createElement('button');
-        accesoListadoPacientesBoton.textContent = "Acceso al listado de Pacientes";
+        accesoListadoPacientesBoton.textContent = "Acceso";
         accesoListadoPacientesBoton.addEventListener('click', function () {
             mostrarTodosLosPacientes();
         });
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let limpiarTitulo = document.createElement('p');
         limpiarTitulo.textContent = "Limpiar";
         let accesoLimpiarPacientesBoton = document.createElement('button');
-        accesoLimpiarPacientesBoton.textContent = "Limpiar listado de pacientes";
+        accesoLimpiarPacientesBoton.textContent = "Pantalla";
         accesoLimpiarPacientesBoton.addEventListener('click', function () {
             limpiarFichasMostradas();
         });

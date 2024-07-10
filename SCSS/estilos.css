@@ -357,11 +357,9 @@ video {
   justify-content: space-between;
   flex-direction: column;
   transition: 1.7s;
-  /* Transición con duración de 0.7 segundos */
 }
 .contenedor-recuadros .recuadro a {
   text-decoration: none;
-  /* Elimina el subrayado */
 }
 .contenedor-recuadros .recuadro:hover {
   transform: scale(0.7);
@@ -372,6 +370,12 @@ video {
   /* Establece un radio de borde de 20px */
   color: rgb(255, 255, 255);
   /* Color del texto */
+}
+.contenedor-recuadros .recuadro p {
+  font-size: 14px;
+}
+.contenedor-recuadros .recuadro button {
+  font-size: 12px;
 }
 
 .fichaPaciente > :first-child {
