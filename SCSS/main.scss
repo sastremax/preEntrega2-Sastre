@@ -1529,18 +1529,18 @@ input[type="date"] {
  }
 
  .cabecero {
-    height: 45vh;    
-    background-size: cover;
-    background: url("../assets/images/fondoPresupuesto.png"), #7b4397;
-    background: url("../assets/images/fondoPresupuesto.png"), -webkit-gradient(linear, right top, left top, from(#7b4397), to(#dc2430));
-    background: url("../assets/images/fondoPresupuesto.png"), linear-gradient(to left, #7b4397, #dc2430);    
+    height: 45vh;
+    background: 
+        url("../assets/images/fondoPresupuesto.png") repeat, 
+        linear-gradient(to left, #7b4397, #dc2430);
+    background-blend-mode: screen; /* Modo de mezcla para resaltar los rombos */
     background-position: center;
     position: relative;
     width: 100%;
     padding-top: 150px;
     padding-bottom: 100px;
-    color: #fff;  
-  }
+    color: #fff;
+}
 
 .presupuesto {
     position: absolute;
@@ -1762,13 +1762,13 @@ ion-icon {
 }
 
 .ingreso .elemento_valor,
-.ingreso .elemento_eliminar--btn {
+.ingreso {
     color: #28B9B5;
 }
 
 .egreso .elemento_valor,
 .egreso .elemento_porcentaje,
-.egreso .elemento_eliminar--btn {
+.egreso {
     color: #FF5049;
 }
 
