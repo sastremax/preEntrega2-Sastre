@@ -22,11 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let segundaFila = document.createElement('div');
         segundaFila.classList.add('fila-botones');
         crearBotonLimpiar(segundaFila);
-        crearBotonesModificarEliminar(segundaFila);
-        crearBotonPresupuesto(segundaFila);
+        crearBotonesModificarEliminar(segundaFila);        
         contenedorRecuadros.appendChild(segundaFila);
         let terceraFila = document.createElement('div');
-        terceraFila.classList.add('fila-botones');        
+        terceraFila.classList.add('fila-botones'); 
+        crearBotonPresupuesto(terceraFila);       
         contenedorRecuadros.appendChild(terceraFila);
         let contenedorFichas = document.createElement('div');
         contenedorFichas.classList.add('contenedor-fichas');
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function crearBotonPresupuesto(contenedor) {
         let btnPresupuesto = document.createElement('div');
-        btnPresupuesto.classList.add('recuadro', 'presupuesto');
+        btnPresupuesto.classList.add('recuadro');
         let listadoTitulo = document.createElement('p');
         listadoTitulo.textContent = "Presupuesto";
         let presupuestoBoton = document.createElement('button');
