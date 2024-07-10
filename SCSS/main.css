@@ -84,13 +84,9 @@ h1 {
   margin-right: 2px; /* Margen superior para separar del icono */
 }
 
-.navbar {
-  background-color: black;
-}
 
-.navbar a {
-  color: white;
-}
+
+
 
 header {
   background-color: black;
@@ -328,12 +324,7 @@ video {
   /* Margen inferior de 20px */
 }
 
-.Jumbotromp {
-  background-image: url("../assets/images/parque.avif");
-  background-size: cover;
-  height: 650px;
-  background-position: center;
-}
+
 
 .contenedor-recuadros {
   height: auto;
