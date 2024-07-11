@@ -563,4 +563,29 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+    const Chance = require('chance');
+    const chance = new Chance();
+
+    const generarPacienteAleatorio = () => {
+        return {
+            apellido: chance.last(),
+            nombre: chance.first(),            
+            diagnostico: chance.sentence({ words: 7 }),
+            fechaNacimiento: chance.birthday({ string: true }),
+            dni: chance.integer({ min: 35000000, max: 69999999 }),
+            cud: chance.bool() ? 'sí' : 'no',
+            obraSocial: chance.company(),
+            domicilio: chance.address(),
+            titularObraSocial: chance.name(),
+            numeroAfiliado: chance.string({ length: 10, alpha: false, numeric: true }),
+            escuela: chance.company(),
+            madre: chance.name(),
+            celularMama: chance.phone(),
+            padre: chance.name(),
+            celularPapa: chance.phone(),
+            neurologo: chance.name(),
+            pediatra: chance.name()
+        };
+    };
+    const pacienteAleatorio = generarPacienteAleatorio();
 });

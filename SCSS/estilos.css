@@ -978,18 +978,18 @@ sec .row-about {
     margin-top: 5%;
     padding: 10px;
   }
-  body {
+  header .body {
     background-color: rgb(13, 110, 253);
     background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
     font-family: "Roboto Slab", Arial, sans-serif;
     font-size: 16px;
   }
-  body .body-background {
+  header .body-background {
     background-color: rgb(13, 110, 253);
     padding: 20px;
     color: rgb(255, 255, 255);
   }
-  nav ul li {
+  header nav ul li {
     margin-right: 5%;
   }
   aside {
@@ -1044,7 +1044,7 @@ sec .row-about {
     margin-bottom: 15px;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+@media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
   body {
     height: 500px;
     background-color: rgb(13, 110, 253);
@@ -1074,7 +1074,7 @@ sec .row-about {
     padding: 40px;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .grid-item-hijo {
     padding: 10px;
     margin-bottom: 10px;
@@ -1089,7 +1089,7 @@ sec .row-about {
     grid-template-columns: 1fr;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) and (min-width: 1367px) {
+@media screen and (min-width: 1367px) {
   body {
     height: 500px;
     background-color: rgb(13, 110, 253);
@@ -1128,351 +1128,407 @@ sec .row-about {
     border-radius: 10px;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-  .fichas-container {
-    margin: 40px 0;
-  }
-  .ficha {
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 40px;
-  }
-  .ficha h3 {
-    margin-top: 0;
-    font-size: 1.2em;
-  }
-  .fichaPaciente {
-    font-family: Helvetica, sans-serif;
-    font-size: 16px;
-    background-color: rgb(255, 255, 255);
-    border: 1.5px solid #e53935;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 12px 20px;
-    margin-bottom: 15px;
-    transition: background-color 0.3s, transform 0.2s;
-    text-align: left;
-  }
-  .fichaPaciente:hover {
-    background-color: #f5f5f5;
-    transform: translateY(-2px);
-  }
-  .fichaPaciente .idPaciente {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-  }
-  #guardarFichaBoton {
-    margin-top: 12px;
-    background-color: #3c763d;
-    color: rgb(255, 255, 255);
-    font-size: 16px;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  #limpiarFichaBoton {
-    margin-top: 12px;
-    background-color: #f1ee2d;
-    color: rgb(255, 255, 255);
-    font-size: 16px;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  .fila-botones {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #recuadroLimpiar {
-    cursor: pointer;
-    padding: 10px;
-    border: 1px solid #ccc;
-    display: inline-block;
-    margin-bottom: 10px;
-  }
-  input[type=text],
-  input[type=date] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  .presupuestoContenedor {
-    color: #555;
-    font-family: "Open Sans", sans-serif;
-    font-size: 16px;
-    position: relative;
-    font-weight: 400;
-    background-color: #fff;
-    flex-grow: 1;
-    padding: 5px;
-    box-sizing: border-box;
-    overflow: auto;
-  }
-  #presupuesto-aside {
-    display: block;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    text-align: center;
-    width: 100%;
-  }
-  .derecha {
-    float: right;
-  }
-  .rojo {
-    color: #FF5049 !important;
-  }
-  .rojofocus:focus {
-    border: 1px solid #FF5049 !important;
-  }
-  .derecha .limpiarEstilos {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .cabecero {
-    height: 45vh;
-    background: url("../assets/images/fondoPresupuesto.png") repeat, linear-gradient(to left, #7b4397, #dc2430);
-    background-blend-mode: screen;
-    background-position: center;
-    position: relative;
-    width: 100%;
-    padding-top: 150px;
-    padding-bottom: 100px;
-    color: #fff;
-  }
-  .presupuesto {
-    position: absolute;
-    width: 350px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-  }
-  .presupuesto_titulo {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 10px;
-    font-weight: 300;
-  }
-  .presupuesto_valor {
-    font-weight: 300;
-    font-size: 46px;
-    text-align: center;
-    margin-bottom: 15px;
-    letter-spacing: 2px;
-  }
-  .presupuesto_ingreso,
-  .presupuesto_egreso {
-    padding: 20px;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .presupuesto_ingreso {
-    margin-bottom: 15px;
-    background-color: #28b969;
-    border-color: #000;
-    border-radius: 20px;
-  }
-  .presupuesto_egreso {
-    background-color: #FF5049;
-    border-color: #000;
-    border-radius: 20px;
-  }
-  .presupuesto_ingreso--texto,
-  .presupuesto_egreso--texto {
-    float: left;
-    font-size: 13px;
-    color: #fff;
-    text-align: center;
-    margin-top: 2px;
-    margin-bottom: 4px;
-    clear: both;
-  }
-  .presupuesto_ingreso--valor,
-  .presupuesto_egreso--valor {
-    letter-spacing: 1px;
-    float: left;
-  }
-  .presupuesto_ingreso--porcentaje,
-  .presupuesto_egreso--porcentaje {
-    float: left;
-    width: 34px;
-    font-size: 11px;
-    padding: 3px 0;
-    margin-left: 10px;
-  }
-  .presupuesto_egreso--porcentaje {
-    background-color: rgba(255, 255, 255, 0.2);
-    text-align: center;
-    border-radius: 3px;
-  }
-  #presupuesto-aside a {
-    display: block;
-    background-color: rgb(255, 255, 255);
-    text-decoration: none;
-    color: #000;
-    margin: 10px 0;
-  }
-  .agregar {
-    padding: 14px;
-    border-bottom: 1px solid #e7e7e7;
-    background-color: #f7f7f7;
-  }
-  .agregar_contenedor {
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .agregar_tipo {
-    width: 55px;
-    border: 1px solid #e7e7e7;
-    height: 44px;
-    font-size: 18px;
-    color: inherit;
-    background-color: #fff;
-    margin-right: 10px;
-    font-weight: 300;
-    transition: border 0.3s;
-  }
-  .agregar_descripcion,
-  .agregar_valor {
-    border: 1px solid #e7e7e7;
-    background-color: #fff;
-    color: inherit;
-    font-family: inherit;
-    font-size: 14px;
-    padding: 12px 15px;
-    margin-right: 10px;
-    border-radius: 5px;
-    transition: border 0.3s;
-    flex: 1;
-  }
-  .agregar_descripcion {
-    margin-right: 10px;
-  }
-  .agregar_btn {
-    font-size: 35px;
-    background: none;
-    border: none;
-    color: #28B9B5;
-    cursor: pointer;
-    vertical-align: middle;
-    line-height: 1.1;
-    margin-left: 10px;
-  }
-  .agregar_btn:active {
-    transform: translateY(2px);
-  }
-  .agregar_tipo:focus,
-  .agregar_descripcion:focus,
-  .agregar_valor:focus {
-    outline: none;
-    border: 1px solid #28B9B5;
-  }
-  .agregar_btn:focus {
-    outline: none;
-  }
-  .contenedor {
-    width: 860px;
-    margin: 60px auto;
-    overflow: auto;
-  }
-  .ingreso {
-    float: left;
-    margin-right: 70px;
-  }
-  .egreso {
-    float: left;
-  }
-  .prespuesto h2 {
-    text-transform: uppercase;
-    font-size: 18px;
-    font-weight: 400;
-    margin-bottom: 15px;
-  }
-  .ingreso_titulo {
-    color: #28B9B5;
-  }
-  .egreso_titulo {
-    color: #FF5049;
-  }
-  .elemento {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #e7e7e7;
-  }
-  .elemento:first-child {
-    border-top: 1px solid #e7e7e7;
-  }
-  .elemento:nth-child(even) {
-    background-color: #f7f7f7;
-  }
-  .elemento_descripcion {
-    float: left;
-    margin-right: 20px;
-  }
-  .elemento_valor {
-    float: left;
-    transition: transform 0.3s;
-  }
-  .elemento_porcentaje {
-    float: left;
-    margin-left: 20px;
-    transition: transform 0.3s;
-    font-size: 11px;
-    background-color: #FFDAD9;
-    padding: 3px;
-    border-radius: 3px;
-    width: 45px;
-    text-align: center;
-  }
-  .ingreso .elemento_valor,
-  .ingreso .elemento_eliminar--btn1 {
-    color: #28B9B5;
-  }
-  .egreso .elemento_valor,
-  .egreso .elemento_porcentaje,
-  .egreso .elemento_eliminar--btn2 {
-    color: #FF5049;
-  }
-  .elemento_eliminar {
-    display: inline-block;
-  }
-  .elemento_eliminar--btn {
-    font-size: 22px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    vertical-align: middle;
-    line-height: 1;
-    display: none;
-  }
-  .elemento_eliminar--btn:focus {
-    outline: none;
-  }
-  .elemento_eliminar--btn:active {
-    transform: translateY(2px);
-  }
-  .elemento:hover .elemento_eliminar--btn {
-    display: block;
-  }
-  .elemento:hover .elemento_valor {
-    transform: translateX(-20px);
-  }
-  .elemento:hover .elemento_porcentaje {
-    transform: translateX(-20px);
-  }
+.fichas-container {
+  margin: 40px 0;
+}
+
+.ficha {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 40px;
+}
+
+.ficha h3 {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+
+.fichaPaciente {
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  background-color: rgb(255, 255, 255);
+  border: 1.5px solid #e53935;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 12px 20px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s, transform 0.2s;
+  text-align: left;
+}
+
+.fichaPaciente:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-2px);
+}
+
+.fichaPaciente .idPaciente {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#guardarFichaBoton {
+  margin-top: 12px;
+  background-color: #3c763d;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#limpiarFichaBoton {
+  margin-top: 12px;
+  background-color: #f1ee2d;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.fila-botones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#recuadroLimpiar {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+input[type=text],
+input[type=date] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.presupuestoContenedor {
+  color: #555;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  position: relative;
+  font-weight: 400;
+  background-color: #fff;
+  flex-grow: 1;
+  padding: 5px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+#presupuesto-aside {
+  display: block;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+}
+
+.derecha {
+  float: right;
+}
+
+.rojo {
+  color: #FF5049 !important;
+}
+
+.rojofocus:focus {
+  border: 1px solid #FF5049 !important;
+}
+
+.derecha .limpiarEstilos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cabecero {
+  height: 45vh;
+  background: url("../assets/images/fondoPresupuesto.png") repeat, linear-gradient(to left, #7b4397, #dc2430);
+  background-blend-mode: screen;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  padding-top: 150px;
+  padding-bottom: 100px;
+  color: #fff;
+}
+
+.presupuesto {
+  position: absolute;
+  width: 350px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+
+.presupuesto_titulo {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.presupuesto_valor {
+  font-weight: 300;
+  font-size: 46px;
+  text-align: center;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.presupuesto_ingreso,
+.presupuesto_egreso {
+  padding: 20px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.presupuesto_ingreso {
+  margin-bottom: 15px;
+  background-color: #28b969;
+  border-color: #000;
+  border-radius: 20px;
+}
+
+.presupuesto_egreso {
+  background-color: #FF5049;
+  border-color: #000;
+  border-radius: 20px;
+}
+
+.presupuesto_ingreso--texto,
+.presupuesto_egreso--texto {
+  float: left;
+  font-size: 13px;
+  color: #fff;
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  clear: both;
+}
+
+.presupuesto_ingreso--valor,
+.presupuesto_egreso--valor {
+  letter-spacing: 1px;
+  float: left;
+}
+
+.presupuesto_ingreso--porcentaje,
+.presupuesto_egreso--porcentaje {
+  float: left;
+  width: 34px;
+  font-size: 11px;
+  padding: 3px 0;
+  margin-left: 10px;
+}
+
+.presupuesto_egreso--porcentaje {
+  background-color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  border-radius: 3px;
+}
+
+#presupuesto-aside a {
+  display: block;
+  background-color: rgb(255, 255, 255);
+  text-decoration: none;
+  color: #000;
+  margin: 10px 0;
+}
+
+.agregar {
+  padding: 14px;
+  border-bottom: 1px solid #e7e7e7;
+  background-color: #f7f7f7;
+}
+
+.agregar_contenedor {
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.agregar_tipo {
+  width: 55px;
+  border: 1px solid #e7e7e7;
+  height: 44px;
+  font-size: 18px;
+  color: inherit;
+  background-color: #fff;
+  margin-right: 10px;
+  font-weight: 300;
+  transition: border 0.3s;
+}
+
+.agregar_descripcion,
+.agregar_valor {
+  border: 1px solid #e7e7e7;
+  background-color: #fff;
+  color: inherit;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 12px 15px;
+  margin-right: 10px;
+  border-radius: 5px;
+  transition: border 0.3s;
+  flex: 1;
+}
+
+.agregar_descripcion {
+  margin-right: 10px;
+}
+
+.agregar_btn {
+  font-size: 35px;
+  background: none;
+  border: none;
+  color: #28B9B5;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 1.1;
+  margin-left: 10px;
+}
+
+.agregar_btn:active {
+  transform: translateY(2px);
+}
+
+.agregar_tipo:focus,
+.agregar_descripcion:focus,
+.agregar_valor:focus {
+  outline: none;
+  border: 1px solid #28B9B5;
+}
+
+.agregar_btn:focus {
+  outline: none;
+}
+
+.contenedor {
+  width: 860px;
+  margin: 60px auto;
+  overflow: auto;
+}
+
+.ingreso {
+  float: left;
+  margin-right: 70px;
+}
+
+.egreso {
+  float: left;
+}
+
+.prespuesto h2 {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.ingreso_titulo {
+  color: #28B9B5;
+}
+
+.egreso_titulo {
+  color: #FF5049;
+}
+
+.elemento {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.elemento:first-child {
+  border-top: 1px solid #e7e7e7;
+}
+
+.elemento:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+.elemento_descripcion {
+  float: left;
+  margin-right: 20px;
+}
+
+.elemento_valor {
+  float: left;
+  transition: transform 0.3s;
+}
+
+.elemento_porcentaje {
+  float: left;
+  margin-left: 20px;
+  transition: transform 0.3s;
+  font-size: 11px;
+  background-color: #FFDAD9;
+  padding: 3px;
+  border-radius: 3px;
+  width: 45px;
+  text-align: center;
+}
+
+.ingreso .elemento_valor,
+.ingreso .elemento_eliminar--btn1 {
+  color: #28B9B5;
+}
+
+.egreso .elemento_valor,
+.egreso .elemento_porcentaje,
+.egreso .elemento_eliminar--btn2 {
+  color: #FF5049;
+}
+
+.elemento_eliminar {
+  display: inline-block;
+}
+
+.elemento_eliminar--btn {
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 1;
+  display: none;
+}
+
+.elemento_eliminar--btn:focus {
+  outline: none;
+}
+
+.elemento_eliminar--btn:active {
+  transform: translateY(2px);
+}
+
+.elemento:hover .elemento_eliminar--btn {
+  display: block;
+}
+
+.elemento:hover .elemento_valor {
+  transform: translateX(-20px);
+}
+
+.elemento:hover .elemento_porcentaje {
+  transform: translateX(-20px);
 }
 
 /*# sourceMappingURL=estilos.css.map */

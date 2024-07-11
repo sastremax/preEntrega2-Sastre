@@ -887,21 +887,21 @@ sec .row-about {
         height: 100px;
         margin-top: 15px;
         margin-top: 5%;
-        padding: 10px;
-    }
-    body {
-        background-color: $c1;
-        background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
-        font-family: 'Roboto Slab', Arial, sans-serif;
-        font-size: 16px;
-        .body-background {
-        background-color: $c1;
-        padding: 20px;
-        color: $c3;
+        padding: 10px;    
+        .body {
+            background-color: $c1;
+            background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
+            font-family: 'Roboto Slab', Arial, sans-serif;
+            font-size: 16px;
         }
-    }
-    nav ul li {
-        margin-right: 5%;
+        .body-background {
+            background-color: $c1;
+            padding: 20px;
+            color: $c3;
+        }    
+        nav ul li {
+            margin-right: 5%;
+        }
     }
     aside {
         padding: 40px;
@@ -954,6 +954,7 @@ sec .row-about {
             margin-bottom: 15px;
         }
     }
+}
 
 @media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
     body {
@@ -1431,4 +1432,3 @@ input[type="date"] {
 .elemento:hover .elemento_eliminar--btn { display: block; }
 .elemento:hover .elemento_valor { transform: translateX(-20px); }
 .elemento:hover .elemento_porcentaje { transform: translateX(-20px); }
-}
