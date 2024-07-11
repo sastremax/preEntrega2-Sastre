@@ -1,20 +1,17 @@
-// Importar las variables, funciones y mixins primero, porque pueden ser necesitados en otros archivos //
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-// Bases generales del sitio
-//@import './base/reset';  // Importar reset para reiniciar los estilos por defecto del navegador
-@import './base/_base'; // Importar el archivo _base.scss que contiene estilos base (elementos HTML, etc.)
-@import './base/_typography'; // Importar estilos de tipografía
-@import './utilities/_variables'; // Importar variables globales
-@import './utilities/_mixins'; // Importar mixins para reutilización de estilos
-@import './utilities/_boxes'; // Importar mixins para reutilización de estilos
-@import './utilities/_images'; // Importar tamaño de imagenes
-@import './layout/_footer'; // Importar estilos del pie de página
-@import './layout/_header'; // Importar estilos del encabezado
+@import './base/_base'; 
+@import './base/_typography'; 
+@import './utilities/_variables'; 
+@import './utilities/_mixins';
+@import './utilities/_boxes';
+@import './utilities/_images';
+@import './layout/_footer';
+@import './layout/_header';
 
 @font-face {
     font-family: 'Gwendolyn';
@@ -29,62 +26,44 @@
 
 body {
     height: 500px;
-    /* Altura del 100% de la ventana del navegador */
     background-color: $c1;
     background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
-    /* Degradado de colores */
     font-family: Arial, sans-serif;
     font-size: 16px;
 }
 
 .body-background {
     background-color: $c1;
-    /* Color de fondo */
     background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
     padding: 20px;
-    /* Espaciado interno */
     color: $c3;
-    /* Color del texto */
 }
 
 section {
     margin: 0;
-    /* Establece el margen exterior a 0 */
     padding: auto;
-    /* Establece el relleno a automatico */
     font-size: 20px;
-    /* Tamaño de fuente */
     font-family: 'Roboto Slab', Arial, sans-serif;
-    /* Familia de fuentes primero Arial */
 }
 
 .espaciador {
     padding: 50px;
-    /* Espaciado interno */
 }
 
 article {
     height: 600px;
-    /* Altura del artículo */
     padding-top: 15px;
-    /* Espaciado superior */
     padding-right: 10px;
-    /* Espaciado derecho */
     padding-bottom: 15px;
-
     ul li {
         list-style: none;
-        /* Quita los puntos de la lista */
     }
 }
 
 .about {
     padding: 20px;
-    /* Ajusta el valor del relleno según tus necesidades */
     height: 100%;
-    /* Asegura que el artículo ocupe todo el espacio disponible */
     box-sizing: border-box;
-    /* Incluye el relleno dentro del tamaño total del artículo */
 }
 
 .about img {
@@ -92,31 +71,23 @@ article {
     height: auto;
     display: block;
     margin: 0 auto;
-    /* Centra la imagen horizontalmente */
 }
 
 .alineado-parrafo {
     margin-left: 30px;
     padding-bottom: 40px;
-    /* Margen izquierdo para alinear párrafos */
 }
 
 main {
     display: flex;
-    /* Se establece el contenedor principal como flexbox */
     flex-direction: column;
-    /* Dirección de los elementos: columna */
     align-items: center;
-    /* Centra los elementos horizontalmente */
     gap: 20px;
-    /* Espacio entre los elementos */
 }
 
 h2 {
     font-size: 40px;
-    /* Tamaño de fuente grande */
     text-align: center;
-    /* Alineación del texto a la izquierda */
     padding: 10px;
     font-weight: bold;
     color: $c3;
@@ -124,20 +95,15 @@ h2 {
 
 h4 {
     padding: 18px;
-    /* Espaciado interno */
     font-size: 36px;
-    /* Tamaño de fuente grande */
     text-align: left;
-    /* Alineación del texto a la izquierda */
 }
 
 .spacer {
     padding-left: 20px;
     margin-left: 20px;
     margin-bottom: 20px;
-    /* Margen inferior de 20px */
     height: 90px;
-    /* Altura espaciada */
 }
 
 .pacientes {
@@ -146,16 +112,12 @@ h4 {
 
 .container {
     padding: 10px;
-    /* Relleno de 10px en todos los lados del contenedor */
 }
 
 .parrafo-principal {
     font-size: 20px;
-    /* Tamaño de fuente de 14px */
     text-align: left;
-    /* Alineación del texto a la izquierda */
     padding: 18px;
-    /* Espaciado interno */
     text-shadow: $c2(0, 0, 0, 0.4);
 }
 
@@ -163,95 +125,64 @@ h4 {
     color: $c3;
     font-family: 'Roboto Slab', sans-serif;
     text-shadow: 0 0 6px $c2;
-    text-align: left;   /* Centra el texto a la izquierda */
+    text-align: left;
     padding-top: 50px;
     padding-left: 120px;
     font-size: 20px;
-    /* Espaciado interno */
 }
 
 .parrafoprincipal ul {
     list-style-type: none;
-    /* Quita los puntos de las viñetas */
 }
 
 .parrafoprincipal ul li {
-    padding-bottom: 28px;    
-    /* Agrega un margen izquierdo para mantener la sangría */
+    padding-bottom: 28px; 
 }
 
 .videosCentrado {
     margin-top: 40px;
-    /* Margen superior de 15px */
     margin-bottom: 10px;
-    /* Margen inferior de 10px */
     text-align: $centro;
-    /* Alineación del texto al centro */
     color: $c3;
-    /* Color del texto */
     text-shadow: dark 0.8;
-    /* Sombra de texto */
-
 }
 
 video {
     max-height: 720px;
-    /* Establece la altura máxima del video */
     max-width: 100%;
-    /* Establece el ancho máximo del video */
     display: block;
-    /* Asegura que el video se muestre como un bloque */
     margin-left: auto;
-    /* Centra el video horizontalmente */
     margin-right: auto;
-    /* Centra el video horizontalmente */
 }
 
-/* Cambia el color del icono de deslizamiento del carrusel */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     filter: invert(100%);
-    /* Invierte el color del icono */
 }
 
 .solicitar-link {
     display: inline-block;
-    /* Establece el elemento como bloque en línea */
     background-color: $c1;
-    /* Color de fondo */
     color: $c3;
-    /* Color del texto */
     padding: 10px 20px;
-    /* Relleno */
     text-decoration: none;
-    /* Quita la decoración de enlace */
     border-radius: 5px;
-    /* Borde redondeado */
 }
 
 .icono {
     max-width: 20px;
-    /* Ancho máximo */
     display: block;
-    /* Establece el elemento como bloque */
     height: auto;
-    /* Altura automática */
     margin-bottom: 20px;
-    /* Margen inferior de 20px */
 }
-
 
 .contenedor-recuadros {
     height: auto;
     width: auto;
     display: grid;
     align-items: center;
-    /* Centra verticalmente los elementos */
     justify-content: center;
-    /* Centra horizontalmente el contenedor */
-    margin: 0 auto;
-
-    /* Centra el contenedor horizontalmente */
+    margin: 0 auto;    
     .recuadro {
         height: 140px;
         width: 140px;
@@ -271,13 +202,9 @@ video {
         }
         &:hover {
             transform: scale(0.7);
-            /* Reduce el tamaño del elemento al 70% */
             background-color: $c2;
-            /* Cambia el color de fondo a negro */
             border-radius: 20px;
-            /* Establece un radio de borde de 20px */
             color: $c3;
-            /* Color del texto */
         }
         p {
             font-size: 14px;
@@ -288,8 +215,6 @@ video {
     }
 }
 
-
-
 .fichaPaciente > :first-child {
     text-align: center;
     margin-bottom: 8px;
@@ -297,83 +222,61 @@ video {
 }
 
 .contenedor-imagenes-cuadradas {
-    width: 100%;
-    /* ancho*/
+    width: 100%;    
     height: 900px;
-    /* Altura */
-
-
     .aboutgaleria {
-        width: 100%;
-        /* ancho*/
-        height: 100vh;
-        /* Altura */
-        gap: 30px;
-        /* Espacio entre cada cuadrícula */
+        width: 100%;        
+        height: 100vh;        
+        gap: 30px;        
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(4, 180px);
         grid-template-areas: "img1 img2 img3" "img4 img5 img3" "img4 img8 img7" "img6 img6 img7";
         padding: 30px;
-
         .item {
             border: 5px solid $c2;
-            /* Cambiar el ancho del borde a 5px y el color a negro */
-            border-radius: 9px; // Bordes redondeados de 9px
-            background-size: cover; // Tamaño del fondo de la imagen cubriendo completamente el elemento
-            background-position: center; // Posición del fondo de la imagen centrado en el elemento
-            filter: grayscale(30%); // Imagen en escala de grises al 20% por defecto
-            transition: all 0.9s; // Transición suave de todas las propiedades durante 0.9 segundos    
+            border-radius: 9px;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(30%);
+            transition: all 0.9s;
             padding: 30px;
-
             &:hover {
-                // Estilos al pasar el cursor sobre los elementos
-                filter: grayscale(0%); // Elimina la escala de grises al pasar el cursor
+                filter: grayscale(0%); 
                 transform: scale(1.2);
                 z-index: 1;
-                /* Asegura que la imagen en escala esté por encima de las otras */
             }
-
-            // Estilos específicos para cada elemento de la cuadrícula
             &.item1 {
-                background-image: url("../assets/images/item1.jpg"); // URL de la imagen de fondo para item1
-                grid-area: img1; // Posición en la cuadrícula para item1           
-
+                background-image: url("../assets/images/item1.jpg"); 
+                grid-area: img1;
             }
-
             &.item2 {
                 background-image: url("../assets/images/item2.jpg");
-                grid-area: img2; // Posición en la cuadrícula para item2
+                grid-area: img2;
             }
-
             &.item3 {
                 background-image: url("../assets/images/item3.jpg");
-                grid-area: img3; // Posición en la cuadrícula para item3
+                grid-area: img3;
             }
-
             &.item4 {
                 background-image: url("../assets/images/item4.jpg");
-                grid-area: img4; // Posición en la cuadrícula para item4
+                grid-area: img4;
             }
-
             &.item5 {
                 background-image: url("../assets/images/item5.jpg");
-                grid-area: img5; // Posición en la cuadrícula para item5
+                grid-area: img5;
             }
-
             &.item6 {
                 background-image: url("../assets/images/item6.jpg");
-                grid-area: img6; // Posición en la cuadrícula para item6
+                grid-area: img6;
             }
-
             &.item7 {
                 background-image: url("../assets/images/item7.jpg");
-                grid-area: img7; // Posición en la cuadrícula para item7
+                grid-area: img7;
             }
-
             &.item8 {
                 background-image: url("../assets/images/item8.jpg");
-                grid-area: img8; // Posición en la cuadrícula para item8
+                grid-area: img8;
             }
         }
     }
@@ -405,90 +308,62 @@ video {
     background-size: cover;
     background-position: center;
     text-shadow: #000000 -2px;
-    /* Sombra de texto */
     font-size: 14px;
-    /* Tamaño de fuente */
     text-align: left;
-    /* Alinea el texto a la izquierda */
 }
 
 .contenedor-recuadros img,
 .aboutgaleria img {
     width: auto;
-    /* Ancho al 100% del contenedor padre */
     height: auto;
-    /* Altura automática para mantener la proporción de la imagen */
 }
 
 .contenedor-padre {
     padding-top: 15px;
     position: relative;
-    /* Establece la posición relativa para que los elementos absolutos se posicionen relativamente a este contenedor */
     width: 100%;
-    /* Ancho al 100% del ancho de su contenedor padre */
     height: 100%;
-    /* Altura al 100% del alto de su contenedor padre */
 }
 
 .subrayado {
     text-decoration: underline;
-    /* Subrayado */
 }
 
 button {
     background-color: $c1;
-    /* Color de fondo */
     color: $c3;
-    /* Color del texto */
     border: none;
-    /* Sin borde */
     padding: 5px 10px;
-    /* Relleno */
     cursor: pointer;
-    /* Cursor al señalar */
 }
 
 aside {
     text-align: $centro;
-
-    /* Alineación del texto al centro */
-
 }
 
 aside p {
     display: inline-block;
-    /* Permite centrar el elemento <p> horizontalmente */
     background-color: $c3;
 }
 
 .titulo {
     align-self: top;
-    /* Alinea el título en la parte superior */
     text-align: top;
-    /* Alineación del texto al tope */
     font-size: 20px;
-    /* Tamaño de fuente */
     margin-bottom: 20px;
-    /* Margen inferior */
 }
 
 .terapeutas-container {
     text-align: left;
-    /* Alineación del texto a la izquierda */
     padding: 12px;
-    /* Espaciado interno */
     text-shadow: $c13 0 -1px;
-    /* Sombra de texto */
 }
 
 .Equipo-de-terapeutas {
     display: grid;
-    /* Establece el contenedor como cuadrícula */
     grid-column: 800px;
     gap: 20px;
-    /* Espacio entre columnas */
     margin-top: 50px;
-    /* Margen superior */
 }
 
 .columnas-talleres {
@@ -498,25 +373,18 @@ aside p {
 
 .about-grid {
     display: flex;
-    /* Establece el contenedor como flexbox */
     align-items: $centro;
-    /* Alinea verticalmente el contenido al centro */
     justify-content: $centro;
-    /* Centra horizontalmente el contenido */
     margin-left: 40px;
-    /* Espacio a la izquierda del elemento */
 }
 
 .service-container {
     max-width: 800px;
-    /* Ancho máximo del contenedor */
     width: 100%;
-    /* Ancho completo */
 }
 
 .service-contenido {
     margin-bottom: 20px;
-    /* Margen inferior */
 }
 
 .service-grid {
@@ -532,112 +400,70 @@ aside p {
 
 .whats {
     background-color: $c10;
-    /* Color de fondo */
     color: $c11;
-    /* Color del texto */
     height: 100px;
-    /* Altura del elemento */
     width: 100px;
-    /* Ancho del elemento */
     border: 2px solid;
-    /* Grosor, estilo y color del borde */
     font-size: 45px;
-    /* Tamaño de la fuente */
     right: 40px;
-    /* Distancia desde el borde derecho */
     bottom: 40px;
-    /* Distancia desde el borde inferior */
 }
 
 .contact {
     display: flex;
     justify-content: $centro;
-    /* Centra horizontalmente */
     align-items: $centro;
-    /* Centra verticalmente */
     padding-top: 20px;
     color: $c11;
-
     a {
         color: $c3;
-        /* Color azul */
     }
 }
 
 .subir {
     height: 20px;
-    /* Altura del elemento */
     width: 20px;
-    /* Ancho del elemento */
     background-color: $c12;
-    /* Color de fondo */
     color: $c3;
-    /* Color del texto */
     position: fixed;
-    /* Posicionamiento fijo */
     border-radius: 50%;
-    /* Forma redondeada */
     text-align: $centro;
-    /* Alineación del texto */
     line-height: 20px;
-    /* Altura de línea */
     font-size: 15px;
-    /* Tamaño del texto */
     right: 20px;
-    /* Distancia desde el borde derecho del contenedor padre */
     bottom: 100px;
-    /* Distancia desde el borde inferior del contenedor padre */
 }
 
 input {
     border-radius: 10px;
-    /* Radio de borde */
     text-align: $centro;
-    /* Alineación del texto */
     padding: 3px;
-    /* Espaciado interno */
     border: 4px $c2;
-    /* Borde */
     font-size: 25px;
-    /* Tamaño del texto */
     box-shadow: inset 0 0 5px;
-    /* Sombra */
-    background-color: $c3;
-    /* Color de fondo */
-
-    /* Estilos para diferentes tipos de input */
+    background-color: $c3;    
     &[type="text"] {
-        height: 40px;
-        /* Altura del campo de texto */
+        height: 40px;        
         color: $c1;
-        /* Color del texto */
         margin: 0;
-        /* Margen */
     }
-
     &[type="number"] {
         height: 40px;
-        /* Altura del campo de número */
         color: $c13;
-        /* Color del texto */
         margin: 0;
-        /* Margen */
     }
-
     &:focus {
         box-shadow: 0 0 15px 10px $c5;
-        /* Sombra al enfocar */
         border: 5px;
-        /* Borde al enfocar */
     }
 }
 
 .fotoAgrandada {
     img {
         padding-top: 15px;
-        width: 50%; // Ajusta el ancho al % del contenedor
-        height: 50%; // Mantiene la proporción de aspecto original
-        display: grid; // Asegura que la imagen sea un elemento de bloque
+        width: 50%; 
+        height: 50%;
+        display: grid;
         margin-left: 15px;
         margin-right: 15px;
     }
@@ -645,7 +471,6 @@ input {
 
 .turnos {
     font-size: 30px;
-    /* Tamaño del texto */
 }
 
 form {
@@ -666,33 +491,24 @@ form label {
 
 .formulario-turnos {
     display: flex;
-    /* Establece el contenedor como un contenedor flexible */
     flex-direction: column;
-    /* Establece la dirección de los elementos como columna */
     justify-content: $centro;
-    /* Centra verticalmente */
     align-items: $centro;
-    /* Centra horizontalmente */
 }
 
 .formulario-turnos input:nth-of-type(3) {
-    /* Selecciona el tercer input dentro del formulario de turnos */
     text-align: $centro;
-    /* Alinea el texto al centro */
     color: $c6;
-    /* Cambia el color del texto a rojo */
 }
 
 .formulario-turnos label {
     margin-left: 5px;
     margin-bottom: 20px;
-    display: block;
-    
+    display: block;    
 }
 
 .formulario-turnos input {
     margin-bottom: 15px;
-    /* Espacio entre los input */
 }
 
 .message {
@@ -705,17 +521,13 @@ form label {
 
 .centralizado {
     display: flex;
-    /* Utiliza el modelo de caja flexible */
     justify-content: center;
-    /* Centra los elementos horizontalmente */
     align-items: center;
-    /* Centra los elementos verticalmente */
 }
 
 .table-responsive {
     overflow-x: auto;
 }
-
 
 sec .row-about {
     display: flex;
@@ -732,17 +544,7 @@ sec .row-about {
 }
 
 
-
-
-
-
-
-/* Estilos específicos para dispositivos móviles */
-/* dispositivos con un ancho máximo de 320px (modo vertical) */
 @media screen and (max-width: 320px) {
-
-   
-
     .logo {
         width: 30px;
         height: 30px;
@@ -751,7 +553,6 @@ sec .row-about {
         margin-left: auto;
         margin-right: auto;
     }
-
     
     section {
         font-size: 20px;
@@ -763,25 +564,21 @@ sec .row-about {
         gap: 15px;
         width: 320px;
     }
-
     body {
         background-color: $c1;
         font-size: 16px;
         width: 100%;
     }
-
     nav,
     footer {
         width: 100%;
     }
-
     header {
         padding: 5px;
         margin-top: 10px;
         font-size: 15px;
         width: 320px;
     }
-
     nav ul {
         display: flex;
         flex-direction: column;
@@ -789,18 +586,15 @@ sec .row-about {
         padding: 0;
         margin: 0 auto;
     }
-
     nav ul li {
         display: flex;
         margin-bottom: 10px;
     }
-
     .descripcion {
         text-align: center;
         margin: 0 auto;
         width: 320px;
     }
-
     video {
         max-height: 480px;
         max-width: 320px;
@@ -808,24 +602,17 @@ sec .row-about {
         margin-left: auto;
         margin-right: auto;
     }
-
     .contenedor-recuadros {
         min-width: 319px !important;
-        /* Ancho deseado para dispositivos con un ancho máximo de 320px */
         max-width: 479px !important;
-        /* Ancho deseado para dispositivos con un ancho máximo de 480px */
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* Centra los elementos horizontalmente */
         justify-content: center;
-        /* Centra los elementos verticalmente */
-
         .recuadro {
             font-size: 10px;
         }
     }
-
     footer {
         font-size: 14px;        
         text-align: center;
@@ -833,27 +620,18 @@ sec .row-about {
         max-height: 480px;
         max-width: 320px;
     }
-
     .fotoencuadrada {
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 10px;
     }
-
 }
 
-/* dispositivos con un ancho máximo de 480px (modo horizontal) */
 @media screen and (max-width: 480px) {
-
-   
-
     section {
         font-size: 16px;
     }
-
-   
-
     nav ul {
         display: flex;
         flex-direction: column;
@@ -861,177 +639,128 @@ sec .row-about {
         padding: 0;
         margin: 0 auto;
     }
-
     nav ul li {
         display: flex;
         margin-bottom: 10px;
     }
-
     article {
         height: auto;
         padding-right: 0;
     }
-
     h4 {
         font-size: 24px;
     }
-
     .videosCentrado {
         font-size: 18px;
     }
-
     .icono {
         max-width: 16px;
     }
-
     .titulo {
         font-size: 16px;
     }
-
     .terapeutas-container {
         padding: 8px;
     }
-
     .Equipo-de-terapeutas {
         grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
     }
-
     .about-grid {
         margin-left: 20px;
     }
-
     .service-container {
         max-width: 480px;
     }
-
     .whats {
         height: 60px;
         width: 60px;
         font-size: 30px;
         right: 20px;
     }
-
     .formulario-turnos label {
         margin-left: 0;
         margin-bottom: 10px;
     }
-
     ::-webkit-scrollbar-thumb {
         border-radius: 5px;
     }
-
     .logo {
         width: 70px;
         height: 70px;
         margin-top: 20px;
     }
-
     header {
         font-size: 12px;
         width: 100%;
     }
-
     video {
         max-height: 360px;
         max-width: 100%;
     }
-
     .contenedor-recuadros {
         min-width: 480px;
         display: flex;
-        /* Establece el contenedor como flexbox */
         flex-direction: column;
-        /* Dirección de los elementos: columna */
         align-items: $centro;
-        /* Centra los elementos horizontalmente */
     }
-
 }
 
 @media screen and (min-width: 580px) and (max-width: 800px) {
-
-    
-
     .navbar-nav ul {
         list-style-type: none;
-        /* Quita los puntos de la lista */
         padding: 0;
         margin: 0;
         max-width: 100%;
-        /* Limita el ancho del ul al 100% del contenedor */
         display: flex;
         flex-wrap: wrap;
-        /* Permite que los elementos se envuelvan */
         justify-content: center;
-        /* Centra los elementos horizontalmente */
     }
-
     .navbar-nav ul li {
         font-size: 6px;
         margin-bottom: 10px;
         min-width: 66px;
         max-width: 70px;
-        /* Ajusta el ancho máximo de los elementos li */
         margin-right: 10px;
-        /* Agrega un margen entre los elementos li */
         width: calc((100% - 30px) / 3);
-        /* Ajusta el ancho de cada elemento li */
-        /* Se divide por 3 debido a los 3 elementos li, y 30px es la suma del margen y el margen derecho de los elementos li */
     }
-
     .navbar-nav ul li:last-child {
         margin-right: 0;
-        /* Elimina el margen derecho del último elemento li */
     }
-
     section {
         font-size: 14px;
     }
-
     article {
         height: auto;
         padding-right: 0;
     }
-
     h4 {
         font-size: 24px;
     }
-
     .videosCentrado {
         font-size: 16px;
     }
-
     .icono {
         max-width: 14px;
     }
-
-
-
     .titulo {
         font-size: 14px;
     }
-
     .terapeutas-container {
         padding: 8px;
     }
-
     .Equipo-de-terapeutas {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
-
     .about-grid {
         margin-left: 18px;
     }
-
     .service-container {
         max-width: 600px;
     }
-
     .contenedor-recuadros {
         height: 1200px;
         width: 800px;
     }
-
     .contenedor-padre {
         margin-left: 12px;
         width: 95%;
@@ -1040,7 +769,6 @@ sec .row-about {
         justify-content: center;
         align-items: center;
     }
-
     .fotoAgrandada img {
         padding-top: 10px;
         width: 70%;
@@ -1049,92 +777,74 @@ sec .row-about {
         margin-left: auto;
         margin-right: auto;
     }
-
     .whats {
         height: 56px;
         width: 56px;
         font-size: 28px;
         right: 18px;
     }
-
     .formulario-turnos label {
         margin-left: 0;
     }
-
     ::-webkit-scrollbar-thumb {
         border-radius: 5px;
     }
-
     .logo {
         width: 70px;
         height: 70px;
         margin-top: 18px;
     }
-
     header {
         font-size: 12px;
         width: 100%;
     }
-
     video {
         padding-top: 10px;
         max-width: 100%;
         max-height: 100%;
     }
+    .galeria.container-fluid {
+        background-color: #000;
+        padding-top: 5px;
+        width: 100%;
+        max-height: 1200px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .container-servicios {
+        display: flex;
+        width: 100%;
+        height: 1000px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        margin: 10px;
+    }
+    .galeria .col-sm-12 {
+        padding-left: 5px;
+        padding-right: 5px;
+        width: 100%;
+        height: 100%;
+    }
 }
 
-.galeria.container-fluid {
-    background-color: #000;
-    padding-top: 5px;
-    width: 100%;
-    max-height: 1200px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.container-servicios {
-    display: flex;
-    width: 100%;
-    height: 1000px;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    margin: 10px;
-}
-
-.galeria .col-sm-12 {
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 100%;
-    /* Ajustar el ancho del logo */
-    height: 100%;
-    /* Ajustar la altura del logo */
-}
-
-/* Estilos para tabletas de 600x1024 en modo vertical */
 @media screen and (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
     .logo {
         margin-top: 15px;
-        /* Ajustar el margen superior */
         text-align: center;
         margin-left: auto;
         margin-right: auto;
     }
-
     header {
         padding: 10px;
         margin-top: 50px;
-        /* Ajustar el margen superior */
         font-size: 20px;
         width: 90%;
-        /* Ajustar el ancho del encabezado */
         text-align: center;
-        /* Centrar el texto del encabezado */
         margin-left: auto;
         margin-right: auto;
     }
-
     nav ul {
         display: flex;
         flex-direction: column;
@@ -1142,285 +852,196 @@ sec .row-about {
         padding: 0;
         margin: 0 auto;
         width: 100%;
-
         li {
             display: flex;
             margin-bottom: 10px;
-            /* Ajustar el margen inferior */
         }
     }
-
     main {
         padding: 5%;
-        /* Ajustar el relleno en porcentaje */
     }
-
     aside {
         padding: 5%;
-        /* Ajustar el relleno en porcentaje */
     }
-
     video {
         display: block;
         margin-left: auto;
         margin-right: auto;
         max-width: 90%;
-        /* Ajustar el ancho máximo del video en porcentaje */
     }
-
     footer {
         padding: 5%;
-        /* Ajustar el relleno en porcentaje */
         text-align: center;
         margin: 5% auto;
-        /* Ajustar los márgenes en porcentaje */
         width: 95%;
-        /* Ajustar el ancho del footer en porcentaje */
     }
-
     .galeria {
         display: grid;
         grid-template-rows: 480px;
-        /* Define filas de 480px de alto */
     }
-
-
 }
 
-/* Estilos para tabletas de 10 pulgadas en modo vertical */
 @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-
     header {
         width: 100px;
         height: 100px;
         margin-top: 15px;
         margin-top: 5%;
-        /* Ajustar el margen superior en porcentaje */
         padding: 10px;
-
-        body {
-
-            /* Altura del 100% de la ventana del navegador */
-            background-color: $c1;
-            background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
-            /* Degradado de colores */
-            font-family: 'Roboto Slab', Arial, sans-serif;
-            font-size: 16px;
-
-            .body-background {
-                background-color: $c1;
-                /* Color de fondo */
-                padding: 20px;
-                /* Espaciado interno */
-                color: $c3;
-                /* Color del texto */
-            }
-        }
-
-        nav ul li {
-            margin-right: 5%;
-            /* Ajustar el margen derecho en porcentaje */
-        }
-
-        aside {
-            padding: 40px;
-        }
-
-        footer .redes a {
-            font-size: 25px;
-        }
-
-        video {
-            max-height: 1024px;
-            max-width: 768px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        footer {
-            padding: 20px;
-            width: 768px;
-            text-align: center;
-            margin: 0 auto;
-        }
-
-        letter-spacing: 10px;
     }
-
-    .galeria h4 {
-        font-size: 22px;
-        /* Tamaño de fuente ajustado */
-        margin-bottom: 15px;
+    body {
         background-color: $c1;
         background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
-        /* Degradado de colores */
         font-family: 'Roboto Slab', Arial, sans-serif;
-    }
-
-    .body-background {
+        font-size: 16px;
+        .body-background {
         background-color: $c1;
-        /* Color de fondo */
+        padding: 20px;
+        color: $c3;
+        }
     }
-
+    nav ul li {
+        margin-right: 5%;
+    }
     aside {
         padding: 40px;
     }
-
+    footer .redes a {
+        font-size: 25px;
+    }
+    video {
+        max-height: 1024px;
+        max-width: 768px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    footer {
+        padding: 20px;
+        width: 768px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .galeria h4 {
+        font-size: 22px;
+        margin-bottom: 15px;
+        background-color: $c1;
+        background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
+        font-family: 'Roboto Slab', Arial, sans-serif;
+    }
+    .body-background {
+        background-color: $c1;
+    }    
     main {
         width: 100%;
         padding: 40px;
     }
-
     .alineado-parrafo {
         font-size: 0.6rem;
         font-family: 'Roboto Slab', Arial, sans-serif;
-
-        /* Tamaño de fuente ligeramente reducido */
         .grid-item-hijo {
             padding: 10px;
             margin-bottom: 10px;
         }
-
         nav ul li {
             margin-right: 15px;
         }
-
         .recuadro {
             width: 100%;
         }
-
         .galeria p {
             font-size: 18px;
-            /* Tamaño de fuente ajustado */
             margin-bottom: 15px;
-            /* Margen inferior para separar los elementos */
         }
     }
 
-
-    /* Estilos para tabletas como el iPad en modo horizontal y algunas pantallas de ordenador portátil, netbook y de escritorio */
-    @media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
-        body {
-            height: 500px;
-            /* Altura del 100% de la ventana del navegador */
+@media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+    body {
+        height: 500px;
+        background-color: $c1;
+        background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
+        font-family: 'Roboto Slab', Arial, sans-serif;
+        font-size: 16px;
+        .body-background {
             background-color: $c1;
-            background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
-            /* Degradado de colores */
-            font-family: 'Roboto Slab', Arial, sans-serif;
-            font-size: 16px;
-
-            .body-background {
-                background-color: $c1;
-                /* Color de fondo */
-                padding: 20px;
-                /* Espaciado interno */
-                color: $c3;
-                /* Color del texto */
-            }
-        }
-
-        header {
-            padding: 40px;
-        }
-
-        nav ul li {
-            margin-right: 30px;
-        }
-
-        aside {
-            padding: 40px;
-        }
-
-        footer {
-            padding: 40px;
-        }
-
-        main {
-            width: 100%;
-            padding: 40px;
-        }
-
-    }
-
-    /* Estilos para pantallas medianas */
-    @media screen and (max-width: 767px) {
-        .grid-item-hijo {
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        nav ul li {
-            margin-right: 15px;
-        }
-
-        .recuadro {
-            width: 100%;
-        }
-
-        nav ul {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    /* Estilos para pantallas panorámicas de al menos 1200px (principalmente portátiles y de escritorio) */
-    @media screen and (min-width: 1367px) {
-        body {
-            height: 500px;
-            /* Altura del 100% de la ventana del navegador */
-            background-color: $c1;
-            background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
-            /* Degradado de colores */
-            font-family: 'Roboto Slab', Arial, sans-serif;
-            font-size: 16px;
-
-            .body-background {
-                background-color: $c1;
-                /* Color de fondo */
-                padding: 20px;
-                /* Espaciado interno */
-                color: $c3;
-                /* Color del texto */
-            }
-        }
-
-        header {
-            padding: 30px;
-        }
-
-        nav ul li {
-            margin-right: 30px;
-        }
-
-        aside {
-            padding: 30px;
-        }
-
-        main {
-            width: 100%;
-        }
-
-        footer {
-            padding: 30px;
-        }
-
-        /* Ejemplo de diseño de cuadrícula */
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            grid-gap: 20px;
-        }
-
-        /* Estilos específicos para elementos de la cuadrícula */
-        .grid-item {
-            background-color: #f0f0f0;
             padding: 20px;
-            border-radius: 10px;
+            color: $c3;
         }
-    }   
+    }
+    header {
+        padding: 40px;
+    }
+    nav ul li {
+        margin-right: 30px;
+    }
+    aside {
+        padding: 40px;
+    }
+    footer {
+        padding: 40px;
+    }
+    main {
+        width: 100%;
+        padding: 40px;
+    }
 }
 
-/* Estilos para los contenedores de fichas */
+@media screen and (max-width: 767px) {
+    .grid-item-hijo {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    nav ul li {
+        margin-right: 15px;
+    }
+    .recuadro {
+        width: 100%;
+    }
+    nav ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (min-width: 1367px) {
+    body {
+        height: 500px;            
+        background-color: $c1;
+        background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
+        font-family: 'Roboto Slab', Arial, sans-serif;
+        font-size: 16px;
+        .body-background {
+            background-color: $c1;
+            padding: 20px;
+            color: $c3;
+        }
+    }
+    header {
+        padding: 30px;
+    }
+    nav ul li {
+        margin-right: 30px;
+    }
+    aside {
+        padding: 30px;
+    }
+    main {
+        width: 100%;
+    }
+    footer {
+        padding: 30px;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-gap: 20px;
+    }
+    .grid-item {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+    }
+}
+
 .fichas-container {
     margin: 40px 0;
 }
@@ -1441,19 +1062,19 @@ sec .row-about {
 .fichaPaciente {
     font-family: Helvetica, sans-serif;
     font-size: 16px;
-    background-color: rgb(255, 255, 255); /* Fondo blanco */
-    border: 1.5px solid #e53935; /* Borde de color rojo */
-    border-radius: 5px; /* Bordes redondeados */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    padding: 12px 20px; /* Aumento del padding para mejor apariencia */
-    margin-bottom: 15px; /* Aumento del margen inferior para separación */
-    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+    background-color: rgb(255, 255, 255);
+    border: 1.5px solid #e53935;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 12px 20px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s, transform 0.2s;
     text-align: left;
 }
 
 .fichaPaciente:hover {
-    background-color: #f5f5f5; /* Cambio de color al pasar el cursor */
-    transform: translateY(-2px); /* Ligero efecto de elevación */
+    background-color: #f5f5f5;
+    transform: translateY(-2px);
 }
 
 .fichaPaciente .idPaciente {
@@ -1483,10 +1104,8 @@ sec .row-about {
 .fila-botones {
     display: flex;
     justify-content: $centro;
-    align-items: $centro;
-    
+    align-items: $centro;    
 }
-
 
 #recuadroLimpiar {
     cursor: pointer;
@@ -1504,8 +1123,6 @@ input[type="date"] {
     border-radius: 4px;
     font-size: 16px;
 }
-
-// PRESUPUESTO
 
 .presupuestoContenedor {
     color: #555;
@@ -1529,7 +1146,6 @@ input[type="date"] {
     width: 100%;
 }
 
-/* Resto de estilos */
 .derecha {
     float: right;
 }
@@ -1655,9 +1271,9 @@ input[type="date"] {
 .agregar_contenedor {
     margin: 0 auto;
     text-align: center;
-    display: flex; /* Establecer el contenedor como flexbox */
-    justify-content: center; /* Centrar los elementos horizontalmente */
-    align-items: center; /* Centrar los elementos verticalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .agregar_tipo {
@@ -1795,8 +1411,7 @@ input[type="date"] {
     color: #FF5049;
 }
 
-.elemento_eliminar {
-    float: left;
+.elemento_eliminar {    
     display: inline-block;    
 }
 
@@ -1816,3 +1431,4 @@ input[type="date"] {
 .elemento:hover .elemento_eliminar--btn { display: block; }
 .elemento:hover .elemento_valor { transform: translateX(-20px); }
 .elemento:hover .elemento_porcentaje { transform: translateX(-20px); }
+}

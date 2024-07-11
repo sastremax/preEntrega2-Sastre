@@ -1070,9 +1070,36 @@ async es una palabra clave que se utiliza para declarar una funcion asincronica
 await es una palabra clave que se puede utilizar dentro de una funcion asincronica
 
 
-*/
+// FUNCIONES CALLBACK
+
+miFuncion1();
+miFuncion2();
+
+function miFuncion(){
+    console.log("funcion 1");
+}
+
+function miFuncion2(){
+    console.log("Funcion 2");
+}
+
+function imprimir(mensaje){
+    console.log(mensaje);
+}
 
 async function fetchPoke1(){
     const PokeApi= fetch("https://pokeapi.co/api/v2/pokemon/1");
 }
+
+function sumar(op1,op2,functionCallback){
+    let resultado = op1 + op2;
+    functionCallback(resultado);
+}
+
+sumar(5,3,imprimir);
+*/
+
+//manejo de errores
+
+
 
