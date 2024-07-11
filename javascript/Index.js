@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function inicializarPagina() {
         crearBotones();
+        obtenerListadoPacientes();
     }
 
     function crearBotones() {
@@ -555,15 +556,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (indicePaciente !== -1) {
                     fichas.splice(indicePaciente, 1);
                     guardarFichasEnStorage();
-                    Swal.fire('Eliminado', `Se eliminó la ficha del paciente número: ${idEliminar} `, 'success');
+                    Swal.fire({
+                        icon: "success",
+                        title: "Eliminado",
+                        text: `Se eliminó la ficha del paciente número: ${idEliminar} `,
+                        backdrop: "#008000"                        
+                    });                    
                     mostrarTodosLosPacientes();
                 } else {
-                    Swal.fire('Error', `No se encontró ningún paciente con la ficha: ${idEliminar} `, 'error');
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: `No se encontró ningún paciente con la ficha: ${idEliminar} `,
+                        backdrop: "#FF0000"
+                    });
                 }
             }
         });
-    }
-    const CHANCE = require('chance');
+    const Chance = require('chance');
     const APP = require("espress")();
     const CHANCE = new Chance();
     const GENERARPACIENTEALEATORIO = () => {
@@ -590,7 +600,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     let pacientes = [];
     for (let i = 0; i < 50; i++) {
-        pacientes.push(generarPacienteAleatorio());
+        pacientes.push(GENERARPACIENTEALEATORIO());
     }
     APP.get("/api/pacientes", (req, res) => {
         res.json(pacientes);
@@ -605,6 +615,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     const PORT = process.env.PORT || 3000;
     APP.listen(PORT, () => {
-        swape.fire(`servidor escucha el puerto ${PORT}`);
+        Swal.fire({
+            icon: 'success',
+            title: 'Servidor',
+            text: `servidor escucha el puerto ${PORT}`,
+        });            
     });
+    function obtenerListadoPacientes() {
+        fetch('/api/pacientes')
+        .then(response => response.json())
+        .then(data => {
+            mostrarTodosLosPacientes(data);
+        })
+        .catch(error => {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: `Al querer obtener listado de pacientes: ${error}`,
+                backdrop: "#FF0000"
+            });
+        });
+    }
 });
