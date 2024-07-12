@@ -6,11 +6,20 @@ app.use(cors());
 app.use(express.json());    
 const chance = new Chance();
     const GENERARPACIENTEALEATORIO = () => {
+        const fechaMinima = new Date();
+        fechaMinima.setFullYear(fechaMinima.getFullYear() - 25);
+        const fechaMaxima = new Date();
+        fechaMaxima.setFullYear(fechaMaxima.getFullYear() - 2);
         return {
+            id: chance.guid(),
             apellido: chance.last(),
             nombre: chance.first(),            
             diagnostico: chance.sentence({ words: 7 }),
-            fechaNacimiento: chance.birthday({ string: true }),
+            fechaNacimiento: chance.birthday({ 
+                string: true,
+                min: fechaMinima.toISOString(),
+                max: fechaMaxima.toISOString()
+            }),
             edad: chance.age({min: 1, max: 25}),
             dni: chance.integer({ min: 35000000, max: 69999999 }),
             cud: chance.bool() ? 'sí' : 'no',

@@ -224,7 +224,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             document.getElementById("limpiarFichaBoton").addEventListener("click", limpiarFichasMostradas);
             document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
-            document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes());
+            document.getElementById("btnMostrarTodos").addEventListener("click", function () {
+                let pacientesTotales = [...pacientesLocales, ...pacientesAPI];
+                mostrarTodosLosPacientes(pacientesTotales);            
+            });
             document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
             document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
             document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);   
@@ -344,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 text: "No hay fichas médicas para mostrar",
             });
         } else {
-            let htmlMensaje = construirMensajeFichas(pacientes);
+            let htmlMensaje = construirMensajeFichas(pacientesTotales);
             mostrarCartel(htmlMensaje);
         }
     }
