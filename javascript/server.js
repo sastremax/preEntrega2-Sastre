@@ -1,7 +1,9 @@
 const express = require('express');
+const cors = require('cors');
 const Chance = require('chance');
-const APP = express();
-APP.use(express.json());    
+const app = express();
+app.use(cors());
+app.use(express.json());    
 const chance = new Chance();
     const GENERARPACIENTEALEATORIO = () => {
         return {
@@ -29,10 +31,10 @@ const chance = new Chance();
     for (let i = 0; i < 50; i++) {
         pacientes.push(GENERARPACIENTEALEATORIO());
     }
-    APP.get("/api/pacientes", (req, res) => {
+    app.get("/api/pacientes", (req, res) => {
         res.json(pacientes);
     });
-    APP.get("/api/pacientes/:id", (req, res) => {
+    app.get("/api/pacientes/:id", (req, res) => {
         const ID = parseInt(req.params.id);
         if (ID>=0 && ID<pacientes.length) {
             res.json(pacientes[ID]);
@@ -41,6 +43,6 @@ const chance = new Chance();
         }
     });
     const PORT = process.env.PORT || 3000;
-    APP.listen(PORT, () => {
+    app.listen(PORT, () => {
         console.log(`servidor escuchando en http://localhost:${PORT}`);
     });
