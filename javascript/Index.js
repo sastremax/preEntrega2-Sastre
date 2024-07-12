@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function inicializarPagina() {
         crearBotones();
-        obtenerListadoPacientes();
+        obtenerPacientesDesdeAPI();
     }
 
     function crearBotones() {
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let accesoListadoPacientesBoton = document.createElement('button');
         accesoListadoPacientesBoton.textContent = "Acceso";
         accesoListadoPacientesBoton.addEventListener('click', function () {
-            mostrarTodosLosPacientes();
+            mostrarTodosLosPacientes(pacientes);
         });
         listadoRecuadro.appendChild(listadoTitulo);
         listadoRecuadro.appendChild(accesoListadoPacientesBoton);
@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             document.getElementById("limpiarFichaBoton").addEventListener("click", limpiarFichasMostradas);
             document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
-            document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes);
+            document.getElementById("btnMostrarTodos").addEventListener("click", mostrarTodosLosPacientes(pacientes));
             document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
             document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
             document.getElementById("btnEliminarFicha").addEventListener("click", eliminarFicha);   
@@ -332,7 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("idProgresivo", idProgresivo.toString());
     }
 
-    function mostrarTodosLosPacientes() {
+    function mostrarTodosLosPacientes(pacientes) {
         limpiarFichasMostradas();
         if (fichas.length === 0) {
             Swal.fire({
@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 text: "No hay fichas médicas para mostrar",
             });
         } else {
-            let htmlMensaje = construirMensajeFichas(fichas);
+            let htmlMensaje = construirMensajeFichas(pacientes);
             mostrarCartel(htmlMensaje);
         }
     }
@@ -562,7 +562,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         text: `Se eliminó la ficha del paciente número: ${idEliminar} `,
                         backdrop: "#008000"                        
                     });                    
-                    mostrarTodosLosPacientes();
+                    mostrarTodosLosPacientes(fichas);
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -573,12 +573,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
-    
-    function obtenerListadoPacientes() {
+    }
+
+    function obtenerPacientesDesdeAPI() {
         fetch('/api/pacientes')
         .then(response => response.json())
         .then(data => {
-            mostrarTodosLosPacientes(data);
+            let pacientesTotales = [...fichas, ...data];
+            mostrarTodosLosPacientes(pacientesTotales);
         })
         .catch(error => {
             Swal.fire({

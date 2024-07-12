@@ -1,29 +1,28 @@
 const express = require('express');
 const Chance = require('chance');
-const Swal = require('sweetalert2');
 const APP = express();
 APP.use(express.json());    
 const chance = new Chance();
     const GENERARPACIENTEALEATORIO = () => {
         return {
-            apellido: CHANCE.last(),
-            nombre: CHANCE.first(),            
-            diagnostico: CHANCE.sentence({ words: 7 }),
-            fechaNacimiento: CHANCE.birthday({ string: true }),
-            edad: CHANCE.age({min: 1, max: 25}),
-            dni: CHANCE.integer({ min: 35000000, max: 69999999 }),
-            cud: CHANCE.bool() ? 'sí' : 'no',
-            obraSocial: CHANCE.company(),
-            domicilio: CHANCE.address(),
-            titularObraSocial: CHANCE.name(),
-            numeroAfiliado: CHANCE.string({ length: 10, alpha: false, numeric: true }),
-            escuela: CHANCE.company(),
-            madre: CHANCE.name(),
-            celularMama: CHANCE.phone(),
-            padre: CHANCE.name(),
-            celularPapa: CHANCE.phone(),
-            neurologo: CHANCE.name(),
-            pediatra: CHANCE.name()
+            apellido: chance.last(),
+            nombre: chance.first(),            
+            diagnostico: chance.sentence({ words: 7 }),
+            fechaNacimiento: chance.birthday({ string: true }),
+            edad: chance.age({min: 1, max: 25}),
+            dni: chance.integer({ min: 35000000, max: 69999999 }),
+            cud: chance.bool() ? 'sí' : 'no',
+            obraSocial: chance.company(),
+            domicilio: chance.address(),
+            titularObraSocial: chance.name(),
+            numeroAfiliado: chance.string({ length: 10, alpha: false, numeric: true }),
+            escuela: chance.company(),
+            madre: chance.name(),
+            celularMama: chance.phone(),
+            padre: chance.name(),
+            celularPapa: chance.phone(),
+            neurologo: chance.name(),
+            pediatra: chance.name()
         };
     };
     let pacientes = [];
@@ -43,9 +42,5 @@ const chance = new Chance();
     });
     const PORT = process.env.PORT || 3000;
     APP.listen(PORT, () => {
-        Swal.fire({
-            icon: 'success',
-            title: 'Servidor',
-            text: `servidor escucha el puerto ${PORT}`,
-        });            
+        console.log(`servidor escuchando en http://localhost:${PORT}`);
     });
