@@ -5,20 +5,24 @@ const app = express();
 app.use(cors());
 app.use(express.json());    
 const chance = new Chance();
+let proximoId = 1;
     const GENERARPACIENTEALEATORIO = () => {
         const fechaMinima = new Date();
         fechaMinima.setFullYear(fechaMinima.getFullYear() - 25);
         const fechaMaxima = new Date();
         fechaMaxima.setFullYear(fechaMaxima.getFullYear() - 2);
+        const id = proximoId++;
+        const celularMadre = chance.integer({ min: 11000000, max: 51999999 }).toString();
+        const celularPadre = chance.integer({ min: 11000000, max: 51999999 }).toString();
         return {
-            id: chance.guid(),
+            id: id,
             apellido: chance.last(),
             nombre: chance.first(),            
             diagnostico: chance.sentence({ words: 7 }),
             fechaNacimiento: chance.birthday({ 
                 string: true,
-                min: fechaMinima.toISOString(),
-                max: fechaMaxima.toISOString()
+                min: fechaMinima,
+                max: fechaMaxima
             }),
             edad: chance.age({min: 1, max: 25}),
             dni: chance.integer({ min: 35000000, max: 69999999 }),
@@ -26,12 +30,12 @@ const chance = new Chance();
             obraSocial: chance.company(),
             domicilio: chance.address(),
             titularObraSocial: chance.name(),
-            numeroAfiliado: chance.string({ length: 10, alpha: false, numeric: true }),
+            numeroAfiliado: chance.string({ length: 10, alpha: true, numeric: true }),
             escuela: chance.company(),
-            madre: chance.name(),
-            celularMama: chance.phone(),
-            padre: chance.name(),
-            celularPapa: chance.phone(),
+            madre: celularMadre,
+            celularMadre: chance.phone(),
+            padre: celularPadre,
+            celularPadre: chance.phone(),
             neurologo: chance.name(),
             pediatra: chance.name()
         };
