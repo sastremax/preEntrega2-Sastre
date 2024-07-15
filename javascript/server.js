@@ -11,8 +11,9 @@ let proximoId = 1;
         fechaMinima.setFullYear(fechaMinima.getFullYear() - 25);
         const fechaMaxima = new Date();
         fechaMaxima.setFullYear(fechaMaxima.getFullYear() - 2);        
-        const celularMadre = chance.integer({ min: 11000000, max: 51999999 }).toString();
-        const celularPadre = chance.integer({ min: 11000000, max: 51999999 }).toString();
+        const celularMadre = chance.integer({ min: 11000000, max: 11999999 }).toString();
+        const celularPadre = chance.integer({ min: 11000000, max: 11999999 }).toString();
+        const numeroAfiliado = chance.string({ length: 10, alpha: true, numeric: true });
         return {
             id: proximoId++,
             apellido: chance.last(),
@@ -29,7 +30,7 @@ let proximoId = 1;
             obraSocial: chance.company(),
             domicilio: chance.address(),
             titularObraSocial: chance.name(),
-            numeroAfiliado: chance.integer({ min: 1000000, max: 100000000 }),
+            numeroAfiliado: numeroAfiliado,
             escuela: chance.company(),
             madre: chance.name(),
             celularMadre: celularMadre.toString(),
