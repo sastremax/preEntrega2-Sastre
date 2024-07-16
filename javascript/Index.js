@@ -222,8 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     backdrop: "#FF0000"
                 });
             }
-            document.getElementById("limpiarFichaBoton").addEventListener("click", limpiarFichasMostradas);
-            document.getElementById("guardarFichaBoton").addEventListener("click", guardarFichasDeFormulario);
+            document.getElementById("limpiarFichaBoton").addEventListener("click", limpiarFichasMostradas);           
             document.getElementById("btnMostrarTodos").addEventListener("click", function () {
                 let pacientesTotales = [...pacientesLocales, ...pacientesAPI];
                 mostrarTodosLosPacientes(pacientesTotales);            
