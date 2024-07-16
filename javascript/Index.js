@@ -276,6 +276,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
                 return;
             }
+            if (cud.toLowerCase() !== "sí" && cud.toLowerCase() !== "no") {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "El campo CUD solo puede ser 'sí' o 'no'",
+                    backdrop: "#FF0000"
+                });
+                return;
+            }
             if (isNaN(parseInt(celularMadre))) {
                 Swal.fire({
                     icon: "error",

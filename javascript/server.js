@@ -1,10 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const Chance = require('chance');
 const app = express();
+const port = process.env.PORT || 3000;
 app.use(cors());
-app.use(express.json());    
-const chance = new Chance();
+app.use(express.json());
 let proximoId = 1;
     const GENERARPACIENTEALEATORIO = () => {
         const fechaMinima = new Date();
@@ -59,3 +58,6 @@ let proximoId = 1;
     app.listen(PORT, () => {
         console.log(`servidor escuchando en http://localhost:${PORT}`);
     });
+app.listen(port, () => {
+    console.log(`Servidor corriendo en el puerto ${port}`);
+});
