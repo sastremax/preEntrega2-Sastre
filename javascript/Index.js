@@ -9,9 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     inicializarPagina();
 
-    function inicializarPagina() {
+    async function inicializarPagina() {
         crearBotones();
-        obtenerPacientesDesdeAPI();
+        await obtenerPacientesDesdeAPI()
+            console.log('Pacientes API obtenidos y listos para mostrar.');
     }
 
     function crearBotones() {
@@ -335,11 +336,12 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("idProgresivo", idProgresivo.toString());
     }
 
-    function mostrarTodosLosPacientes() {
+    async function mostrarTodosLosPacientes() {
+        await obtenerPacientesDesdeAPI();
         let pacientesTotales = [...pacientesLocales, ...pacientesAPI];
         limpiarFichasMostradas();
         console.log('Mostrando todos los pacientes:', pacientesTotales);        
-        if (fichas.length === 0) {
+        if (pacientesTotales.length === 0) {
             Swal.fire({
                 icon: "info",
                 title: "Ficha",
@@ -403,10 +405,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div> `
             ;
         });
+        console.log('HTML generado para los pacientes:', htmlMensaje);
         return htmlMensaje;
     }
 
     function mostrarCartel(htmlMensaje) {
+        console.log('HTML a mostrar en Swal.fire:', htmlMensaje);
         Swal.fire({
             title: "Ficha de Paciente",
             html: htmlMensaje,
@@ -579,25 +583,22 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function obtenerPacientesDesdeAPI() {
-        fetch('http://localhost:3000/api/pacientes')
-        .then(response => {
+    async function obtenerPacientesDesdeAPI() {
+        try {
+            const response = await fetch('http://localhost:3000/api/pacientes');
             if (!response.ok) {
                 throw new Error(`No se pudo obtener listado de pacientes. ${response.status}`);
             }
-            return response.json();
-        })
-        .then(data => {
+            const data = await response.json();
             pacientesAPI = data;
-            console.log('Pacientes API obtenidos:', pacientesAPI);          
-        })
-        .catch(error => {
+            console.log('Pacientes API obtenidos:', pacientesAPI);
+        } catch(error) {
             Swal.fire({
                 icon: "error",
                 title: "Error al querer obtener los pacientes",
                 text: `Hubo un problema al intentar obtener el listado de pacientes: ${error.message}`,
                 backdrop: "#FF0000"
             });
-        });
+        }
     }
 });

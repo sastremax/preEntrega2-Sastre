@@ -10,7 +10,8 @@ let proximoId = 1;
         const fechaMinima = new Date();
         fechaMinima.setFullYear(fechaMinima.getFullYear() - 25);
         const fechaMaxima = new Date();
-        fechaMaxima.setFullYear(fechaMaxima.getFullYear() - 2);        
+        fechaMaxima.setFullYear(fechaMaxima.getFullYear() - 2);
+                
         const celularMadre = chance.integer({ min: 11000000, max: 11999999 }).toString();
         const celularPadre = chance.integer({ min: 11000000, max: 11999999 }).toString();
         const numeroAfiliado = chance.string({ length: 10, alpha: true, numeric: true });
