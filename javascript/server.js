@@ -55,6 +55,9 @@ let proximoId = 1;
             res.status(404).json({message: "Paciente no encontrado" });
         }
     });
+    app.use((req, res) => {
+        res.status(404).json({ message: "Ruta no encontrada" });
+    });
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
         console.log(`servidor escuchando en http://localhost:${PORT}`);
