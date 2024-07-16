@@ -386,16 +386,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function formatearFecha(fecha) {
+        let fechaObjeto = new Date(fecha);
+        let dia = fechaObjeto.getDate();
+        let mes = fechaObjeto.getMonth() + 1;
+        let anio = fechaObjeto.getFullYear();
+        dia = dia < 10 ? '0' + dia : dia;
+        mes = mes < 10 ? '0' + mes : mes;
+        return `${dia}/${mes}/${anio}`;
+    }
+
     function construirMensajeFichas(pacientes) {
         let htmlMensaje = "";
         pacientes.forEach(function (paciente) {
+            let fechaNacimientoFormateada = formatearFecha(paciente.fechaNacimiento)
             htmlMensaje += `
                 <div class="ficha">
                     <strong style="display: block; text-align: center;">FICHA: ${paciente.id}</strong>
                     <p>Apellido: <strong>${paciente.apellido.toUpperCase()}</strong></p>
                     <p>Nombre: <strong>${paciente.nombre}</strong></p>
                     <p>Diagnóstico: <strong>${paciente.diagnostico}</strong></p>
-                    <p>Fecha de Nacimiento: <strong>${paciente.fechaNacimiento}</strong></p>
+                    <p>Fecha de Nacimiento: <strong>${fechaNacimientoFormateada}</strong></p>
                     <p>Edad: <strong>${calcularEdad(paciente.fechaNacimiento)}</strong></p>
                     <p>DNI: <strong>${paciente.dni}</strong></p>
                     <p>CUD: <strong>${paciente.cud}</strong></p>
