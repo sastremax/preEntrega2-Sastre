@@ -582,15 +582,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function obtenerPacientesDesdeAPI() {
         fetch('http://localhost:3000/api/pacientes')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`No se pudo obtener listado de pacientes. ${response.status}`);
+            }
+            return response.json();
+        }
         .then(data => {
             pacientesAPI = data;          
         })
         .catch(error => {
             Swal.fire({
                 icon: "error",
-                title: "Error",
-                text: `Al querer obtener listado de pacientes: ${error}`,
+                title: "Error al querer obtener los pacientes",
+                text: `Hubo un problema al intentar obtener el listado de pacientes: ${error.message}`,
                 backdrop: "#FF0000"
             });
         });
