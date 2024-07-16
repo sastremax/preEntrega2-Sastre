@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (fichasContainer) {
             fichasContainer.innerHTML = "";
         }
-        mensajeContainer = document.getElementById("mensajeContainer");
+        mensajeContainer = document.getElementById("mensaje");
         if (mensajeContainer) {
             mensajeContainer.textContent = "";
         }
