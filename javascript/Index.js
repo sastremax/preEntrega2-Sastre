@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     let fichas = JSON.parse(localStorage.getItem("fichas")) || [];
-    let idProgresivo = parseInt(localStorage.getItem("idProgresivo")) || 1;
+    let idProgresivo = parseInt(localStorage.getItem("idProgresivo")) || 1000;
     let fichasContainer = document.getElementById("fichasContainer");
     let mensajeContainer = document.getElementById("mensaje");
     let formulario = document.getElementById("fichaMedicaFormulario"); 
@@ -587,7 +587,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 throw new Error(`No se pudo obtener listado de pacientes. ${response.status}`);
             }
             return response.json();
-        }
+        })
         .then(data => {
             pacientesAPI = data;          
         })
