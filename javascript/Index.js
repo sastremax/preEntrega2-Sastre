@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let fichasContainer = document.getElementById("fichasContainer");
     let mensajeContainer = document.getElementById("mensaje");
     let formulario = document.getElementById("fichaMedicaFormulario"); 
-    let pacientesLocales = [];
+    let pacientesLocales = fichas;
     let pacientesAPI = [];               
 
     inicializarPagina();
@@ -223,9 +223,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             }
             document.getElementById("limpiarFichaBoton").addEventListener("click", limpiarFichasMostradas);           
-            document.getElementById("btnMostrarTodos").addEventListener("click", function () {
-                let pacientesTotales = [...pacientesLocales, ...pacientesAPI];
-                mostrarTodosLosPacientes(pacientesTotales);            
+            document.getElementById("btnMostrarTodos").addEventListener("click", function () {                
+                mostrarTodosLosPacientes();            
             });
             document.getElementById("btnBuscarPorApellido").addEventListener("click", mostrarFichaPorApellido);
             document.getElementById("btnModificarFicha").addEventListener("click", modificarFicha);
@@ -567,7 +566,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         text: `Se eliminó la ficha del paciente número: ${idEliminar} `,
                         backdrop: "#008000"                        
                     });                    
-                    mostrarTodosLosPacientes();
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -589,7 +587,8 @@ document.addEventListener("DOMContentLoaded", function () {
             return response.json();
         })
         .then(data => {
-            pacientesAPI = data;          
+            pacientesAPI = data;
+            console.log('Pacientes API obtenidos:', pacientesAPI);          
         })
         .catch(error => {
             Swal.fire({

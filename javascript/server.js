@@ -41,7 +41,7 @@ let proximoId = 1;
         };
     };
     let pacientes = [];
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 200; i++) {
         pacientes.push(GENERARPACIENTEALEATORIO());
     }
     app.get("/api/pacientes", (req, res) => {
