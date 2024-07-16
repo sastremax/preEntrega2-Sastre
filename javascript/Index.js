@@ -181,33 +181,33 @@ document.addEventListener("DOMContentLoaded", function () {
                 <label for="dniPaciente">DNI:</label>
                 <input type="text" id="dniPaciente" required>
                 <label for="cudPaciente">CUD (si/no?):</label> 
-                <input type="text" id="cudPaciente">
+                <input type="text" id="cudPaciente" required>
                 <label for="obraSocialPaciente">Obra Social del paciente:</label> 
-                <input type="text" id="obraSocialPaciente"> 
+                <input type="text" id="obraSocialPaciente" required> 
                 <label for="domicilioPaciente">Domicilio:</label> 
-                <input type="text" id="domicilioPaciente"> 
+                <input type="text" id="domicilioPaciente" required> 
                 <label for="titularObraSocialPaciente">Titular de la Obra Social:</label> 
-                <input type="text" id="titularObraSocialPaciente"> 
-                <label for="numAfiliadoPaciente">Número del Afiliado:</label> 
-                <input type="text" id="numAfiliadoPaciente"> 
+                <input type="text" id="titularObraSocialPaciente" required>
+                <label for="numeroAfiliadoPaciente">Número del Afiliado:</label> 
+                <input type="text" id="numeroAfiliadoPaciente" required> 
                 <label for="escuelaPaciente">Escuela:</label> 
-                <input type="text" id="escuelaPaciente"> 
+                <input type="text" id="escuelaPaciente" required> 
                 <label for="nombreMadrePaciente">Nombre de la Madre:</label> 
-                <input type="text" id="nombreMadrePaciente"> 
+                <input type="text" id="nombreMadrePaciente" required> 
                 <label for="celularMadrePaciente">Celular de la Madre:</label> 
-                <input type="text" id="celularMadrePaciente"> 
+                <input type="text" id="celularMadrePaciente" required> 
                 <label for="nombrePadrePaciente">Nombre del Padre:</label> 
-                <input type="text" id="nombrePadrePaciente"> 
+                <input type="text" id="nombrePadrePaciente" required>
                 <label for="celularPadrePaciente">Celular del Padre:</label> 
-                <input type="text" id="celularPadrePaciente"> 
+                <input type="text" id="celularPadrePaciente" required> 
                 <label for="neurologoPaciente">Neurólogo:</label> 
-                <input type="text" id="neurologoPaciente"> 
+                <input type="text" id="neurologoPaciente" required> 
                 <label for="pediatraPaciente">Pediatra:</label> 
-                <input type="text" id="pediatraPaciente"> 
+                <input type="text" id="pediatraPaciente" required> 
                 <button type="button" id="guardarFichaBoton">Guardar Ficha</button>
                 <button type="button" id="limpiarFichaBoton">Volver</button>
-            </form> 
-        `;
+            </form> `
+        ;
         let contenedor = document.getElementById("formularioContenedor");
         if (contenedor) {
             contenedor.innerHTML = formularioHTML;
@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function guardarFichasDeFormulario() {
         formulario = document.getElementById("formulario");
-        let apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra;
+        let apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numeroAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra;
         if (formulario) {
             apellido = document.getElementById("apellidoPaciente").value;
             nombre = document.getElementById("nombrePaciente").value;
@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
             obraSocial = document.getElementById("obraSocialPaciente").value;
             domicilio = document.getElementById("domicilioPaciente").value;
             titularObraSocial = document.getElementById("titularObraSocialPaciente").value;
-            numAfiliado = document.getElementById("numAfiliadoPaciente").value;
+            numeroAfiliado = document.getElementById("numeroAfiliadoPaciente").value;
             escuela = document.getElementById("escuelaPaciente").value;
             nombreMadre = document.getElementById("nombreMadrePaciente").value;
             celularMadre = document.getElementById("celularMadrePaciente").value;
@@ -266,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
             neurologo = document.getElementById("neurologoPaciente").value;
             pediatra = document.getElementById("pediatraPaciente").value;
         }
-        let esValido = apellido && nombre && diagnostico && fechaNacimiento && dni && obraSocial && domicilio && titularObraSocial && numAfiliado && escuela && nombreMadre && celularMadre && nombrePadre && celularPadre && neurologo && pediatra;
+        let esValido = apellido && nombre && diagnostico && fechaNacimiento && dni && obraSocial && domicilio && titularObraSocial && numeroAfiliado && escuela && nombreMadre && celularMadre && nombrePadre && celularPadre && neurologo && pediatra;
         if (esValido) {
             if (isNaN(dni) || dni.length < 8) {
                 Swal.fire({
@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
                 return;
             }
-            if (isNaN(celularMadre)) {
+            if (isNaN(parseInt(celularMadre))) {
                 Swal.fire({
                     icon: "error",
                     title: "Error",
@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
                 return;
             }
-            if (isNaN(celularPadre)) {
+            if (isNaN(parseInt(celularPadre))) {
                 Swal.fire({
                     icon: "error",
                     title: "Error",
@@ -307,7 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
             let nuevoId = idProgresivo;
-            let ficha = { id: nuevoId, apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra };
+            let ficha = { id: nuevoId, apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numeroAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra };
             fichas.push(ficha);
             idProgresivo++;
             localStorage.setItem("fichas", JSON.stringify(fichas));
@@ -319,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 backdrop: "#008000"
             }).then(() => {
                 formulario.reset();
-                formulario.style.display = "none";
+                contenedor.innerHTML = "";
                 limpiarFichasMostradas();
             });
         } else {
@@ -393,7 +393,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p>Obra Social: <strong>${paciente.obraSocial}</strong></p>
                     <p>Domicilio: <strong>${paciente.domicilio}</strong></p>
                     <p>Titular Obra Social: <strong>${paciente.titularObraSocial}</strong></p>
-                    <p>Número de Afiliado: <strong>${paciente.numAfiliado}</strong></p>
+                    <p>Número de Afiliado: <strong>${paciente.numeroAfiliado}</strong></p>
                     <p>Escuela: <strong>${paciente.escuela}</strong></p>
                     <p>Madre: <strong>${paciente.madre}</strong></p>
                     <p>Celular Madre: <strong>${paciente.celularMadre}</strong></p>
@@ -401,8 +401,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p>Celular Padre: <strong>${paciente.celularPadre}</strong></p>
                     <p>Neurólogo: <strong>${paciente.neurologo}</strong></p>
                     <p>Pediatra: <strong>${paciente.pediatra}</strong></p>
-                </div>
-            `;
+                </div> `
+            ;
         });
         return htmlMensaje;
     }
@@ -466,7 +466,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     Swal.fire({
                         icon: "info",
-                        title: `No se encontró ningún paciente con la ficha # ${idModificar} `,
+                        title: `No se encontró ningún paciente con la ficha # ${idModificar}` ,
                     });
                 }
             }
@@ -475,7 +475,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function mostrarElCampo(pacienteEncontrado, idModificar) {
         Swal.fire({
-            title: `Modificando ficha del paciente: ${idModificar} `,
+            title: `Modificando ficha del paciente: ${idModificar}` ,
             input: "select",
             inputOptions: {
                 apellido: "Apellido",
@@ -532,7 +532,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 Swal.fire({
                     icon: 'success',
                     title: 'Ficha modificada',
-                    text: `Se guardaron los cambios en la ficha del paciente #${idModificar} `,
+                    text: `Se guardaron los cambios en la ficha del paciente #${idModificar}` ,
                     backdrop: "#008000"
                 });
             }
@@ -573,7 +573,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Swal.fire({
                         icon: "error",
                         title: "Error",
-                        text: `No se encontró ningún paciente con la ficha: ${idEliminar} `,
+                        text: `No se encontró ningún paciente con la ficha: ${idEliminar}` ,
                         backdrop: "#FF0000"
                     });
                 }
