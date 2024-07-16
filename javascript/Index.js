@@ -337,7 +337,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function mostrarTodosLosPacientes() {
         let pacientesTotales = [...pacientesLocales, ...pacientesAPI];
-        limpiarFichasMostradas();        
+        limpiarFichasMostradas();
+        console.log('Mostrando todos los pacientes:', pacientesTotales);        
         if (fichas.length === 0) {
             Swal.fire({
                 icon: "info",
