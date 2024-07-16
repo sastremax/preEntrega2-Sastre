@@ -3,16 +3,16 @@ document.addEventListener("DOMContentLoaded", function () {
     let idProgresivo = parseInt(localStorage.getItem("idProgresivo")) || 1000;
     let fichasContainer = document.getElementById("fichasContainer");
     let mensajeContainer = document.getElementById("mensaje");
-    let formulario = document.getElementById("fichaMedicaFormulario"); 
-    let pacientesLocales = fichas;
-    let pacientesAPI = [];               
+    let formulario = document.getElementById("fichaMedicaFormulario");
+    let pacientesAPI = [];
+    let pacientesLocales = fichas;                   
 
     inicializarPagina();
 
     async function inicializarPagina() {
         crearBotones();
         await obtenerPacientesDesdeAPI()
-            console.log('Pacientes API obtenidos y listos para mostrar.');
+        ajustarIdProgresivo();            
     }
 
     function crearBotones() {
@@ -309,8 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let ficha = { id: nuevoId, apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numeroAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra };
             fichas.push(ficha);
             idProgresivo++;
-            localStorage.setItem("fichas", JSON.stringify(fichas));
-            localStorage.setItem("idProgresivo", idProgresivo.toString());
+            guardarFichasEnStorage();
             Swal.fire({
                 icon: "success",
                 title: "Ficha",
@@ -336,11 +335,20 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("idProgresivo", idProgresivo.toString());
     }
 
+    function ajustarIdProgresivo() {
+        if (pacientesAPI.length > 0) {
+            const maxIdAPI = Math.max(...pacientesAPI.map(paciente => paciente.id));
+            if (idProgresivo <= maxIdAPI) {
+                idProgresivo = maxIdAPI + 1;
+            }
+        }
+        localStorage.setItem("idProgresivo", idProgresivo.toString());
+    }
+
     async function mostrarTodosLosPacientes() {
         await obtenerPacientesDesdeAPI();
-        let pacientesTotales = [...pacientesLocales, ...pacientesAPI];
-        limpiarFichasMostradas();
-        console.log('Mostrando todos los pacientes:', pacientesTotales);        
+        let pacientesTotales = [...pacientesAPI, ...pacientesLocales];
+        limpiarFichasMostradas();               
         if (pacientesTotales.length === 0) {
             Swal.fire({
                 icon: "info",
@@ -404,13 +412,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p>Pediatra: <strong>${paciente.pediatra}</strong></p>
                 </div> `
             ;
-        });
-        console.log('HTML generado para los pacientes:', htmlMensaje);
+        });        
         return htmlMensaje;
     }
 
-    function mostrarCartel(htmlMensaje) {
-        console.log('HTML a mostrar en Swal.fire:', htmlMensaje);
+    function mostrarCartel(htmlMensaje) {        
         Swal.fire({
             title: "Ficha de Paciente",
             html: htmlMensaje,
@@ -590,8 +596,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 throw new Error(`No se pudo obtener listado de pacientes. ${response.status}`);
             }
             const data = await response.json();
-            pacientesAPI = data;
-            console.log('Pacientes API obtenidos:', pacientesAPI);
+            pacientesAPI = data;            
         } catch(error) {
             Swal.fire({
                 icon: "error",

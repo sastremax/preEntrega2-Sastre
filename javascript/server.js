@@ -11,7 +11,7 @@ let proximoId = 1;
         fechaMinima.setFullYear(fechaMinima.getFullYear() - 25);
         const fechaMaxima = new Date();
         fechaMaxima.setFullYear(fechaMaxima.getFullYear() - 2);
-                
+        const fechaNacimiento = new Date(fechaMinima.getTime() + Math.random() * (fechaMaxima.getTime() - fechaMinima.getTime()));        
         const celularMadre = chance.integer({ min: 11000000, max: 11999999 }).toString();
         const celularPadre = chance.integer({ min: 11000000, max: 11999999 }).toString();
         const numeroAfiliado = chance.string({ length: 10, alpha: true, numeric: true });
@@ -20,11 +20,7 @@ let proximoId = 1;
             apellido: chance.last(),
             nombre: chance.first(),            
             diagnostico: chance.sentence({ words: 7 }),
-            fechaNacimiento: chance.birthday({ 
-                string: true,
-                min: fechaMinima,
-                max: fechaMaxima
-            }),
+            fechaNacimiento: fechaNacimiento.toISOString().split('T')[0],
             edad: chance.age({min: 1, max: 25}),
             dni: chance.integer({ min: 35000000, max: 69999999 }),
             cud: chance.bool() ? 'sí' : 'no',
