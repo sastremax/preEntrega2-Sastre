@@ -1,17 +1,12 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-@import './base/_base';
-@import './base/_typography';
 @import './utilities/_variables';
-@import './utilities/_mixins';
+@import './base/_reset';
+@import './base/_typography';
+@import './base/_base';
+@import './layout/_header';
+@import './layout/_footer';
 @import './utilities/_boxes';
 @import './utilities/_images';
-@import './layout/_footer';
-@import './layout/_header';
+@import './utilities/_mixins';
 
 @font-face {
     font-family: 'Gwendolyn';
@@ -1790,3 +1785,59 @@ section {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+// Mobile (max-width: 767px)
+@media (max-width: 767px) {
+    // Ajustes específicos para mobile
+  
+    // Header
+    header {
+      padding: 10px; // Reduce padding para dispositivos móviles
+    }
+  
+    // Footer
+    footer {
+      padding: 10px; // Reduce padding para dispositivos móviles
+      text-align: center; // Centra el texto para una mejor legibilidad
+    }
+  
+    // Boxes
+    .box {
+      width: 100%; // Asegura que las cajas ocupen todo el ancho disponible
+      margin: 0 auto; // Centra las cajas
+    }
+  
+    // Imágenes
+    img {
+      max-width: 100%; // Asegura que las imágenes no excedan el ancho del contenedor
+      height: auto; // Mantiene la proporción de las imágenes
+    }
+  }
+  
+  // Tablet (max-width: 1024px)
+  @media (max-width: 1024px) {
+    // Ajustes específicos para tablet
+  
+    // Header
+    header {
+      padding: 15px; // Ajusta el padding para un tamaño de pantalla mayor
+    }
+  
+    // Footer
+    footer {
+      padding: 15px; // Ajusta el padding para un tamaño de pantalla mayor
+      text-align: center; // Centra el texto para una mejor legibilidad
+    }
+  
+    // Boxes
+    .box {
+      width: 90%; // Asegura que las cajas ocupen el 90% del ancho disponible
+      margin: 0 auto; // Centra las cajas
+    }
+  
+    // Imágenes
+    img {
+      max-width: 100%; // Asegura que las imágenes no excedan el ancho del contenedor
+      height: auto; // Mantiene la proporción de las imágenes
+    }
+  }
