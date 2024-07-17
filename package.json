@@ -1,10 +1,10 @@
 {
   "name": "javascript-sastre",
   "version": "1.0.0",
-  "description": "1ra. pre-entrega de javascript",
-  "main": "javascript/server.js",
+  "description": "Proyecto final de javascript",
+  "main": "api/server.js",
   "scripts": {
-    "start": "node javascript/server.js",
+    "start": "node api/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
