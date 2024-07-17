@@ -1,6 +1,50 @@
-// Resetear estilos por defecto del navegador
-html
-{
+html {
+  font-size: $base-font-size;
+  line-height: $body-line-height;
+  font-family: $font-family-base;
+}
+
+body {
   margin: 0;
   padding: 0;
+  color: $c2;
+  background-color: $c3;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: $font-weight-base;
+}
+
+p {
+  margin: 0 0 $spacer 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $c1;
+
+  &:hover {
+      color: $c2;
+  }
+}
+
+button {
+  background-color: $c1;
+  color: $c3;
+  border: none;
+  padding: $spacer-sm $spacer;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  &:hover {
+      background-color: darken($c1, 10%);
+  }
 }

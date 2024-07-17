@@ -1,16 +1,17 @@
 footer {
-    margin-top: 20px;
-    background-color: $c2; /* Color de fondo */
-    color: $c3; /* Color del texto */
-    text-align: $centro; /* Alineación del texto al centro */ 
-    padding: 10px;  /* Espaciado interno */
-    width: 100%; /* Ancho igual al 100% del contenedor */
-    
+    background-color: $c1;
+    color: $c3;
+    padding: $spacer-md;
+    text-align: $centro;
+    .redes {
+        margin-top: $spacer-sm;
+        a {
+            margin: 0 $spacer-sm;
+            color: $c3;
+            font-size: 1.5em;
+            &:hover {
+                color: $c2;
+            }
+        }
+    }
 }
-
-.redes a {   
-    color: $c1; /* Color del texto azul */
-    font-size: 35px; /* Tamaño de fuente de 35px */
-    letter-spacing: 20px; /* Espaciado entre letras de 20px */
-}
-

@@ -1,60 +1,26 @@
-/*
-$c1: rgb(13, 110, 253); azul
-$c2: #000000; negro
-$c3: rgb(255, 255, 255); blanco
-$c4: rgb(0, 128, 0);
-$c5: rgb(255, 255, 0);
-$c6: rgb(255, 0, 0);
-$c7: #800080;
-$c8: rgb(255, 215, 0);
-$c9: rgb(216, 122, 147);
-$c10: rgb(255, 235, 205); 
-$c11: rgb(34, 204, 12);
-$c12: #333;
-$c13: #3000b3;
-$centro: center;
-$izq: left;
-$alto: height;
-$ancho: width;
-$radio: 10px;*/
-
-@font-face {
-    font-family: 'Gwendolyn';
-    src: url(/fonts/Gwendolyn-Regular.ttf);
-    font-weight: normal;
-    font-style: normal;
-}
-
-h1 {
-    font-family: 'Gwendolyn', Arial, sans-serif;      /* Fuente Gwendolin */
-    text-align: $centro; /* Alineación del texto al centro */
-    padding: 18px; /* Espaciado interno */
-    margin-right: 2px; /* Margen superior para separar del icono */
-}
-
-.navbar {
-    background-color: white;
-}
-
-.navbar a {
-    color: black;    
-}
-
-header{
-    background-color: white;
-}
-
-header nav ul li a {
-    color: blanco; /* Color del texto */
-    text-align: center; /* Alineación del texto al centro */
-    list-style: none; /* Quita los puntos de la lista */
-    margin-right: 30px; /* Margen derecho */
-    margin-top: 15px; /* Margen superior */
-    margin-bottom: 10px; /* Margen inferior */
-    font-size: 20px; /* Tamaño de fuente */
-    text-decoration: none !important; /* Elimina el subrrayado */
-}
-
-header nav ul li a:hover {
-    color: green;
+header {
+    background-color: $c1;
+    color: $c3;
+    padding: $spacer-md;
+    .logo {
+        max-width: 150px;
+    }
+    nav {
+        margin-top: $spacer;
+        ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            li {
+                margin-right: $spacer;
+                a {
+                    color: $c3;
+                    text-decoration: none;
+                    &:hover {
+                        color: $c2;
+                    }
+                }
+            }
+        }
+    }
 }
