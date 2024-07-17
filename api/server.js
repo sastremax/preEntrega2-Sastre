@@ -3,7 +3,12 @@ const cors = require('cors');
 const chance = require('chance').Chance();
 const app = express();
 const port = process.env.PORT || 3000;
-app.use(cors());
+const corsOpciones = {
+    origin: '*',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type']
+};
+app.use(cors(corsOpciones));
 app.use(express.json());
 let proximoId = 1;
 const GENERARPACIENTEALEATORIO = () => {
