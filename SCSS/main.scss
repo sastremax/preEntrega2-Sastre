@@ -4,9 +4,9 @@
     box-sizing: border-box;
 }
 
-@import './base/_base'; 
-@import './base/_typography'; 
-@import './utilities/_variables'; 
+@import './base/_base';
+@import './base/_typography';
+@import './utilities/_variables';
 @import './utilities/_mixins';
 @import './utilities/_boxes';
 @import './utilities/_images';
@@ -55,6 +55,7 @@ article {
     padding-top: 15px;
     padding-right: 10px;
     padding-bottom: 15px;
+
     ul li {
         list-style: none;
     }
@@ -136,7 +137,7 @@ h4 {
 }
 
 .parrafoprincipal ul li {
-    padding-bottom: 28px; 
+    padding-bottom: 28px;
 }
 
 .videosCentrado {
@@ -182,7 +183,8 @@ video {
     display: grid;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;    
+    margin: 0 auto;
+
     .recuadro {
         height: 140px;
         width: 140px;
@@ -196,43 +198,49 @@ video {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        transition: 1.7s;        
+        transition: 1.7s;
+
         a {
-            text-decoration: none;           
+            text-decoration: none;
         }
+
         &:hover {
             transform: scale(0.7);
             background-color: $c2;
             border-radius: 20px;
             color: $c3;
         }
+
         p {
             font-size: 14px;
         }
+
         button {
             font-size: 12px;
         }
     }
 }
 
-.fichaPaciente > :first-child {
+.fichaPaciente> :first-child {
     text-align: center;
     margin-bottom: 8px;
     padding: 20px;
 }
 
 .contenedor-imagenes-cuadradas {
-    width: 100%;    
+    width: 100%;
     height: 900px;
+
     .aboutgaleria {
-        width: 100%;        
-        height: 100vh;        
-        gap: 30px;        
+        width: 100%;
+        height: 100vh;
+        gap: 30px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(4, 180px);
         grid-template-areas: "img1 img2 img3" "img4 img5 img3" "img4 img8 img7" "img6 img6 img7";
         padding: 30px;
+
         .item {
             border: 5px solid $c2;
             border-radius: 9px;
@@ -241,39 +249,48 @@ video {
             filter: grayscale(30%);
             transition: all 0.9s;
             padding: 30px;
+
             &:hover {
-                filter: grayscale(0%); 
+                filter: grayscale(0%);
                 transform: scale(1.2);
                 z-index: 1;
             }
+
             &.item1 {
-                background-image: url("../assets/images/item1.jpg"); 
+                background-image: url("../assets/images/item1.jpg");
                 grid-area: img1;
             }
+
             &.item2 {
                 background-image: url("../assets/images/item2.jpg");
                 grid-area: img2;
             }
+
             &.item3 {
                 background-image: url("../assets/images/item3.jpg");
                 grid-area: img3;
             }
+
             &.item4 {
                 background-image: url("../assets/images/item4.jpg");
                 grid-area: img4;
             }
+
             &.item5 {
                 background-image: url("../assets/images/item5.jpg");
                 grid-area: img5;
             }
+
             &.item6 {
                 background-image: url("../assets/images/item6.jpg");
                 grid-area: img6;
             }
+
             &.item7 {
                 background-image: url("../assets/images/item7.jpg");
                 grid-area: img7;
             }
+
             &.item8 {
                 background-image: url("../assets/images/item8.jpg");
                 grid-area: img8;
@@ -415,6 +432,7 @@ aside p {
     align-items: $centro;
     padding-top: 20px;
     color: $c11;
+
     a {
         color: $c3;
     }
@@ -441,17 +459,20 @@ input {
     border: 4px $c2;
     font-size: 25px;
     box-shadow: inset 0 0 5px;
-    background-color: $c3;    
+    background-color: $c3;
+
     &[type="text"] {
-        height: 40px;        
+        height: 40px;
         color: $c1;
         margin: 0;
     }
+
     &[type="number"] {
         height: 40px;
         color: $c13;
         margin: 0;
     }
+
     &:focus {
         box-shadow: 0 0 15px 10px $c5;
         border: 5px;
@@ -461,7 +482,7 @@ input {
 .fotoAgrandada {
     img {
         padding-top: 15px;
-        width: 50%; 
+        width: 50%;
         height: 50%;
         display: grid;
         margin-left: 15px;
@@ -486,7 +507,7 @@ form {
 }
 
 form label {
-    margin-top: 12px; 
+    margin-top: 12px;
 }
 
 .formulario-turnos {
@@ -504,7 +525,7 @@ form label {
 .formulario-turnos label {
     margin-left: 5px;
     margin-bottom: 20px;
-    display: block;    
+    display: block;
 }
 
 .formulario-turnos input {
@@ -553,7 +574,7 @@ sec .row-about {
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     section {
         font-size: 20px;
         text-align: center;
@@ -564,21 +585,25 @@ sec .row-about {
         gap: 15px;
         width: 320px;
     }
+
     body {
         background-color: $c1;
         font-size: 16px;
         width: 100%;
     }
+
     nav,
     footer {
         width: 100%;
     }
+
     header {
         padding: 5px;
         margin-top: 10px;
         font-size: 15px;
         width: 320px;
     }
+
     nav ul {
         display: flex;
         flex-direction: column;
@@ -586,15 +611,18 @@ sec .row-about {
         padding: 0;
         margin: 0 auto;
     }
+
     nav ul li {
         display: flex;
         margin-bottom: 10px;
     }
+
     .descripcion {
         text-align: center;
         margin: 0 auto;
         width: 320px;
     }
+
     video {
         max-height: 480px;
         max-width: 320px;
@@ -602,6 +630,7 @@ sec .row-about {
         margin-left: auto;
         margin-right: auto;
     }
+
     .contenedor-recuadros {
         min-width: 319px !important;
         max-width: 479px !important;
@@ -609,17 +638,20 @@ sec .row-about {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
         .recuadro {
             font-size: 10px;
         }
     }
+
     footer {
-        font-size: 14px;        
+        font-size: 14px;
         text-align: center;
         margin: 0 auto;
         max-height: 480px;
         max-width: 320px;
     }
+
     .fotoencuadrada {
         width: 100%;
         height: 100%;
@@ -632,6 +664,7 @@ sec .row-about {
     section {
         font-size: 16px;
     }
+
     nav ul {
         display: flex;
         flex-direction: column;
@@ -639,64 +672,81 @@ sec .row-about {
         padding: 0;
         margin: 0 auto;
     }
+
     nav ul li {
         display: flex;
         margin-bottom: 10px;
     }
+
     article {
         height: auto;
         padding-right: 0;
     }
+
     h4 {
         font-size: 24px;
     }
+
     .videosCentrado {
         font-size: 18px;
     }
+
     .icono {
         max-width: 16px;
     }
+
     .titulo {
         font-size: 16px;
     }
+
     .terapeutas-container {
         padding: 8px;
     }
+
     .Equipo-de-terapeutas {
         grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
     }
+
     .about-grid {
         margin-left: 20px;
     }
+
     .service-container {
         max-width: 480px;
     }
+
     .whats {
         height: 60px;
         width: 60px;
         font-size: 30px;
         right: 20px;
     }
+
     .formulario-turnos label {
         margin-left: 0;
         margin-bottom: 10px;
     }
+
     ::-webkit-scrollbar-thumb {
         border-radius: 5px;
     }
+
     .logo {
         width: 70px;
         height: 70px;
         margin-top: 20px;
     }
+
     header {
         font-size: 12px;
         width: 100%;
     }
+
     video {
         max-height: 360px;
         max-width: 100%;
     }
+
     .contenedor-recuadros {
         min-width: 480px;
         display: flex;
@@ -715,6 +765,7 @@ sec .row-about {
         flex-wrap: wrap;
         justify-content: center;
     }
+
     .navbar-nav ul li {
         font-size: 6px;
         margin-bottom: 10px;
@@ -723,44 +774,57 @@ sec .row-about {
         margin-right: 10px;
         width: calc((100% - 30px) / 3);
     }
+
     .navbar-nav ul li:last-child {
         margin-right: 0;
     }
+
     section {
         font-size: 14px;
     }
+
     article {
         height: auto;
         padding-right: 0;
     }
+
     h4 {
         font-size: 24px;
     }
+
     .videosCentrado {
         font-size: 16px;
     }
+
     .icono {
         max-width: 14px;
     }
+
     .titulo {
         font-size: 14px;
     }
+
     .terapeutas-container {
         padding: 8px;
     }
+
     .Equipo-de-terapeutas {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
+
     .about-grid {
         margin-left: 18px;
     }
+
     .service-container {
         max-width: 600px;
     }
+
     .contenedor-recuadros {
         height: 1200px;
         width: 800px;
     }
+
     .contenedor-padre {
         margin-left: 12px;
         width: 95%;
@@ -769,6 +833,7 @@ sec .row-about {
         justify-content: center;
         align-items: center;
     }
+
     .fotoAgrandada img {
         padding-top: 10px;
         width: 70%;
@@ -777,32 +842,39 @@ sec .row-about {
         margin-left: auto;
         margin-right: auto;
     }
+
     .whats {
         height: 56px;
         width: 56px;
         font-size: 28px;
         right: 18px;
     }
+
     .formulario-turnos label {
         margin-left: 0;
     }
+
     ::-webkit-scrollbar-thumb {
         border-radius: 5px;
     }
+
     .logo {
         width: 70px;
         height: 70px;
         margin-top: 18px;
     }
+
     header {
         font-size: 12px;
         width: 100%;
     }
+
     video {
         padding-top: 10px;
         max-width: 100%;
         max-height: 100%;
     }
+
     .galeria.container-fluid {
         background-color: #000;
         padding-top: 5px;
@@ -811,6 +883,7 @@ sec .row-about {
         padding-left: 10px;
         padding-right: 10px;
     }
+
     .container-servicios {
         display: flex;
         width: 100%;
@@ -821,6 +894,7 @@ sec .row-about {
         padding: 10px;
         margin: 10px;
     }
+
     .galeria .col-sm-12 {
         padding-left: 5px;
         padding-right: 5px;
@@ -836,6 +910,7 @@ sec .row-about {
         margin-left: auto;
         margin-right: auto;
     }
+
     header {
         padding: 10px;
         margin-top: 50px;
@@ -845,6 +920,7 @@ sec .row-about {
         margin-left: auto;
         margin-right: auto;
     }
+
     nav ul {
         display: flex;
         flex-direction: column;
@@ -852,29 +928,35 @@ sec .row-about {
         padding: 0;
         margin: 0 auto;
         width: 100%;
+
         li {
             display: flex;
             margin-bottom: 10px;
         }
     }
+
     main {
         padding: 5%;
     }
+
     aside {
         padding: 5%;
     }
+
     video {
         display: block;
         margin-left: auto;
         margin-right: auto;
         max-width: 90%;
     }
+
     footer {
         padding: 5%;
         text-align: center;
         margin: 5% auto;
         width: 95%;
     }
+
     .galeria {
         display: grid;
         grid-template-rows: 480px;
@@ -887,28 +969,34 @@ sec .row-about {
         height: 100px;
         margin-top: 15px;
         margin-top: 5%;
-        padding: 10px;    
+        padding: 10px;
+
         .body {
             background-color: $c1;
             background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
             font-family: 'Roboto Slab', Arial, sans-serif;
             font-size: 16px;
         }
+
         .body-background {
             background-color: $c1;
             padding: 20px;
             color: $c3;
-        }    
+        }
+
         nav ul li {
             margin-right: 5%;
         }
     }
+
     aside {
         padding: 40px;
     }
+
     footer .redes a {
         font-size: 25px;
     }
+
     video {
         max-height: 1024px;
         max-width: 768px;
@@ -916,12 +1004,14 @@ sec .row-about {
         margin-left: auto;
         margin-right: auto;
     }
+
     footer {
         padding: 20px;
         width: 768px;
         text-align: center;
         margin: 0 auto;
     }
+
     .galeria h4 {
         font-size: 22px;
         margin-bottom: 15px;
@@ -929,26 +1019,33 @@ sec .row-about {
         background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
         font-family: 'Roboto Slab', Arial, sans-serif;
     }
+
     .body-background {
         background-color: $c1;
-    }    
+    }
+
     main {
         width: 100%;
         padding: 40px;
     }
+
     .alineado-parrafo {
         font-size: 0.6rem;
         font-family: 'Roboto Slab', Arial, sans-serif;
+
         .grid-item-hijo {
             padding: 10px;
             margin-bottom: 10px;
         }
+
         nav ul li {
             margin-right: 15px;
         }
+
         .recuadro {
             width: 100%;
         }
+
         .galeria p {
             font-size: 18px;
             margin-bottom: 15px;
@@ -963,24 +1060,30 @@ sec .row-about {
         background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
         font-family: 'Roboto Slab', Arial, sans-serif;
         font-size: 16px;
+
         .body-background {
             background-color: $c1;
             padding: 20px;
             color: $c3;
         }
     }
+
     header {
         padding: 40px;
     }
+
     nav ul li {
         margin-right: 30px;
     }
+
     aside {
         padding: 40px;
     }
+
     footer {
         padding: 40px;
     }
+
     main {
         width: 100%;
         padding: 40px;
@@ -992,12 +1095,15 @@ sec .row-about {
         padding: 10px;
         margin-bottom: 10px;
     }
+
     nav ul li {
         margin-right: 15px;
     }
+
     .recuadro {
         width: 100%;
     }
+
     nav ul {
         grid-template-columns: 1fr;
     }
@@ -1005,37 +1111,45 @@ sec .row-about {
 
 @media screen and (min-width: 1367px) {
     body {
-        height: 500px;            
+        height: 500px;
         background-color: $c1;
         background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
         font-family: 'Roboto Slab', Arial, sans-serif;
         font-size: 16px;
+
         .body-background {
             background-color: $c1;
             padding: 20px;
             color: $c3;
         }
     }
+
     header {
         padding: 30px;
     }
+
     nav ul li {
         margin-right: 30px;
     }
+
     aside {
         padding: 30px;
     }
+
     main {
         width: 100%;
     }
+
     footer {
         padding: 30px;
     }
+
     .grid-container {
         display: grid;
         grid-template-columns: 1fr 2fr;
         grid-gap: 20px;
     }
+
     .grid-item {
         background-color: #f0f0f0;
         padding: 20px;
@@ -1105,7 +1219,7 @@ sec .row-about {
 .fila-botones {
     display: flex;
     justify-content: $centro;
-    align-items: $centro;    
+    align-items: $centro;
 }
 
 #recuadroLimpiar {
@@ -1114,7 +1228,7 @@ sec .row-about {
     border: 1px solid #ccc;
     display: inline-block;
     margin-bottom: 10px;
-} 
+}
 
 input[type="text"],
 input[type="date"] {
@@ -1140,9 +1254,9 @@ input[type="date"] {
 
 #presupuesto-aside {
     display: block;
-    background-color: $c3;    
-    border: 1px solid #ccc;    
-    box-sizing: border-box;   
+    background-color: $c3;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
     text-align: center;
     width: 100%;
 }
@@ -1255,8 +1369,8 @@ input[type="date"] {
     border-radius: 3px;
 }
 
-#presupuesto-aside a {    
-    display: block;    
+#presupuesto-aside a {
+    display: block;
     background-color: $c3;
     text-decoration: none;
     color: #000;
@@ -1412,23 +1526,267 @@ input[type="date"] {
     color: #FF5049;
 }
 
-.elemento_eliminar {    
-    display: inline-block;    
+.elemento_eliminar {
+    display: inline-block;
 }
 
 .elemento_eliminar--btn {
     font-size: 22px;
     background: none;
     border: none;
-    cursor: pointer;    
+    cursor: pointer;
     vertical-align: middle;
     line-height: 1;
     display: none;
 }
 
-.elemento_eliminar--btn:focus { outline: none; }
-.elemento_eliminar--btn:active { transform: translateY(2px); }
+.elemento_eliminar--btn:focus {
+    outline: none;
+}
 
-.elemento:hover .elemento_eliminar--btn { display: block; }
-.elemento:hover .elemento_valor { transform: translateX(-20px); }
-.elemento:hover .elemento_porcentaje { transform: translateX(-20px); }
+.elemento_eliminar--btn:active {
+    transform: translateY(2px);
+}
+
+.elemento:hover .elemento_eliminar--btn {
+    display: block;
+}
+
+.elemento:hover .elemento_valor {
+    transform: translateX(-20px);
+}
+
+.elemento:hover .elemento_porcentaje {
+    transform: translateX(-20px);
+}
+
+$breakpoint-small: 600px;
+$breakpoint-medium: 900px;
+$breakpoint-large: 1200px;
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(13, 110, 253);
+    background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
+}
+
+@font-face {
+    font-family: "Gwendolyn";
+    src: url(../fonts/Gwendolyn-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto Slab";
+    src: url(../fonts/RobotoSlab-VariableFont_wght.ttf);
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.Jumbotromp {
+    background-image: url("../assets/images/parque.avif");
+    background-size: cover;
+    height: 650px;
+    background-position: center;
+}
+
+img {
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+
+footer {
+    margin-top: 20px;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+
+.redes a {
+    color: rgb(13, 110, 253);
+    font-size: 35px;
+    letter-spacing: 20px;
+}
+
+header {
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+
+    h1 {
+        font-family: "Gwendolyn", Arial, sans-serif;
+        padding: 18px;
+    }
+
+    nav {
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                margin: 5px 10px;
+
+                a {
+                    color: black;
+                    text-decoration: none;
+                    font-size: 20px;
+
+                    &:hover {
+                        color: green;
+                    }
+                }
+            }
+        }
+    }
+}
+
+section {
+    margin: 0;
+    padding: 20px;
+    font-size: 20px;
+    font-family: "Roboto Slab", Arial, sans-serif;
+
+    .espaciador {
+        padding: 50px;
+    }
+
+    .parrafoprincipal {
+        color: #ffffff;
+        text-shadow: 0 0 6px #000000;
+        padding: 50px 120px;
+        font-size: 20px;
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+
+            li {
+                padding-bottom: 28px;
+            }
+        }
+    }
+
+    .videosCentrado {
+        margin: 40px 0 10px;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    .contenedor-recuadros {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+
+        .recuadro {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            margin: 10px;
+            border: 4px solid #000000;
+            transition: transform 0.3s, background-color 0.3s;
+
+            &:hover {
+                transform: scale(1.1);
+                background-color: #000000;
+                color: #ffffff;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            @media (max-width: $breakpoint-small) {
+                font-size: 10px;
+                width: 100%;
+            }
+
+            @media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+                font-size: 12px;
+            }
+
+            @media (min-width: $breakpoint-medium) {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-small) {
+    body {
+        font-size: 12px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .parrafoprincipal {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .contenedor-recuadros {
+        grid-template-columns: 1fr;
+    }
+
+    .videosCentrado {
+        font-size: 18px;
+    }
+
+    header,
+    footer {
+        padding: 5px;
+    }
+
+    h1,
+    h2,
+    h4 {
+        font-size: smaller;
+    }
+}
+
+@media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+    body {
+        font-size: 14px;
+    }
+
+    .navbar-nav {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .contenedor-recuadros {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: $breakpoint-medium) {
+    body {
+        font-size: 16px;
+    }
+
+    .contenedor-recuadros {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
