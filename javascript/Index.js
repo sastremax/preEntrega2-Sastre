@@ -611,7 +611,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function obtenerPacientesDesdeAPI() {
         try {
-            const response = await fetch('https://arcoirisequipotcc-kot0qso4f-maximiliano-sastres-projects.vercel.app/api/pacientes');
+            const response = await fetch('https://arcoirisequipotcc.vercel.app/api/pacientes');
             if (!response.ok) {
                 throw new Error(`No se pudo obtener listado de pacientes. ${response.status}`);
             }
