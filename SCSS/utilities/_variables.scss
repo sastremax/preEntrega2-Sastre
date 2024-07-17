@@ -1,9 +1,10 @@
 $little-font-size: 10px;
 $base-font-size: 16px;
 $big-font-size: 20px;
-$body-line-height: 1.6; // Define el espaciado entre líneas para el cuerpo del texto
-$text-alignment: left; // Alineación predeterminada del texto
-$list-item-padding: 5px; // Espaciado interno de los elementos de lista
+$body-line-height: 1.6;
+$text-alignment: left; 
+$list-item-padding: 5px; 
+
 $c1: rgb(13, 110, 253);
 $c2: #000000;
 $c3: rgb(255, 255, 255);
@@ -17,8 +18,27 @@ $c10: rgb(255, 235, 205);
 $c11: rgb(34, 204, 12);
 $c12: #333;
 $c13: #3000b3;
+
 $centro: center;
 $izq: left;
 $alto: height;
 $ancho: width;
 $radio: 10px;
+
+$small-screen: 480px;
+$medium-screen: 768px;
+$large-screen: 1024px;
+$xlarge-screen: 1366px;
+
+$font-family-base: 'Roboto Slab', Arial, sans-serif;
+$font-size-base: 16px;
+$font-weight-base: 400;
+
+$spacer: 1rem;
+$spacer-sm: 0.5rem;
+$spacer-md: 1.5rem;
+$spacer-lg: 3rem;
+$spacer-xl: 5rem;
+
+$border-radius: 0.25rem;
+$border-width: 1px;
