@@ -1,5 +1,18 @@
-img {
-    float: left;
-    width: 80px;
-    height: 80px;
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+    border-radius: $border-radius;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.img-thumbnail {
+    padding: $spacer-xs;
+    background-color: $c3;
+    border: $border-width solid $c2;
+    border-radius: $border-radius;
+    max-width: 100%;
+    height: auto;
 }
