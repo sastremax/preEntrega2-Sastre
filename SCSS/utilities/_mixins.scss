@@ -1,4 +1,33 @@
-
 @mixin borde-redondeado($radio) {
     border-radius: $radio;
+}
+
+@mixin responsive($property, $values) {
+    @each $breakpoint, $value in $values {
+        @if $breakpoint =='default' {
+            #{$property}: #{$value};
+        }
+
+        @else {
+            @media (min-width: #{$breakpoint}) {
+                #{$property}: #{$value};
+            }
+        }
+    }
+}
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin transition($properties...) {
+    @each $property in $properties {
+        transition: #{$property} 0.3s ease;
+    }
+}
+
+@mixin boxShadow($x: 0, $y: 0, $blur: 10px, $spread: 0, $color: rgba(0, 0, 0, 0.1)) {
+    box-shadow: $x $y $blur $spread $color;
 }
