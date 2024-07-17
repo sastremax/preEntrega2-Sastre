@@ -1,6 +1,31 @@
-.Jumbotromp {
-    background-image: url("../assets/images/parque.avif");
-    background-size: cover;
-    height: 650px;
-    background-position: center;
+.box {
+    border: $border-width solid $c2;
+    padding: $spacer;
+    border-radius: $border-radius;
+    margin-bottom: $spacer;
+}
+
+.box-primary {
+    background-color: $c1;
+    color: $c3;
+}
+
+.box-secondary {
+    background-color: $c2;
+    color: $c3;
+}
+
+.box-success {
+    background-color: $c4;
+    color: $c3;
+}
+
+.box-warning {
+    background-color: $c5;
+    color: $c2;
+}
+
+.box-danger {
+    background-color: $c6;
+    color: $c3;
 }
