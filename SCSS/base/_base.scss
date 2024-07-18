@@ -5,10 +5,14 @@ html {
 }
 
 body {
+  height: 500px;
+  background-color: $c1;
+  background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
+  font-family: Arial, sans-serif;
+  font-size: 16px;
   margin: 0;
   padding: 0;
   color: $c2;
-  background-color: $c3;
 }
 
 h1, h2, h3, h4, h5, h6 {

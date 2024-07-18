@@ -19,14 +19,6 @@
     vertical-align: middle;
 }
 
-body {
-    height: 500px;
-    background-color: $c1;
-    background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-}
-
 .body-background {
     background-color: $c1;
     background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
@@ -121,9 +113,9 @@ h4 {
     color: $c3;
     font-family: 'Roboto Slab', sans-serif;
     text-shadow: 0 0 6px $c2;
-    text-align: left;
-    padding-top: 50px;
-    padding-left: 120px;
+    padding: 1rem;
+    margin: 0 auto;
+    text-align: center;
     font-size: 20px;
 }
 
@@ -133,6 +125,18 @@ h4 {
 
 .parrafoprincipal ul li {
     padding-bottom: 28px;
+}
+
+.Jumbotromp {
+    background-image: url("../assets/images/parque.jpg");
+    font-size: 3rem;
+    font-weight: 300;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    min-height: 480px;
 }
 
 .videosCentrado {
@@ -350,12 +354,19 @@ button {
 }
 
 aside {
-    text-align: $centro;
-}
-
-aside p {
-    display: inline-block;
+    display: block;
     background-color: $c3;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+    .a {
+        display: block;
+    background-color: $c3;
+    text-decoration: none;
+    color: #000;
+    margin: 10px 0;
+    }
 }
 
 .titulo {
@@ -363,6 +374,10 @@ aside p {
     text-align: top;
     font-size: 20px;
     margin-bottom: 20px;
+}
+
+.tituloIndex {
+    margin-top: 25px;    
 }
 
 .terapeutas-container {
@@ -984,13 +999,16 @@ sec .row-about {
     body {
         font-size: $little-font-size;
     }
-
     h2 {
         font-size: $base-font-size;
     }
-
     .solicitar-link {
         padding: 5px 10px;
+    }
+    .jumbotron {
+        background-size: contain;
+        height: auto;
+        min-height: 200px;
     }
 }
 
@@ -1006,7 +1024,15 @@ sec .row-about {
     .solicitar-link {
         padding: 10px 20px;
     }
+
+    .jumbotron {
+        background-size: contain;
+        height: auto;
+        min-height: 400px;
+    }
 }
+
+
 
 @media (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
     body {
