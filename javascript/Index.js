@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
             mostrarError("El campo DNI debe ser un número válido y tener al menos 8 caracteres");
             return false;
         }
-        if (paciente.cud.toLowerCase() !== "sí" && paciente.cud.toLowerCase() !== "no") {
+        if (paciente.cud.toLowerCase() !== "sí" && paciente.cud.toLowerCase() !== "si" && paciente.cud.toLowerCase() !== "no") {
             mostrarError("El campo CUD solo puede ser 'sí' o 'no'");
             return false;
         }
