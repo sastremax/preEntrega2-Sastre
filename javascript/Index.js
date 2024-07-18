@@ -268,9 +268,9 @@ document.addEventListener("DOMContentLoaded", function () {
             titularObraSocial: document.getElementById("titularObraSocialPaciente").value,
             numeroAfiliado: document.getElementById("numeroAfiliadoPaciente").value,
             escuela: document.getElementById("escuelaPaciente").value,
-            nombreMadre: document.getElementById("nombreMadrePaciente").value,
+            madre: document.getElementById("nombreMadrePaciente").value,
             celularMadre: document.getElementById("celularMadrePaciente").value,
-            nombrePadre: document.getElementById("nombrePadrePaciente").value,
+            padre: document.getElementById("nombrePadrePaciente").value,
             celularPadre: document.getElementById("celularPadrePaciente").value,
             neurologo: document.getElementById("neurologoPaciente").value,
             pediatra: document.getElementById("pediatraPaciente").value,
@@ -419,9 +419,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p>Titular Obra Social: <strong>${paciente.titularObraSocial}</strong></p>
                     <p>Número de Afiliado: <strong>${paciente.numeroAfiliado}</strong></p>
                     <p>Escuela: <strong>${paciente.escuela}</strong></p>
-                    <p>Madre: <strong>${paciente.madre}</strong></p>
+                    <p>Madre: <strong>${paciente.nombremadre}</strong></p>
                     <p>Celular Madre: <strong>${paciente.celularMadre}</strong></p>
-                    <p>Padre: <strong>${paciente.padre}</strong></p>
+                    <p>Padre: <strong>${paciente.nombrepadre}</strong></p>
                     <p>Celular Padre: <strong>${paciente.celularPadre}</strong></p>
                     <p>Neurólogo: <strong>${paciente.neurologo}</strong></p>
                     <p>Pediatra: <strong>${paciente.pediatra}</strong></p>
