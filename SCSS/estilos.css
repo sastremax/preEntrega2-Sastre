@@ -112,31 +112,43 @@ header {
   background-color: #000000;
   color: rgb(255, 255, 255);
   padding: 20px 0;
+  position: relative;
 }
 header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
-header .logo img {
+header .logo {
   max-width: 150px;
   height: auto;
 }
-header .site-nav ul {
+header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  flex: 1;
+}
+header nav.navbar ul.navbar-nav {
   display: flex;
   gap: 20px;
   list-style: none;
   padding: 0;
   margin: 0;
+  align-items: center;
 }
-header .site-nav ul li a {
+header nav.navbar ul.navbar-nav li.nav-item a {
   color: rgb(255, 255, 255);
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
   transition: color 0.3s;
 }
-header .site-nav ul li a:hover {
+header nav.navbar ul.navbar-nav li.nav-item a:hover {
   color: rgb(0, 128, 0);
 }
 header .menu-toggle {
@@ -152,15 +164,15 @@ header .menu-toggle span {
   width: 25px;
 }
 @media (max-width: 768px) {
-  header .site-nav {
+  header .navbar {
     display: none;
     position: absolute;
-    top: 100%;
+    top: 60px;
     left: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.8);
   }
-  header .site-nav ul {
+  header .navbar ul {
     flex-direction: column;
     align-items: center;
     gap: 10px;
@@ -169,7 +181,7 @@ header .menu-toggle span {
   header .menu-toggle {
     display: flex;
   }
-  header .menu-toggle.active + .site-nav {
+  header .menu-toggle.active + .navbar {
     display: flex;
   }
 }

@@ -245,98 +245,93 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function guardarFichasDeFormulario() {
         formulario = document.getElementById("formulario");
-        let apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numeroAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra;
-        if (formulario) {
-            apellido = document.getElementById("apellidoPaciente").value;
-            nombre = document.getElementById("nombrePaciente").value;
-            diagnostico = document.getElementById("diagnosticoPaciente").value;
-            fechaNacimiento = document.getElementById("fechaNacimientoPaciente").value;
-            dni = document.getElementById("dniPaciente").value;
-            cud = document.getElementById("cudPaciente").value;
-            obraSocial = document.getElementById("obraSocialPaciente").value;
-            domicilio = document.getElementById("domicilioPaciente").value;
-            titularObraSocial = document.getElementById("titularObraSocialPaciente").value;
-            numeroAfiliado = document.getElementById("numeroAfiliadoPaciente").value;
-            escuela = document.getElementById("escuelaPaciente").value;
-            nombreMadre = document.getElementById("nombreMadrePaciente").value;
-            celularMadre = document.getElementById("celularMadrePaciente").value;
-            nombrePadre = document.getElementById("nombrePadrePaciente").value;
-            celularPadre = document.getElementById("celularPadrePaciente").value;
-            neurologo = document.getElementById("neurologoPaciente").value;
-            pediatra = document.getElementById("pediatraPaciente").value;
-        }
-        let esValido = apellido && nombre && diagnostico && fechaNacimiento && dni && obraSocial && domicilio && titularObraSocial && numeroAfiliado && escuela && nombreMadre && celularMadre && nombrePadre && celularPadre && neurologo && pediatra;
-        if (esValido) {
-            if (isNaN(dni) || dni.length < 8) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "El campo DNI debe ser un número válido y tener al menos 8 caracteres",
-                    backdrop: "#FF0000"
-                });
-                return;
+        const paciente = obtenerDatosDelFormulario(formulario);
+        if (esFormularioValido(paciente)) {
+            if (validarDatosPaciente(paciente)) {
+                guardarFicha(paciente);
             }
-            if (cud.toLowerCase() !== "sí" && cud.toLowerCase() !== "no") {
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "El campo CUD solo puede ser 'sí' o 'no'",
-                    backdrop: "#FF0000"
-                });
-                return;
-            }
-            if (isNaN(parseInt(celularMadre))) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "El campo Celular de la madre debe ser un número válido",
-                    backdrop: "#FF0000"
-                });
-                return;
-            }
-            if (isNaN(parseInt(celularPadre))) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "El Celular del padre debe ser un número válido sin guiones",
-                    backdrop: "#FF0000"
-                });
-                return;
-            }
-            let fechaActual = new Date();
-            let fechaIngresada = new Date(fechaNacimiento);
-            if (fechaIngresada >= fechaActual) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "La fecha de nacimiento debe ser anterior al día de hoy",
-                    backdrop: "#FF0000"
-                });
-                return;
-            }
-            let nuevoId = idProgresivo;
-            let ficha = { id: nuevoId, apellido, nombre, diagnostico, fechaNacimiento, dni, cud, obraSocial, domicilio, titularObraSocial, numeroAfiliado, escuela, nombreMadre, celularMadre, nombrePadre, celularPadre, neurologo, pediatra };
-            fichas.push(ficha);
-            idProgresivo++;
-            guardarFichasEnStorage();
-            Swal.fire({
-                icon: "success",
-                title: "Ficha",
-                text: "Ficha del paciente guardada con éxito",
-                backdrop: "#008000"
-            }).then(() => {
-                formulario.reset();
-                contenedor.innerHTML = "";
-                limpiarFichasMostradas();
-            });
         } else {
-            Swal.fire({
-                icon: "error",
-                title: "Ficha",
-                text: "La ficha no pudo ser guardada, complete todos los campos",
-                backdrop: "#FF0000"
-            });
+            mostrarError("La ficha no pudo ser guardada, complete todos los campos");
         }
+    }
+    function obtenerDatosDelFormulario(formulario) {
+        if (!formulario) return {};
+        return {
+            apellido: document.getElementById("apellidoPaciente").value,
+            nombre: document.getElementById("nombrePaciente").value,
+            diagnostico: document.getElementById("diagnosticoPaciente").value,
+            fechaNacimiento: document.getElementById("fechaNacimientoPaciente").value,
+            dni: document.getElementById("dniPaciente").value,
+            cud: document.getElementById("cudPaciente").value,
+            obraSocial: document.getElementById("obraSocialPaciente").value,
+            domicilio: document.getElementById("domicilioPaciente").value,
+            titularObraSocial: document.getElementById("titularObraSocialPaciente").value,
+            numeroAfiliado: document.getElementById("numeroAfiliadoPaciente").value,
+            escuela: document.getElementById("escuelaPaciente").value,
+            nombreMadre: document.getElementById("nombreMadrePaciente").value,
+            celularMadre: document.getElementById("celularMadrePaciente").value,
+            nombrePadre: document.getElementById("nombrePadrePaciente").value,
+            celularPadre: document.getElementById("celularPadrePaciente").value,
+            neurologo: document.getElementById("neurologoPaciente").value,
+            pediatra: document.getElementById("pediatraPaciente").value,
+        };
+    }
+    
+    function esFormularioValido(paciente) {
+        return Object.values(paciente).every(value => value);
+    }
+    
+    function validarDatosPaciente(paciente) {
+        if (isNaN(paciente.dni) || paciente.dni.length < 8) {
+            mostrarError("El campo DNI debe ser un número válido y tener al menos 8 caracteres");
+            return false;
+        }
+        if (paciente.cud.toLowerCase() !== "sí" && paciente.cud.toLowerCase() !== "no") {
+            mostrarError("El campo CUD solo puede ser 'sí' o 'no'");
+            return false;
+        }
+        if (isNaN(parseInt(paciente.celularMadre))) {
+            mostrarError("El campo Celular de la madre debe ser un número válido");
+            return false;
+        }
+        if (isNaN(parseInt(paciente.celularPadre))) {
+            mostrarError("El Celular del padre debe ser un número válido sin guiones");
+            return false;
+        }
+        let fechaActual = new Date();
+        let fechaIngresada = new Date(paciente.fechaNacimiento);
+        if (fechaIngresada >= fechaActual) {
+            mostrarError("La fecha de nacimiento debe ser anterior al día de hoy");
+            return false;
+        }
+        return true;
+    }
+    
+    function guardarFicha(paciente) {
+        let nuevoId = idProgresivo;
+        paciente.id = nuevoId;
+        fichas.push(paciente);
+        idProgresivo++;
+        guardarFichasEnStorage();
+        Swal.fire({
+            icon: "success",
+            title: "Ficha",
+            text: "Ficha del paciente guardada con éxito",
+            backdrop: "#008000"
+        }).then(() => {
+            formulario.reset();
+            contenedor.innerHTML = "";
+            limpiarFichasMostradas();
+        });
+    }
+    
+    function mostrarError(mensaje) {
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: mensaje,
+            backdrop: "#FF0000"
+        });
     }
 
     function guardarFichasEnStorage() {
@@ -626,4 +621,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     }
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navbar = document.querySelector(".navbar");
+    menuToggle.addEventListener("click", function() {
+        menuToggle.classList.toggle("active");
+        navbar.classList.toggle("active");
+    });
 });
