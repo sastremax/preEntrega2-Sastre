@@ -49,7 +49,8 @@ header {
     .menu-toggle {
         display: none;
         flex-direction: column;
-        cursor: pointer;      
+        cursor: pointer;
+        
         span {
             background: $c3;
             display: block;
@@ -60,18 +61,17 @@ header {
     }  
     @media (max-width: 768px) {
         .container {
-            flex-direction: row;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
         }
         .navbar {
-            display: none;
+            display: none !important;
             position: absolute;
             top: 60px;
             left: 0;
             right: 0;
             background: rgba(0, 0, 0, 0.8);        
             ul {
-                display: none;
                 flex-direction: column;
                 align-items: center;
                 gap: 10px;
@@ -82,7 +82,7 @@ header {
             display: flex;
         }  
         .menu-toggle.active + .navbar {
-            display: flex;
+            display: flex !important;
         }
     }
 }
