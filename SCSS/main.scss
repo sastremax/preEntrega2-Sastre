@@ -20,8 +20,8 @@
 }
 
 .body-background {
-    background-color: $c1;
-    background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
+    background-color: $c2;
+    background-image: linear-gradient(to right, rgb(58, 10, 10), #000000);
     padding: 20px;
     color: $c3;
 }
@@ -37,11 +37,16 @@ section {
     padding: 50px;
 }
 
+.col-sm-12.col-md-6 {
+    display: flex;
+    flex-direction: column;
+}
+
 article {
-    height: 600px;
+    min-height: 600px;
     padding-top: 15px;
     padding-right: 10px;
-    padding-bottom: 15px;
+    padding-bottom: 25px;
 
     ul li {
         list-style: none;
@@ -355,6 +360,7 @@ button {
 
 aside {
     display: block;
+    color: $c2;
     background-color: $c3;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -362,10 +368,25 @@ aside {
     width: 100%;
     .a {
         display: block;
+        background-color: $c3;
+        text-decoration: none;
+        color: #000;        
+    }
+}
+
+#presupuesto-aside {
+    display: block;
+    color: $c2;
     background-color: $c3;
-    text-decoration: none;
-    color: #000;
-    margin: 10px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+    a {
+        display: block;
+        background-color: $c3;
+        text-decoration: none;
+        color: #000;        
     }
 }
 
@@ -651,15 +672,6 @@ input[type="date"] {
     overflow: auto;
 }
 
-#presupuesto-aside {
-    display: block;
-    background-color: $c3;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    text-align: center;
-    width: 100%;
-}
-
 .derecha {
     float: right;
 }
@@ -768,13 +780,6 @@ input[type="date"] {
     border-radius: 3px;
 }
 
-#presupuesto-aside a {
-    display: block;
-    background-color: $c3;
-    text-decoration: none;
-    color: #000;
-    margin: 10px 0;
-}
 
 .agregar {
     padding: 14px;

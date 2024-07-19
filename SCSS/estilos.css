@@ -67,13 +67,14 @@ html {
 
 body {
   height: 500px;
-  background-color: rgb(13, 110, 253);
-  background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
-  color: #000000;
+  background: url("../assets/images/fondoPresupuesto.png") repeat, linear-gradient(to left, #7b4397, #dc2430);
+  background-blend-mode: screen;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  padding-top: 150px;
+  padding-bottom: 100px;
+  color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -280,8 +281,8 @@ footer .redes a:hover {
 }
 
 .body-background {
-  background-color: rgb(13, 110, 253);
-  background-image: linear-gradient(to right, rgb(114, 239, 248), #0000ff);
+  background-color: #000000;
+  background-image: linear-gradient(to right, rgb(58, 10, 10), #000000);
   padding: 20px;
   color: rgb(255, 255, 255);
 }
@@ -297,11 +298,16 @@ section {
   padding: 50px;
 }
 
+.col-sm-12.col-md-6 {
+  display: flex;
+  flex-direction: column;
+}
+
 article {
-  height: 600px;
+  min-height: 600px;
   padding-top: 15px;
   padding-right: 10px;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
 }
 article ul li {
   list-style: none;
@@ -598,6 +604,7 @@ button {
 
 aside {
   display: block;
+  color: #000000;
   background-color: rgb(255, 255, 255);
   border: 1px solid #ccc;
   box-sizing: border-box;
@@ -609,7 +616,22 @@ aside .a {
   background-color: rgb(255, 255, 255);
   text-decoration: none;
   color: #000;
-  margin: 10px 0;
+}
+
+#presupuesto-aside {
+  display: block;
+  color: #000000;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+}
+#presupuesto-aside a {
+  display: block;
+  background-color: rgb(255, 255, 255);
+  text-decoration: none;
+  color: #000;
 }
 
 .titulo {
@@ -888,15 +910,6 @@ input[type=date] {
   overflow: auto;
 }
 
-#presupuesto-aside {
-  display: block;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  text-align: center;
-  width: 100%;
-}
-
 .derecha {
   float: right;
 }
@@ -1003,14 +1016,6 @@ input[type=date] {
   background-color: rgba(255, 255, 255, 0.2);
   text-align: center;
   border-radius: 3px;
-}
-
-#presupuesto-aside a {
-  display: block;
-  background-color: rgb(255, 255, 255);
-  text-decoration: none;
-  color: #000;
-  margin: 10px 0;
 }
 
 .agregar {
