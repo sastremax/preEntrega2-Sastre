@@ -306,6 +306,7 @@ section {
 .col-sm-12.col-md-6 {
   display: flex;
   flex-direction: column;
+  padding: 0;
 }
 
 article {
@@ -615,6 +616,14 @@ aside {
   box-sizing: border-box;
   text-align: center;
   width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+}
+aside .p {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 aside .a {
   display: block;
@@ -815,6 +824,7 @@ form label {
 }
 
 .centralizado {
+  padding-left: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1204,6 +1214,10 @@ input[type=date] {
 
 .elemento:hover .elemento_porcentaje {
   transform: translateX(-20px);
+}
+
+.table {
+  color: rgb(255, 255, 255);
 }
 
 .table-responsive {

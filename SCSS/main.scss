@@ -40,6 +40,7 @@ section {
 .col-sm-12.col-md-6 {
     display: flex;
     flex-direction: column;
+    padding: 0;
 }
 
 article {
@@ -366,6 +367,14 @@ aside {
     box-sizing: border-box;
     text-align: center;
     width: 100%;
+    padding: 5px; 
+    margin-top: 10px;  
+    .p {
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
     .a {
         display: block;
         background-color: $c3;
@@ -571,10 +580,12 @@ form label {
     color: #3c763d;
 }
 
-.centralizado {
+.centralizado {    
+    padding-left: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .fichas-container {
@@ -967,6 +978,10 @@ input[type="date"] {
 $breakpoint-small: 600px;
 $breakpoint-medium: 900px;
 $breakpoint-large: 1200px;
+
+.table {
+    color: $c3;
+}
 
 .table-responsive {
     overflow-x: auto;
