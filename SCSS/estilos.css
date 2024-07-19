@@ -116,7 +116,7 @@ button:hover {
 header {
   background-color: #000000;
   color: rgb(255, 255, 255);
-  padding: 1.5rem;
+  padding: 0.5rem;
 }
 header .container {
   display: flex;
