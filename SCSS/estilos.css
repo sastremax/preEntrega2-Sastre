@@ -472,6 +472,7 @@ video {
 }
 .contenedor-recuadros .recuadro a {
   text-decoration: none;
+  color: rgb(255, 255, 255);
 }
 .contenedor-recuadros .recuadro:hover {
   transform: scale(0.7);
@@ -481,6 +482,7 @@ video {
 }
 .contenedor-recuadros .recuadro p {
   font-size: 14px;
+  color: rgb(255, 255, 255);
 }
 .contenedor-recuadros .recuadro button {
   font-size: 12px;
@@ -1263,6 +1265,13 @@ sec .row-about {
   .solicitar-link {
     padding: 5px 10px;
   }
+  .fila-botones {
+    flex-direction: column;
+  }
+  .fila-botones .recuadro {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 }
 @media (max-width: 480px) {
   body {
@@ -1279,6 +1288,13 @@ sec .row-about {
     height: auto;
     min-height: 200px;
   }
+  .fila-botones {
+    flex-direction: column;
+  }
+  .fila-botones .recuadro {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 }
 @media (min-width: 580px) and (max-width: 800px) {
   body {
@@ -1294,6 +1310,13 @@ sec .row-about {
     background-size: contain;
     height: auto;
     min-height: 400px;
+  }
+  .fila-botones {
+    flex-direction: column;
+  }
+  .fila-botones .recuadro {
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 }
 @media (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
