@@ -447,6 +447,22 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             hideClass: {
                 popup: 'animate__animated animate__backOutUp'
+            },
+            didOpen: () => {
+                const swalContainer = document.querySelector('.swal2-container');
+                const bajarLink = document.createElement('a');
+                bajarLink.href = "#";
+                bajarLink.title = "Bajar al final de la página";
+                bajarLink.className = "bajar";
+                bajarLink.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+                bajarLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    swalContainer.scrollTo({
+                        top: swalContainer.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                });
+                swalContainer.prepend(bajarLink);
             }
         });
     }

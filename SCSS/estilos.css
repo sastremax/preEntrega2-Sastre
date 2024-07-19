@@ -729,14 +729,29 @@ aside .a {
 .subir {
   height: 20px;
   width: 20px;
-  background-color: #333;
-  color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  color: #800080;
   position: fixed;
   border-radius: 50%;
   text-align: center;
   line-height: 20px;
   font-size: 15px;
   right: 20px;
+  bottom: 100px;
+}
+
+.bajar {
+  top: 30px;
+  right: 30px;
+  height: 20px;
+  width: 20px;
+  background-color: rgb(255, 255, 255);
+  color: #800080;
+  position: fixed;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 15px;
   bottom: 100px;
 }
 
