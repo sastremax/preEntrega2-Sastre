@@ -1305,7 +1305,7 @@ sec .row-about {
   }
   .fila-botones .recuadro {
     flex: 1 1 100%;
-    max-width: 100%;
+    max-width: 90%;
   }
 }
 @media (min-width: 580px) and (max-width: 800px) {
@@ -1327,7 +1327,7 @@ sec .row-about {
     flex-direction: column;
   }
   .fila-botones .recuadro {
-    flex: 1 1 100%;
+    flex: 1 1 90%;
     max-width: 100%;
   }
 }
