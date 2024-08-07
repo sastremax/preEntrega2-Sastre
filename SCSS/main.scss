@@ -134,16 +134,50 @@ h4 {
 
 .Jumbotromp {
     background-image: url("../assets/images/parque.jpg");
-    font-size: 3rem;
-    font-weight: 300;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding: 2rem 1rem;
     margin-bottom: 2rem;
-    min-height: 480px;
+    min-height: 200px; /* Ajusta el alto mínimo según tus necesidades */
+    height: 30vh; /* Ajusta la altura según tus necesidades */
+    opacity: 0.8;
+    position: relative; /* Para posicionar el texto dentro del jumbotron */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: $c3; /* Ajusta el color del texto */
+    font-family: Arial, sans-serif;
 }
 
+.parallax {
+    background-image: url("../assets/images/parque.jpg");
+    min-height: 380px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Jumbotromp-text {
+    color: $c3;
+    text-align: left;   
+    padding: 10px; /* Ajusta el padding según tus necesidades */
+    border-radius: 10px;
+    font-size: 2.5rem; /* Ajusta el tamaño de las letras según tus necesidades */
+    max-width: 80%; /* Ajusta el ancho máximo del contenedor del texto */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+    margin-left: 10px;
+}
+
+.titulo-color {
+    color: $c1;
+    
+}
 .videosCentrado {
     margin-top: 40px;
     margin-bottom: 10px;
@@ -1059,7 +1093,7 @@ sec .row-about {
     .solicitar-link {
         padding: 5px 10px;
     }
-    .jumbotron {
+    .Jumbotromp {
         background-size: contain;
         height: auto;
         min-height: 200px;
@@ -1083,10 +1117,11 @@ sec .row-about {
     .solicitar-link {
         padding: 10px 20px;
     }
-    .jumbotron {
+    .Jumbotromp {
         background-size: contain;
         height: auto;
-        min-height: 400px;
+        min-height: 250px;
+        opacity: 0.8;
     }
     .fila-botones {
         flex-direction: column;
