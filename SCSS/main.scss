@@ -139,14 +139,14 @@ h4 {
     background-repeat: no-repeat;
     padding: 2rem 1rem;
     margin-bottom: 2rem;
-    min-height: 200px; /* Ajusta el alto mínimo según tus necesidades */
-    height: 30vh; /* Ajusta la altura según tus necesidades */
+    min-height: 200px; 
+    height: 25vh; 
     opacity: 0.8;
-    position: relative; /* Para posicionar el texto dentro del jumbotron */
+    position: relative; 
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    color: $c3; /* Ajusta el color del texto */
+    color: $c3; 
     font-family: Arial, sans-serif;
 }
 
@@ -165,13 +165,14 @@ h4 {
 
 .Jumbotromp-text {
     color: $c3;
+    font-weight: bold;
     text-align: left;   
-    padding: 10px; /* Ajusta el padding según tus necesidades */
+    padding: 10px; 
     border-radius: 10px;
-    font-size: 2.5rem; /* Ajusta el tamaño de las letras según tus necesidades */
-    max-width: 80%; /* Ajusta el ancho máximo del contenedor del texto */
-    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
-    margin-left: 10px;
+    font-size: 2.5rem; 
+    max-width: 90%; 
+    box-sizing: border-box; 
+    
 }
 
 .titulo-color {
@@ -236,11 +237,12 @@ video {
     margin: 0 auto;
 
     .recuadro {
-        height: 140px;
-        width: 140px;
+        height: 120px;
+        width: 120px;
         background-color: $c1;
         text-align: center;        
         border: 4px solid $c2;
+        border-color: $c3;
         padding: 15px;
         overflow: hidden;
         margin: 15px;
@@ -252,6 +254,7 @@ video {
 
         a {
             text-decoration: none;
+            font-size: 12px;
             color: $c3;
         }
 
@@ -263,12 +266,12 @@ video {
         }
 
         p {
-            font-size: 14px;
+            font-size: 11px;
             color: $c3;
         }
 
         button {
-            font-size: 12px;
+            font-size: 1px;
         }
     }
 }
@@ -433,7 +436,6 @@ aside {
     display: block;
     color: $c2;
     background-color: $c3;
-    border: 1px solid #ccc;
     box-sizing: border-box;
     text-align: center;
     width: 100%;
