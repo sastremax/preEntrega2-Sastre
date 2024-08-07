@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function crearBotones() {
-        let contenedorRecuadros = document.querySelector('.contenedor-recuadros');
+        let contenedorRecuadros = document.querySelector('.contenedor-recuadros-profesionales');
         let primeraFila = document.createElement('div');
         primeraFila.classList.add('fila-botones');
         crearBotonPacientesNuevos(primeraFila);
