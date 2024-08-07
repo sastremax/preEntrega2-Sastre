@@ -20,10 +20,9 @@
 }
 
 .body-background {
-    background-color: $c2;
-    background-image: linear-gradient(to right, rgb(58, 10, 10), #000000);
+    background-color: $c3;    
     padding: 20px;
-    color: $c3;
+    color: $c2;
 }
 
 section {
@@ -375,9 +374,8 @@ button {
 
 aside {
     display: block;
-    color: $c2;
-    background-color: $c3;
-    border: 1px solid #ccc;
+    color: $c1;
+    background-color: $c2;    
     box-sizing: border-box;
     text-align: center;
     width: 100%;

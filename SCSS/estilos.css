@@ -67,14 +67,14 @@ html {
 
 body {
   height: 500px;
-  background: url("../assets/images/fondoPresupuesto.png") repeat, linear-gradient(to left, #7b4397, #dc2430);
+  background-color: #000000;
   background-blend-mode: screen;
   background-position: center;
   position: relative;
   width: 100%;
   padding-top: 0px;
   padding-bottom: 0px;
-  color: #fff;
+  color: rgb(255, 255, 255);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -98,11 +98,11 @@ a {
   color: rgb(13, 110, 253);
 }
 a:hover {
-  color: #000000;
+  color: rgb(255, 255, 255);
 }
 
 button {
-  background-color: rgb(13, 110, 253);
+  background-color: #000000;
   color: rgb(255, 255, 255);
   border: none;
   padding: 0.5rem 1rem;
@@ -161,7 +161,7 @@ header nav.navbar ul.navbar-nav li.nav-item {
 }
 header nav.navbar ul.navbar-nav li.nav-item a {
   margin: 0 0.5rem;
-  color: rgb(255, 255, 0);
+  color: rgb(255, 255, 255);
   font-size: 1.5em;
 }
 header nav.navbar ul.navbar-nav li.nav-item a:hover {
@@ -286,10 +286,9 @@ footer .redes a:hover {
 }
 
 .body-background {
-  background-color: #000000;
-  background-image: linear-gradient(to right, rgb(58, 10, 10), #000000);
+  background-color: rgb(255, 255, 255);
   padding: 20px;
-  color: rgb(255, 255, 255);
+  color: #000000;
 }
 
 section {
@@ -624,9 +623,8 @@ button {
 
 aside {
   display: block;
-  color: #000000;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid #ccc;
+  color: rgb(13, 110, 253);
+  background-color: #000000;
   box-sizing: border-box;
   text-align: center;
   width: 100%;
