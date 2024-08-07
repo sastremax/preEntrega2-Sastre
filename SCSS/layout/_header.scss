@@ -4,11 +4,11 @@ header {
     padding: $spacer-sm;
     .container {
         display: flex;
-        justify-content: space-between;
+        justify-content: $centro;
         align-items: center;        
         max-width: 1200px;
-        height: auto;
-        margin: 5px;
+        height: 200px;
+        margin: 0 auto;
         padding: 0 20px;
         box-sizing: border-box;
     }  
@@ -19,7 +19,7 @@ header {
         flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: $centro
+        align-items: $centro;
     }
     h1 {
         font-size: 1.5rem;

@@ -572,12 +572,14 @@ input {
         height: 40px;
         color: $c1;
         margin: 0;
+        border: 1px solid;        
     }
 
     &[type="number"] {
         height: 40px;
-        color: $c13;
-        margin: 0;
+        color: $c1;
+        border: 1px solid;
+        margin: 0;        
     }
 
     &:focus {
@@ -604,7 +606,12 @@ input {
 form {
     display: flex;
     flex-direction: column;
+    height: 60%;
+    h2 {
+        color:$c4;
+    }
 }
+
 
 .form-group {
     flex: 1 1 45%;
@@ -617,6 +624,22 @@ form label {
     margin-top: 12px;
 }
 
+#formularioContenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#formulario {
+    display: flex;
+    flex-direction: column;
+    width: 55%; 
+    max-width: 60%; 
+    margin: 0 auto; 
+}
+
 .formulario-turnos {
     display: flex;
     flex-direction: column;
@@ -626,7 +649,7 @@ form label {
 
 .formulario-turnos input:nth-of-type(3) {
     text-align: $centro;
-    color: $c6;
+    color: $c4;
 }
 
 .formulario-turnos label {

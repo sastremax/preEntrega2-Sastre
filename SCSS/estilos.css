@@ -120,11 +120,11 @@ header {
 }
 header .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   max-width: 1200px;
-  height: auto;
-  margin: 5px;
+  height: 200px;
+  margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
 }
@@ -824,10 +824,12 @@ input[type=text] {
   height: 40px;
   color: rgb(13, 110, 253);
   margin: 0;
+  border: 1px solid;
 }
 input[type=number] {
   height: 40px;
-  color: #3000b3;
+  color: rgb(13, 110, 253);
+  border: 1px solid;
   margin: 0;
 }
 input:focus {
@@ -851,6 +853,10 @@ input:focus {
 form {
   display: flex;
   flex-direction: column;
+  height: 60%;
+}
+form h2 {
+  color: rgb(0, 128, 0);
 }
 
 .form-group {
@@ -864,6 +870,22 @@ form label {
   margin-top: 12px;
 }
 
+#formularioContenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#formulario {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  max-width: 60%;
+  margin: 0 auto;
+}
+
 .formulario-turnos {
   display: flex;
   flex-direction: column;
@@ -873,7 +895,7 @@ form label {
 
 .formulario-turnos input:nth-of-type(3) {
   text-align: center;
-  color: rgb(255, 0, 0);
+  color: rgb(0, 128, 0);
 }
 
 .formulario-turnos label {
