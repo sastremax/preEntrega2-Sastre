@@ -19,8 +19,9 @@
     vertical-align: middle;
 }
 
-.body-background {
-    background-color: $c3;    
+.body-background {  
+    background-color: $c3;  
+    background-image: linear-gradient(to right, rgb(58, 10, 10), #000000);        
     padding: 20px;
     color: $c2;
 }
@@ -47,7 +48,7 @@ article {
     padding-top: 15px;
     padding-right: 10px;
     padding-bottom: 25px;
-
+    background: url("../assets/images/fondoPresupuesto.png") repeat, linear-gradient(to left, #7b4397, #dc2430);
     ul li {
         list-style: none;
     }
@@ -416,7 +417,7 @@ button {
 aside {
     display: block;
     color: $c1;
-    background-color: $c2;    
+    background: url("../assets/images/fondoPresupuesto.png") repeat, linear-gradient(to left, #7b4397, #dc2430);   
     box-sizing: border-box;
     text-align: center;
     width: 100%;

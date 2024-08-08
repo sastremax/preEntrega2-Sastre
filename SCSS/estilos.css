@@ -67,14 +67,14 @@ html {
 
 body {
   height: 500px;
-  background-color: #000000;
+  background: url("../assets/images/fondoPresupuesto.png") repeat, linear-gradient(to left, #7b4397, #dc2430);
   background-blend-mode: screen;
   background-position: center;
   position: relative;
   width: 100%;
   padding-top: 0px;
   padding-bottom: 0px;
-  color: rgb(255, 255, 255);
+  color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -114,7 +114,7 @@ button:hover {
 }
 
 header {
-  background-color: #000000;
+  background: url("../assets/images/fondoPresupuesto.png") repeat, linear-gradient(to left, #7b4397, #dc2430);
   color: rgb(255, 255, 255);
   padding: 0.5rem;
 }
@@ -209,7 +209,7 @@ header .menu-toggle span {
 }
 
 footer {
-  background-color: #000000;
+  background: url("../assets/images/fondoPresupuesto.png") repeat, linear-gradient(to left, #7b4397, #dc2430);
   color: rgb(255, 255, 255);
   padding: 1.5rem;
   text-align: center;
@@ -289,6 +289,7 @@ footer .redes a:hover {
 
 .body-background {
   background-color: rgb(255, 255, 255);
+  background-image: linear-gradient(to right, rgb(58, 10, 10), #000000);
   padding: 20px;
   color: #000000;
 }
@@ -315,6 +316,7 @@ article {
   padding-top: 15px;
   padding-right: 10px;
   padding-bottom: 25px;
+  background: url("../assets/images/fondoPresupuesto.png") repeat, linear-gradient(to left, #7b4397, #dc2430);
 }
 article ul li {
   list-style: none;
@@ -671,7 +673,7 @@ button {
 aside {
   display: block;
   color: rgb(13, 110, 253);
-  background-color: #000000;
+  background: url("../assets/images/fondoPresupuesto.png") repeat, linear-gradient(to left, #7b4397, #dc2430);
   box-sizing: border-box;
   text-align: center;
   width: 100%;
